@@ -16,12 +16,6 @@
     --utt-cyan-strong: #0096c4;
     --utt-cyan-subtle: rgba(0, 182, 237, 0.12);
 
-    /* Jaune UTT — accent de contraste (« + », icônes sur bleu). */
-    --utt-yellow: #ffd200;
-
-    /* Trame de « + » (charte UTT, § 2.2) — motif de points « + » très discret, à superposer sur un fond foncé */
-    --arc-plus-trame: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Cpath d='M12 8.5v7M8.5 12h7' stroke='%23ffffff' stroke-opacity='0.16' stroke-width='1.6' stroke-linecap='round'/%3E%3C/svg%3E");
-
     /* Surfaces */
     --body-bg: #f4f6fa;
     --panel-bg: #ffffff;

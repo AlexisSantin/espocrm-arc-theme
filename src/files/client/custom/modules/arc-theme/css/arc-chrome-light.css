@@ -2,9 +2,7 @@
  * Arc chrome — navbar latérale flottante violette, modals, tables éditoriales.
  */
 :root {
-    --arc-navy-vertical: linear-gradient(180deg, #2b2e74 0%, #232566 60%, #1b1d52 100%);
     --navbar-bg: #ffffff;
-
     --navbar-border-width: 0;
     --navbar-box-shadow: none;
     --navbar-link-color: var(--arc-neutral-8);
@@ -19,44 +17,20 @@
     --navbar-inverse-link-hover-bg: rgba(255, 255, 255, 0.08);
     --navbar-inverse-link-active-bg: #00b6ed;
     --navbar-inverse-border: transparent;
-    --navbar-inverse-link-icon-color: #aeb3da;
+    --navbar-inverse-link-icon-color: #8f93c4;
     --navbar-inverse-link-icon-hover-color: #ffffff;
 }
 
 /* ===== Sidebar pilule flottante (data-navbar=side) ===== */
-/* Colonne en dégradé vertical bleu UTT → cyan, partagée avec la topbar */
 body[data-navbar="side"] #header {
-    background: var(--arc-navy-vertical);
-    background-attachment: fixed;
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    height: auto;
-    z-index: 1;
+    background: transparent;
 }
 
-/* La pilule n'a plus de fond propre : elle laisse voir le dégradé de la colonne */
 body[data-navbar="side"] #navbar > .navbar {
-    background: transparent;
+    background: linear-gradient(180deg, #292b6b 0%, #1d2668 55%, #00b6ed 190%);
     border-radius: 0 20px 20px 0;
     margin: 12px 0;
-    box-shadow: none;
-}
-
-/* Trame de « + » en bas de la colonne, fondue vers le haut */
-body[data-navbar="side"] #header::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    height: 160px;
-    background: var(--arc-plus-trame);
-    background-size: 24px 24px;
-    -webkit-mask-image: linear-gradient(to top, #000 0%, transparent 100%);
-    mask-image: linear-gradient(to top, #000 0%, transparent 100%);
-    pointer-events: none;
+    box-shadow: 0 12px 32px rgba(41, 43, 107, 0.30);
 }
 
 body[data-navbar="side"] #navbar .navbar .navbar-brand {
@@ -74,38 +48,20 @@ body[data-navbar="side"] #navbar ul.tabs > li.tab > a:hover {
     background: rgba(255, 255, 255, 0.08);
 }
 
-/* Libellés et icônes lisibles sur le fond bleu sobre */
-body[data-navbar="side"] #navbar ul.tabs > li > a .full-label {
-    color: #e4e7f6;
-}
-
-body[data-navbar="side"] #navbar ul.tabs > li > a .color-icon {
-    color: #aeb3da;
-}
-
-/* Entrée active : fond discret et filet cyan à gauche */
 body[data-navbar="side"] #navbar ul.tabs > li.tab.active > a,
 body[data-navbar="side"] #navbar ul.tabs > li.tab.open > a {
-    background: rgba(255, 255, 255, 0.1);
+    background: var(--arc-accent);
     color: #ffffff;
-    position: relative;
-}
-
-body[data-navbar="side"] #navbar ul.tabs > li.tab.active > a::before,
-body[data-navbar="side"] #navbar ul.tabs > li.tab.open > a::before {
-    content: "";
-    position: absolute;
-    left: -10px;
-    top: 8px;
-    bottom: 8px;
-    width: 3px;
-    background: #00b6ed;
-    border-radius: 0 3px 3px 0;
 }
 
 body[data-navbar="side"] #navbar ul.tabs > li.tab.active > a .color-icon,
 body[data-navbar="side"] #navbar ul.tabs > li.tab.open > a .color-icon {
-    color: var(--utt-yellow);
+    color: #ffffff;
+}
+
+/* Icônes de tab toujours claires sur fond bleu UTT profond */
+body[data-navbar="side"] #navbar ul.tabs > li > a .color-icon {
+    color: #8f93c4;
 }
 
 /* ===== Barre supérieure (navbar top) ===== */
@@ -113,57 +69,6 @@ body[data-navbar="side"] #navbar ul.tabs > li.tab.open > a .color-icon {
     background: linear-gradient(90deg, #292b6b 0%, #1d2668 70%, #00b6ed 220%);
     box-shadow: 0 2px 12px rgba(41, 43, 107, 0.25);
 }
-
-/* Topbar en mode side : même dégradé que la colonne, raccordé par background-attachment */
-body[data-navbar="side"] #navbar .navbar-right {
-    background: var(--arc-navy-vertical);
-    background-attachment: fixed;
-    box-shadow: none;
-}
-
-/* Icônes de la topbar : blanc lisible sur bleu, survol cyan/jaune UTT */
-body[data-navbar="side"] #navbar .navbar-right a,
-body[data-navbar="side"] #navbar .navbar-right button,
-body[data-navbar="side"] #navbar .navbar-right .fas,
-body[data-navbar="side"] #navbar .navbar-right .far {
-    color: #ffffff;
-}
-
-body[data-navbar="side"] #navbar .navbar-right .dropdown-menu a,
-body[data-navbar="side"] #navbar .navbar-right .dropdown-menu a:hover {
-    color: var(--arc-neutral-11);
-}
-
-body[data-navbar="side"] #navbar .navbar-right .dropdown-menu a:hover,
-body[data-navbar="side"] #navbar .navbar-right .dropdown-menu a:focus {
-    background: var(--arc-neutral-2);
-}
-
-body[data-navbar="side"] #navbar .navbar-right a:hover,
-body[data-navbar="side"] #navbar .navbar-right button:hover,
-body[data-navbar="side"] #navbar .navbar-right a:focus,
-body[data-navbar="side"] #navbar .navbar-right button:focus {
-    background: rgba(255, 255, 255, 0.12);
-}
-
-body[data-navbar="side"] #navbar .navbar-right a:hover .fas,
-body[data-navbar="side"] #navbar .navbar-right a:hover .far,
-body[data-navbar="side"] #navbar .navbar-right button:hover .fas,
-body[data-navbar="side"] #navbar .navbar-right button:hover .far,
-body[data-navbar="side"] #navbar .navbar-right .fa-plus {
-    color: var(--utt-yellow);
-}
-
-body[data-navbar="side"] input.global-search-input {
-    background-color: rgba(255, 255, 255, 0.12);
-    border: 1px solid rgba(255, 255, 255, 0.25);
-    color: #ffffff;
-}
-
-body[data-navbar="side"] input.global-search-input::placeholder {
-    color: #cdd1e8;
-}
-
 
 /* ===== Modals ===== */
 .modal-content {
@@ -217,9 +122,7 @@ body[data-navbar="side"] input.global-search-input::placeholder {
 }
 
 /* ===== Dropdowns ===== */
-/* Le menu « + » de la topbar hérite du blanc de la barre : on rétablit une couleur sombre */
 .dropdown-menu {
-    color: var(--arc-neutral-11);
     border-radius: 12px;
     border: 1px solid var(--arc-neutral-3);
     box-shadow: var(--arc-shadow-raised);

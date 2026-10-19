@@ -1,16 +1,5 @@
 /**
- * Akrobat ExtraBold — police des titres Arc (fournie par UTT).
- */
-@font-face {
-    font-family: "Akrobat";
-    font-style: normal;
-    font-weight: 800;
-    font-display: swap;
-    src: url("../fonts/Akrobat-ExtraBold.otf") format("opentype");
-}
-
-/**
- * Geist — police de texte d'Arc.
+ * Geist — signature typeface (Vercel / uiarc.dev).
  * Bundled: Regular 400 / Medium 500 / SemiBold 600 / Bold 700.
  */
 @font-face {
