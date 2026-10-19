@@ -15,9 +15,14 @@ textarea,
 .panel-heading,
 .navbar {
     font-family: "Metropolis", -apple-system, "Segoe UI", sans-serif;
-    font-style: normal;
+    font-style: italic;
     font-weight: 400;
     letter-spacing: var(--arc-tracking-body);
+}
+
+/* Les icônes ne doivent pas être inclinées avec le texte */
+.fa, .fas, .far, .fab, .glyphicon {
+    font-style: normal;
 }
 
 h1, h2, h3, h4,
