@@ -1,0 +1,51 @@
+/**
+ * Libellés flottants (édition) : le libellé occupe la zone du champ quand il est vide
+ * et remonte sur la bordure dès que le champ contient une valeur.
+ * La classe .arc-float est posée par lib/float-labels.js.
+ */
+
+.edit .cell.arc-float {
+    position: relative;
+}
+
+.edit .cell.arc-float > label.control-label {
+    position: absolute;
+    top: 9px;
+    left: 11px;
+    z-index: 1;
+    max-width: calc(100% - 22px);
+    margin: 0;
+    padding: 0 4px;
+    font-size: 13px;
+    line-height: 18px;
+    font-weight: 400;
+    color: var(--arc-neutral-7);
+    background: transparent;
+    pointer-events: none;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition:
+        top var(--arc-duration-fast) var(--arc-ease-standard),
+        font-size var(--arc-duration-fast) var(--arc-ease-standard),
+        color var(--arc-duration-fast) var(--arc-ease-standard);
+}
+
+.edit .cell.arc-float.arc-has-value > label.control-label {
+    top: -9px;
+    left: 8px;
+    font-size: 11.5px;
+    line-height: 18px;
+    background: var(--arc-neutral-0);
+}
+
+.edit .cell.arc-float > .field > input.form-control {
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .edit .cell.arc-float > label.control-label {
+        transition: none;
+    }
+}

@@ -4,13 +4,16 @@
  */
 
 /* Titre de bloc : capitales espacées, petit tiret cyan (le « Plus » de la charte) */
-.detail .panel-heading {
-    padding: 14px 18px 10px;
-    background: #ffffff;
-    border-bottom: 1px solid var(--arc-neutral-3);
+body .detail .panel-heading,
+body .edit .panel-heading {
+    padding: 14px 18px 12px;
+    background: #eef1fa;
+    border-bottom: 1px solid #dfe3f0;
+    border-radius: 4px 4px 0 0;
 }
 
-.detail .panel-heading .panel-title {
+.detail .panel-heading .panel-title,
+.edit .panel-heading .panel-title {
     display: flex;
     align-items: center;
     gap: 10px;
@@ -21,7 +24,8 @@
     color: #292b6b;
 }
 
-.detail .panel-heading .panel-title::before {
+.detail .panel-heading .panel-title::before,
+.edit .panel-heading .panel-title::before {
     content: "";
     flex: 0 0 14px;
     height: 2px;
@@ -36,6 +40,37 @@
     letter-spacing: 0.02em;
     color: var(--arc-neutral-7);
     margin-bottom: 4px;
+}
+
+/* Onglets : texte sobre, soulignement cyan fin pour l'onglet actif (maquette Stitch) */
+.nav-tabs {
+    border-bottom: 1px solid #e4e6ee;
+}
+
+.nav-tabs > li > a {
+    border: none;
+    border-bottom: 2px solid transparent;
+    border-radius: 0;
+    margin-bottom: -1px;
+    padding: 8px 14px;
+    color: var(--arc-neutral-7);
+    background: transparent;
+}
+
+.nav-tabs > li > a:hover {
+    color: #292b6b;
+    background: transparent;
+    border-bottom-color: #c9cde0;
+}
+
+.nav-tabs > li.active > a,
+.nav-tabs > li.active > a:hover,
+.nav-tabs > li.active > a:focus {
+    color: #292b6b;
+    font-weight: 600;
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid var(--utt-cyan);
 }
 
 /* Pas de filet par champ : les champs empilés en pleine largeur créaient des doubles traits */

@@ -1,0 +1,10 @@
+{
+    "developerModeScriptList": [
+        "__APPEND__",
+        "client/custom/modules/arc-theme/lib/float-labels.js"
+    ],
+    "scriptList": [
+        "__APPEND__",
+        "client/custom/modules/arc-theme/lib/float-labels.js"
+    ]
+}

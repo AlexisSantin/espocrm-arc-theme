@@ -13,19 +13,8 @@
     to { opacity: 1; transform: none; }
 }
 
-/* Survol discret d'un champ du détail : signale l'édition au clic */
-.detail .field[data-name] {
-    border-radius: 6px;
-    transition: box-shadow var(--arc-duration-fast) var(--arc-ease-standard);
-}
-
-.detail .field[data-name]:hover {
-    box-shadow: 0 0 0 4px rgba(0, 182, 237, 0.07);
-}
-
 @media (prefers-reduced-motion: reduce) {
     .btn,
-    .detail .field[data-name],
     .open > .dropdown-menu {
         transition: none !important;
         animation: none !important;
