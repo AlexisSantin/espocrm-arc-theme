@@ -10,51 +10,7 @@
 }
 
 /**
- * Metropolis — police de texte de la charte UTT (Unlicense, dépôt dw5/Metropolis).
- * Bundled: Light 300 / Regular 400 / Medium 500 / SemiBold 600 / Bold 700, italique.
- */
-@font-face {
-    font-family: "Metropolis";
-    font-style: italic;
-    font-weight: 300;
-    font-display: swap;
-    src: url("../fonts/Metropolis-LightItalic.woff2") format("woff2");
-}
-
-@font-face {
-    font-family: "Metropolis";
-    font-style: italic;
-    font-weight: 400;
-    font-display: swap;
-    src: url("../fonts/Metropolis-RegularItalic.woff2") format("woff2");
-}
-
-@font-face {
-    font-family: "Metropolis";
-    font-style: italic;
-    font-weight: 500;
-    font-display: swap;
-    src: url("../fonts/Metropolis-MediumItalic.woff2") format("woff2");
-}
-
-@font-face {
-    font-family: "Metropolis";
-    font-style: italic;
-    font-weight: 600;
-    font-display: swap;
-    src: url("../fonts/Metropolis-SemiBoldItalic.woff2") format("woff2");
-}
-
-@font-face {
-    font-family: "Metropolis";
-    font-style: italic;
-    font-weight: 700;
-    font-display: swap;
-    src: url("../fonts/Metropolis-BoldItalic.woff2") format("woff2");
-}
-
-/**
- * Geist — ancienne police de texte (conservée en secours).
+ * Geist — police de texte d'Arc.
  * Bundled: Regular 400 / Medium 500 / SemiBold 600 / Bold 700.
  */
 @font-face {

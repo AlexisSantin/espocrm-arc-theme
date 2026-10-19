@@ -3,7 +3,7 @@
  */
 :root, body { --theme-name: Arc !important; }
 
-/* ===== Typographie : Metropolis (texte, charte UTT), Akrobat ExtraBold (titres) ===== */
+/* ===== Typographie : Geist (texte), Akrobat ExtraBold (titres) ===== */
 body,
 .table,
 .list,
@@ -14,22 +14,17 @@ textarea,
 .dropdown-menu,
 .panel-heading,
 .navbar {
-    font-family: "Metropolis", -apple-system, "Segoe UI", sans-serif;
-    font-style: italic;
+    font-family: "Geist", -apple-system, "Segoe UI", sans-serif;
+    font-style: normal;
     font-weight: 400;
     letter-spacing: var(--arc-tracking-body);
-}
-
-/* Les icônes ne doivent pas être inclinées avec le texte */
-.fa, .fas, .far, .fab, .glyphicon {
-    font-style: normal;
 }
 
 h1, h2, h3, h4,
 .header-title,
 .page-header h3,
 .modal-title {
-    font-family: "Akrobat", "Metropolis", -apple-system, "Segoe UI", sans-serif;
+    font-family: "Akrobat", "Geist", -apple-system, "Segoe UI", sans-serif;
     font-style: normal;
     font-weight: 800;
     letter-spacing: var(--arc-tracking-display);
@@ -171,7 +166,7 @@ body:has(#login)::before {
     position: relative;
     padding-left: 20px;
     margin: 0;
-    font-family: "Akrobat", "Metropolis", -apple-system, "Segoe UI", sans-serif;
+    font-family: "Akrobat", "Geist", -apple-system, "Segoe UI", sans-serif;
     font-size: 13px;
     font-weight: 800;
     font-style: normal;
