@@ -1,0 +1,70 @@
+/**
+ * EspoCRM variable overrides — palette UTT Entreprise / Compétences +.
+ * Signature : Bleu UTT #292B6B + Cyan Entreprise #00B6ED, dégradé bleu→cyan.
+ */
+:root {
+    color-scheme: light;
+
+    /* Accent Bleu UTT signature */
+    --arc-accent: #292b6b;
+    --arc-accent-strong: #1d1f52;
+    --arc-accent-subtle: rgba(0, 182, 237, 0.12);
+    --arc-accent-foreground: #ffffff;
+
+    /* Cyan Entreprise — accent secondaire */
+    --utt-cyan: #00b6ed;
+    --utt-cyan-strong: #0096c4;
+    --utt-cyan-subtle: rgba(0, 182, 237, 0.12);
+
+    /* Jaune UTT — accent de contraste (« + », icônes sur bleu). */
+    --utt-yellow: #ffd200;
+
+    /* Trame de « + » (charte UTT, § 2.2) — motif de points « + » très discret, à superposer sur un fond foncé */
+    --arc-plus-trame: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Cpath d='M12 8.5v7M8.5 12h7' stroke='%23ffffff' stroke-opacity='0.16' stroke-width='1.6' stroke-linecap='round'/%3E%3C/svg%3E");
+
+    /* Surfaces */
+    --body-bg: #f4f6fa;
+    --panel-bg: #ffffff;
+    --main-gray: #e8eaf1;
+    --main-gray-5: #e2e5ee;
+    --main-gray-7: #e0e3ec;
+    --main-gray-10: #dcdfe9;
+    --main-gray-12: #d8dbe6;
+    --main-gray-17: #d1d5e2;
+    --main-gray-25: #c6cbdb;
+    --main-gray-40: #b1b7ca;
+    --main-gray-lighten-40: #ffffff;
+    --white-color: #ffffff;
+    --white-color-3: var(--arc-neutral-2);
+    --white-color-5: var(--arc-neutral-3);
+
+    /* Texte */
+    --text-color: var(--arc-neutral-10);
+    --text-white-color: #ffffff;
+    --text-muted-color: var(--arc-neutral-7);
+    --text-gray-color: var(--arc-neutral-8);
+    --link-color: #0096c4;
+    --link-hover-color: #007ba3;
+    --link-record-color: var(--arc-neutral-10);
+    --link-record-hover-color: #0096c4;
+    --text-link-color: #0096c4;
+    --text-link-hover-color: #007ba3;
+    --site-footer-color: var(--arc-neutral-7);
+
+    /* Brand : boutons primaires = Bleu UTT, dégradé bleu→cyan */
+    --brand-primary: #292b6b;
+    --brand-primary-text: #ffffff;
+    --brand-primary-5: #23255c;
+    --brand-primary-10: #1d1f52;
+    --brand-primary-lighten-10: #3a3d80;
+    --brand-primary-lighten-30: #6d70a2;
+    --brand-primary-lighten-50: #b9bbd4;
+    --brand-gradient: linear-gradient(90deg, #292b6b 0%, #00b6ed 100%);
+
+    /* Grays */
+    --gray-soft: var(--arc-neutral-8);
+    --gray-dark: var(--arc-neutral-10);
+    --gray-light: var(--arc-neutral-7);
+    --gray-lighter: #e8eaf1;
+    --gray: var(--arc-neutral-8);
+}

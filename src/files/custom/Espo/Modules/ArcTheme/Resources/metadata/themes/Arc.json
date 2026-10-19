@@ -1,0 +1,45 @@
+{
+    "stylesheet": "client/custom/modules/arc-theme/css/arc.css",
+    "stylesheetIframe": "client/custom/modules/arc-theme/css/arc-iframe.css",
+    "logo": "client/img/logo-light.svg",
+    "params": {
+        "navbar": {
+            "type": "enum",
+            "default": "side",
+            "options": [
+                "side",
+                "top"
+            ]
+        }
+    },
+    "mappedParams": {
+        "navbarHeight": {
+            "param": "navbar",
+            "valueMap": {
+                "side": 32,
+                "top": 43
+            }
+        }
+    },
+    "dashboardCellHeight": 40,
+    "dashboardCellMargin": 16,
+    "navbarHeight": 43,
+    "modalFooterAtTheTop": true,
+    "modalFullHeight": true,
+    "fontSize": 14,
+    "textColor": "#1d1d1d",
+    "hoverColor": "#7747ff",
+    "chartGridColor": "#e9e9e9",
+    "chartTickColor": "#f1f1f1",
+    "chartSuccessColor": "#1d9e31",
+    "chartColorList": ["#7747ff", "#0562ef", "#0db879", "#f3ad20", "#f48120", "#f15f55", "#ed4e9d", "#644c8a", "#8a542d"],
+    "chartColorAlternativeList": ["#7747ff", "#f3ad20", "#f15f55", "#0db879", "#0562ef"],
+    "calendarColors": {
+        "": "#a58dc7a0",
+        "bg": "#e2d8f8a0",
+        "Call": "#f15f55",
+        "Meeting": "#0562ef",
+        "Task": "#0db879"
+    },
+    "isDark": false
+}

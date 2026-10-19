@@ -1,0 +1,86 @@
+/**
+ * Arc component styling — dark variant.
+ */
+:root, body { --theme-name: ArcDark !important; }
+
+body { letter-spacing: var(--arc-tracking-body); }
+h1, h2, h3, h4, h5, h6 { letter-spacing: var(--arc-tracking-display); }
+
+.btn {
+    border-radius: var(--arc-radius-control);
+    transition: background-color var(--arc-duration-fast) var(--arc-ease-standard),
+        border-color var(--arc-duration-fast), color var(--arc-duration-fast);
+}
+
+.form-control {
+    border-radius: var(--arc-radius-control);
+    transition: border-color var(--arc-duration-fast), box-shadow var(--arc-duration-fast);
+}
+
+.form-control:focus {
+    border-color: var(--arc-accent);
+    box-shadow: 0 0 0 3px var(--arc-accent-subtle);
+    outline: none;
+}
+
+.panel { border-radius: var(--arc-radius-panel); }
+
+.dropdown-menu {
+    border-radius: var(--arc-radius-panel);
+    box-shadow: var(--arc-shadow-floating);
+    padding: 6px;
+}
+
+.dropdown-menu > li > a { border-radius: 8px; }
+
+.modal-content { border-radius: var(--arc-radius-panel); }
+
+.navbar { box-shadow: none; }
+
+body[data-navbar="side"] .navbar .nav > li > a:hover,
+body[data-navbar="side"] .navbar .nav > li > a:focus {
+    border-radius: 10px;
+}
+
+body[data-navbar="side"] .navbar .nav > li.active > a {
+    border-radius: 10px;
+    font-weight: 600;
+}
+
+/* Login page — Arc signature gradient (works with any login template) */
+body:has(#login) { background: var(--arc-gradient-soft); }
+
+body:has(#login)::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: var(--arc-gradient);
+    opacity: 0.25;
+    pointer-events: none;
+}
+
+#login.panel {
+    border-radius: var(--arc-radius-surface);
+    box-shadow: var(--arc-shadow-floating);
+    border: none;
+    overflow: hidden;
+}
+
+#login.panel > .panel-heading {
+    background: var(--arc-gradient);
+    padding: 24px;
+}
+
+#login.panel .logo-container { text-align: center; }
+
+.label { border-radius: var(--arc-radius-pill); }
+
+.list-container .list > thead > tr > th { font-weight: 600; }
+
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: var(--scroll-bg); }
+::-webkit-scrollbar-thumb {
+    background: var(--scroll-thumb-bg);
+    border-radius: 10px;
+    border: 2px solid var(--scroll-bg);
+}

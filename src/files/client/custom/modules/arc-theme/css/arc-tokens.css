@@ -1,0 +1,54 @@
+/**
+ * Arc tokens (uiarc.dev) — shared by Arc and ArcDark themes.
+ * Neutrals oklch->hex, status colors, accent, gradient signature, shadows.
+ */
+:root {
+    /* Neutrals */
+    --arc-neutral-0: #ffffff;
+    --arc-neutral-1: #fcfcfc;
+    --arc-neutral-2: #f8f8f8;
+    --arc-neutral-3: #f1f1f1;
+    --arc-neutral-4: #e3e3e3;
+    --arc-neutral-5: #cacaca;
+    --arc-neutral-6: #a4a4a4;
+    --arc-neutral-7: #7d7d7d;
+    --arc-neutral-8: #585858;
+    --arc-neutral-9: #383838;
+    --arc-neutral-10: #1d1d1d;
+    --arc-neutral-11: #0b0b0b;
+
+    /* Status */
+    --arc-success: #007b12;
+    --arc-warning: #b66400;
+    --arc-danger: #cd1526;
+
+    /* Accent (neutral ink by default; ArcDark overrides) */
+    --arc-accent: var(--arc-neutral-11);
+    --arc-accent-strong: #000000;
+    --arc-accent-subtle: rgba(11, 11, 11, 0.08);
+    --arc-accent-foreground: #ffffff;
+
+    /* Gradient signature UTT : Bleu UTT -> Cyan Entreprise */
+    --arc-gradient-from: #292b6b;
+    --arc-gradient-to: #00b6ed;
+    --arc-gradient: linear-gradient(100deg, #292b6b, #00b6ed);
+    --arc-gradient-soft: linear-gradient(135deg, #f0f3fb, #e2f6fd);
+
+    /* Shadows */
+    --arc-shadow-resting: 0 1px 2px rgba(0, 0, 0, 0.035);
+    --arc-shadow-raised: 0 6px 18px rgba(0, 0, 0, 0.065), 0 1px 3px rgba(0, 0, 0, 0.035);
+    --arc-shadow-floating: 0 20px 48px rgba(0, 0, 0, 0.105), 0 3px 10px rgba(0, 0, 0, 0.045);
+
+    /* Typography & motion */
+    --arc-tracking-display: -0.03em;
+    --arc-tracking-body: -0.01em;
+    --arc-ease-standard: cubic-bezier(0.22, 1, 0.36, 1);
+    --arc-duration-fast: 160ms;
+    --arc-duration-standard: 240ms;
+
+    /* Radii */
+    --arc-radius-control: 10px;
+    --arc-radius-panel: 16px;
+    --arc-radius-surface: 22px;
+    --arc-radius-pill: 999px;
+}

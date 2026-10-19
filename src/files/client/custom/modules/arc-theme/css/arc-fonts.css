@@ -1,0 +1,90 @@
+/**
+ * Akrobat ExtraBold — police des titres Arc (fournie par UTT).
+ */
+@font-face {
+    font-family: "Akrobat";
+    font-style: normal;
+    font-weight: 800;
+    font-display: swap;
+    src: url("../fonts/Akrobat-ExtraBold.otf") format("opentype");
+}
+
+/**
+ * Metropolis — police de texte de la charte UTT (Unlicense, dépôt dw5/Metropolis).
+ * Bundled: Light 300 / Regular 400 / Medium 500 / SemiBold 600 / Bold 700, romain.
+ */
+@font-face {
+    font-family: "Metropolis";
+    font-style: normal;
+    font-weight: 300;
+    font-display: swap;
+    src: url("../fonts/Metropolis-Light.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "Metropolis";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url("../fonts/Metropolis-Regular.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "Metropolis";
+    font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+    src: url("../fonts/Metropolis-Medium.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "Metropolis";
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+    src: url("../fonts/Metropolis-SemiBold.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "Metropolis";
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url("../fonts/Metropolis-Bold.woff2") format("woff2");
+}
+
+/**
+ * Geist — ancienne police de texte (conservée en secours).
+ * Bundled: Regular 400 / Medium 500 / SemiBold 600 / Bold 700.
+ */
+@font-face {
+    font-family: "Geist";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url("../fonts/Geist-Regular.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "Geist";
+    font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+    src: url("../fonts/Geist-Medium.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "Geist";
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+    src: url("../fonts/Geist-SemiBold.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "Geist";
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url("../fonts/Geist-Bold.woff2") format("woff2");
+}

@@ -1,0 +1,13 @@
+{
+    "module": "ArcTheme",
+    "name": "Arc Theme",
+    "description": "Arc design system theme (uiarc.dev) for EspoCRM — light and dark variants with neutral-first palette, soft radii and lavender-to-peach gradient signature.",
+    "author": "Alexis SANTIN",
+    "acceptableVersions": [
+        ">=10.0.3 <10.1.0"
+    ],
+    "php": [
+        ">=8.3"
+    ],
+    "scripts": []
+}

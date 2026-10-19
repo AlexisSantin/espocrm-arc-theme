@@ -1,0 +1,290 @@
+/**
+ * Arc style — typographie Geist, boutons signature, login, focus.
+ */
+:root, body { --theme-name: Arc !important; }
+
+/* ===== Typographie : Metropolis (texte, charte UTT), Akrobat ExtraBold (titres) ===== */
+body,
+.table,
+.list,
+button,
+input,
+select,
+textarea,
+.dropdown-menu,
+.panel-heading,
+.navbar {
+    font-family: "Metropolis", -apple-system, "Segoe UI", sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    letter-spacing: var(--arc-tracking-body);
+}
+
+h1, h2, h3, h4,
+.header-title,
+.page-header h3,
+.modal-title {
+    font-family: "Akrobat", "Metropolis", -apple-system, "Segoe UI", sans-serif;
+    font-style: normal;
+    font-weight: 800;
+    letter-spacing: var(--arc-tracking-display);
+}
+
+/* La feuille stock force font-weight:400 sur ces sélecteurs (spécificité 0,2,0) */
+.page-header .header-title,
+.page-header h3 {
+    font-weight: 800;
+}
+
+/* ===== Boutons ===== */
+.btn {
+    border-radius: var(--arc-radius-control);
+    font-weight: 500;
+    transition: all var(--arc-duration-fast) var(--arc-ease-standard);
+}
+
+/* CTA et primaires : bleu UTT, balayage dégradé au survol, léger soulèvement */
+.btn.main-header-manu-action, .list-header-container .btn-default,
+.btn-primary {
+    background: linear-gradient(100deg, var(--arc-accent) 0%, var(--arc-accent) 55%, var(--utt-cyan-strong) 100%);
+    background-size: 220% 100%;
+    background-position: 0% 50%;
+    border-color: var(--arc-accent);
+    color: #ffffff;
+    padding: 6px 14px;
+    line-height: 1.25;
+    box-shadow: 0 2px 6px rgba(41, 43, 107, 0.18);
+    transition: background-position 360ms var(--arc-ease-standard),
+                transform var(--arc-duration-fast) var(--arc-ease-standard),
+                box-shadow var(--arc-duration-fast) var(--arc-ease-standard),
+                border-color var(--arc-duration-fast) ease;
+}
+
+.btn.main-header-manu-action:hover, .list-header-container .btn-default:hover,
+.btn.main-header-manu-action:focus, .list-header-container .btn-default:focus,
+.btn-primary:hover, .btn-primary:focus {
+    background-position: 100% 50%;
+    border-color: var(--utt-cyan-strong);
+    color: #ffffff;
+    transform: translateY(-1px);
+    box-shadow: 0 8px 18px rgba(41, 43, 107, 0.28);
+}
+
+.btn.main-header-manu-action:active, .list-header-container .btn-default:active,
+.btn-primary:active {
+    transform: translateY(0) scale(0.98);
+    box-shadow: 0 2px 6px rgba(41, 43, 107, 0.18);
+}
+
+/* Icônes : alignées sur la ligne, opacité pleine, « + » en jaune UTT */
+.btn.main-header-manu-action .fas,
+.btn.main-header-manu-action .far,
+.btn-primary .fas,
+.btn-primary .far,
+.list-header-container .btn-default .fas,
+.list-header-container .btn-default .far {
+    color: var(--utt-yellow);
+    opacity: 1;
+    vertical-align: -0.1em;
+    transition: transform 240ms var(--arc-ease-standard);
+}
+
+.btn.main-header-manu-action:hover .fa-plus,
+.btn-primary:hover .fa-plus,
+.list-header-container .btn-default:hover .fa-plus {
+    transform: rotate(90deg);
+}
+
+.btn.main-header-manu-action .item-icon {
+    color: var(--utt-yellow);
+}
+
+/* ===== Inputs ===== */
+input.form-control, textarea.form-control, select.form-control {
+    border-radius: var(--arc-radius-control);
+    transition: border-color var(--arc-duration-fast) ease, box-shadow var(--arc-duration-fast) ease;
+}
+
+input.form-control:focus, textarea.form-control:focus, select.form-control:focus {
+    border-color: var(--utt-cyan);
+    box-shadow: 0 0 0 3px var(--utt-cyan-subtle);
+    outline: none;
+}
+
+/* ===== Login — gradient signature ===== */
+body:has(#login) { background: var(--arc-gradient-soft); }
+
+body:has(#login)::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: var(--arc-gradient);
+    opacity: 0.14;
+    pointer-events: none;
+}
+
+#login.panel {
+    border-radius: var(--arc-radius-surface);
+    box-shadow: var(--arc-shadow-floating);
+    border: none;
+    overflow: hidden;
+}
+
+#login.panel > .panel-heading {
+    background: var(--arc-gradient-soft);
+    padding: 24px;
+}
+
+#login.panel .logo-container { text-align: center; }
+
+/* ===== Vue détail : panneaux sobres, titres Akrobat avec crochet (charte UTT, § 2.1) ===== */
+.detail .panel {
+    border: 1px solid #e3e6ee;
+    border-radius: 12px;
+    box-shadow: 0 1px 2px rgba(41, 43, 107, 0.04);
+    overflow: hidden;
+}
+
+.detail .panel-heading {
+    background: linear-gradient(180deg, #ffffff 0%, #f8f9fc 100%);
+    border-bottom: 1px solid #e3e6ee;
+    padding: 14px 20px 12px;
+}
+
+.detail .panel-body {
+    padding: 4px 20px 8px;
+}
+
+/* Filets fins entre les champs, pour une grille lisible sans bordures lourdes */
+.detail .panel-body .cell.form-group {
+    margin-bottom: 0;
+    padding: 10px 0 12px;
+    border-bottom: 1px solid #f0f2f7;
+}
+
+.detail .panel-heading .panel-title {
+    position: relative;
+    padding-left: 20px;
+    margin: 0;
+    font-family: "Akrobat", "Metropolis", -apple-system, "Segoe UI", sans-serif;
+    font-size: 13px;
+    font-weight: 800;
+    font-style: normal;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #292b6b;
+}
+
+/* Crochet : forme en L qui encadre le titre */
+.detail .panel-heading .panel-title::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 10px;
+    height: 12px;
+    border-left: 2px solid var(--utt-cyan);
+    border-bottom: 2px solid var(--utt-cyan);
+    transform: translateY(-62%);
+}
+
+.detail .control-label {
+    margin-bottom: 4px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #8a8fa6;
+}
+
+.detail .field {
+    color: #1f2233;
+    font-size: 14px;
+}
+
+.detail .field a {
+    color: #0b7fa8;
+}
+
+/* ===== En-tête de fiche : bandeau Bleu UTT, lueur cyan, crochet ===== */
+body:has(.detail) #main > .header.page-header,
+body:has(.edit) #main > .header.page-header {
+    position: relative;
+    overflow: hidden;
+    margin: 0 0 14px;
+    padding: 16px 24px;
+    min-height: 76px;
+    border: none;
+    border-radius: 14px;
+    background-color: #292b6b;
+    background-image:
+        radial-gradient(90% 200% at 100% 50%, rgba(0, 182, 237, 0.85) 0%, rgba(0, 182, 237, 0) 70%),
+        linear-gradient(120deg, #292b6b 0%, #262a72 60%, #1f5d9a 100%);
+    box-shadow: 0 6px 18px rgba(41, 43, 107, 0.16), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+/* Crochet en L, dans l'angle bas-gauche du bandeau */
+body:has(.detail) #main > .header.page-header::after,
+body:has(.edit) #main > .header.page-header::after {
+    content: "";
+    position: absolute;
+    left: 14px;
+    bottom: 12px;
+    width: 14px;
+    height: 16px;
+    border-left: 2px solid var(--utt-cyan);
+    border-bottom: 2px solid var(--utt-cyan);
+    pointer-events: none;
+}
+
+body:has(.detail) #main > .header.page-header .header-title,
+body:has(.edit) #main > .header.page-header .header-title {
+    color: #ffffff;
+    background: none;
+    padding-left: 0;
+}
+
+body:has(.detail) #main > .header.page-header .header-title a,
+body:has(.edit) #main > .header.page-header .header-title a {
+    color: rgba(255, 255, 255, 0.82);
+}
+
+body:has(.detail) #main > .header.page-header .header-title a:hover,
+body:has(.edit) #main > .header.page-header .header-title a:hover {
+    color: #ffffff;
+}
+
+body:has(.detail) #main > .header.page-header .breadcrumb-separator,
+body:has(.edit) #main > .header.page-header .breadcrumb-separator {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+body:has(.detail) #main > .header.page-header .header-buttons .btn,
+body:has(.edit) #main > .header.page-header .header-buttons .btn {
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.36);
+    color: #ffffff;
+    box-shadow: none;
+}
+
+body:has(.detail) #main > .header.page-header .header-buttons .btn:hover,
+body:has(.edit) #main > .header.page-header .header-buttons .btn:hover {
+    background: rgba(255, 255, 255, 0.24);
+    border-color: rgba(255, 255, 255, 0.6);
+    color: #ffffff;
+}
+
+/* ===== Divers ===== */
+.label { border-radius: var(--arc-radius-pill); }
+
+.list thead { font-weight: 600; }
+
+/* Scrollbars discrètes */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+    background: var(--arc-neutral-4);
+    border-radius: 999px;
+    border: 2px solid var(--arc-neutral-1);
+}
+::-webkit-scrollbar-thumb:hover { background: var(--arc-neutral-5); }
