@@ -11,13 +11,20 @@
     transition: background-color var(--arc-duration-fast) var(--arc-ease-standard),
                 border-color var(--arc-duration-fast) var(--arc-ease-standard),
                 color var(--arc-duration-fast) var(--arc-ease-standard),
-                box-shadow var(--arc-duration-fast) var(--arc-ease-standard);
+                box-shadow var(--arc-duration-fast) var(--arc-ease-standard),
+                transform var(--arc-duration-fast) var(--arc-ease-standard);
     box-shadow: none;
 }
 
-.btn:focus, .btn.focus {
+/* Anneau de focus seulement au clavier, pas après un clic souris */
+.btn:focus-visible, .btn.focus {
     outline: none;
     box-shadow: 0 0 0 3px var(--arc-accent-subtle);
+}
+
+/* Retour d'appui discret */
+.btn:active:not(:disabled) {
+    transform: scale(0.97);
 }
 
 /* ===== Boutons secondaires — contour discret ===== */
