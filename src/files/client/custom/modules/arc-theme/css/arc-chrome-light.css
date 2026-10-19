@@ -26,6 +26,21 @@ body[data-navbar="side"] #header {
     background: transparent;
 }
 
+body[data-navbar="side"] #navbar::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: var(--navbar-width);
+    background: #ffffff;
+    z-index: 1029;
+}
+
+body.minimized[data-navbar="side"] #navbar::before {
+    width: 3.125rem;
+}
+
 body[data-navbar="side"] #navbar > .navbar {
     background: linear-gradient(180deg, #292b6b 0%, #1d2668 55%, #00b6ed 190%);
     border-radius: 0 20px 20px 0;
