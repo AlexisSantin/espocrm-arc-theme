@@ -32,6 +32,9 @@ The login page uses the system theme, so it only shows the Arc style when Arc is
 npm run extension     # build/*.zip
 ```
 
+The CSS files imported by `arc.css` and `arc-iframe.css` carry `?v=<version>` so browsers
+do not keep stale copies: bump it together with `package.json` on every release.
+
 ## Structure
 
 ```
