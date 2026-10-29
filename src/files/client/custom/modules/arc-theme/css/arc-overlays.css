@@ -1,0 +1,102 @@
+/**
+ * Surcouches — menus déroulants, modales, infobulles, popovers, alertes.
+ */
+
+/* ===== Menus déroulants ===== */
+.dropdown-menu {
+    padding: var(--4px);
+}
+
+.dropdown-menu > li > a {
+    border-radius: var(--arc-radius-sm);
+    padding-top: var(--6px);
+    padding-bottom: var(--6px);
+    transition: background-color var(--arc-fast) ease;
+}
+
+.dropdown-menu > li > a .item-icon,
+.dropdown-menu > li > a > .fas,
+.dropdown-menu > li > a > .far {
+    color: var(--arc-text-faint);
+}
+
+.dropdown-menu > li > a:hover .item-icon {
+    color: var(--arc-text-secondary);
+}
+
+.dropdown-menu > li.divider,
+.dropdown-menu .divider {
+    margin: var(--4px) calc(var(--4px) * -1);
+}
+
+.open > .dropdown-menu {
+    animation: arc-menu-in var(--arc-base) var(--arc-ease);
+    transform-origin: top;
+}
+
+@keyframes arc-menu-in {
+    from { opacity: 0; transform: translateY(-4px); }
+    to { opacity: 1; transform: none; }
+}
+
+/* ===== Modales ===== */
+.modal-content {
+    border: 1px solid var(--arc-border);
+    border-radius: var(--arc-radius-xl);
+    box-shadow: var(--arc-shadow-lg);
+    overflow: hidden;
+}
+
+.modal-header {
+    border-bottom: 1px solid var(--arc-border);
+}
+
+.modal-header .modal-title {
+    font-size: var(--16px);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+}
+
+.modal-footer {
+    background-color: var(--arc-surface-sunken);
+    border-top: 1px solid var(--arc-border);
+}
+
+.modal-footer .btn-group > .btn + .btn {
+    margin-left: var(--6px);
+}
+
+.modal-dialog .modal-content {
+    overscroll-behavior: contain;
+}
+
+/* ===== Infobulles et popovers ===== */
+.tooltip-inner {
+    padding: var(--6px) var(--8px);
+    border-radius: var(--arc-radius-sm);
+    font-size: var(--12px);
+    font-weight: 500;
+}
+
+.popover {
+    border: 1px solid var(--arc-border);
+    border-radius: var(--arc-radius-lg);
+    box-shadow: var(--arc-shadow-lg);
+}
+
+/* ===== Alertes ===== */
+.alert {
+    border-radius: var(--arc-radius-md);
+    border-width: 1px;
+}
+
+.alert-danger { border-color: var(--arc-danger-border); }
+.alert-warning { border-color: var(--arc-warning-border); }
+.alert-success { border-color: var(--arc-success-border); }
+.alert-info { border-color: var(--arc-info-border); }
+
+@media (prefers-reduced-motion: reduce) {
+    .open > .dropdown-menu {
+        animation: none;
+    }
+}

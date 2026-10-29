@@ -1,20 +1,18 @@
 # Arc Theme for EspoCRM
 
-An [EspoCRM](https://www.espocrm.com) theme based on the [Arc design system](https://uiarc.dev) ([arc-library](https://github.com/kuratlielia/arc-library)).
-
-Two variants:
-
-- **Arc** — light: white surfaces, near-black ink accent, lavender-to-peach gradient signature.
-- **Arc Dark** — dark: `#141414` canvas, violet `#a78bff` accent.
+A light EspoCRM theme with a modern SaaS look, built on the UTT palette
+(Bleu UTT `#292B6B` for actions, Cyan `#00B6ED` as a signature accent).
 
 ## Features
 
-- Overlay architecture: imports the stock EspoCRM `light`/`dark` stylesheet, then redefines ~200 CSS custom properties with Arc tokens (neutrals, status colors, radii, shadows, tracking).
-- Pill labels, 10px control radius, 16px panel radius, 22px login card radius.
-- Frosted backdrop on modals (blur + light veil).
-- Login page with the Arc gradient signature.
-- Inter font (already bundled with EspoCRM).
-- No JS — pure CSS theme, no core overrides.
+- Overlay architecture: imports the stock EspoCRM `light` stylesheet, then redefines its CSS custom properties from a small set of Arc tokens.
+- Light sidebar with a gradient marker on the active tab; translucent top bar.
+- Lists and panels as bordered cards, sentence-case column headers, tabular numbers.
+- Status badges with a leading dot and soft tinted backgrounds (WCAG AA contrast).
+- One primary action per page header (Create); other actions stay secondary.
+- Keyboard focus ring on interactive elements, focus halo on fields, reduced-motion support.
+- Geist font (bundled).
+- Floating labels on simple text fields in edit views (`lib/float-labels.js`).
 
 ## Install (dev)
 
@@ -25,7 +23,8 @@ npm run sync          # copy src/files -> ../site
 npm run clear-cache   # docker compose exec web php clear_cache.php
 ```
 
-Then select **Arc** or **Arc Dark** in user Preferences (or Administration > System).
+Then select **Arc** in user Preferences (or Administration > User Interface).
+The login page uses the system theme, so it only shows the Arc style when Arc is the system default.
 
 ## Package
 
@@ -38,14 +37,22 @@ npm run extension     # build/*.zip
 ```
 src/files/custom/Espo/Modules/ArcTheme/Resources/
     module.json
-    metadata/themes/Arc.json, ArcDark.json
+    metadata/themes/Arc.json          theme params, chart and calendar colors
+    metadata/app/client.json          float-labels script
     i18n/en_US/Global.json, fr_FR/Global.json
-src/files/client/custom/modules/arc-theme/css/
-    arc.css, arc-dark.css          entry points
-    arc-tokens.css                 Arc design tokens
-    arc-vars-light|dark.css        EspoCRM variable overlays (surfaces, text)
-    arc-components-light|dark.css  buttons, inputs, brand
-    arc-chrome-light|dark.css      navbar, modals, panels, dropdowns, states
-    arc-style.css, arc-style-dark.css  component refinements + login gradient
-    arc-iframe.css, arc-dark-iframe.css
+src/files/client/custom/modules/arc-theme/
+    css/arc.css                       entry point
+    css/arc-tokens.css                Arc tokens (neutrals, brand, states, radii, shadows)
+    css/arc-espo-vars.css             EspoCRM variables mapped to tokens
+    css/arc-base.css                  typography, links, focus, scrollbars
+    css/arc-shell.css                 sidebar, top bar, page header
+    css/arc-controls.css              buttons, fields, button groups
+    css/arc-data.css                  list cards, tables, badges
+    css/arc-record.css                panels, detail fields, tabs
+    css/arc-overlays.css              dropdowns, modals, tooltips, alerts
+    css/arc-login.css                 login page
+    css/arc-float-labels.css          floating labels
+    css/arc-iframe.css                rich text editor iframe
+    lib/float-labels.js
+    fonts/Geist-*.woff2
 ```

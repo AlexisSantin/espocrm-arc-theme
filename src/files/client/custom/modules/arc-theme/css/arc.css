@@ -1,16 +1,16 @@
 /**
- * Arc theme for EspoCRM — light entry point.
- * Layer: stock light theme -> Arc tokens -> Arc variable overlays -> components.
+ * Arc theme for EspoCRM — point d'entrée.
+ * Couches : thème light d'origine -> tokens Arc -> variables Espo -> composants.
  */
 @import "../../../../css/espo/light.css";
 @import "arc-fonts.css";
 @import "arc-tokens.css";
-@import "arc-vars-light.css";
-@import "arc-components-light.css";
-@import "arc-chrome-light.css";
-@import "arc-buttons.css";
-@import "arc-utt.css";
-@import "arc-detail.css";
-@import "arc-style.css";
-@import "arc-interactions.css";
+@import "arc-espo-vars.css";
+@import "arc-base.css";
+@import "arc-shell.css";
+@import "arc-controls.css";
+@import "arc-data.css";
+@import "arc-record.css";
+@import "arc-overlays.css";
+@import "arc-login.css";
 @import "arc-float-labels.css";

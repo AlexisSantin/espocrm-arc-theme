@@ -1,0 +1,60 @@
+/**
+ * Base — typographie Geist, liens, focus clavier, sélection, barres de défilement.
+ */
+:root, body { --theme-name: Arc !important; }
+
+body {
+    letter-spacing: var(--arc-tracking-body);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4, h5 {
+    letter-spacing: var(--arc-tracking-tight);
+    text-wrap: balance;
+}
+
+::selection {
+    background: rgba(41, 43, 107, 0.14);
+}
+
+a {
+    transition: color var(--arc-fast) ease;
+}
+
+/* Focus : anneau visible au clavier uniquement */
+a:focus-visible,
+button:focus-visible,
+.btn:focus-visible,
+[tabindex]:focus-visible,
+.nav-link:focus-visible {
+    outline: var(--arc-focus-outline);
+    outline-offset: 2px;
+}
+
+a:focus:not(:focus-visible),
+button:focus:not(:focus-visible),
+.btn:focus:not(:focus-visible) {
+    outline: none;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+    accent-color: var(--arc-brand);
+}
+
+/* Barres de défilement fines */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+    background: var(--arc-n-300);
+    border-radius: var(--arc-radius-pill);
+    border: 3px solid transparent;
+    background-clip: content-box;
+}
+::-webkit-scrollbar-thumb:hover { background-color: var(--arc-n-400); }
+
+#footer {
+    font-size: var(--12px);
+}

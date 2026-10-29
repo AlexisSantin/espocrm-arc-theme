@@ -1,54 +1,93 @@
 /**
- * Arc tokens (uiarc.dev) — shared by Arc and ArcDark themes.
- * Neutrals oklch->hex, status colors, accent, gradient signature, shadows.
+ * Arc tokens — rendu SaaS : neutres légèrement teintés vers le Bleu UTT,
+ * une seule couleur d'action (Bleu UTT), le cyan réservé à la signature.
  */
 :root {
-    /* Neutrals */
-    --arc-neutral-0: #ffffff;
-    --arc-neutral-1: #fcfcfc;
-    --arc-neutral-2: #f8f8f8;
-    --arc-neutral-3: #f1f1f1;
-    --arc-neutral-4: #e3e3e3;
-    --arc-neutral-5: #cacaca;
-    --arc-neutral-6: #a4a4a4;
-    --arc-neutral-7: #7d7d7d;
-    --arc-neutral-8: #585858;
-    --arc-neutral-9: #383838;
-    --arc-neutral-10: #1d1d1d;
-    --arc-neutral-11: #0b0b0b;
+    /* Neutres */
+    --arc-n-0: #ffffff;
+    --arc-n-25: #fafbfc;
+    --arc-n-50: #f6f7f9;
+    --arc-n-100: #f0f1f4;
+    --arc-n-150: #e8eaee;
+    --arc-n-200: #dfe1e7;
+    --arc-n-300: #c9ccd5;
+    --arc-n-400: #8a8f9c;
+    --arc-n-500: #656b7c;
+    --arc-n-600: #4a5061;
+    --arc-n-700: #353a49;
+    --arc-n-800: #232733;
+    --arc-n-900: #14161f;
 
-    /* Status */
-    --arc-success: #007b12;
-    --arc-warning: #b66400;
-    --arc-danger: #cd1526;
+    /* Marque : Bleu UTT pour l'action, cyan pour la signature */
+    --arc-brand: #292b6b;
+    --arc-brand-hover: #1f2158;
+    --arc-brand-active: #171946;
+    --arc-brand-subtle: #eceefa;
+    --arc-brand-subtle-hover: #e2e5f7;
+    --arc-brand-ring: #5a5fd0;
+    --arc-signature: #00b6ed;
+    --arc-signature-gradient: linear-gradient(180deg, #292b6b, #00b6ed);
+    --arc-link: #0b6f96;
+    --arc-link-hover: #085677;
 
-    /* Accent (neutral ink by default; ArcDark overrides) */
-    --arc-accent: var(--arc-neutral-11);
-    --arc-accent-strong: #000000;
-    --arc-accent-subtle: rgba(11, 11, 11, 0.08);
-    --arc-accent-foreground: #ffffff;
+    /* États (texte / fond / bordure / plein) */
+    --arc-success: #067647;
+    --arc-success-bg: #ecfdf3;
+    --arc-success-border: #abefc6;
+    --arc-success-solid: #079455;
+    --arc-warning: #b54708;
+    --arc-warning-bg: #fffaeb;
+    --arc-warning-border: #fedf89;
+    --arc-warning-solid: #dc6803;
+    --arc-danger: #b42318;
+    --arc-danger-bg: #fef3f2;
+    --arc-danger-border: #fecdca;
+    --arc-danger-solid: #d92d20;
+    --arc-info: #3e4196;
+    --arc-info-bg: #eef0fb;
+    --arc-info-border: #cfd3f3;
 
-    /* Gradient signature UTT : Bleu UTT -> Cyan Entreprise */
-    --arc-gradient-from: #292b6b;
-    --arc-gradient-to: #00b6ed;
-    --arc-gradient: linear-gradient(100deg, #292b6b, #00b6ed);
-    --arc-gradient-soft: linear-gradient(135deg, #f0f3fb, #e2f6fd);
+    /* Surfaces */
+    --arc-canvas: var(--arc-n-50);
+    --arc-surface: var(--arc-n-0);
+    --arc-surface-sunken: var(--arc-n-25);
+    --arc-border: var(--arc-n-150);
+    --arc-border-strong: var(--arc-n-200);
+    --arc-border-input: var(--arc-n-300);
+    --arc-hover: var(--arc-n-100);
 
-    /* Shadows */
-    --arc-shadow-resting: 0 1px 2px rgba(0, 0, 0, 0.035);
-    --arc-shadow-raised: 0 6px 18px rgba(0, 0, 0, 0.065), 0 1px 3px rgba(0, 0, 0, 0.035);
-    --arc-shadow-floating: 0 20px 48px rgba(0, 0, 0, 0.105), 0 3px 10px rgba(0, 0, 0, 0.045);
+    /* Texte */
+    --arc-text: var(--arc-n-900);
+    --arc-text-secondary: var(--arc-n-600);
+    --arc-text-muted: var(--arc-n-500);
+    --arc-text-faint: var(--arc-n-400);
 
-    /* Typography & motion */
-    --arc-tracking-display: -0.03em;
-    --arc-tracking-body: -0.01em;
-    --arc-ease-standard: cubic-bezier(0.22, 1, 0.36, 1);
-    --arc-duration-fast: 160ms;
-    --arc-duration-standard: 240ms;
-
-    /* Radii */
-    --arc-radius-control: 10px;
-    --arc-radius-panel: 16px;
-    --arc-radius-surface: 22px;
+    /* Rayons */
+    --arc-radius-sm: 6px;
+    --arc-radius: 8px;
+    --arc-radius-md: 10px;
+    --arc-radius-lg: 12px;
+    --arc-radius-xl: 16px;
     --arc-radius-pill: 999px;
+
+    /* Ombres */
+    --arc-shadow-xs: 0 1px 2px rgba(20, 22, 31, 0.05);
+    --arc-shadow-sm: 0 1px 3px rgba(20, 22, 31, 0.07), 0 1px 2px rgba(20, 22, 31, 0.04);
+    --arc-shadow-md: 0 4px 12px -2px rgba(20, 22, 31, 0.08), 0 2px 4px -2px rgba(20, 22, 31, 0.04);
+    --arc-shadow-lg: 0 16px 40px -8px rgba(20, 22, 31, 0.16), 0 4px 10px -4px rgba(20, 22, 31, 0.06);
+    --arc-shadow-primary: inset 0 1px 0 rgba(255, 255, 255, 0.12), 0 1px 2px rgba(20, 22, 31, 0.2);
+
+    /* Focus : anneau clavier et halo des champs */
+    --arc-focus-outline: 2px solid var(--arc-brand-ring);
+    --arc-focus-halo: 0 0 0 3px rgba(90, 95, 208, 0.18);
+
+    /* Typographie */
+    --arc-font: "Geist", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    --arc-tracking-tight: -0.02em;
+    --arc-tracking-body: -0.006em;
+
+    /* Mouvement */
+    --arc-ease: cubic-bezier(0.22, 1, 0.36, 1);
+    --arc-fast: 120ms;
+    --arc-base: 200ms;
 }

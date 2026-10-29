@@ -1,0 +1,134 @@
+/**
+ * Données — listes en carte, en-têtes de colonnes sobres, badges d'état.
+ */
+
+/* ===== Liste principale : une carte ===== */
+#main > .list-container > .list,
+.modal-body .list-container > .list {
+    background-color: var(--arc-surface);
+    border: 1px solid var(--arc-border);
+    border-radius: var(--arc-radius-lg);
+    box-shadow: var(--arc-shadow-xs);
+}
+
+#main > .list-container > .list {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+#main > .list-container > .list > table,
+.modal-body .list-container > .list > table {
+    margin-bottom: 0;
+}
+
+/* ===== Tableaux ===== */
+.list > table {
+    font-variant-numeric: tabular-nums;
+}
+
+.list > table > thead > tr > th {
+    background-color: var(--arc-surface-sunken);
+    border-bottom: 1px solid var(--arc-border);
+    color: var(--arc-text-muted);
+    font-size: var(--13px);
+    font-weight: 500;
+    letter-spacing: 0;
+    text-transform: none;
+    vertical-align: middle;
+}
+
+.list > table > thead > tr > th a.sort {
+    color: inherit;
+    font-weight: inherit;
+}
+
+.list > table > thead > tr > th a.sort:hover {
+    color: var(--arc-text);
+}
+
+#main > .list-container > .list > table > thead > tr > th {
+    padding-top: var(--10px);
+    padding-bottom: var(--10px);
+}
+
+#main > .list-container > .list > table > tbody > tr > td {
+    padding-top: var(--10px);
+    padding-bottom: var(--10px);
+    border-top: 1px solid var(--arc-n-100);
+    vertical-align: middle;
+}
+
+.list > table > tbody > tr {
+    transition: background-color var(--arc-fast) ease;
+}
+
+.list > table > tbody > tr:hover > td {
+    background-color: var(--arc-n-25);
+}
+
+.list > table > tbody > tr.active > td,
+.list > table > tbody > tr:has(input.record-checkbox:checked) > td {
+    background-color: var(--arc-brand-subtle);
+}
+
+.list > table a.link {
+    font-weight: 500;
+}
+
+.list > table a.link:hover {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-color: var(--arc-n-300);
+}
+
+/* « Afficher plus » sous la liste */
+.list .show-more {
+    padding: var(--8px) 0;
+}
+
+.list .show-more .btn {
+    color: var(--arc-text-muted);
+}
+
+/* Barre d'outils au-dessus de la liste */
+.list-buttons-container {
+    margin-bottom: var(--10px);
+}
+
+.list-buttons-container .pagination-btn-middle {
+    color: var(--arc-text-muted);
+    font-variant-numeric: tabular-nums;
+}
+
+/* ===== Badges ===== */
+.label {
+    border-radius: var(--arc-radius-pill);
+    font-weight: 500;
+    letter-spacing: 0;
+}
+
+.label.label-state {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--6px);
+    padding: var(--2px) var(--8px);
+    font-size: var(--12px);
+    font-weight: 500;
+    line-height: 1.5;
+    box-shadow: inset 0 0 0 1px var(--arc-border);
+}
+
+.label.label-state::before {
+    content: "";
+    flex: none;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: currentColor;
+}
+
+.label.label-state.label-primary { box-shadow: inset 0 0 0 1px var(--state-primary-border); }
+.label.label-state.label-info { box-shadow: inset 0 0 0 1px var(--state-info-border); }
+.label.label-state.label-success { box-shadow: inset 0 0 0 1px var(--state-success-border); }
+.label.label-state.label-warning { box-shadow: inset 0 0 0 1px var(--state-warning-border); }
+.label.label-state.label-danger { box-shadow: inset 0 0 0 1px var(--state-danger-border); }

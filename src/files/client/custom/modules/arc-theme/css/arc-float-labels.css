@@ -19,16 +19,16 @@
     font-size: 13px;
     line-height: 18px;
     font-weight: 400;
-    color: var(--arc-neutral-7);
+    color: var(--arc-text-muted);
     background: transparent;
     pointer-events: none;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     transition:
-        top var(--arc-duration-fast) var(--arc-ease-standard),
-        font-size var(--arc-duration-fast) var(--arc-ease-standard),
-        color var(--arc-duration-fast) var(--arc-ease-standard);
+        top var(--arc-fast) var(--arc-ease),
+        font-size var(--arc-fast) var(--arc-ease),
+        color var(--arc-fast) var(--arc-ease);
 }
 
 .edit .cell.arc-float.arc-has-value > label.control-label {
@@ -36,7 +36,7 @@
     left: 8px;
     font-size: 11.5px;
     line-height: 18px;
-    background: var(--arc-neutral-0);
+    background: var(--arc-surface);
 }
 
 .edit .cell.arc-float > .field > input.form-control {
