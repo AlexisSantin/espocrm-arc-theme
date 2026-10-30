@@ -480,7 +480,26 @@ button.arc-step-inner:focus-visible {
 }
 
 .arc-inspector:has(> .arc-inspector-card > .middle) > .side > .panel[data-name="default"] > .panel-body {
-    padding-top: var(--14px);
+    padding-top: var(--4px);
+}
+
+/* En-tête ajouté au suivi : même allure que les autres cartes latérales */
+.arc-inspector > .side > .panel > .panel-heading.arc-added-heading {
+    display: flex;
+    align-items: center;
+    gap: var(--8px);
+    padding: var(--14px) 0 var(--8px);
+    background: transparent;
+    border: 0;
+}
+
+.arc-inspector > .side > .panel > .panel-heading.arc-added-heading .panel-title {
+    flex: 1;
+    min-width: 0;
+    font-family: var(--arc-font-display);
+    font-size: var(--16px);
+    font-weight: 700;
+    color: var(--arc-text);
 }
 
 .arc-inspector > .side > .panel:not([data-name="default"]) > .panel-heading {

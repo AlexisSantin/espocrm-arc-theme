@@ -1,6 +1,6 @@
 {
   "name": "espocrm-ext-arc-theme",
-  "version": "0.10.1",
+  "version": "0.10.2",
   "description": "Modern SaaS theme for EspoCRM (light, UTT palette)",
   "scripts": {
     "watch": "node scripts/watch.js",

@@ -96,10 +96,43 @@ export default class PanelCollapse {
         const inspector = root.querySelector('.arc-inspector');
         const aboutTitle = inspector && inspector.querySelector('.arc-inspector-title');
 
+        this.decorateTracking(inspector);
+
         const aboutContent = inspector && inspector.querySelector(':scope > .arc-inspector-card > .middle, :scope > .side > .panel[data-name="default"]');
 
         if (aboutTitle && aboutContent) {
             this.decorate(inspector, aboutTitle, aboutTitle.textContent.replace('+', '').trim(), ABOUT);
+        }
+    }
+
+    /**
+     * Suivi (assigné, équipes, dates) : EspoCRM ne lui donne pas d'en-tête. Quand il forme une
+     * carte à part (les champs sont dans « À propos »), il en reçoit un pour pouvoir se replier.
+     *
+     * @private
+     * @param {HTMLElement|null} inspector
+     */
+    decorateTracking(inspector) {
+        const panel = inspector && inspector.querySelector(':scope > .side > .panel[data-name="default"]');
+
+        if (!panel || !inspector.querySelector(':scope > .arc-inspector-card > .middle')) {
+            return;
+        }
+
+        let heading = panel.querySelector(':scope > .panel-heading');
+
+        if (!heading) {
+            const label = this.view.translate('arcTracking', 'labels', 'Global');
+
+            heading = el('div', 'panel-heading arc-added-heading');
+            heading.append(el('h4', 'panel-title', label));
+            panel.prepend(heading);
+        }
+
+        const title = heading.querySelector('.panel-title');
+
+        if (title && title.textContent.trim()) {
+            this.decorate(panel, heading, title.textContent.trim(), 'default');
         }
     }
 

@@ -20,6 +20,7 @@
         "arcExpand": "Développer « {panel} »",
         "arcSections": "Sections de la fiche",
         "arcResizeAbout": "Largeur de la colonne « À propos »",
-        "arcResizeHint": "Glisser pour ajuster la largeur, double-clic pour revenir à la largeur par défaut"
+        "arcResizeHint": "Glisser pour ajuster la largeur, double-clic pour revenir à la largeur par défaut",
+        "arcTracking": "Suivi"
     }
 }
