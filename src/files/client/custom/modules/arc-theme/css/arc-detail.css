@@ -4,15 +4,26 @@
  */
 
 /* ===== Bandeau : en-tête de page + identité + pipeline ===== */
-/* Dégradé horizontal : l'en-tête et le bandeau, deux éléments, se raccordent sans couture. */
 #main:has(> .record > .arc-record) > .page-header,
 .arc-record > .arc-band {
     margin-left: calc(var(--container-padding) * -1);
     margin-right: calc(var(--container-padding) * -1);
     padding-left: var(--28px);
     padding-right: var(--28px);
-    background: var(--arc-band-gradient);
+    background: transparent;
     color: var(--arc-band-text);
+}
+
+/*
+ * Le dégradé est peint sur le fond de la page, sur la hauteur du bandeau mesurée par le script
+ * (--arc-band-height) : il couvre toute la largeur, même quand le contenu est centré sur un
+ * grand écran, sans rien faire déborder.
+ */
+body.arc-band-page {
+    background:
+        var(--arc-band-glow) top left / 100% var(--arc-band-height, 0) no-repeat,
+        var(--arc-band-gradient) top left / 100% var(--arc-band-height, 0) no-repeat,
+        var(--body-bg);
 }
 
 /* Le bandeau remonte sous la barre du haut : il occupe tout le haut de l'écran. */
@@ -135,9 +146,6 @@ body:has(.arc-record) #navbar .navbar-right .global-search-container a.global-se
     gap: var(--18px);
     padding-top: var(--8px);
     padding-bottom: calc(var(--22px) + var(--arc-band-overlap));
-    background:
-        radial-gradient(70rem 18rem at 100% 140%, rgba(0, 182, 237, 0.24), transparent 60%),
-        var(--arc-band-gradient);
 }
 
 .arc-band-row {
@@ -168,7 +176,8 @@ body:has(.arc-record) #navbar .navbar-right .global-search-container a.global-se
 
 /* Barre de boutons collée en haut au défilement : elle reste marine */
 .arc-band .detail-button-container.stick-sub {
-    background: var(--arc-band-gradient);
+    background: var(--arc-band-glow), var(--arc-band-gradient);
+    background-attachment: fixed;
     border-bottom: 1px solid var(--arc-band-line);
     padding: var(--8px) var(--28px);
 }
@@ -242,13 +251,6 @@ body:has(.arc-record) #navbar .navbar-right .global-search-container a.global-se
     background: rgba(255, 255, 255, 0.1);
     color: var(--arc-band-text);
     font-weight: 500;
-    text-decoration: none;
-}
-
-a.arc-person:hover,
-a.arc-person:focus-visible {
-    background: rgba(255, 255, 255, 0.2);
-    color: var(--arc-band-text);
     text-decoration: none;
 }
 
@@ -417,17 +419,122 @@ button.arc-step-inner:focus-visible {
 }
 
 .arc-record .arc-record-grid > .arc-inspector {
-    position: relative;
     flex: 0 1 360px;
     max-width: 100%;
     width: auto;
     min-width: 0;
     float: none;
+    display: flex;
+    flex-direction: column;
+}
+
+.arc-inspector-card {
+    position: relative;
     padding: var(--16px) var(--20px) var(--8px);
     background: var(--arc-surface);
     border: 1px solid var(--arc-border);
     border-radius: var(--arc-radius-lg);
     box-shadow: var(--arc-shadow-xs);
+}
+
+/* Panneaux latéraux : le suivi prolonge la carte, les autres (activités…) sont des cartes */
+.arc-inspector > .side {
+    display: flex;
+    flex-direction: column;
+    gap: var(--16px);
+    width: auto;
+    float: none;
+    padding: 0;
+}
+
+.arc-inspector:not(:has(> .side > .panel[data-name="default"]:not(.hidden))) > .side {
+    margin-top: var(--16px);
+}
+
+.arc-inspector:has(> .side > .panel[data-name="default"]:not(.hidden)) > .arc-inspector-card {
+    padding-bottom: 0;
+    border-bottom: 0;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    box-shadow: none;
+}
+
+.arc-inspector > .side > .panel {
+    margin: 0;
+    padding: 0 var(--20px) var(--8px);
+    background: var(--arc-surface);
+    border: 1px solid var(--arc-border);
+    border-radius: var(--arc-radius-lg);
+    box-shadow: var(--arc-shadow-xs);
+}
+
+.arc-inspector > .side > .panel[data-name="default"] {
+    border-top: 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.arc-inspector > .side > .panel[data-name="default"] > .panel-body {
+    padding-top: var(--10px);
+    border-top: 1px solid var(--arc-n-100);
+}
+
+.arc-inspector > .side > .panel:not([data-name="default"]) > .panel-heading {
+    display: flex;
+    align-items: center;
+    gap: var(--8px);
+    padding: var(--14px) 0 var(--8px);
+}
+
+.arc-inspector > .side > .panel > .panel-heading .panel-title {
+    order: -1;
+    flex: 1;
+    min-width: 0;
+}
+
+.arc-inspector > .side > .panel > .panel-heading .panel-actions-container {
+    float: none;
+    margin: 0;
+}
+
+/* Onglets de champs de la disposition, dans la carte « À propos » */
+.arc-inspector-card .middle-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 var(--4px);
+    margin: 0 0 var(--4px);
+    border-bottom: 1px solid var(--arc-border);
+}
+
+.arc-inspector-card .middle-tabs > .btn,
+.arc-inspector-card .middle-tabs > .btn + .btn {
+    margin: 0 0 -1px;
+    padding: var(--6px) var(--8px);
+    border: 0;
+    border-bottom: 2px solid transparent;
+    border-radius: 0 !important;
+    background: transparent;
+    box-shadow: none;
+    color: var(--arc-text-secondary);
+    font-size: var(--13px);
+    font-weight: 500;
+}
+
+.arc-inspector-card .middle-tabs > .btn:hover {
+    color: var(--arc-text);
+}
+
+.arc-inspector-card .middle-tabs > .btn.active {
+    border-bottom-color: var(--arc-brand);
+    color: var(--arc-text);
+    font-weight: 600;
+}
+
+.arc-inspector > .side > .panel:not([data-name="default"]) > .panel-heading .panel-title {
+    font-family: var(--arc-font-display);
+    font-size: var(--16px);
+    font-weight: 700;
+    color: var(--arc-text);
 }
 
 .arc-record .arc-record-grid > .arc-main,
@@ -512,8 +619,7 @@ button.arc-step-inner:focus-visible {
     line-height: 1;
 }
 
-.arc-inspector .middle > .panel,
-.arc-inspector .side > .panel {
+.arc-inspector .middle > .panel {
     margin: 0;
     background: transparent;
     border: 0;
@@ -739,7 +845,7 @@ button.arc-step-inner:focus-visible {
 }
 
 .arc-composer::before,
-.arc-record .arc-inspector::before {
+.arc-record .arc-inspector-card::before {
     content: "";
     position: absolute;
     top: -1px;
@@ -891,29 +997,66 @@ button.arc-step-inner:focus-visible {
 }
 
 /* Activités, tâches, historique : lignes légères, survol discret */
-.arc-bottom .panel[data-name="activities"] li.list-group-item,
-.arc-bottom .panel[data-name="history"] li.list-group-item,
-.arc-bottom .panel[data-name="tasks"] li.list-group-item {
-    margin: 0;
-    padding: var(--10px) var(--12px);
+.arc-record .panel[data-name="activities"] li.list-group-item,
+.arc-record .panel[data-name="history"] li.list-group-item,
+.arc-record .panel[data-name="tasks"] li.list-group-item {
+    margin: 0 calc(var(--10px) * -1);
+    padding: var(--8px) var(--10px);
     border: 0;
     border-radius: var(--arc-radius-md);
     background: transparent;
     transition: background-color var(--arc-fast) ease;
 }
 
-.arc-bottom .panel[data-name="activities"] li.list-group-item:hover,
-.arc-bottom .panel[data-name="history"] li.list-group-item:hover,
-.arc-bottom .panel[data-name="tasks"] li.list-group-item:hover {
+.arc-record .panel[data-name="activities"] li.list-group-item:hover,
+.arc-record .panel[data-name="history"] li.list-group-item:hover,
+.arc-record .panel[data-name="tasks"] li.list-group-item:hover {
     background: var(--arc-n-25);
 }
 
-.arc-bottom .panel[data-name="activities"] li.list-group-item {
+.arc-record .panel[data-name="activities"] li.list-group-item {
     border-left: 3px solid var(--arc-brand-subtle);
     border-radius: 0 var(--arc-radius-md) var(--arc-radius-md) 0;
+}
+
+.arc-record .panel[data-name="activities"] .list-group,
+.arc-record .panel[data-name="history"] .list-group,
+.arc-record .panel[data-name="tasks"] .list-group {
+    margin: 0;
 }
 
 /* Les onglets natifs de la disposition sont repris dans la barre Arc */
 .arc-bottom > .tabs {
     display: none;
+}
+
+/* ===== Champs vides masqués (hors modification) ===== */
+.arc-record-grid:not(.arc-show-empty) .cell.arc-empty {
+    display: none !important;
+}
+
+.arc-record-grid:not(.arc-show-empty) .middle > .panel:has(.cell.arc-empty):not(:has(.cell[data-name]:not(.arc-empty):not(.hidden-cell))) {
+    display: none;
+}
+
+.arc-empty-toggle {
+    display: block;
+    margin: var(--4px) 0 var(--8px);
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: var(--arc-text-secondary);
+    font: inherit;
+    font-size: var(--13px);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    cursor: pointer;
+}
+
+.arc-empty-toggle:hover {
+    color: var(--arc-text);
+}
+
+.arc-content-card > .arc-empty-toggle {
+    margin-top: var(--8px);
 }

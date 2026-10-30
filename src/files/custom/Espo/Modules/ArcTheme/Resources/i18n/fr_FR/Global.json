@@ -12,6 +12,9 @@
         "arcPipelineStep": "étape {current} sur {total}",
         "arcMarkStage": "Marquer « {stage} »",
         "arcAssigned": "Assigné à",
-        "arcUnassigned": "Non assigné"
+        "arcUnassigned": "Non assigné",
+        "arcShowEmptyOne": "Afficher le champ vide",
+        "arcShowEmptyMany": "Afficher les {count} champs vides",
+        "arcHideEmpty": "Masquer les champs vides"
     }
 }

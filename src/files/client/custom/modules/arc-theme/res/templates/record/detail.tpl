@@ -54,19 +54,21 @@
 
     <div class="record-grid arc-record-grid{{#if isWide}} record-grid-wide{{/if}}{{#if isSmall}} record-grid-small{{/if}}">
         <aside class="left arc-inspector" aria-label="{{translate 'arcAbout' category='labels' scope='Global'}}">
-            <h2 class="arc-inspector-title"><span class="arc-plus" aria-hidden="true">+</span>{{translate 'arcAbout' category='labels' scope='Global'}}</h2>
-            {{#if hasMiddleTabs}}
-            <div class="tabs middle-tabs btn-group">
-                {{#each middleTabDataList}}
-                <button
-                    class="btn btn-text btn-wide{{#if isActive}} active{{/if}}{{#if hidden}} hidden{{/if}}"
-                    data-tab="{{@key}}"
-                >{{label}}</button>
-                {{/each}}
-            </div>
-            {{/if}}
-            <div class="middle">{{{middle}}}</div>
-            <div class="side{{#if hasMiddleTabs}} tabs-margin{{/if}}">
+            <section class="arc-inspector-card">
+                <h2 class="arc-inspector-title"><span class="arc-plus" aria-hidden="true">+</span>{{translate 'arcAbout' category='labels' scope='Global'}}</h2>
+                {{#if hasMiddleTabs}}
+                <div class="tabs middle-tabs btn-group">
+                    {{#each middleTabDataList}}
+                    <button
+                        class="btn btn-text btn-wide{{#if isActive}} active{{/if}}{{#if hidden}} hidden{{/if}}"
+                        data-tab="{{@key}}"
+                    >{{label}}</button>
+                    {{/each}}
+                </div>
+                {{/if}}
+                <div class="middle">{{{middle}}}</div>
+            </section>
+            <div class="side">
             {{{side}}}
             </div>
         </aside>

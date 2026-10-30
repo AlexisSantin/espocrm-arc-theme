@@ -2,11 +2,14 @@
  * Réglages communs de la fiche Arc.
  */
 
-/** Panneaux latéraux qui rejoignent l'onglet Activité de la colonne principale. */
-export const MOVED_SIDE_PANELS = ['activities', 'history', 'tasks'];
+/**
+ * Panneaux d'activité latéraux par nature : ils restent dans la colonne de gauche, sous
+ * « À propos », et sont retirés du bas quand la disposition les y ajoute aussi.
+ */
+export const SIDE_ACTIVITY_PANELS = ['activities', 'history', 'tasks'];
 
-/** Panneaux du bas regroupés dans l'onglet Activité, dans leur ordre d'affichage. */
-export const ACTIVITY_PANELS = ['stream', 'activities', 'tasks', 'history'];
+/** Panneaux du bas de l'onglet Activité, sous la saisie. */
+export const ACTIVITY_PANELS = ['stream'];
 
 /**
  * @param {import('view').default} view

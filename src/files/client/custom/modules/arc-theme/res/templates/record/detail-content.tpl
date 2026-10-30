@@ -54,7 +54,9 @@
 
     <div class="record-grid arc-record-grid{{#if isWide}} record-grid-wide{{/if}}{{#if isSmall}} record-grid-small{{/if}}">
         <aside class="arc-inspector" aria-label="{{translate 'arcAbout' category='labels' scope='Global'}}">
-            <h2 class="arc-inspector-title"><span class="arc-plus" aria-hidden="true">+</span>{{translate 'arcAbout' category='labels' scope='Global'}}</h2>
+            <section class="arc-inspector-card">
+                <h2 class="arc-inspector-title"><span class="arc-plus" aria-hidden="true">+</span>{{translate 'arcAbout' category='labels' scope='Global'}}</h2>
+            </section>
             <div class="side">
             {{{side}}}
             </div>

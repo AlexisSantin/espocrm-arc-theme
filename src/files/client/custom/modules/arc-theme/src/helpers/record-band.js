@@ -21,13 +21,71 @@ export default class RecordBand {
     }
 
     init() {
-        this.view.listenTo(this.view, 'after:render', () => this.render());
+        this.view.listenTo(this.view, 'after:render', () => {
+            this.render();
+            this.watchBandHeight();
+        });
 
         this.view.listenTo(this.model, 'sync change', () => {
             if (this.view.isRendered()) {
                 this.render();
             }
         });
+
+        this.view.once('remove', () => this.releaseBackground());
+    }
+
+    /**
+     * Le dégradé est peint sur le fond de la page, qui couvre toute la largeur sans
+     * débordement, sur la hauteur exacte du bandeau (en-tête de page compris).
+     *
+     * @private
+     */
+    watchBandHeight() {
+        const band = this.view.element && this.view.element.querySelector('.arc-band');
+
+        if (this.resizeObserver) {
+            this.resizeObserver.disconnect();
+        }
+
+        if (!band) {
+            return;
+        }
+
+        const update = () => {
+            const bottom = band.getBoundingClientRect().bottom + window.scrollY;
+
+            document.body.style.setProperty('--arc-band-height', `${Math.round(bottom)}px`);
+            document.body.dataset.arcBandOwner = this.view.cid;
+            document.body.classList.add('arc-band-page');
+        };
+
+        this.resizeObserver = new ResizeObserver(update);
+        this.resizeObserver.observe(band);
+
+        const header = document.querySelector('#main > .page-header');
+
+        if (header) {
+            this.resizeObserver.observe(header);
+        }
+
+        update();
+    }
+
+    /** @private */
+    releaseBackground() {
+        if (this.resizeObserver) {
+            this.resizeObserver.disconnect();
+        }
+
+        // La fiche suivante a pu poser son propre fond avant le retrait de celle-ci.
+        if (document.body.dataset.arcBandOwner !== this.view.cid) {
+            return;
+        }
+
+        delete document.body.dataset.arcBandOwner;
+        document.body.classList.remove('arc-band-page');
+        document.body.style.removeProperty('--arc-band-height');
     }
 
     render() {
@@ -170,13 +228,7 @@ export default class RecordBand {
      * @return {HTMLElement}
      */
     buildUserChip(user) {
-        const canOpen = this.view.getAcl().checkScope('User', 'read');
-        const chip = el(canOpen ? 'a' : 'span', 'arc-person');
-
-        if (canOpen) {
-            chip.href = `#User/view/${user.id}`;
-        }
-
+        const chip = el('span', 'arc-person');
         const initials = el('span', 'arc-person-avatar', this.getInitials(user.name));
 
         initials.setAttribute('aria-hidden', 'true');

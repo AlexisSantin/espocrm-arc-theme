@@ -1,12 +1,13 @@
-import {ACTIVITY_PANELS, MOVED_SIDE_PANELS, el} from 'arc-theme:arc';
+import {ACTIVITY_PANELS, SIDE_ACTIVITY_PANELS, el} from 'arc-theme:arc';
 
 const ACTIVITY_TAB = 'activity';
 const MORE_TAB = 'arc-more';
 
 /**
- * Colonne principale de la fiche Arc : un onglet Activité (saisie, activités, tâches,
- * historique, flux) puis un onglet par panneau de relation. Les onglets définis par
- * l'administrateur dans la disposition du bas regroupent leurs panneaux sous leur libellé.
+ * Colonne principale de la fiche Arc : un onglet Activité (saisie rapide puis flux) et un
+ * onglet par panneau de relation. Les onglets définis par l'administrateur dans la
+ * disposition du bas regroupent leurs panneaux sous leur libellé. Activités, tâches et
+ * historique restent des panneaux latéraux (colonne de gauche).
  * S'applique à la vue du bas configurée pour l'entité, standard ou personnalisée.
  *
  * @param {typeof import('views/record/detail-bottom').default} Base
@@ -20,48 +21,28 @@ export default function arcDetailBottom(Base) {
         /** @private */
         arcBoundViews = new Set()
 
-        setupPanels() {
-            super.setupPanels();
-
-            const sideDefs = this.getMetadata().get(['clientDefs', this.scope, 'sidePanels', this.type]) || [];
-
-            for (const name of MOVED_SIDE_PANELS) {
-                const index = this.panelList.findIndex(item => item.name === name);
-
-                if (index !== -1) {
-                    this.panelList[index] = {...this.panelList[index], disabled: false};
-
-                    continue;
-                }
-
-                const sideDef = sideDefs.find(item => item.name === name);
-
-                if (!sideDef) {
-                    continue;
-                }
-
-                const reference = sideDef.reference ?
-                    this.getMetadata().get(`app.clientRecord.panels.${sideDef.reference}`) :
-                    {};
-
-                this.panelList.push({...reference, ...sideDef, disabled: false});
-            }
-        }
-
         alterPanels(layoutData) {
             const data = {...(layoutData || this.layoutData || {})};
 
+            // Les onglets remplacent le « voir plus » des panneaux.
             delete data._delimiter_;
-
-            for (const name of MOVED_SIDE_PANELS) {
-                if (data[name] && data[name].disabled) {
-                    data[name] = {...data[name], disabled: false};
-                }
-            }
 
             this.layoutData = data;
 
             super.alterPanels(data);
+        }
+
+        setupPanelsFinal() {
+            super.setupPanelsFinal();
+
+            // Pas de doublon avec les panneaux latéraux d'activité (ni avec un panneau
+            // de relation du même nom ajouté par la disposition, comme « tasks »).
+            const sideNames = (this.getMetadata().get(['clientDefs', this.scope, 'sidePanels', this.type]) || [])
+                .map(item => item.name);
+
+            this.panelList = this.panelList.filter(item => {
+                return !SIDE_ACTIVITY_PANELS.includes(item.name) || !sideNames.includes(item.name);
+            });
         }
 
         afterRender() {
@@ -453,6 +434,16 @@ export default function arcDetailBottom(Base) {
         }
 
         /**
+         * Les actions viennent aussi des panneaux latéraux : on cherche dans toute la fiche.
+         *
+         * @private
+         * @return {HTMLElement}
+         */
+        arcRecordRoot() {
+            return this.element.closest('.arc-record') || this.element;
+        }
+
+        /**
          * @private
          * @param {string} entityType
          * @return {function(): void|null}
@@ -460,7 +451,7 @@ export default function arcDetailBottom(Base) {
         arcFindActivityAction(entityType) {
             const base = '.panel[data-name="activities"] [data-action="createActivity"]';
 
-            const target = [...this.element.querySelectorAll(base)].find(item => {
+            const target = [...this.arcRecordRoot().querySelectorAll(base)].find(item => {
                 if (item.dataset.scope) {
                     return item.dataset.scope === entityType;
                 }
@@ -488,12 +479,12 @@ export default function arcDetailBottom(Base) {
          * @return {function(): void|null}
          */
         arcLazy(selector, method) {
-            if (!this.element.querySelector(selector)) {
+            if (!this.arcRecordRoot().querySelector(selector)) {
                 return null;
             }
 
             return () => {
-                const target = this.element.querySelector(selector);
+                const target = this.arcRecordRoot().querySelector(selector);
 
                 if (target) {
                     target[method]();

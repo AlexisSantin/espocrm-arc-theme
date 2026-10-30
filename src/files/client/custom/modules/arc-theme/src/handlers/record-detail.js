@@ -1,6 +1,6 @@
 import {isArcTheme} from 'arc-theme:arc';
 import RecordBand from 'arc-theme:helpers/record-band';
-import arcDetailSide from 'arc-theme:mixins/detail-side';
+import EmptyFields from 'arc-theme:helpers/empty-fields';
 import arcDetailBottom from 'arc-theme:mixins/detail-bottom';
 
 /** Entités dont la fiche a une mise en page propre, laissée à EspoCRM. */
@@ -8,8 +8,8 @@ const EXCLUDED_ENTITY_TYPES = ['Email', 'User'];
 
 /**
  * Applique la fiche Arc aux vues de détail, uniquement sous le thème Arc.
- * Les vues latérale et du bas configurées pour l'entité sont dérivées, pas remplacées,
- * pour garder leurs comportements propres (par exemple la conversion des prospects).
+ * La vue du bas configurée pour l'entité est dérivée, pas remplacée, pour garder ses
+ * comportements propres ; la vue latérale (conversion des prospects…) reste celle d'EspoCRM.
  */
 export default class RecordDetailHandler {
 
@@ -31,20 +31,14 @@ export default class RecordDetailHandler {
         // place les champs dans la colonne principale et garde le suivi dans l'inspecteur.
         view.template = this.hasRichText() ? 'arc-theme:record/detail-content' : 'arc-theme:record/detail';
 
-        const [sideView, bottomView] = await Promise.all([
-            derive(view.sideView, 'side', arcDetailSide),
-            derive(view.bottomView, 'bottom', arcDetailBottom),
-        ]);
+        view.bottomView = await derive(view.bottomView, 'bottom', arcDetailBottom);
 
-        view.sideView = sideView;
-        view.bottomView = bottomView;
-
-        // build() a déjà créé les vues d'origine sans attendre ce gestionnaire ;
-        // le rendu, lui, l'attend : on les recrée avant qu'elles ne s'affichent.
-        view.createSideView();
+        // build() a déjà créé la vue du bas d'origine sans attendre ce gestionnaire ;
+        // le rendu, lui, l'attend : on la recrée avant qu'elle ne s'affiche.
         view.createBottomView();
 
         new RecordBand(view).init();
+        new EmptyFields(view).init();
     }
 
     /**

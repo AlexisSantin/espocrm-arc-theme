@@ -18,17 +18,20 @@ A light EspoCRM theme with a modern SaaS look, built on the UTT palette
 
 Under the Arc theme, detail views of CRM entities use a two-column layout:
 
-- **Band**: full-width navy gradient (it runs under the top bar, and the cards overlap its
-  lower edge) with breadcrumbs, avatar (initials), name, assigned user(s) and teams,
+- **Band**: full-width navy gradient, painted on the page background over the measured band
+  height (it runs under the top bar, reaches both screen edges even when the content is
+  centered on wide screens, and the cards overlap its lower edge), with breadcrumbs,
+  avatar (initials), name, assigned user(s) and teams (plain chips, not links),
   record actions and, when the entity uses an active pipeline, the stage path (click a
   stage to move the record, if the user may edit the stage). An inactive pipeline only
   shows the current stage.
-- **About** (left): the detail layout panels as a compact property inspector, then the
-  default side panel (assigned user, teams, dates) and any other side panel.
+- **About** (left): the detail layout panels as a compact property inspector (empty fields
+  hidden behind a "Show N empty fields" link, all shown while editing), the default side
+  panel (assigned user, teams, dates), then the other side panels — activities, history,
+  tasks — as separate cards. When the bottom layout also lists them, they are not repeated.
 - **Main column** (right): an **Activity** tab — quick actions (Note, Email, Call, Meeting,
-  Task, each shown only if the native panel offers it), then activities, tasks, history and
-  the stream as a timeline, in the bottom panel layout order — then one tab per relationship
-  panel with its count. Tab breaks
+  Task, each shown only if the native panel offers it), then the stream as a timeline — then
+  one tab per relationship panel with its count. Tab breaks
   defined in the bottom panel layout group their panels under their label. Tabs that do not
   fit go to **More**.
 
@@ -40,8 +43,8 @@ The cyan corner bracket is the Arc signature: it marks the property inspector, t
 actions, list cards and the login card.
 
 It is applied by a `record/detail` view setup handler (`src/handlers/record-detail.js`) that
-derives the side and bottom views configured for the entity instead of replacing them, so
-entity-specific behaviour (lead conversion, etc.) is kept. Email and User keep the EspoCRM
+derives the bottom view configured for the entity instead of replacing it; the side view is
+EspoCRM's own, so entity-specific behaviour (lead conversion, etc.) is kept. Email and User keep the EspoCRM
 layout, as do detail views shown in modals. Panel actions, inline editing and ACL are the
 native ones.
 
@@ -93,8 +96,8 @@ src/files/client/custom/modules/arc-theme/
     res/templates/record/detail-content.tpl  variant for entities with rich text
     src/arc.js                        shared constants and helpers
     src/handlers/record-detail.js     applies the record view under the Arc theme
-    src/helpers/record-band.js        band: identity and pipeline stage path
-    src/mixins/detail-side.js         side view: activity panels move to the main column
+    src/helpers/record-band.js        band: identity, people, pipeline stage path, page background
+    src/helpers/empty-fields.js       hides empty fields in the inspector, with a toggle
     src/mixins/detail-bottom.js       bottom view: tabs, quick actions, counts
     lib/float-labels.js
     fonts/Geist-*.woff2, fonts/BricolageGrotesque-*.woff2 (+ OFL)
