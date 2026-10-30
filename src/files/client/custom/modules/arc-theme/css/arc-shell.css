@@ -3,7 +3,7 @@
  * Signature : un filet dégradé Bleu UTT → cyan marque l'onglet actif.
  */
 
-/* ===== Menu latéral : bleu encre, comme le bandeau des fiches ===== */
+/* ===== Menu latéral : mêmes variables que le bandeau des fiches (ambiance) ===== */
 body[data-navbar="side"] #navbar > .navbar {
     background: var(--arc-sidebar-glow), var(--arc-sidebar-bg);
     border-right-color: var(--arc-sidebar-line);
@@ -13,7 +13,7 @@ body[data-navbar="side"] #navbar > .navbar .navbar-header {
     padding-left: var(--8px);
 }
 
-/* Logo EspoCRM par défaut (bleu-gris) passé en blanc ; un logo d'entreprise reste tel quel */
+/* Logo EspoCRM par défaut (bleu-gris) : filtré selon l'ambiance ; un logo d'entreprise reste tel quel */
 body[data-navbar="side"] #navbar .navbar-brand img[src*="img/logo-light.svg"] {
     filter: var(--arc-sidebar-logo-filter);
     opacity: var(--arc-sidebar-logo-opacity);
@@ -41,6 +41,7 @@ body[data-navbar="side"] #navbar ul.tabs > li.more > a:hover {
 
 body[data-navbar="side"] #navbar ul.tabs > li.tab.active > a,
 body[data-navbar="side"] #navbar ul.tabs > li.tab.active > a:hover {
+    font-weight: 600;
     background-color: var(--arc-sidebar-active);
     color: var(--arc-sidebar-strong);
 }

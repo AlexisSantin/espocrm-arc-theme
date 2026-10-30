@@ -1,7 +1,11 @@
 import {el} from 'arc-theme:arc';
 
 /** Blocs repliables : panneaux de la disposition et panneaux latéraux (Activités, Historique…). */
-const PANEL_SELECTOR = '.arc-content-card .middle > .panel[data-name], .arc-inspector > .side > .panel[data-name]:not([data-name="default"])';
+const PANEL_SELECTOR = [
+    '.arc-inspector-card .middle > .panel[data-name]',
+    '.arc-content-card .middle > .panel[data-name]',
+    '.arc-inspector > .side > .panel[data-name]:not([data-name="default"])',
+].join(', ');
 
 /** Zones observées : les panneaux y sont redessinés après chaque modification. */
 const WATCHED_SELECTOR = '.arc-inspector, .arc-content-card';
@@ -92,7 +96,9 @@ export default class PanelCollapse {
         const inspector = root.querySelector('.arc-inspector');
         const aboutTitle = inspector && inspector.querySelector('.arc-inspector-title');
 
-        if (aboutTitle && inspector.querySelector(':scope > .side > .panel[data-name="default"]')) {
+        const aboutContent = inspector && inspector.querySelector(':scope > .arc-inspector-card > .middle, :scope > .side > .panel[data-name="default"]');
+
+        if (aboutTitle && aboutContent) {
             this.decorate(inspector, aboutTitle, aboutTitle.textContent.replace('+', '').trim(), ABOUT);
         }
     }

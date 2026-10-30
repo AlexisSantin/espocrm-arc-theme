@@ -6,7 +6,7 @@ A light EspoCRM theme with a modern SaaS look, built on the UTT palette
 ## Features
 
 - Overlay architecture: imports the stock EspoCRM `light` stylesheet, then redefines its CSS custom properties from a small set of Arc tokens.
-- Ink-blue sidebar matching the record band (they form one frame on record pages), cyan marker on the active tab; translucent top bar.
+- Light palette ("Clair"): white sidebar and an ice-blue record band with dark text, cyan glow and cyan marker on the active tab. Band and sidebar colours are tokens; the ink palette of 0.8.0 is in the git history.
 - Lists and panels as bordered cards, sentence-case column headers, tabular numbers.
 - Status badges with a leading dot and soft tinted backgrounds (WCAG AA contrast).
 - One primary action per page header (Create); other actions stay secondary.
@@ -26,12 +26,12 @@ Under the Arc theme, detail views of CRM entities use a two-column layout:
   record actions and, when the entity uses an active pipeline, the stage path (click a
   stage to move the record, if the user may edit the stage). An inactive pipeline only
   shows the current stage.
-- **About** (left, 380px): the default side panel (assigned user, teams, dates) as a compact
-  property list, then the other side panels — activities, history, tasks — as separate cards.
-  When the bottom layout also lists them, they are not repeated.
-- **Main column** (right): the detail layout panels in a card, with their native tab breaks
-  (empty fields hidden behind a "Show N empty fields" link, all shown while editing), then an
-  **Activity** tab — quick actions (Note, Email, Call, Meeting,
+- **About** (left, 380px): the detail layout panels as a compact property inspector — tab
+  breaks become compact pill tabs, empty fields are hidden behind a "Show N empty fields" link
+  (all shown while editing) — and the default side panel (assigned user, teams, dates); then
+  the other side panels — activities, history, tasks — as separate cards. When the bottom
+  layout also lists them, they are not repeated. Static fields on the left, activity on the right.
+- **Main column** (right): an **Activity** tab — quick actions (Note, Email, Call, Meeting,
   Task, each shown only if the native panel offers it), then the stream as a timeline — then
   one tab per relationship panel with its count. Tab breaks
   defined in the bottom panel layout group their panels under their label. Tabs that do not
@@ -47,7 +47,8 @@ It is applied by a `record/detail` view setup handler (`src/handlers/record-deta
 derives the bottom view configured for the entity instead of replacing it; the side view is
 EspoCRM's own, so entity-specific behaviour (lead conversion, etc.) is kept. Email and User keep the EspoCRM
 layout, as do detail views shown in modals. Panel actions, inline editing and ACL are the
-native ones. If the handler cannot apply (an unexpected EspoCRM version, for example), the
+native ones. Entities with a rich text `body` (knowledge base articles) use a content variant:
+their fields sit at the top of the main column, full width. If the handler cannot apply (an unexpected EspoCRM version, for example), the
 record keeps the EspoCRM layout instead of failing; the module imports no EspoCRM client module.
 
 ## Install
@@ -108,7 +109,8 @@ src/files/client/custom/modules/arc-theme/
     css/arc-overlays.css              dropdowns, modals, tooltips, alerts
     css/arc-login.css                 login page
     css/arc-iframe.css                rich text editor iframe
-    res/templates/record/detail.tpl   record view template (band, About, main column)
+    res/templates/record/detail.tpl   record view template (band, About with fields, main column)
+    res/templates/record/detail-content.tpl  variant for articles (fields in the main column)
     src/arc.js                        shared constants and helpers
     src/handlers/record-detail.js     applies the record view under the Arc theme
     src/helpers/record-band.js        band: identity, people, pipeline stage path, page background

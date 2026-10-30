@@ -484,6 +484,60 @@ button.arc-step-inner:focus-visible {
     margin: 0;
 }
 
+/*
+ * Onglets de champs de la disposition (carte « À propos » ou carte de contenu) : des pastilles
+ * compactes qui passent à la ligne proprement, un seul filet sous elles.
+ */
+.arc-record .middle-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--4px);
+    margin: 0 0 var(--4px);
+    padding-bottom: var(--10px);
+    border-bottom: 1px solid var(--arc-n-100);
+}
+
+/* « .tabs.middle-tabs » : plus précis que « .record .tabs > button.btn » d'EspoCRM */
+.arc-record .tabs.middle-tabs > .btn {
+    height: auto;
+    margin: 0;
+    padding: var(--4px) var(--10px);
+    border: 0;
+    border-radius: var(--arc-radius) !important;
+    background: transparent;
+    box-shadow: none;
+    color: var(--arc-text-secondary);
+    font-size: var(--13px);
+    font-weight: 500;
+    line-height: 1.5;
+}
+
+/* EspoCRM souligne déjà l'onglet actif : un seul repère suffit */
+.arc-record .tabs.middle-tabs > .btn::after {
+    display: none;
+}
+
+.arc-record .tabs.middle-tabs > .btn:hover {
+    background: var(--arc-hover);
+    color: var(--arc-text);
+}
+
+.arc-record .tabs.middle-tabs > .btn.active {
+    background: var(--arc-brand-subtle);
+    color: var(--arc-brand);
+    font-weight: 600;
+}
+
+/* Sous les onglets, pas de second filet : seuls les groupes suivants en ont un */
+.arc-inspector-card .middle-tabs ~ .middle > .panel {
+    border-top: 0;
+}
+
+.arc-inspector-card .middle-tabs ~ .middle > .panel:not(.tab-hidden):not(.hidden) ~ .panel:not(.tab-hidden):not(.hidden) {
+    border-top: 1px solid var(--arc-n-100);
+}
+
 .arc-inspector > .side > .panel:not([data-name="default"]) > .panel-heading .panel-title {
     font-family: var(--arc-font-display);
     font-size: var(--16px);
@@ -491,6 +545,7 @@ button.arc-step-inner:focus-visible {
     color: var(--arc-text);
 }
 
+.arc-record .arc-record-grid > .arc-main,
 .arc-record .arc-record-grid > .arc-content-column {
     flex: 1 1 480px;
     min-width: 0;
@@ -570,6 +625,15 @@ button.arc-step-inner:focus-visible {
     font-size: 1.2em;
     font-weight: 800;
     line-height: 1;
+}
+
+.arc-inspector .middle > .panel {
+    margin: 0;
+    background: transparent;
+    border: 0;
+    border-top: 1px solid var(--arc-n-100);
+    border-radius: 0;
+    box-shadow: none;
 }
 
 .arc-inspector .panel > .panel-heading {
@@ -1019,12 +1083,14 @@ button.arc-step-inner:focus-visible {
     cursor: pointer;
 }
 
+.arc-inspector-card .middle > .panel > .panel-heading.arc-collapsible,
 .arc-content-card .middle > .panel > .panel-heading.arc-collapsible {
     display: flex;
     align-items: center;
     gap: var(--8px);
 }
 
+.arc-inspector-card .middle > .panel > .panel-heading.arc-collapsible > .panel-title,
 .arc-content-card .middle > .panel > .panel-heading.arc-collapsible > .panel-title {
     flex: 1 1 auto;
     min-width: 0;
@@ -1057,12 +1123,13 @@ button.arc-step-inner:focus-visible {
 }
 
 .arc-collapsed > .panel-heading > .arc-collapse .fas,
-.arc-inspector.arc-collapsed > .arc-inspector-card .arc-collapse .fas {
+.arc-inspector.arc-collapsed > .arc-inspector-card .arc-inspector-title .arc-collapse .fas {
     transform: rotate(-90deg);
 }
 
 /* Replié : seul l'en-tête reste. En modification, tout est ouvert et le chevron disparaît. */
 .arc-record:not(:has(.arc-band .edit-buttons:not(.hidden))) .panel.arc-collapsed > :not(.panel-heading),
+.arc-record:not(:has(.arc-band .edit-buttons:not(.hidden))) .arc-inspector.arc-collapsed > .arc-inspector-card > :not(.arc-inspector-title),
 .arc-record:not(:has(.arc-band .edit-buttons:not(.hidden))) .arc-inspector.arc-collapsed > .side > .panel[data-name="default"] {
     display: none;
 }

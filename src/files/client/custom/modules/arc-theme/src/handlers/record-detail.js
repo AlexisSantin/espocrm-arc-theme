@@ -39,8 +39,9 @@ export default class RecordDetailHandler {
             return;
         }
 
-        // Champs de la disposition dans la colonne principale, suivi et activités dans « À propos ».
-        view.template = 'arc-theme:record/detail';
+        // Champs (statiques) à gauche dans « À propos », activité (dynamique) à droite. Un article
+        // a besoin de largeur pour son corps : ses champs passent en tête de la colonne principale.
+        view.template = this.hasArticleBody() ? 'arc-theme:record/detail-content' : 'arc-theme:record/detail';
         view.bottomView = bottomView;
 
         // build() a déjà créé la vue du bas d'origine sans attendre ce gestionnaire ;
@@ -50,6 +51,19 @@ export default class RecordDetailHandler {
         new RecordBand(view).init();
         new EmptyFields(view).init();
         new PanelCollapse(view).init();
+    }
+
+    /**
+     * Corps d'article en texte riche (base de connaissances, contenus) : un simple champ
+     * « description » en texte riche ne suffit pas.
+     *
+     * @private
+     * @return {boolean}
+     */
+    hasArticleBody() {
+        const body = this.view.getMetadata().get(['entityDefs', this.view.entityType, 'fields', 'body']);
+
+        return !!body && body.type === 'wysiwyg' && !body.disabled;
     }
 
     /**

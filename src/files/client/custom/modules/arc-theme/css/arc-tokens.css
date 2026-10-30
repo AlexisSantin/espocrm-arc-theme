@@ -87,38 +87,38 @@
     --arc-font: "Lexend", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     --arc-font-display: "Bricolage Grotesque", "Lexend", -apple-system, "Segoe UI", sans-serif;
 
-    /* Bandeau des fiches : bleu encre, lueur cyan */
-    --arc-band-bg: #0b1d31;
-    --arc-band-text: #ffffff;
-    --arc-band-muted: #a8bccf;
-    --arc-band-line: rgba(255, 255, 255, 0.18);
-    --arc-band-gradient: linear-gradient(90deg, #0a192b 0%, #0c2239 55%, #0f2e4b 100%);
-    --arc-band-glow: radial-gradient(60rem 22rem at 100% 0%, rgba(0, 182, 237, 0.24), transparent 60%);
-    --arc-band-topbar: rgba(10, 25, 43, 0.72);
+    /* Bandeau des fiches : ambiance claire, bleu glacier à texte foncé, lueur cyan */
+    --arc-band-bg: #e6f0f7;
+    --arc-band-text: #14161f;
+    --arc-band-muted: #454b5c;
+    --arc-band-line: rgba(10, 25, 43, 0.16);
+    --arc-band-gradient: linear-gradient(90deg, #eef5f9 0%, #e6f0f7 55%, #dce9f3 100%);
+    --arc-band-glow: radial-gradient(60rem 22rem at 100% 0%, rgba(0, 182, 237, 0.18), transparent 60%);
+    --arc-band-topbar: rgba(238, 245, 249, 0.85);
     --arc-band-overlap: var(--24px);
-    --arc-band-divider: rgba(255, 255, 255, 0.08);
-    --arc-band-fill-1: rgba(255, 255, 255, 0.06);
-    --arc-band-fill-2: rgba(255, 255, 255, 0.10);
-    --arc-band-fill-3: rgba(255, 255, 255, 0.16);
-    --arc-band-fill-4: rgba(255, 255, 255, 0.22);
-    --arc-band-line-strong: rgba(255, 255, 255, 0.4);
-    --arc-band-focus: #ffffff;
-    --arc-band-avatar-bg: #ffffff;
-    --arc-band-avatar-text: var(--arc-band-bg);
+    --arc-band-divider: rgba(10, 25, 43, 0.08);
+    --arc-band-fill-1: rgba(10, 25, 43, 0.05);
+    --arc-band-fill-2: rgba(10, 25, 43, 0.08);
+    --arc-band-fill-3: rgba(10, 25, 43, 0.12);
+    --arc-band-fill-4: rgba(10, 25, 43, 0.18);
+    --arc-band-line-strong: rgba(10, 25, 43, 0.35);
+    --arc-band-focus: var(--arc-brand-ring);
+    --arc-band-avatar-bg: var(--arc-brand);
+    --arc-band-avatar-text: #ffffff;
 
-    /* Menu latéral : même encre que le début du bandeau, pour un L continu sur les fiches */
-    --arc-sidebar-bg: #0a192b;
-    --arc-sidebar-glow: radial-gradient(28rem 20rem at 0% 100%, rgba(0, 182, 237, 0.14), transparent 65%);
-    --arc-sidebar-text: #c6d3df;
-    --arc-sidebar-muted: #8fa4b9;
-    --arc-sidebar-line: rgba(255, 255, 255, 0.07);
-    --arc-sidebar-hover: rgba(255, 255, 255, 0.07);
-    --arc-sidebar-active: rgba(255, 255, 255, 0.11);
-    --arc-sidebar-strong: #ffffff;
-    --arc-sidebar-scroll: rgba(255, 255, 255, 0.18);
-    --arc-sidebar-focus: var(--arc-signature);
-    --arc-sidebar-logo-filter: brightness(0) invert(1);
-    --arc-sidebar-logo-opacity: 0.92;
+    /* Menu latéral : blanc, lueur cyan discrète en bas */
+    --arc-sidebar-bg: #ffffff;
+    --arc-sidebar-glow: radial-gradient(28rem 20rem at 0% 100%, rgba(0, 182, 237, 0.08), transparent 65%);
+    --arc-sidebar-text: #353a49;
+    --arc-sidebar-muted: #5b6172;
+    --arc-sidebar-line: var(--arc-border);
+    --arc-sidebar-hover: var(--arc-hover);
+    --arc-sidebar-active: var(--arc-brand-subtle);
+    --arc-sidebar-strong: var(--arc-brand);
+    --arc-sidebar-scroll: rgba(10, 25, 43, 0.2);
+    --arc-sidebar-focus: var(--arc-brand-ring);
+    --arc-sidebar-logo-filter: none;
+    --arc-sidebar-logo-opacity: 1;
     --arc-tracking-tight: -0.02em;
     --arc-tracking-body: 0;
 
