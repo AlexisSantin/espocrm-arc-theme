@@ -23,7 +23,8 @@
     position: absolute;
     top: 0;
     left: 0;
-    z-index: 3;
+    /* Au-dessus des colonnes épinglées de Better Columns (collantes, niveau 3) */
+    z-index: 6;
     width: 21px;
     height: 21px;
     border-top: 3px solid var(--arc-signature);

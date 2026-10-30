@@ -497,37 +497,58 @@ button.arc-step-inner:focus-visible {
     margin: 0;
 }
 
-/* Onglets de champs de la disposition, dans la carte « À propos » */
-.arc-inspector-card .middle-tabs {
+/*
+ * Onglets de champs de la disposition (carte « À propos » ou carte de contenu) : des pastilles
+ * compactes qui passent à la ligne proprement, un seul filet sous elles.
+ */
+.arc-record .middle-tabs {
     display: flex;
     flex-wrap: wrap;
-    gap: 0 var(--4px);
+    align-items: center;
+    gap: var(--4px);
     margin: 0 0 var(--4px);
-    border-bottom: 1px solid var(--arc-border);
+    padding-bottom: var(--10px);
+    border-bottom: 1px solid var(--arc-n-100);
 }
 
-.arc-inspector-card .middle-tabs > .btn,
-.arc-inspector-card .middle-tabs > .btn + .btn {
-    margin: 0 0 -1px;
-    padding: var(--6px) var(--8px);
+/* « .tabs.middle-tabs » : plus précis que « .record .tabs > button.btn » d'EspoCRM */
+.arc-record .tabs.middle-tabs > .btn {
+    height: auto;
+    margin: 0;
+    padding: var(--4px) var(--10px);
     border: 0;
-    border-bottom: 2px solid transparent;
-    border-radius: 0 !important;
+    border-radius: var(--arc-radius) !important;
     background: transparent;
     box-shadow: none;
     color: var(--arc-text-secondary);
     font-size: var(--13px);
     font-weight: 500;
+    line-height: 1.5;
 }
 
-.arc-inspector-card .middle-tabs > .btn:hover {
+/* EspoCRM souligne déjà l'onglet actif : un seul repère suffit */
+.arc-record .tabs.middle-tabs > .btn::after {
+    display: none;
+}
+
+.arc-record .tabs.middle-tabs > .btn:hover {
+    background: var(--arc-hover);
     color: var(--arc-text);
 }
 
-.arc-inspector-card .middle-tabs > .btn.active {
-    border-bottom-color: var(--arc-brand);
-    color: var(--arc-text);
+.arc-record .tabs.middle-tabs > .btn.active {
+    background: var(--arc-brand-subtle);
+    color: var(--arc-brand);
     font-weight: 600;
+}
+
+/* Sous les onglets, pas de second filet : seuls les groupes suivants en ont un */
+.arc-inspector-card .middle-tabs ~ .middle > .panel {
+    border-top: 0;
+}
+
+.arc-inspector-card .middle-tabs ~ .middle > .panel:not(.tab-hidden):not(.hidden) ~ .panel:not(.tab-hidden):not(.hidden) {
+    border-top: 1px solid var(--arc-n-100);
 }
 
 .arc-inspector > .side > .panel:not([data-name="default"]) > .panel-heading .panel-title {
