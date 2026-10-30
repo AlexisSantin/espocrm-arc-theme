@@ -85,13 +85,14 @@
     --arc-font: "Geist", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     --arc-font-display: "Bricolage Grotesque", "Geist", -apple-system, "Segoe UI", sans-serif;
 
-    /* Bandeau des fiches */
-    --arc-band-bg: #1b1d4f;
+    /* Bandeau des fiches : bleu encre, lueur cyan */
+    --arc-band-bg: #0b1d31;
     --arc-band-text: #ffffff;
-    --arc-band-muted: #c3c6e6;
-    --arc-band-line: rgba(255, 255, 255, 0.24);
-    --arc-band-gradient: linear-gradient(90deg, #17194a 0%, #24266b 55%, #1d3c80 100%);
-    --arc-band-glow: radial-gradient(60rem 22rem at 100% 0%, rgba(0, 182, 237, 0.22), transparent 60%);
+    --arc-band-muted: #a8bccf;
+    --arc-band-line: rgba(255, 255, 255, 0.18);
+    --arc-band-gradient: linear-gradient(90deg, #0a192b 0%, #0c2239 55%, #0f2e4b 100%);
+    --arc-band-glow: radial-gradient(60rem 22rem at 100% 0%, rgba(0, 182, 237, 0.24), transparent 60%);
+    --arc-band-topbar: rgba(10, 25, 43, 0.72);
     --arc-band-overlap: var(--32px);
     --arc-tracking-tight: -0.02em;
     --arc-tracking-body: -0.006em;

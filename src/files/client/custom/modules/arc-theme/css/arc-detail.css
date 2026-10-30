@@ -36,7 +36,7 @@ body.arc-band-page {
 
 /* Barre du haut posée sur le bandeau */
 body:has(.arc-record) #navbar .navbar-right {
-    background: rgba(23, 25, 74, 0.72);
+    background: var(--arc-band-topbar);
     border-bottom-color: rgba(255, 255, 255, 0.08);
 }
 
@@ -188,23 +188,6 @@ body:has(.arc-record) #navbar .navbar-right .global-search-container a.global-se
     align-items: center;
     gap: var(--16px);
     min-width: 0;
-}
-
-.arc-avatar {
-    position: relative;
-    flex: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 60px;
-    height: 60px;
-    border-radius: 16px;
-    background: #ffffff;
-    color: var(--arc-band-bg);
-    font-family: var(--arc-font-display);
-    font-size: 22px;
-    font-weight: 700;
-    letter-spacing: -0.02em;
 }
 
 .arc-identity-text {
@@ -419,7 +402,7 @@ button.arc-step-inner:focus-visible {
 }
 
 .arc-record .arc-record-grid > .arc-inspector {
-    flex: 0 1 360px;
+    flex: 0 1 380px;
     max-width: 100%;
     width: auto;
     min-width: 0;

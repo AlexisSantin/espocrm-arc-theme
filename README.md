@@ -18,14 +18,14 @@ A light EspoCRM theme with a modern SaaS look, built on the UTT palette
 
 Under the Arc theme, detail views of CRM entities use a two-column layout:
 
-- **Band**: full-width navy gradient, painted on the page background over the measured band
+- **Band**: full-width ink-blue gradient with a cyan glow, painted on the page background over the measured band
   height (it runs under the top bar, reaches both screen edges even when the content is
   centered on wide screens, and the cards overlap its lower edge), with breadcrumbs,
-  avatar (initials), name, assigned user(s) and teams (plain chips, not links),
+  name, assigned user(s) and teams (plain chips, not links),
   record actions and, when the entity uses an active pipeline, the stage path (click a
   stage to move the record, if the user may edit the stage). An inactive pipeline only
   shows the current stage.
-- **About** (left): the detail layout panels as a compact property inspector (empty fields
+- **About** (left, 380px): the detail layout panels as a compact property inspector (empty fields
   hidden behind a "Show N empty fields" link, all shown while editing), the default side
   panel (assigned user, teams, dates), then the other side panels — activities, history,
   tasks — as separate cards. When the bottom layout also lists them, they are not repeated.

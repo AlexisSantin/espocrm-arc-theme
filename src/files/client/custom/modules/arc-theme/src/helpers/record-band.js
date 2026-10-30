@@ -5,7 +5,7 @@ import {el} from 'arc-theme:arc';
 const OFF_PATH_STYLES = ['danger'];
 
 /**
- * Bandeau de la fiche : identité (avatar, nom, personnes assignées, équipes)
+ * Bandeau de la fiche : identité (nom, personnes assignées, équipes)
  * et parcours de pipeline.
  */
 export default class RecordBand {
@@ -115,10 +115,7 @@ export default class RecordBand {
         const name = this.model.get('name') || '';
 
         const wrapper = el('div', 'arc-identity');
-        const avatar = el('div', 'arc-avatar', this.getInitials(name));
         const text = el('div', 'arc-identity-text');
-
-        avatar.setAttribute('aria-hidden', 'true');
 
         text.append(el('p', 'arc-identity-name', name));
 
@@ -128,7 +125,7 @@ export default class RecordBand {
             text.append(people);
         }
 
-        wrapper.append(avatar, text);
+        wrapper.append(text);
 
         return wrapper;
     }
