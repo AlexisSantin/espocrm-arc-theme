@@ -11,8 +11,9 @@ A light EspoCRM theme with a modern SaaS look, built on the UTT palette
 - Status badges with a leading dot and soft tinted backgrounds (WCAG AA contrast).
 - One primary action per page header (Create); other actions stay secondary.
 - Keyboard focus ring on interactive elements, focus halo on fields, reduced-motion support.
-- Geist for text and Bricolage Grotesque for names and section titles (both bundled, OFL).
+- Lexend for text (designed for reading) and Bricolage Grotesque for names and section titles (bundled, OFL). Labels use the same size as values; record links are coloured so what is clickable stands out.
 - Floating labels on simple text fields in edit views (`lib/float-labels.js`).
+- Dialogs centred at their natural height, actions at the bottom and always visible (only the body scrolls); dashboard blocks lift on hover.
 
 ## Record view
 
@@ -112,5 +113,5 @@ src/files/client/custom/modules/arc-theme/
     src/helpers/empty-fields.js       hides empty fields in the inspector, with a toggle
     src/mixins/detail-bottom.js       bottom view: tabs, quick actions, counts
     lib/float-labels.js
-    fonts/Geist-*.woff2, fonts/BricolageGrotesque-*.woff2 (+ OFL)
+    fonts/Lexend-*.woff2, fonts/BricolageGrotesque-*.woff2, fonts/Geist-*.woff2 (+ OFL)
 ```

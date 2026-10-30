@@ -13,6 +13,7 @@
     --panel-padding: var(--16px);
     --panel-heading-height: var(--46px);
     --panel-heading-font-size: var(--14px);
+    --input-height-base: var(--38px);
 
     /* Surfaces */
     --body-bg: var(--arc-canvas);
@@ -43,8 +44,8 @@
     --text-gray-color: var(--arc-text-secondary);
     --link-color: var(--arc-link);
     --link-hover-color: var(--arc-link-hover);
-    --link-record-color: var(--arc-text);
-    --link-record-hover-color: var(--arc-brand);
+    --link-record-color: var(--arc-link);
+    --link-record-hover-color: var(--arc-link-hover);
     --text-link-color: var(--arc-link);
     --text-link-hover-color: var(--arc-link-hover);
     --site-footer-color: var(--arc-text-faint);

@@ -68,6 +68,7 @@
 
 /* ===== Champs ===== */
 .form-control {
+    font-size: var(--15px);
     box-shadow: var(--arc-shadow-xs);
     transition: border-color var(--arc-fast) ease, box-shadow var(--arc-fast) ease;
 }
@@ -106,8 +107,8 @@ select.form-control {
 /* ===== Libellés de formulaire ===== */
 .edit .cell > label.control-label,
 .modal .edit .cell > label.control-label {
-    font-size: var(--13px);
-    font-weight: 500;
+    font-size: var(--14px);
+    font-weight: 400;
     color: var(--arc-text-secondary);
 }
 

@@ -1,5 +1,5 @@
 /**
- * Fiches — panneaux en cartes, titres en casse normale, libellés discrets, onglets soulignés.
+ * Fiches — panneaux en cartes, titres en casse normale, libellés à la taille des valeurs, onglets soulignés.
  */
 
 /* ===== Panneaux ===== */
@@ -48,9 +48,9 @@
 /* ===== Champs en lecture ===== */
 .detail .cell > label.control-label,
 .record .side .cell > label.control-label {
-    color: var(--arc-text-muted);
-    font-size: var(--12px);
-    font-weight: 500;
+    color: var(--arc-text-secondary);
+    font-size: var(--14px);
+    font-weight: 400;
     letter-spacing: 0;
     margin-bottom: var(--4px);
 }
@@ -99,4 +99,20 @@
 .panel-stream .list > ul > li,
 .stream-list .list-group-item {
     border-color: var(--arc-n-100);
+}
+
+/* ===== Tableau de bord : un bloc se soulève au survol ===== */
+.dashlets .dashlet.panel {
+    transition: box-shadow var(--arc-base) var(--arc-ease), border-color var(--arc-base) var(--arc-ease);
+}
+
+.dashlets .dashlet.panel:hover {
+    border-color: var(--arc-border-strong);
+    box-shadow: var(--arc-shadow-md);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .dashlets .dashlet.panel {
+        transition: none;
+    }
 }

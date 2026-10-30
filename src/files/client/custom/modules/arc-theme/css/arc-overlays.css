@@ -70,6 +70,33 @@
     overscroll-behavior: contain;
 }
 
+/*
+ * Fenêtres centrées à leur hauteur naturelle, boutons en bas (réglages du thème dans Arc.json) :
+ * EspoCRM 10 les colle sinon au bord droit, prévues pour la pleine hauteur.
+ */
+@media (min-width: 768px) {
+    .modal-dialog {
+        margin: var(--40px) auto;
+    }
+
+    /* Seul le contenu défile : le titre et les boutons restent à l'écran */
+    .modal-dialog > .modal-content {
+        display: flex;
+        flex-direction: column;
+        max-height: calc(100vh - 2 * var(--40px));
+    }
+
+    .modal-dialog > .modal-content > .modal-body {
+        flex: 1 1 auto;
+        min-height: 0;
+        overflow-y: auto;
+    }
+}
+
+.modal-backdrop.in {
+    backdrop-filter: blur(3px);
+}
+
 /* ===== Infobulles et popovers ===== */
 .tooltip-inner {
     padding: var(--6px) var(--8px);

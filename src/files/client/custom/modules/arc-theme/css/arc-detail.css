@@ -601,13 +601,13 @@ button.arc-step-inner:focus-visible {
     position: relative;
     float: none;
     display: grid;
-    grid-template-columns: 120px minmax(0, 1fr);
+    grid-template-columns: 130px minmax(0, 1fr);
     column-gap: var(--12px);
     align-items: baseline;
     width: 100%;
     margin: 0;
     padding: var(--4px) var(--20px) var(--4px) 0;
-    font-size: var(--13px);
+    font-size: var(--14px);
 }
 
 .arc-inspector .panel-body > .row > .cell.hidden-cell,
@@ -618,9 +618,9 @@ button.arc-step-inner:focus-visible {
 .arc-inspector .panel-body > .row > .cell > label.control-label {
     grid-column: 1;
     margin: 0;
-    font-size: var(--13px);
+    font-size: var(--14px);
     font-weight: 400;
-    color: var(--arc-text-muted);
+    color: var(--arc-text-secondary);
     overflow-wrap: anywhere;
 }
 
