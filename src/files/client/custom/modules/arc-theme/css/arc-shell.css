@@ -3,9 +3,24 @@
  * Signature : un filet dégradé Bleu UTT → cyan marque l'onglet actif.
  */
 
-/* ===== Menu latéral ===== */
+/* ===== Menu latéral : bleu encre, comme le bandeau des fiches ===== */
+body[data-navbar="side"] #navbar > .navbar {
+    background: var(--arc-sidebar-glow), var(--arc-sidebar-bg);
+    border-right-color: var(--arc-sidebar-line);
+}
+
 body[data-navbar="side"] #navbar > .navbar .navbar-header {
     padding-left: var(--8px);
+}
+
+/* Logo EspoCRM par défaut (bleu-gris) passé en blanc ; un logo d'entreprise reste tel quel */
+body[data-navbar="side"] #navbar .navbar-brand img[src*="img/logo-light.svg"] {
+    filter: brightness(0) invert(1);
+    opacity: 0.92;
+}
+
+body[data-navbar="side"] #navbar ul.tabs {
+    scrollbar-color: rgba(255, 255, 255, 0.18) transparent;
 }
 
 body[data-navbar="side"] #navbar ul.tabs > li.tab > a,
@@ -13,20 +28,21 @@ body[data-navbar="side"] #navbar ul.tabs > li.more > a {
     position: relative;
     margin: var(--1px) var(--8px);
     border-radius: var(--arc-radius);
-    color: var(--arc-n-600);
+    color: var(--arc-sidebar-text);
     font-weight: 500;
     transition: background-color var(--arc-fast) ease, color var(--arc-fast) ease;
 }
 
 body[data-navbar="side"] #navbar ul.tabs > li.tab > a:hover,
 body[data-navbar="side"] #navbar ul.tabs > li.more > a:hover {
-    background-color: var(--arc-hover);
-    color: var(--arc-text);
+    background-color: var(--arc-sidebar-hover);
+    color: #ffffff;
 }
 
 body[data-navbar="side"] #navbar ul.tabs > li.tab.active > a,
 body[data-navbar="side"] #navbar ul.tabs > li.tab.active > a:hover {
-    color: var(--arc-brand);
+    background-color: var(--arc-sidebar-active);
+    color: #ffffff;
 }
 
 body[data-navbar="side"] #navbar ul.tabs > li.tab.active > a::before {
@@ -37,7 +53,7 @@ body[data-navbar="side"] #navbar ul.tabs > li.tab.active > a::before {
     bottom: var(--8px);
     width: 3px;
     border-radius: 0 3px 3px 0;
-    background: var(--arc-signature-gradient);
+    background: var(--arc-signature);
 }
 
 body[data-navbar="side"] #navbar ul.tabs > li.tab-divider > div {
@@ -47,18 +63,18 @@ body[data-navbar="side"] #navbar ul.tabs > li.tab-divider > div {
 }
 
 body[data-navbar="side"] #navbar ul.tabs > li.tab-divider > div > .label-text {
-    color: var(--arc-text-muted);
+    color: var(--arc-sidebar-muted);
     font-size: var(--12px);
     font-weight: 500;
     letter-spacing: 0;
 }
 
 body[data-navbar="side"] #navbar a.minimizer {
-    color: var(--arc-text-faint);
+    color: var(--arc-sidebar-muted);
 }
 
 body[data-navbar="side"] #navbar a.minimizer:hover {
-    color: var(--arc-text);
+    color: #ffffff;
 }
 
 /* ===== Barre du haut ===== */

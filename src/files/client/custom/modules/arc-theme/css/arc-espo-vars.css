@@ -164,15 +164,15 @@
     --navbar-link-hover-bg: var(--arc-hover);
     --navbar-link-active-bg: var(--arc-hover);
     --navbar-link-icon-color: var(--arc-n-500);
-    --navbar-inverse-bg: var(--arc-surface-sunken);
-    --navbar-inverse-border: var(--arc-border);
-    --navbar-inverse-color: var(--arc-text-muted);
-    --navbar-inverse-link-color: var(--arc-n-600);
-    --navbar-inverse-link-hover-color: var(--arc-text);
-    --navbar-inverse-link-hover-bg: var(--arc-hover);
-    --navbar-inverse-link-active-bg: var(--arc-brand-subtle);
-    --navbar-inverse-link-icon-color: var(--arc-n-400);
-    --navbar-inverse-link-icon-hover-color: var(--arc-n-600);
+    --navbar-inverse-bg: var(--arc-sidebar-bg);
+    --navbar-inverse-border: var(--arc-sidebar-line);
+    --navbar-inverse-color: var(--arc-sidebar-muted);
+    --navbar-inverse-link-color: var(--arc-sidebar-text);
+    --navbar-inverse-link-hover-color: #ffffff;
+    --navbar-inverse-link-hover-bg: var(--arc-sidebar-hover);
+    --navbar-inverse-link-active-bg: var(--arc-sidebar-active);
+    --navbar-inverse-link-icon-color: var(--arc-sidebar-muted);
+    --navbar-inverse-link-icon-hover-color: #ffffff;
 
     /* Menus déroulants */
     --dropdown-bg: var(--arc-surface);

@@ -6,13 +6,12 @@ A light EspoCRM theme with a modern SaaS look, built on the UTT palette
 ## Features
 
 - Overlay architecture: imports the stock EspoCRM `light` stylesheet, then redefines its CSS custom properties from a small set of Arc tokens.
-- Light sidebar with a gradient marker on the active tab; translucent top bar.
+- Ink-blue sidebar matching the record band (they form one frame on record pages), cyan marker on the active tab; translucent top bar.
 - Lists and panels as bordered cards, sentence-case column headers, tabular numbers.
 - Status badges with a leading dot and soft tinted backgrounds (WCAG AA contrast).
 - One primary action per page header (Create); other actions stay secondary.
 - Keyboard focus ring on interactive elements, focus halo on fields, reduced-motion support.
-- UTT typefaces: Fira Sans for text (bundled, OFL) and Akrobat ExtraBold for names and section titles (Fontfabric font supplied by UTT, bundled unmodified as OTF; Fontfabric's free licence allows commercial use but forbids modifying the file). Labels use the same size as values; record links are coloured so what is clickable stands out.
-- Floating labels on simple text fields in edit views (`lib/float-labels.js`).
+- Lexend for text (designed for reading) and Bricolage Grotesque for names and section titles (bundled, OFL). Labels use the same size as values; record links are coloured so what is clickable stands out.
 - Dialogs centred at their natural height, actions at the bottom and always visible (only the body scrolls); dashboard blocks lift on hover.
 
 ## Record view
@@ -92,7 +91,7 @@ transpiled sources instead, so test a release on an instance with developer mode
 src/files/custom/Espo/Modules/ArcTheme/Resources/
     module.json
     metadata/themes/Arc.json          theme params, chart and calendar colors
-    metadata/app/client.json          float-labels script
+    metadata/app/client.json          lib/init.js (bundle loader, production)
     metadata/clientDefs/Global.json   record/detail view setup handler
     i18n/en_US/Global.json, fr_FR/Global.json
 src/files/client/custom/modules/arc-theme/
@@ -107,7 +106,6 @@ src/files/client/custom/modules/arc-theme/
     css/arc-detail.css                record view: band, inspector, main column tabs, timeline
     css/arc-overlays.css              dropdowns, modals, tooltips, alerts
     css/arc-login.css                 login page
-    css/arc-float-labels.css          floating labels
     css/arc-iframe.css                rich text editor iframe
     res/templates/record/detail.tpl   record view template (band, About, main column)
     src/arc.js                        shared constants and helpers
@@ -116,6 +114,5 @@ src/files/client/custom/modules/arc-theme/
     src/helpers/empty-fields.js       hides empty fields in the inspector, with a toggle
     src/helpers/panel-collapse.js     collapsible blocks (accordions), state kept per user and entity
     src/mixins/detail-bottom.js       bottom view: tabs, quick actions, counts
-    lib/float-labels.js
-    fonts/FiraSans-*.woff2 (+ OFL), fonts/Akrobat-ExtraBold.otf
+    fonts/Lexend-*.woff2, fonts/BricolageGrotesque-*.woff2 (+ OFL)
 ```

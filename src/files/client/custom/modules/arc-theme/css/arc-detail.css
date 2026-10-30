@@ -199,8 +199,8 @@ body:has(.arc-record) #navbar .navbar-right .global-search-container a.global-se
     font-family: var(--arc-font-display);
     font-size: var(--28px);
     font-weight: 800;
-    letter-spacing: 0;
-    line-height: 1.05;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
     overflow-wrap: anywhere;
 }
 
@@ -963,6 +963,15 @@ button.arc-step-inner:focus-visible {
 .arc-record .panel[data-name="history"] .list-group,
 .arc-record .panel[data-name="tasks"] .list-group {
     margin: 0;
+}
+
+/*
+ * Dans les cartes latérales, EspoCRM élargit la liste jusqu'aux bords du panneau : sans ce
+ * décalage, les lignes s'alignent sur le titre et leur survol reste dans la carte.
+ */
+.arc-inspector > .side > .panel .list-expanded {
+    margin-left: 0;
+    margin-right: 0;
 }
 
 /* Les onglets natifs de la disposition sont repris dans la barre Arc */
