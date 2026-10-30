@@ -18,6 +18,8 @@
         "arcHideEmpty": "Hide empty fields",
         "arcCollapse": "Collapse {panel}",
         "arcExpand": "Expand {panel}",
-        "arcSections": "Record sections"
+        "arcSections": "Record sections",
+        "arcResizeAbout": "Width of the About column",
+        "arcResizeHint": "Drag to adjust the width, double-click to reset"
     }
 }

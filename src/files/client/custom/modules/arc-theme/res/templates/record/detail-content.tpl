@@ -61,6 +61,14 @@
             {{{side}}}
             </div>
         </aside>
+        <div
+            class="arc-resizer"
+            role="separator"
+            aria-orientation="vertical"
+            tabindex="0"
+            aria-label="{{translate 'arcResizeAbout' category='labels' scope='Global'}}"
+            title="{{translate 'arcResizeHint' category='labels' scope='Global'}}"
+        ><span class="arc-resizer-grip" aria-hidden="true"></span></div>
         <div class="left arc-content-column">
             <section class="arc-content-card">
                 {{#if hasMiddleTabs}}

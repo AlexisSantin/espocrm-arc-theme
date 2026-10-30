@@ -11,7 +11,7 @@ A light EspoCRM theme with a modern SaaS look, built on the UTT palette
 - Status badges with a leading dot and soft tinted backgrounds (WCAG AA contrast).
 - One primary action per page header (Create); other actions stay secondary.
 - Keyboard focus ring on interactive elements, focus halo on fields, reduced-motion support.
-- Lexend for text (designed for reading) and Bricolage Grotesque for names and section titles (bundled, OFL). Labels use the same size as values; record links are coloured so what is clickable stands out.
+- One typeface, Lexend (designed for reading, bundled, OFL), for text and titles alike. Labels use the same size as values; record links are coloured so what is clickable stands out.
 - Dialogs keep EspoCRM's side panel; records opened in it keep a margin so their cards are not cut by the panel edge. Dashboard blocks lift on hover.
 - Accessibility (RGAA / WCAG 2.1 AA): text contrast ≥ 4.5:1 and form field borders ≥ 3:1, visible keyboard focus on dark areas, reduced motion, record name as the page heading, pipeline steps wrap instead of being cut, document language and zoom restored (`src/handlers/page-a11y.js`). Band and sidebar colours are tokens (`--arc-band-*`, `--arc-sidebar-*`).
 
@@ -36,6 +36,8 @@ Under the Arc theme, detail views of CRM entities use a two-column layout:
   one tab per relationship panel with its count. Tab breaks
   defined in the bottom panel layout group their panels under their label. Tabs that do not
   fit go to **More**.
+
+A handle between the two columns sets the width of About (drag, or arrow keys / Home / End when focused; double-click resets): 300 to 720 px, the main column keeps at least 480 px. The width is kept per user in the browser.
 
 Every block (About, side panels, layout panels) collapses like an accordion: chevron or title click.
 The state is kept per user and record type in the browser; all blocks are open while editing.
@@ -116,7 +118,8 @@ src/files/client/custom/modules/arc-theme/
     src/helpers/record-band.js        band: identity, people, pipeline stage path, page background
     src/helpers/empty-fields.js       hides empty fields in the inspector, with a toggle
     src/handlers/page-a11y.js         document language and zoom (list, detail, edit, login)
+    src/helpers/column-resizer.js     handle that sets the width of About
     src/helpers/panel-collapse.js     collapsible blocks (accordions), state kept per user and entity
     src/mixins/detail-bottom.js       bottom view: tabs, quick actions, counts
-    fonts/Lexend-*.woff2, fonts/BricolageGrotesque-*.woff2 (+ OFL)
+    fonts/Lexend-*.woff2 (+ OFL)
 ```

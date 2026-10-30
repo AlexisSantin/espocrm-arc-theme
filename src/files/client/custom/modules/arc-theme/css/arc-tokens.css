@@ -85,7 +85,8 @@
 
     /* Typographie */
     --arc-font: "Lexend", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    --arc-font-display: "Bricolage Grotesque", "Lexend", -apple-system, "Segoe UI", sans-serif;
+    /* Une seule famille : les titres sont en Lexend, plus gras */
+    --arc-font-display: var(--arc-font);
 
     /* Bandeau des fiches : ambiance claire, bleu glacier à texte foncé, lueur cyan */
     --arc-band-bg: #e6f0f7;

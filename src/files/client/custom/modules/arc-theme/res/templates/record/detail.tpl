@@ -72,6 +72,14 @@
             {{{side}}}
             </div>
         </aside>
+        <div
+            class="arc-resizer"
+            role="separator"
+            aria-orientation="vertical"
+            tabindex="0"
+            aria-label="{{translate 'arcResizeAbout' category='labels' scope='Global'}}"
+            title="{{translate 'arcResizeHint' category='labels' scope='Global'}}"
+        ><span class="arc-resizer-grip" aria-hidden="true"></span></div>
         <section class="arc-main">
             <div class="extra">{{{extra}}}</div>
             <div class="bottom">{{{bottom}}}</div>

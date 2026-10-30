@@ -199,7 +199,7 @@ body:has(.arc-record) #navbar .navbar-right .global-search-container a.global-se
     color: inherit;
     font-family: var(--arc-font-display);
     font-size: var(--28px);
-    font-weight: 800;
+    font-weight: 700;
     letter-spacing: -0.02em;
     line-height: 1.1;
     overflow-wrap: anywhere;
@@ -405,8 +405,17 @@ button.arc-step-inner:focus-visible {
     container-type: inline-size;
 }
 
+/* La poignée tient lieu d'espace entre les deux colonnes */
+.arc-record .record-grid.arc-record-grid:has(> .arc-resizer) {
+    column-gap: 0;
+}
+
+/*
+ * Largeur réglable (--arc-inspector-width, posée par le script) : 300 px au moins, et la
+ * colonne de droite garde toujours 480 px.
+ */
 .arc-record .arc-record-grid > .arc-inspector {
-    flex: 0 1 380px;
+    flex: 0 0 clamp(300px, var(--arc-inspector-width, 380px), calc(100% - 480px - var(--20px)));
     max-width: 100%;
     width: auto;
     min-width: 0;
@@ -605,6 +614,68 @@ button.arc-step-inner:focus-visible {
     .arc-record .arc-record-grid > .arc-inspector {
         flex-basis: 100%;
     }
+
+    .arc-record .arc-record-grid > .arc-resizer {
+        display: none;
+    }
+}
+
+/* ===== Poignée de largeur entre les colonnes ===== */
+.arc-record .arc-record-grid > .arc-resizer {
+    position: relative;
+    flex: 0 0 var(--20px);
+    align-self: stretch;
+    cursor: col-resize;
+    touch-action: none;
+}
+
+/* Filet sur toute la hauteur au survol, au glisser et au focus clavier */
+.arc-resizer::before {
+    content: "";
+    position: absolute;
+    top: calc(var(--arc-band-overlap) + var(--8px));
+    bottom: 0;
+    left: 50%;
+    width: 2px;
+    margin-left: -1px;
+    border-radius: 2px;
+    background: transparent;
+    transition: background-color var(--arc-fast) ease;
+}
+
+.arc-resizer-grip {
+    position: sticky;
+    top: calc(var(--top-bar-height) + 96px);
+    display: block;
+    width: 6px;
+    height: 36px;
+    margin: 96px auto 0;
+    border-radius: var(--arc-radius-pill);
+    background: var(--arc-border-input);
+    transition: background-color var(--arc-fast) ease;
+}
+
+.arc-resizer:hover::before,
+.arc-resizer.is-dragging::before,
+.arc-resizer:focus-visible::before {
+    background: var(--arc-brand-ring);
+}
+
+.arc-resizer:hover .arc-resizer-grip,
+.arc-resizer.is-dragging .arc-resizer-grip,
+.arc-resizer:focus-visible .arc-resizer-grip {
+    background: var(--arc-brand-ring);
+}
+
+/* Le filet et la poignée colorés suffisent à montrer le focus */
+.arc-resizer:focus-visible {
+    outline: none;
+}
+
+body.arc-resizing,
+body.arc-resizing * {
+    cursor: col-resize !important;
+    user-select: none !important;
 }
 
 /* ===== Inspecteur « À propos » ===== */
@@ -623,7 +694,7 @@ button.arc-step-inner:focus-visible {
     color: var(--arc-signature);
     font-family: var(--arc-font-display);
     font-size: 1.2em;
-    font-weight: 800;
+    font-weight: 700;
     line-height: 1;
 }
 
