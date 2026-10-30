@@ -10,6 +10,7 @@ body:has(#login) {
 }
 
 #login.panel {
+    position: relative;
     border: 1px solid var(--arc-border);
     border-radius: var(--arc-radius-xl);
     box-shadow: var(--arc-shadow-lg);
@@ -28,4 +29,19 @@ body:has(#login) {
 
 #login.panel .logo-container {
     text-align: center;
+}
+
+/* Coin cyan, signature des cartes Arc */
+#login.panel::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 25px;
+    height: 25px;
+    border-top: 3px solid var(--arc-signature);
+    border-left: 3px solid var(--arc-signature);
+    border-top-left-radius: calc(var(--arc-radius-xl) - 1px);
+    pointer-events: none;
 }

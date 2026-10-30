@@ -337,6 +337,35 @@ export default function arcDetailBottom(Base) {
                     }
                 }
             });
+
+            if (this.arcTab === ACTIVITY_TAB) {
+                this.arcOrderActivityPanels(shown);
+            }
+        }
+
+        /**
+         * L'onglet Activité suit l'ordre de la disposition ; la saisie reste en tête.
+         * Le flux est éclaté (en-tête, listes) : son ordre passe par des variables CSS posées
+         * sur l'élément du panneau, qui survit aux re-rendus de la vue du flux.
+         *
+         * @private
+         * @param {string[]} names
+         */
+        arcOrderActivityPanels(names) {
+            let order = 2;
+
+            this.arcGetPanels()
+                .filter(panel => names.includes(panel.dataset.name))
+                .forEach(panel => {
+                    if (panel.dataset.name === 'stream') {
+                        panel.style.setProperty('--arc-stream-order', String(order++));
+                        panel.style.setProperty('--arc-stream-list-order', String(order++));
+
+                        return;
+                    }
+
+                    panel.style.order = String(order++);
+                });
         }
 
         /**
@@ -390,6 +419,11 @@ export default function arcDetailBottom(Base) {
 
             const composer = el('div', 'arc-composer');
             const label = this.translate('arcNewActivity', 'labels', 'Global');
+            const hasPost = !!this.element
+                .querySelector('.panel[data-name="stream"]:not(.hidden) .post-container:not(.hidden)');
+
+            // Sans zone de note dessous, la saisie se ferme sur elle-même.
+            composer.classList.toggle('arc-composer-solo', !hasPost);
 
             composer.setAttribute('role', 'group');
             composer.setAttribute('aria-label', label);

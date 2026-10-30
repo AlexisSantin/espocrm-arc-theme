@@ -4,21 +4,54 @@
  */
 
 /* ===== Bandeau : en-tête de page + identité + pipeline ===== */
+/* Dégradé horizontal : l'en-tête et le bandeau, deux éléments, se raccordent sans couture. */
 #main:has(> .record > .arc-record) > .page-header,
 .arc-record > .arc-band {
     margin-left: calc(var(--container-padding) * -1);
     margin-right: calc(var(--container-padding) * -1);
     padding-left: var(--28px);
     padding-right: var(--28px);
-    background: var(--arc-band-bg);
+    background: var(--arc-band-gradient);
     color: var(--arc-band-text);
 }
 
+/* Le bandeau remonte sous la barre du haut : il occupe tout le haut de l'écran. */
 #main:has(> .record > .arc-record) > .page-header {
-    margin-top: 0;
+    margin-top: calc(var(--top-bar-height) * -1);
     margin-bottom: 0;
-    padding-top: var(--16px);
+    padding-top: calc(var(--top-bar-height) + var(--16px));
     padding-bottom: var(--4px);
+}
+
+/* Barre du haut posée sur le bandeau */
+body:has(.arc-record) #navbar .navbar-right {
+    background: rgba(23, 25, 74, 0.72);
+    border-bottom-color: rgba(255, 255, 255, 0.08);
+}
+
+body:has(.arc-record) #navbar .navbar-right > li > a {
+    color: var(--arc-band-muted);
+}
+
+body:has(.arc-record) #navbar .navbar-right > li > a:hover,
+body:has(.arc-record) #navbar .navbar-right > li.open > a {
+    background-color: rgba(255, 255, 255, 0.12);
+    color: var(--arc-band-text);
+}
+
+body:has(.arc-record) #navbar .navbar-right input.global-search-input {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--arc-band-line);
+    color: var(--arc-band-text);
+    box-shadow: none;
+}
+
+body:has(.arc-record) #navbar .navbar-right input.global-search-input::placeholder {
+    color: var(--arc-band-muted);
+}
+
+body:has(.arc-record) #navbar .navbar-right .global-search-container a.global-search-button {
+    color: var(--arc-band-muted);
 }
 
 #main:has(> .record > .arc-record) > .page-header .header-title {
@@ -95,12 +128,16 @@
     outline-color: #ffffff;
 }
 
+/* Le bas du bandeau passe sous les cartes : la coupure se fait en douceur. */
 .arc-record > .arc-band {
     display: flex;
     flex-direction: column;
     gap: var(--18px);
     padding-top: var(--8px);
-    padding-bottom: var(--22px);
+    padding-bottom: calc(var(--22px) + var(--arc-band-overlap));
+    background:
+        radial-gradient(70rem 18rem at 100% 140%, rgba(0, 182, 237, 0.24), transparent 60%),
+        var(--arc-band-gradient);
 }
 
 .arc-band-row {
@@ -131,7 +168,7 @@
 
 /* Barre de boutons collée en haut au défilement : elle reste marine */
 .arc-band .detail-button-container.stick-sub {
-    background: var(--arc-band-bg);
+    background: var(--arc-band-gradient);
     border-bottom: 1px solid var(--arc-band-line);
     padding: var(--8px) var(--28px);
 }
@@ -161,24 +198,6 @@
     letter-spacing: -0.02em;
 }
 
-.arc-avatar-plus {
-    position: absolute;
-    right: -6px;
-    bottom: -6px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 22px;
-    height: 22px;
-    border: 3px solid var(--arc-band-bg);
-    border-radius: 50%;
-    background: var(--arc-signature);
-    color: var(--arc-n-900);
-    font-size: 15px;
-    font-weight: 800;
-    line-height: 1;
-}
-
 .arc-identity-text {
     min-width: 0;
 }
@@ -193,9 +212,68 @@
     overflow-wrap: anywhere;
 }
 
-.arc-identity-meta {
-    margin: var(--4px) 0 0;
+/* Personnes assignées et équipes */
+.arc-identity-people {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--8px) var(--18px);
+    margin-top: var(--8px);
+    font-size: var(--13px);
+}
+
+.arc-people-group {
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--6px);
+}
+
+.arc-people-label {
     color: var(--arc-band-muted);
+}
+
+.arc-person {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--6px);
+    padding: 2px var(--10px) 2px 2px;
+    border-radius: var(--arc-radius-pill);
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--arc-band-text);
+    font-weight: 500;
+    text-decoration: none;
+}
+
+a.arc-person:hover,
+a.arc-person:focus-visible {
+    background: rgba(255, 255, 255, 0.2);
+    color: var(--arc-band-text);
+    text-decoration: none;
+}
+
+.arc-person.arc-team,
+.arc-person.arc-person-empty {
+    padding-left: var(--10px);
+}
+
+.arc-person.arc-person-empty {
+    background: transparent;
+    box-shadow: inset 0 0 0 1px var(--arc-band-line);
+    color: var(--arc-band-muted);
+}
+
+.arc-person-avatar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: #ffffff;
+    color: var(--arc-band-bg);
+    font-size: 10px;
+    font-weight: 700;
 }
 
 /* Parcours de pipeline */
@@ -329,15 +407,17 @@ button.arc-step-inner:focus-visible {
 
 /* ===== Deux colonnes ===== */
 .arc-record .record-grid.arc-record-grid {
+    position: relative;
     display: flex;
     flex-wrap: wrap;
     align-items: flex-start;
     gap: var(--20px);
-    margin-top: var(--24px);
+    margin-top: calc(var(--arc-band-overlap) * -1);
     container-type: inline-size;
 }
 
 .arc-record .arc-record-grid > .arc-inspector {
+    position: relative;
     flex: 0 1 360px;
     max-width: 100%;
     width: auto;
@@ -350,13 +430,60 @@ button.arc-step-inner:focus-visible {
     box-shadow: var(--arc-shadow-xs);
 }
 
-.arc-record .arc-record-grid > .arc-main {
+.arc-record .arc-record-grid > .arc-main,
+.arc-record .arc-record-grid > .arc-content-column {
     flex: 1 1 480px;
     min-width: 0;
+}
+
+.arc-record .arc-main,
+.arc-record .arc-content-card {
     background: var(--arc-surface);
     border: 1px solid var(--arc-border);
     border-radius: var(--arc-radius-lg);
     box-shadow: var(--arc-shadow-xs);
+}
+
+/* Variante « contenu » (entités à texte riche) : les champs en tête de la colonne principale */
+.arc-record .arc-content-column {
+    display: flex;
+    flex-direction: column;
+    gap: var(--20px);
+}
+
+.arc-content-card {
+    padding: var(--4px) var(--20px) var(--12px);
+}
+
+.arc-content-card .middle > .panel {
+    margin: 0;
+    background: transparent;
+    border: 0;
+    border-bottom: 1px solid var(--arc-n-100);
+    border-radius: 0;
+    box-shadow: none;
+}
+
+.arc-content-card .middle > .panel:last-child {
+    border-bottom: 0;
+}
+
+.arc-content-card .middle > .panel > .panel-heading {
+    padding-left: 0;
+    padding-right: 0;
+    background: transparent;
+    border: 0;
+}
+
+.arc-content-card .middle > .panel > .panel-heading .panel-title {
+    font-family: var(--arc-font-display);
+    font-size: var(--17px);
+    font-weight: 700;
+}
+
+.arc-content-card .middle > .panel > .panel-body {
+    padding-left: 0;
+    padding-right: 0;
 }
 
 @container (max-width: 880px) {
@@ -589,11 +716,14 @@ button.arc-step-inner:focus-visible {
 
 .arc-bottom.arc-tab-activity > .arc-composer { order: 0; }
 .arc-bottom.arc-tab-activity > .panel[data-name="stream"] > .panel-body > .post-container { order: 1; }
-.arc-bottom.arc-tab-activity > .panel[data-name="activities"] { order: 2; }
-.arc-bottom.arc-tab-activity > .panel[data-name="tasks"] { order: 3; }
-.arc-bottom.arc-tab-activity > .panel[data-name="history"] { order: 4; }
-.arc-bottom.arc-tab-activity > .panel[data-name="stream"] > .panel-heading { order: 5; padding: 0; }
-.arc-bottom.arc-tab-activity > .panel[data-name="stream"] > .panel-body > .list-container { order: 6; }
+.arc-bottom.arc-tab-activity > .panel[data-name="stream"] > .panel-heading {
+    order: var(--arc-stream-order, 2);
+    padding: 0;
+}
+
+.arc-bottom.arc-tab-activity > .panel[data-name="stream"] > .panel-body > .list-container {
+    order: var(--arc-stream-list-order, 3);
+}
 
 .arc-composer {
     position: relative;
@@ -608,7 +738,8 @@ button.arc-step-inner:focus-visible {
     border-radius: var(--arc-radius-lg) var(--arc-radius-lg) 0 0;
 }
 
-.arc-composer::before {
+.arc-composer::before,
+.arc-record .arc-inspector::before {
     content: "";
     position: absolute;
     top: -1px;
@@ -619,6 +750,13 @@ button.arc-step-inner:focus-visible {
     border-left: 3px solid var(--arc-signature);
     border-top-left-radius: var(--arc-radius-lg);
     pointer-events: none;
+}
+
+.arc-composer.arc-composer-solo {
+    margin-bottom: 0;
+    padding-bottom: var(--14px);
+    border-bottom: 1px solid var(--arc-border);
+    border-radius: var(--arc-radius-lg);
 }
 
 .arc-composer-button {

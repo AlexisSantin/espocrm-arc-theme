@@ -27,7 +27,9 @@ export default class RecordDetailHandler {
             return;
         }
 
-        view.template = 'arc-theme:record/detail';
+        // Un texte riche (article, contenu) a besoin de largeur : la variante « contenu »
+        // place les champs dans la colonne principale et garde le suivi dans l'inspecteur.
+        view.template = this.hasRichText() ? 'arc-theme:record/detail-content' : 'arc-theme:record/detail';
 
         const [sideView, bottomView] = await Promise.all([
             derive(view.sideView, 'side', arcDetailSide),
@@ -43,6 +45,16 @@ export default class RecordDetailHandler {
         view.createBottomView();
 
         new RecordBand(view).init();
+    }
+
+    /**
+     * @private
+     * @return {boolean}
+     */
+    hasRichText() {
+        const fields = this.view.getMetadata().get(['entityDefs', this.view.entityType, 'fields']) || {};
+
+        return Object.values(fields).some(field => field.type === 'wysiwyg' && !field.disabled);
     }
 
     /**

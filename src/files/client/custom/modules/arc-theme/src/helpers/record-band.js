@@ -1,24 +1,12 @@
 import PipelinesHelper from 'helpers/misc/pipelines';
 import {el} from 'arc-theme:arc';
 
-/**
- * Attributs affichés sous le nom, dans l'ordre, quand ils ont une valeur.
- *
- * @type {Object.<string, string[]>}
- */
-const SUBTITLE_ATTRIBUTES = {
-    Lead: ['title', 'accountName', 'addressCity'],
-    Contact: ['title', 'accountName', 'addressCity'],
-    Account: ['type', 'industry', 'billingAddressCity'],
-    Opportunity: ['accountName', 'stage'],
-    Case: ['accountName', 'status'],
-};
-
 /** Étapes de clôture négative : proposées à part plutôt que sur le parcours. */
 const OFF_PATH_STYLES = ['danger'];
 
 /**
- * Bandeau de la fiche : identité (avatar, nom, informations clés) et parcours de pipeline.
+ * Bandeau de la fiche : identité (avatar, nom, personnes assignées, équipes)
+ * et parcours de pipeline.
  */
 export default class RecordBand {
 
@@ -73,14 +61,13 @@ export default class RecordBand {
         const text = el('div', 'arc-identity-text');
 
         avatar.setAttribute('aria-hidden', 'true');
-        avatar.append(el('span', 'arc-avatar-plus', '+'));
 
         text.append(el('p', 'arc-identity-name', name));
 
-        const parts = this.getSubtitleParts();
+        const people = this.buildPeople();
 
-        if (parts.length) {
-            text.append(el('p', 'arc-identity-meta', parts.join(' · ')));
+        if (people) {
+            text.append(people);
         }
 
         wrapper.append(avatar, text);
@@ -97,7 +84,7 @@ export default class RecordBand {
         const words = name.trim().split(/\s+/).filter(word => /[\p{L}\p{N}]/u.test(word));
 
         if (!words.length) {
-            return '+';
+            return [...this.view.translate(this.entityType, 'scopeNames')][0].toUpperCase();
         }
 
         const letters = words.length === 1 ?
@@ -108,50 +95,94 @@ export default class RecordBand {
     }
 
     /**
+     * Personnes assignées et équipes, selon les champs de l'entité et les droits de lecture.
+     *
      * @private
-     * @return {string[]}
+     * @return {HTMLElement|null}
      */
-    getSubtitleParts() {
-        const attributes = SUBTITLE_ATTRIBUTES[this.entityType] || [];
+    buildPeople() {
         const forbidden = this.view.getAcl().getScopeForbiddenFieldList(this.entityType, 'read');
+        const container = el('div', 'arc-identity-people');
 
-        return attributes
-            .filter(attribute => !forbidden.includes(this.getFieldOfAttribute(attribute)))
-            .map(attribute => {
-                const value = this.model.get(attribute);
+        const users = this.getAssignedUsers(forbidden);
 
-                if (value === null || value === undefined || value === '') {
-                    return null;
-                }
+        if (users) {
+            const chips = users.length ?
+                users.map(user => this.buildUserChip(user)) :
+                [el('span', 'arc-person arc-person-empty', this.view.translate('arcUnassigned', 'labels', 'Global'))];
 
-                if (this.model.getFieldType(attribute) === 'enum') {
-                    return this.view.getLanguage().translateOption(value, attribute, this.entityType);
-                }
+            container.append(this.buildGroup(this.view.translate('arcAssigned', 'labels', 'Global'), chips));
+        }
 
-                return String(value);
-            })
-            .filter(Boolean);
+        if (this.model.hasField('teams') && !forbidden.includes('teams')) {
+            const ids = this.model.get('teamsIds') || [];
+            const names = this.model.get('teamsNames') || {};
+
+            if (ids.length) {
+                container.append(this.buildGroup(
+                    this.view.translate('teams', 'fields', this.entityType),
+                    ids.map(id => el('span', 'arc-person arc-team', names[id] || id))
+                ));
+            }
+        }
+
+        return container.childElementCount ? container : null;
     }
 
     /**
      * @private
-     * @param {string} attribute
-     * @return {string}
+     * @param {string[]} forbidden
+     * @return {{id: string, name: string}[]|null} Null si l'entité n'a pas de champ d'assignation lisible.
      */
-    getFieldOfAttribute(attribute) {
-        if (this.model.hasField(attribute)) {
-            return attribute;
+    getAssignedUsers(forbidden) {
+        if (this.model.hasField('assignedUsers') && !forbidden.includes('assignedUsers')) {
+            const names = this.model.get('assignedUsersNames') || {};
+
+            return (this.model.get('assignedUsersIds') || []).map(id => ({id, name: names[id] || id}));
         }
 
-        for (const suffix of ['Name', 'City']) {
-            const field = attribute.slice(0, -suffix.length);
+        if (this.model.hasField('assignedUser') && !forbidden.includes('assignedUser')) {
+            const id = this.model.get('assignedUserId');
 
-            if (attribute.endsWith(suffix) && this.model.hasField(field)) {
-                return field;
-            }
+            return id ? [{id, name: this.model.get('assignedUserName') || id}] : [];
         }
 
-        return attribute;
+        return null;
+    }
+
+    /**
+     * @private
+     * @param {string} label
+     * @param {HTMLElement[]} chips
+     * @return {HTMLElement}
+     */
+    buildGroup(label, chips) {
+        const group = el('span', 'arc-people-group');
+
+        group.append(el('span', 'arc-people-label', label), ...chips);
+
+        return group;
+    }
+
+    /**
+     * @private
+     * @param {{id: string, name: string}} user
+     * @return {HTMLElement}
+     */
+    buildUserChip(user) {
+        const canOpen = this.view.getAcl().checkScope('User', 'read');
+        const chip = el(canOpen ? 'a' : 'span', 'arc-person');
+
+        if (canOpen) {
+            chip.href = `#User/view/${user.id}`;
+        }
+
+        const initials = el('span', 'arc-person-avatar', this.getInitials(user.name));
+
+        initials.setAttribute('aria-hidden', 'true');
+        chip.append(initials, el('span', '', user.name));
+
+        return chip;
     }
 
     /**

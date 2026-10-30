@@ -12,8 +12,24 @@
 }
 
 #main > .list-container > .list {
+    position: relative;
     margin-left: 0;
     margin-right: 0;
+}
+
+/* Coin cyan, signature des cartes Arc (dans le cadre : la liste découpe ce qui dépasse) */
+#main > .list-container > .list::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 3;
+    width: 21px;
+    height: 21px;
+    border-top: 3px solid var(--arc-signature);
+    border-left: 3px solid var(--arc-signature);
+    border-top-left-radius: calc(var(--arc-radius-lg) - 1px);
+    pointer-events: none;
 }
 
 #main > .list-container > .list > table,

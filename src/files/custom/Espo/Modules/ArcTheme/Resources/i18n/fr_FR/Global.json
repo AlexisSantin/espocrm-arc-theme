@@ -10,6 +10,8 @@
         "arcEmail": "E-mail",
         "arcNewActivity": "Nouvelle activité",
         "arcPipelineStep": "étape {current} sur {total}",
-        "arcMarkStage": "Marquer « {stage} »"
+        "arcMarkStage": "Marquer « {stage} »",
+        "arcAssigned": "Assigné à",
+        "arcUnassigned": "Non assigné"
     }
 }

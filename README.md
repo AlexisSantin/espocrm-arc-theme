@@ -18,17 +18,26 @@ A light EspoCRM theme with a modern SaaS look, built on the UTT palette
 
 Under the Arc theme, detail views of CRM entities use a two-column layout:
 
-- **Band**: navy header with breadcrumbs, avatar (initials), name, key attributes
-  (title, account, city…), record actions and, when the entity uses an active pipeline,
-  the stage path (click a stage to move the record, if the user may edit the stage).
-  An inactive pipeline only shows the current stage.
+- **Band**: full-width navy gradient (it runs under the top bar, and the cards overlap its
+  lower edge) with breadcrumbs, avatar (initials), name, assigned user(s) and teams,
+  record actions and, when the entity uses an active pipeline, the stage path (click a
+  stage to move the record, if the user may edit the stage). An inactive pipeline only
+  shows the current stage.
 - **About** (left): the detail layout panels as a compact property inspector, then the
   default side panel (assigned user, teams, dates) and any other side panel.
 - **Main column** (right): an **Activity** tab — quick actions (Note, Email, Call, Meeting,
-  Task, each shown only if the native panel offers it), activities, tasks, history and the
-  stream as a timeline — then one tab per relationship panel with its count. Tab breaks
+  Task, each shown only if the native panel offers it), then activities, tasks, history and
+  the stream as a timeline, in the bottom panel layout order — then one tab per relationship
+  panel with its count. Tab breaks
   defined in the bottom panel layout group their panels under their label. Tabs that do not
   fit go to **More**.
+
+Entities with a rich text (wysiwyg) field, such as knowledge base articles, use a content
+variant: their fields sit at the top of the main column, full width, and the inspector keeps
+the side panels only.
+
+The cyan corner bracket is the Arc signature: it marks the property inspector, the quick
+actions, list cards and the login card.
 
 It is applied by a `record/detail` view setup handler (`src/handlers/record-detail.js`) that
 derives the side and bottom views configured for the entity instead of replacing them, so
@@ -81,6 +90,7 @@ src/files/client/custom/modules/arc-theme/
     css/arc-float-labels.css          floating labels
     css/arc-iframe.css                rich text editor iframe
     res/templates/record/detail.tpl   record view template (band, inspector, main column)
+    res/templates/record/detail-content.tpl  variant for entities with rich text
     src/arc.js                        shared constants and helpers
     src/handlers/record-detail.js     applies the record view under the Arc theme
     src/helpers/record-band.js        band: identity and pipeline stage path

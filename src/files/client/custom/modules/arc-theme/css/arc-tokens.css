@@ -90,6 +90,8 @@
     --arc-band-text: #ffffff;
     --arc-band-muted: #c3c6e6;
     --arc-band-line: rgba(255, 255, 255, 0.24);
+    --arc-band-gradient: linear-gradient(90deg, #17194a 0%, #24266b 55%, #1d3c80 100%);
+    --arc-band-overlap: var(--32px);
     --arc-tracking-tight: -0.02em;
     --arc-tracking-body: -0.006em;
 
