@@ -3,15 +3,15 @@
  * Couches : thème light d'origine -> tokens Arc -> variables Espo -> composants.
  */
 @import "../../../../css/espo/light.css";
-@import "arc-fonts.css?v=0.5.0";
-@import "arc-tokens.css?v=0.5.0";
-@import "arc-espo-vars.css?v=0.5.0";
-@import "arc-base.css?v=0.5.0";
-@import "arc-shell.css?v=0.5.0";
-@import "arc-controls.css?v=0.5.0";
-@import "arc-data.css?v=0.5.0";
-@import "arc-record.css?v=0.5.0";
-@import "arc-detail.css?v=0.5.0";
-@import "arc-overlays.css?v=0.5.0";
-@import "arc-login.css?v=0.5.0";
-@import "arc-float-labels.css?v=0.5.0";
+@import "arc-fonts.css?v=0.6.0";
+@import "arc-tokens.css?v=0.6.0";
+@import "arc-espo-vars.css?v=0.6.0";
+@import "arc-base.css?v=0.6.0";
+@import "arc-shell.css?v=0.6.0";
+@import "arc-controls.css?v=0.6.0";
+@import "arc-data.css?v=0.6.0";
+@import "arc-record.css?v=0.6.0";
+@import "arc-detail.css?v=0.6.0";
+@import "arc-overlays.css?v=0.6.0";
+@import "arc-login.css?v=0.6.0";
+@import "arc-float-labels.css?v=0.6.0";

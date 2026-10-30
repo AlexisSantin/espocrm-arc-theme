@@ -1,6 +1,7 @@
 import {isArcTheme} from 'arc-theme:arc';
 import RecordBand from 'arc-theme:helpers/record-band';
 import EmptyFields from 'arc-theme:helpers/empty-fields';
+import PanelCollapse from 'arc-theme:helpers/panel-collapse';
 import arcDetailBottom from 'arc-theme:mixins/detail-bottom';
 
 /** Entités dont la fiche a une mise en page propre, laissée à EspoCRM. */
@@ -48,6 +49,7 @@ export default class RecordDetailHandler {
 
         new RecordBand(view).init();
         new EmptyFields(view).init();
+        new PanelCollapse(view).init();
     }
 
     /**

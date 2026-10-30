@@ -30,8 +30,8 @@ body.arc-band-page {
 #main:has(> .record > .arc-record) > .page-header {
     margin-top: calc(var(--top-bar-height) * -1);
     margin-bottom: 0;
-    padding-top: calc(var(--top-bar-height) + var(--16px));
-    padding-bottom: var(--4px);
+    padding-top: calc(var(--top-bar-height) + var(--10px));
+    padding-bottom: 0;
 }
 
 /* Barre du haut posée sur le bandeau */
@@ -143,9 +143,9 @@ body:has(.arc-record) #navbar .navbar-right .global-search-container a.global-se
 .arc-record > .arc-band {
     display: flex;
     flex-direction: column;
-    gap: var(--18px);
-    padding-top: var(--8px);
-    padding-bottom: calc(var(--22px) + var(--arc-band-overlap));
+    gap: var(--12px);
+    padding-top: var(--4px);
+    padding-bottom: calc(var(--14px) + var(--arc-band-overlap));
 }
 
 .arc-band-row {
@@ -197,10 +197,10 @@ body:has(.arc-record) #navbar .navbar-right .global-search-container a.global-se
 .arc-identity-name {
     margin: 0;
     font-family: var(--arc-font-display);
-    font-size: var(--32px);
+    font-size: var(--28px);
     font-weight: 800;
-    letter-spacing: -0.025em;
-    line-height: 1.1;
+    letter-spacing: 0;
+    line-height: 1.05;
     overflow-wrap: anywhere;
 }
 
@@ -209,8 +209,8 @@ body:has(.arc-record) #navbar .navbar-right .global-search-container a.global-se
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: var(--8px) var(--18px);
-    margin-top: var(--8px);
+    gap: var(--6px) var(--18px);
+    margin-top: var(--6px);
     font-size: var(--13px);
 }
 
@@ -265,7 +265,7 @@ body:has(.arc-record) #navbar .navbar-right .global-search-container a.global-se
 .arc-band-pipeline {
     display: flex;
     flex-direction: column;
-    gap: var(--10px);
+    gap: var(--6px);
 }
 
 .arc-pipeline-head {
@@ -334,7 +334,7 @@ body:has(.arc-record) #navbar .navbar-right .global-search-container a.global-se
     justify-content: center;
     gap: var(--8px);
     width: 100%;
-    height: 40px;
+    height: 32px;
     padding: 0 var(--18px);
     border: 0;
     background: rgba(255, 255, 255, 0.06);
@@ -342,18 +342,18 @@ body:has(.arc-record) #navbar .navbar-right .global-search-container a.global-se
     font: inherit;
     font-weight: 500;
     white-space: nowrap;
-    clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 50%, calc(100% - 14px) 100%, 0 100%, 14px 50%);
+    clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 50%, calc(100% - 12px) 100%, 0 100%, 12px 50%);
     transition: background-color var(--arc-fast) ease, color var(--arc-fast) ease;
 }
 
 .arc-step:first-child .arc-step-inner {
-    clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 50%, calc(100% - 14px) 100%, 0 100%);
-    border-radius: 10px 0 0 10px;
+    clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 50%, calc(100% - 12px) 100%, 0 100%);
+    border-radius: 8px 0 0 8px;
 }
 
 .arc-step:last-child .arc-step-inner {
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 14px 50%);
-    border-radius: 0 10px 10px 0;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 12px 50%);
+    border-radius: 0 8px 8px 0;
 }
 
 .arc-step-label {
@@ -999,4 +999,86 @@ button.arc-step-inner:focus-visible {
 
 .arc-content-card > .arc-empty-toggle {
     margin-top: var(--8px);
+}
+
+/* ===== Blocs repliables (accordéons) ===== */
+.arc-collapsible {
+    cursor: pointer;
+}
+
+.arc-content-card .middle > .panel > .panel-heading.arc-collapsible {
+    display: flex;
+    align-items: center;
+    gap: var(--8px);
+}
+
+.arc-content-card .middle > .panel > .panel-heading.arc-collapsible > .panel-title {
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+.arc-record .arc-collapse {
+    flex: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 26px;
+    height: 26px;
+    margin-left: auto;
+    padding: 0;
+    border: 0;
+    border-radius: var(--arc-radius-sm);
+    background: transparent;
+    box-shadow: none;
+    color: var(--arc-text-faint);
+}
+
+.arc-record .arc-collapse:hover {
+    background: var(--arc-hover);
+    color: var(--arc-text);
+}
+
+.arc-record .arc-collapse .fas {
+    font-size: 11px;
+    transition: transform var(--arc-fast) var(--arc-ease);
+}
+
+.arc-collapsed > .panel-heading > .arc-collapse .fas,
+.arc-inspector.arc-collapsed > .arc-inspector-card .arc-collapse .fas {
+    transform: rotate(-90deg);
+}
+
+/* Replié : seul l'en-tête reste. En modification, tout est ouvert et le chevron disparaît. */
+.arc-record:not(:has(.arc-band .edit-buttons:not(.hidden))) .panel.arc-collapsed > :not(.panel-heading),
+.arc-record:not(:has(.arc-band .edit-buttons:not(.hidden))) .arc-inspector.arc-collapsed > .side > .panel[data-name="default"] {
+    display: none;
+}
+
+.arc-record:not(:has(.arc-band .edit-buttons:not(.hidden))) .arc-inspector.arc-collapsed:has(> .side > .panel[data-name="default"]) > .arc-inspector-card {
+    padding-bottom: var(--8px);
+    border-bottom: 1px solid var(--arc-border);
+    border-radius: var(--arc-radius-lg);
+    box-shadow: var(--arc-shadow-xs);
+}
+
+.arc-record:not(:has(.arc-band .edit-buttons:not(.hidden))) .arc-inspector.arc-collapsed > .arc-inspector-card .arc-inspector-title {
+    margin-bottom: 0;
+}
+
+.arc-record:not(:has(.arc-band .edit-buttons:not(.hidden))) .arc-inspector.arc-collapsed > .side {
+    margin-top: var(--16px);
+}
+
+.arc-record:has(.arc-band .edit-buttons:not(.hidden)) .arc-collapse {
+    display: none;
+}
+
+.arc-record:has(.arc-band .edit-buttons:not(.hidden)) .arc-collapsible {
+    cursor: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .arc-record .arc-collapse .fas {
+        transition: none;
+    }
 }

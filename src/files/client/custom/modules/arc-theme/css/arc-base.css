@@ -1,5 +1,5 @@
 /**
- * Base — typographie Geist, liens, focus clavier, sélection, barres de défilement.
+ * Base — typographie (Fira Sans), liens, focus clavier, sélection, barres de défilement.
  */
 :root, body { --theme-name: Arc !important; }
 

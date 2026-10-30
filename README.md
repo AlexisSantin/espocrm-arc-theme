@@ -11,7 +11,7 @@ A light EspoCRM theme with a modern SaaS look, built on the UTT palette
 - Status badges with a leading dot and soft tinted backgrounds (WCAG AA contrast).
 - One primary action per page header (Create); other actions stay secondary.
 - Keyboard focus ring on interactive elements, focus halo on fields, reduced-motion support.
-- Lexend for text (designed for reading) and Bricolage Grotesque for names and section titles (bundled, OFL). Labels use the same size as values; record links are coloured so what is clickable stands out.
+- UTT typefaces: Fira Sans for text (bundled, OFL) and Akrobat ExtraBold for names and section titles (Fontfabric font supplied by UTT, bundled unmodified as OTF; Fontfabric's free licence allows commercial use but forbids modifying the file). Labels use the same size as values; record links are coloured so what is clickable stands out.
 - Floating labels on simple text fields in edit views (`lib/float-labels.js`).
 - Dialogs centred at their natural height, actions at the bottom and always visible (only the body scrolls); dashboard blocks lift on hover.
 
@@ -36,6 +36,9 @@ Under the Arc theme, detail views of CRM entities use a two-column layout:
   one tab per relationship panel with its count. Tab breaks
   defined in the bottom panel layout group their panels under their label. Tabs that do not
   fit go to **More**.
+
+Every block (About, side panels, layout panels) collapses like an accordion: chevron or title click.
+The state is kept per user and record type in the browser; all blocks are open while editing.
 
 The cyan corner bracket is the Arc signature: it marks the About card, the quick
 actions, list cards and the login card.
@@ -111,7 +114,8 @@ src/files/client/custom/modules/arc-theme/
     src/handlers/record-detail.js     applies the record view under the Arc theme
     src/helpers/record-band.js        band: identity, people, pipeline stage path, page background
     src/helpers/empty-fields.js       hides empty fields in the inspector, with a toggle
+    src/helpers/panel-collapse.js     collapsible blocks (accordions), state kept per user and entity
     src/mixins/detail-bottom.js       bottom view: tabs, quick actions, counts
     lib/float-labels.js
-    fonts/Lexend-*.woff2, fonts/BricolageGrotesque-*.woff2, fonts/Geist-*.woff2 (+ OFL)
+    fonts/FiraSans-*.woff2 (+ OFL), fonts/Akrobat-ExtraBold.otf
 ```
