@@ -48,6 +48,17 @@ EspoCRM's own, so entity-specific behaviour (lead conversion, etc.) is kept. Ema
 layout, as do detail views shown in modals. Panel actions, inline editing and ACL are the
 native ones.
 
+## Install
+
+Requires EspoCRM 10.0.x (10.0.3 or later, below 10.1) and PHP 8.3+.
+
+1. Download `arc-theme-<version>.zip` from the GitHub release.
+2. In EspoCRM: **Administration > Extensions > Upload**, choose the ZIP, then **Install**.
+3. Select **Arc** in **Administration > User Interface > Theme** (system default, also used on
+   the login page) or per user in **Preferences**.
+
+Updates install the same way, over the previous version.
+
 ## Install (dev)
 
 ```bash
@@ -68,6 +79,10 @@ npm run extension     # build/*.zip
 
 The CSS files imported by `arc.css` and `arc-iframe.css` carry `?v=<version>` so browsers
 do not keep stale copies: bump it together with `package.json` on every release.
+
+The module is bundled: in production EspoCRM loads `lib/module-arc-theme.js` through
+`lib/init.js`, which `app/client.json` lists in `scriptList` (developer mode loads the
+transpiled sources instead, so test a release on an instance with developer mode off).
 
 ## Structure
 
