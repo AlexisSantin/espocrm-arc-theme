@@ -15,12 +15,12 @@ body[data-navbar="side"] #navbar > .navbar .navbar-header {
 
 /* Logo EspoCRM par défaut (bleu-gris) passé en blanc ; un logo d'entreprise reste tel quel */
 body[data-navbar="side"] #navbar .navbar-brand img[src*="img/logo-light.svg"] {
-    filter: brightness(0) invert(1);
-    opacity: 0.92;
+    filter: var(--arc-sidebar-logo-filter);
+    opacity: var(--arc-sidebar-logo-opacity);
 }
 
 body[data-navbar="side"] #navbar ul.tabs {
-    scrollbar-color: rgba(255, 255, 255, 0.18) transparent;
+    scrollbar-color: var(--arc-sidebar-scroll) transparent;
 }
 
 body[data-navbar="side"] #navbar ul.tabs > li.tab > a,
@@ -36,13 +36,13 @@ body[data-navbar="side"] #navbar ul.tabs > li.more > a {
 body[data-navbar="side"] #navbar ul.tabs > li.tab > a:hover,
 body[data-navbar="side"] #navbar ul.tabs > li.more > a:hover {
     background-color: var(--arc-sidebar-hover);
-    color: #ffffff;
+    color: var(--arc-sidebar-strong);
 }
 
 body[data-navbar="side"] #navbar ul.tabs > li.tab.active > a,
 body[data-navbar="side"] #navbar ul.tabs > li.tab.active > a:hover {
     background-color: var(--arc-sidebar-active);
-    color: #ffffff;
+    color: var(--arc-sidebar-strong);
 }
 
 body[data-navbar="side"] #navbar ul.tabs > li.tab.active > a::before {
@@ -74,7 +74,7 @@ body[data-navbar="side"] #navbar a.minimizer {
 }
 
 body[data-navbar="side"] #navbar a.minimizer:hover {
-    color: #ffffff;
+    color: var(--arc-sidebar-strong);
 }
 
 /* ===== Barre du haut ===== */
@@ -180,7 +180,7 @@ body[data-navbar="top"] #navbar .navbar {
 .page-header .header-buttons .btn[data-name="create"] {
     background-color: var(--arc-brand);
     border-color: var(--arc-brand);
-    color: #ffffff;
+    color: var(--arc-sidebar-strong);
     box-shadow: var(--arc-shadow-primary);
 }
 

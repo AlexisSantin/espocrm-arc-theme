@@ -17,6 +17,7 @@
         "arcShowEmptyMany": "Afficher les {count} champs vides",
         "arcHideEmpty": "Masquer les champs vides",
         "arcCollapse": "Réduire « {panel} »",
-        "arcExpand": "Développer « {panel} »"
+        "arcExpand": "Développer « {panel} »",
+        "arcSections": "Sections de la fiche"
     }
 }

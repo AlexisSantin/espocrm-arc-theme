@@ -53,14 +53,16 @@
     --arc-surface-sunken: var(--arc-n-25);
     --arc-border: var(--arc-n-150);
     --arc-border-strong: var(--arc-n-200);
-    --arc-border-input: var(--arc-n-300);
+    /* Contour des champs : 3:1 au moins sur blanc (RGAA 3.3) */
+    --arc-border-input: #868b98;
     --arc-hover: var(--arc-n-100);
 
     /* Texte */
     --arc-text: var(--arc-n-900);
     --arc-text-secondary: var(--arc-n-600);
     --arc-text-muted: var(--arc-n-500);
-    --arc-text-faint: var(--arc-n-400);
+    /* Texte le plus pâle encore lisible : 4,5:1 au moins sur blanc et sur le fond de page (RGAA 3.2) */
+    --arc-text-faint: #6b7180;
 
     /* Rayons */
     --arc-radius-sm: 6px;
@@ -94,15 +96,29 @@
     --arc-band-glow: radial-gradient(60rem 22rem at 100% 0%, rgba(0, 182, 237, 0.24), transparent 60%);
     --arc-band-topbar: rgba(10, 25, 43, 0.72);
     --arc-band-overlap: var(--24px);
+    --arc-band-divider: rgba(255, 255, 255, 0.08);
+    --arc-band-fill-1: rgba(255, 255, 255, 0.06);
+    --arc-band-fill-2: rgba(255, 255, 255, 0.10);
+    --arc-band-fill-3: rgba(255, 255, 255, 0.16);
+    --arc-band-fill-4: rgba(255, 255, 255, 0.22);
+    --arc-band-line-strong: rgba(255, 255, 255, 0.4);
+    --arc-band-focus: #ffffff;
+    --arc-band-avatar-bg: #ffffff;
+    --arc-band-avatar-text: var(--arc-band-bg);
 
     /* Menu latéral : même encre que le début du bandeau, pour un L continu sur les fiches */
     --arc-sidebar-bg: #0a192b;
     --arc-sidebar-glow: radial-gradient(28rem 20rem at 0% 100%, rgba(0, 182, 237, 0.14), transparent 65%);
     --arc-sidebar-text: #c6d3df;
-    --arc-sidebar-muted: #7f93a8;
+    --arc-sidebar-muted: #8fa4b9;
     --arc-sidebar-line: rgba(255, 255, 255, 0.07);
     --arc-sidebar-hover: rgba(255, 255, 255, 0.07);
     --arc-sidebar-active: rgba(255, 255, 255, 0.11);
+    --arc-sidebar-strong: #ffffff;
+    --arc-sidebar-scroll: rgba(255, 255, 255, 0.18);
+    --arc-sidebar-focus: var(--arc-signature);
+    --arc-sidebar-logo-filter: brightness(0) invert(1);
+    --arc-sidebar-logo-opacity: 0.92;
     --arc-tracking-tight: -0.02em;
     --arc-tracking-body: 0;
 

@@ -33,6 +33,14 @@ button:focus-visible,
     outline-offset: 2px;
 }
 
+/* Sur le menu latéral et la barre du haut des fiches (fonds foncés), l'anneau passe en cyan */
+body[data-navbar="side"] #navbar > .navbar a:focus-visible,
+body[data-navbar="side"] #navbar > .navbar button:focus-visible,
+body:has(.arc-record) #navbar .navbar-right a:focus-visible,
+body:has(.arc-record) #navbar .navbar-right input:focus-visible {
+    outline-color: var(--arc-sidebar-focus);
+}
+
 a:focus:not(:focus-visible),
 button:focus:not(:focus-visible),
 .btn:focus:not(:focus-visible) {
@@ -57,4 +65,16 @@ input[type="radio"] {
 
 #footer {
     font-size: var(--12px);
+}
+
+/* Mouvements réduits à la demande du système (RGAA 13.8) */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
 }

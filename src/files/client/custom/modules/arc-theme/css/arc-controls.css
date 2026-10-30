@@ -74,7 +74,7 @@
 }
 
 .form-control:hover:not(:focus):not([disabled]):not([readonly]) {
-    border-color: var(--arc-n-400);
+    border-color: var(--arc-n-500);
 }
 
 .form-control:focus {

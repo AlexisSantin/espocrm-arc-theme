@@ -17,6 +17,7 @@
         "arcShowEmptyMany": "Show {count} empty fields",
         "arcHideEmpty": "Hide empty fields",
         "arcCollapse": "Collapse {panel}",
-        "arcExpand": "Expand {panel}"
+        "arcExpand": "Expand {panel}",
+        "arcSections": "Record sections"
     }
 }

@@ -12,7 +12,8 @@ A light EspoCRM theme with a modern SaaS look, built on the UTT palette
 - One primary action per page header (Create); other actions stay secondary.
 - Keyboard focus ring on interactive elements, focus halo on fields, reduced-motion support.
 - Lexend for text (designed for reading) and Bricolage Grotesque for names and section titles (bundled, OFL). Labels use the same size as values; record links are coloured so what is clickable stands out.
-- Dialogs centred at their natural height, actions at the bottom and always visible (only the body scrolls); dashboard blocks lift on hover.
+- Dialogs keep EspoCRM's side panel; records opened in it keep a margin so their cards are not cut by the panel edge. Dashboard blocks lift on hover.
+- Accessibility (RGAA / WCAG 2.1 AA): text contrast ≥ 4.5:1 and form field borders ≥ 3:1, visible keyboard focus on dark areas, reduced motion, record name as the page heading, pipeline steps wrap instead of being cut, document language and zoom restored (`src/handlers/page-a11y.js`). Band and sidebar colours are tokens (`--arc-band-*`, `--arc-sidebar-*`).
 
 ## Record view
 
@@ -112,6 +113,7 @@ src/files/client/custom/modules/arc-theme/
     src/handlers/record-detail.js     applies the record view under the Arc theme
     src/helpers/record-band.js        band: identity, people, pipeline stage path, page background
     src/helpers/empty-fields.js       hides empty fields in the inspector, with a toggle
+    src/handlers/page-a11y.js         document language and zoom (list, detail, edit, login)
     src/helpers/panel-collapse.js     collapsible blocks (accordions), state kept per user and entity
     src/mixins/detail-bottom.js       bottom view: tabs, quick actions, counts
     fonts/Lexend-*.woff2, fonts/BricolageGrotesque-*.woff2 (+ OFL)

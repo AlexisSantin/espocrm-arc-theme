@@ -115,7 +115,8 @@ export default class RecordBand {
         const wrapper = el('div', 'arc-identity');
         const text = el('div', 'arc-identity-text');
 
-        text.append(el('p', 'arc-identity-name', name));
+        // Titre principal de la page (RGAA 9.1) : le fil d'Ariane d'EspoCRM n'est qu'un h3.
+        text.append(el('h1', 'arc-identity-name', name));
 
         const people = this.buildPeople();
 

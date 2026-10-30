@@ -213,7 +213,10 @@ export default function arcDetailBottom(Base) {
         arcBuildTabBar(tabs, visibleCount) {
             const bar = el('div', 'arc-tabbar');
 
-            bar.setAttribute('role', 'tablist');
+            // Boutons à état (aria-pressed) dans un groupe nommé : le modèle « onglets » d'ARIA
+            // supposerait un panneau par onglet et une navigation aux flèches.
+            bar.setAttribute('role', 'group');
+            bar.setAttribute('aria-label', this.translate('arcSections', 'labels', 'Global'));
 
             const visible = tabs.slice(0, visibleCount);
             const overflow = tabs.slice(visibleCount);
@@ -228,7 +231,9 @@ export default function arcDetailBottom(Base) {
                 toggle.type = 'button';
                 toggle.dataset.toggle = 'dropdown';
                 toggle.dataset.arcTab = MORE_TAB;
-                toggle.setAttribute('aria-selected', current ? 'true' : 'false');
+                toggle.setAttribute('aria-haspopup', 'true');
+                toggle.setAttribute('aria-expanded', 'false');
+                toggle.setAttribute('aria-pressed', current ? 'true' : 'false');
                 toggle.append(current ? current.label : this.translate('arcMore', 'labels', 'Global'));
                 toggle.append(el('span', 'caret'));
 
@@ -241,8 +246,21 @@ export default function arcDetailBottom(Base) {
                     link.setAttribute('role', 'button');
                     link.tabIndex = 0;
                     link.dataset.arcTab = tab.id;
+
+                    if (tab.id === this.arcTab) {
+                        link.setAttribute('aria-current', 'true');
+                    }
+
                     link.append(el('span', '', tab.label), el('span', 'arc-tab-count', ''));
                     link.addEventListener('click', () => this.arcSelectTab(tab.id));
+
+                    // Un lien sans adresse ne réagit pas à Entrée : le clavier passe par ici.
+                    link.addEventListener('keydown', event => {
+                        if (event.key === 'Enter' || event.key === ' ') {
+                            event.preventDefault();
+                            this.arcSelectTab(tab.id);
+                        }
+                    });
 
                     item.append(link);
                     menu.append(item);
@@ -265,8 +283,7 @@ export default function arcDetailBottom(Base) {
 
             button.type = 'button';
             button.dataset.arcTab = tab.id;
-            button.setAttribute('role', 'tab');
-            button.setAttribute('aria-selected', tab.id === this.arcTab ? 'true' : 'false');
+            button.setAttribute('aria-pressed', tab.id === this.arcTab ? 'true' : 'false');
             button.append(el('span', 'arc-tab-label', tab.label));
 
             if (tab.id !== ACTIVITY_TAB) {

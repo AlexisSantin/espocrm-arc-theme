@@ -70,27 +70,24 @@
     overscroll-behavior: contain;
 }
 
-/*
- * Fenêtres centrées à leur hauteur naturelle, boutons en bas (réglages du thème dans Arc.json) :
- * EspoCRM 10 les colle sinon au bord droit, prévues pour la pleine hauteur.
- */
+/* Panneau latéral d'EspoCRM 10 (pleine hauteur, collé à droite) : arrondi côté page seulement */
 @media (min-width: 768px) {
-    .modal-dialog {
-        margin: var(--40px) auto;
+    .modal:not(.dialog-confirm):not(.dialog-centered) > .modal-dialog > .modal-content {
+        border-top: 0;
+        border-right: 0;
+        border-bottom: 0;
+        border-radius: var(--arc-radius-xl) 0 0 var(--arc-radius-xl);
     }
+}
 
-    /* Seul le contenu défile : le titre et les boutons restent à l'écran */
-    .modal-dialog > .modal-content {
-        display: flex;
-        flex-direction: column;
-        max-height: calc(100vh - 2 * var(--40px));
-    }
-
-    .modal-dialog > .modal-content > .modal-body {
-        flex: 1 1 auto;
-        min-height: 0;
-        overflow-y: auto;
-    }
+/*
+ * EspoCRM étire la fiche jusqu'aux bords du panneau ; Arc dessine ses blocs en cartes bordées,
+ * qui seraient alors coupées par le bord : elles gardent la marge du panneau.
+ */
+.modal-body > .record.no-side-margin,
+.modal-body > .record-container.no-side-margin {
+    margin-left: 0;
+    margin-right: 0;
 }
 
 .modal-backdrop.in {
