@@ -1,4 +1,3 @@
-import PipelinesHelper from 'helpers/misc/pipelines';
 import {el} from 'arc-theme:arc';
 
 /** Étapes de clôture négative : proposées à part plutôt que sur le parcours. */
@@ -17,7 +16,6 @@ export default class RecordBand {
         this.view = view;
         this.model = view.model;
         this.entityType = view.entityType;
-        this.pipelines = new PipelinesHelper();
     }
 
     init() {
@@ -358,11 +356,30 @@ export default class RecordBand {
     }
 
     /**
+     * Lu dans les métadonnées et les paramètres de l'application plutôt qu'avec l'aide
+     * d'EspoCRM : le thème ne dépend ainsi d'aucun module qui pourrait changer d'une version à l'autre.
+     *
+     * @private
+     * @return {boolean}
+     */
+    pipelinesEnabled() {
+        return this.view.getMetadata().get(['scopes', this.entityType, 'pipelines']) === true;
+    }
+
+    /**
+     * @private
+     * @return {{id: string, stages: {id: string, name: string, style: string|null}[]}[]}
+     */
+    getPipelines() {
+        return (this.view.getHelper().getAppParam('pipelines') || {})[this.entityType] || [];
+    }
+
+    /**
      * @private
      * @return {boolean}
      */
     canReadStage() {
-        if (!this.pipelines.isEnabled(this.entityType) || !this.model.hasField('pipelineStage')) {
+        if (!this.pipelinesEnabled() || !this.model.hasField('pipelineStage')) {
             return false;
         }
 
@@ -379,7 +396,7 @@ export default class RecordBand {
         }
 
         const pipelineId = this.model.get('pipelineId');
-        const pipeline = this.pipelines.get(this.entityType).find(item => item.id === pipelineId);
+        const pipeline = this.getPipelines().find(item => item.id === pipelineId);
 
         return pipeline && pipeline.stages && pipeline.stages.length ? pipeline : null;
     }

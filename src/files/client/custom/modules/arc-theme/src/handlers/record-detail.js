@@ -27,11 +27,20 @@ export default class RecordDetailHandler {
             return;
         }
 
-        // Un texte riche (article, contenu) a besoin de largeur : la variante « contenu »
-        // place les champs dans la colonne principale et garde le suivi dans l'inspecteur.
-        view.template = this.hasRichText() ? 'arc-theme:record/detail-content' : 'arc-theme:record/detail';
+        let bottomView;
 
-        view.bottomView = await derive(view.bottomView, 'bottom', arcDetailBottom);
+        try {
+            bottomView = await derive(view.bottomView, 'bottom', arcDetailBottom);
+        } catch (e) {
+            // Version d'EspoCRM inattendue : la fiche reste celle d'EspoCRM plutôt que de bloquer.
+            console.warn('Arc : fiche EspoCRM conservée.', e);
+
+            return;
+        }
+
+        // Champs de la disposition dans la colonne principale, suivi et activités dans « À propos ».
+        view.template = 'arc-theme:record/detail';
+        view.bottomView = bottomView;
 
         // build() a déjà créé la vue du bas d'origine sans attendre ce gestionnaire ;
         // le rendu, lui, l'attend : on la recrée avant qu'elle ne s'affiche.
@@ -39,16 +48,6 @@ export default class RecordDetailHandler {
 
         new RecordBand(view).init();
         new EmptyFields(view).init();
-    }
-
-    /**
-     * @private
-     * @return {boolean}
-     */
-    hasRichText() {
-        const fields = this.view.getMetadata().get(['entityDefs', this.view.entityType, 'fields']) || {};
-
-        return Object.values(fields).some(field => field.type === 'wysiwyg' && !field.disabled);
     }
 
     /**
@@ -83,7 +82,13 @@ function derive(baseName, kind, mixin) {
 
     return new Promise((resolve, reject) => {
         Espo.loader.require(baseName, Base => {
-            Espo.loader.define(name, null, () => mixin(Base));
+            try {
+                Espo.loader.define(name, null, () => mixin(Base));
+            } catch (e) {
+                reject(e);
+
+                return;
+            }
 
             resolve(name);
         }, reject);
