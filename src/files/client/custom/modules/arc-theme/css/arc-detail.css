@@ -119,18 +119,18 @@ body:has(.arc-record) #navbar .navbar-right .global-search-container a.global-se
 
 #main:has(> .record > .arc-record) > .page-header .btn-primary,
 .arc-band .btn-primary {
-    background: var(--arc-signature);
-    border-color: var(--arc-signature);
-    color: var(--arc-n-900);
+    background: var(--arc-band-primary-bg);
+    border-color: var(--arc-band-primary-bg);
+    color: var(--arc-band-primary-text);
     font-weight: 600;
     box-shadow: none;
 }
 
 #main:has(> .record > .arc-record) > .page-header .btn-primary:hover,
 .arc-band .btn-primary:hover {
-    background: #33c5f1;
-    border-color: #33c5f1;
-    color: var(--arc-n-900);
+    background: var(--arc-band-primary-hover);
+    border-color: var(--arc-band-primary-hover);
+    color: var(--arc-band-primary-text);
 }
 
 #main:has(> .record > .arc-record) > .page-header .btn:focus-visible,
@@ -433,7 +433,10 @@ button.arc-step-inner:focus-visible {
     box-shadow: var(--arc-shadow-xs);
 }
 
-/* Panneaux latéraux : le suivi prolonge la carte, les autres (activités…) sont des cartes */
+/*
+ * Panneaux latéraux en cartes. Le suivi (assigné, équipes, dates) est une carte à part ; il ne
+ * prolonge « À propos » que dans la variante article, où la carte n'a pas de champs.
+ */
 .arc-inspector > .side {
     display: flex;
     flex-direction: column;
@@ -443,11 +446,12 @@ button.arc-step-inner:focus-visible {
     padding: 0;
 }
 
+.arc-inspector:has(> .arc-inspector-card > .middle) > .side,
 .arc-inspector:not(:has(> .side > .panel[data-name="default"]:not(.hidden))) > .side {
     margin-top: var(--16px);
 }
 
-.arc-inspector:has(> .side > .panel[data-name="default"]:not(.hidden)) > .arc-inspector-card {
+.arc-inspector:not(:has(> .arc-inspector-card > .middle)):has(> .side > .panel[data-name="default"]:not(.hidden)) > .arc-inspector-card {
     padding-bottom: 0;
     border-bottom: 0;
     border-bottom-left-radius: 0;
@@ -464,15 +468,19 @@ button.arc-step-inner:focus-visible {
     box-shadow: var(--arc-shadow-xs);
 }
 
-.arc-inspector > .side > .panel[data-name="default"] {
+.arc-inspector:not(:has(> .arc-inspector-card > .middle)) > .side > .panel[data-name="default"] {
     border-top: 0;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
 }
 
-.arc-inspector > .side > .panel[data-name="default"] > .panel-body {
+.arc-inspector:not(:has(> .arc-inspector-card > .middle)) > .side > .panel[data-name="default"] > .panel-body {
     padding-top: var(--10px);
     border-top: 1px solid var(--arc-n-100);
+}
+
+.arc-inspector:has(> .arc-inspector-card > .middle) > .side > .panel[data-name="default"] > .panel-body {
+    padding-top: var(--14px);
 }
 
 .arc-inspector > .side > .panel:not([data-name="default"]) > .panel-heading {
@@ -643,31 +651,13 @@ button.arc-step-inner:focus-visible {
     transition: background-color var(--arc-fast) ease;
 }
 
-.arc-resizer-grip {
-    position: sticky;
-    top: calc(var(--top-bar-height) + 96px);
-    display: block;
-    width: 6px;
-    height: 36px;
-    margin: 96px auto 0;
-    border-radius: var(--arc-radius-pill);
-    background: var(--arc-border-input);
-    transition: background-color var(--arc-fast) ease;
-}
-
 .arc-resizer:hover::before,
 .arc-resizer.is-dragging::before,
 .arc-resizer:focus-visible::before {
     background: var(--arc-brand-ring);
 }
 
-.arc-resizer:hover .arc-resizer-grip,
-.arc-resizer.is-dragging .arc-resizer-grip,
-.arc-resizer:focus-visible .arc-resizer-grip {
-    background: var(--arc-brand-ring);
-}
-
-/* Le filet et la poignée colorés suffisent à montrer le focus */
+/* Le filet coloré suffit à montrer le focus */
 .arc-resizer:focus-visible {
     outline: none;
 }
@@ -1145,7 +1135,8 @@ body.arc-resizing * {
     color: var(--arc-text);
 }
 
-.arc-content-card > .arc-empty-toggle {
+.arc-content-card > .arc-empty-toggle,
+.arc-inspector-card > .arc-empty-toggle {
     margin-top: var(--8px);
 }
 
@@ -1201,11 +1192,11 @@ body.arc-resizing * {
 /* Replié : seul l'en-tête reste. En modification, tout est ouvert et le chevron disparaît. */
 .arc-record:not(:has(.arc-band .edit-buttons:not(.hidden))) .panel.arc-collapsed > :not(.panel-heading),
 .arc-record:not(:has(.arc-band .edit-buttons:not(.hidden))) .arc-inspector.arc-collapsed > .arc-inspector-card > :not(.arc-inspector-title),
-.arc-record:not(:has(.arc-band .edit-buttons:not(.hidden))) .arc-inspector.arc-collapsed > .side > .panel[data-name="default"] {
+.arc-record:not(:has(.arc-band .edit-buttons:not(.hidden))) .arc-inspector.arc-collapsed:not(:has(> .arc-inspector-card > .middle)) > .side > .panel[data-name="default"] {
     display: none;
 }
 
-.arc-record:not(:has(.arc-band .edit-buttons:not(.hidden))) .arc-inspector.arc-collapsed:has(> .side > .panel[data-name="default"]) > .arc-inspector-card {
+.arc-record:not(:has(.arc-band .edit-buttons:not(.hidden))) .arc-inspector.arc-collapsed:not(:has(> .arc-inspector-card > .middle)):has(> .side > .panel[data-name="default"]) > .arc-inspector-card {
     padding-bottom: var(--8px);
     border-bottom: 1px solid var(--arc-border);
     border-radius: var(--arc-radius-lg);

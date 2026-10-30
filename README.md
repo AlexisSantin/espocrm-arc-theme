@@ -28,7 +28,7 @@ Under the Arc theme, detail views of CRM entities use a two-column layout:
   shows the current stage.
 - **About** (left, 380px): the detail layout panels as a compact property inspector — tab
   breaks become compact pill tabs, empty fields are hidden behind a "Show N empty fields" link
-  (all shown while editing) — and the default side panel (assigned user, teams, dates); then
+  (all shown while editing) — and then the default side panel (assigned user, teams, dates) as its own card, and
   the other side panels — activities, history, tasks — as separate cards. When the bottom
   layout also lists them, they are not repeated. Static fields on the left, activity on the right.
 - **Main column** (right): an **Activity** tab — quick actions (Note, Email, Call, Meeting,

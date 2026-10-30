@@ -181,7 +181,7 @@ body[data-navbar="top"] #navbar .navbar {
 .page-header .header-buttons .btn[data-name="create"] {
     background-color: var(--arc-brand);
     border-color: var(--arc-brand);
-    color: var(--arc-sidebar-strong);
+    color: var(--brand-primary-text);
     box-shadow: var(--arc-shadow-primary);
 }
 

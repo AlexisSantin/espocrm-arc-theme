@@ -106,6 +106,10 @@
     --arc-band-focus: var(--arc-brand-ring);
     --arc-band-avatar-bg: var(--arc-brand);
     --arc-band-avatar-text: #ffffff;
+    /* Action principale du bandeau : Bleu UTT comme ailleurs (cyan sur une ambiance foncée) */
+    --arc-band-primary-bg: var(--arc-brand);
+    --arc-band-primary-hover: var(--arc-brand-hover);
+    --arc-band-primary-text: #ffffff;
 
     /* Menu latéral : blanc, lueur cyan discrète en bas */
     --arc-sidebar-bg: #ffffff;

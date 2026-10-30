@@ -106,7 +106,8 @@ export default class EmptyFields {
             return;
         }
 
-        const host = root.querySelector('.arc-inspector > .side > .panel[data-name="default"]:not(.hidden)') ||
+        const host = root.querySelector('.arc-inspector-card:has(> .middle)') ||
+            root.querySelector('.arc-inspector > .side > .panel[data-name="default"]:not(.hidden)') ||
             root.querySelector('.arc-inspector-card') ||
             root.querySelector('.arc-content-card');
 
