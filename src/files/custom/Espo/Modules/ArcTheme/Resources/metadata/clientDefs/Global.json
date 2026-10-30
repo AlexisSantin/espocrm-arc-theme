@@ -1,0 +1,8 @@
+{
+    "viewSetupHandlers": {
+        "record/detail": [
+            "__APPEND__",
+            "arc-theme:handlers/record-detail"
+        ]
+    }
+}

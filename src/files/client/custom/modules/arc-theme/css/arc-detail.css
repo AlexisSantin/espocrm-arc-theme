@@ -1,0 +1,781 @@
+/**
+ * Fiche Arc : bandeau marine (en-tête, identité, pipeline), inspecteur « À propos »
+ * et colonne principale à onglets. S'applique au gabarit arc-theme:record/detail.
+ */
+
+/* ===== Bandeau : en-tête de page + identité + pipeline ===== */
+#main:has(> .record > .arc-record) > .page-header,
+.arc-record > .arc-band {
+    margin-left: calc(var(--container-padding) * -1);
+    margin-right: calc(var(--container-padding) * -1);
+    padding-left: var(--28px);
+    padding-right: var(--28px);
+    background: var(--arc-band-bg);
+    color: var(--arc-band-text);
+}
+
+#main:has(> .record > .arc-record) > .page-header {
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-top: var(--16px);
+    padding-bottom: var(--4px);
+}
+
+#main:has(> .record > .arc-record) > .page-header .header-title {
+    font-size: var(--14px);
+    font-weight: 500;
+    letter-spacing: 0;
+    color: var(--arc-band-muted);
+}
+
+#main:has(> .record > .arc-record) > .page-header .header-title .color-icon {
+    display: none;
+}
+
+#main:has(> .record > .arc-record) > .page-header .header-breadcrumbs .breadcrumb-item a,
+#main:has(> .record > .arc-record) > .page-header .header-breadcrumbs .breadcrumb-item {
+    color: var(--arc-band-muted);
+}
+
+#main:has(> .record > .arc-record) > .page-header .header-breadcrumbs .breadcrumb-item:last-child {
+    color: var(--arc-band-text);
+}
+
+#main:has(> .record > .arc-record) > .page-header .header-breadcrumbs .breadcrumb-separator > span {
+    border-color: var(--arc-band-muted);
+}
+
+/* Boutons posés sur le bandeau */
+#main:has(> .record > .arc-record) > .page-header .btn-default,
+.arc-band .btn-default {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: var(--arc-band-line);
+    color: var(--arc-band-text);
+    box-shadow: none;
+}
+
+#main:has(> .record > .arc-record) > .page-header .btn-default:hover,
+.arc-band .btn-default:hover,
+.arc-band .open > .btn-default.dropdown-toggle {
+    background: rgba(255, 255, 255, 0.16);
+    border-color: rgba(255, 255, 255, 0.4);
+    color: var(--arc-band-text);
+}
+
+#main:has(> .record > .arc-record) > .page-header .btn-text,
+.arc-band .btn-text {
+    color: var(--arc-band-muted);
+}
+
+#main:has(> .record > .arc-record) > .page-header .btn-text:hover,
+.arc-band .btn-text:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--arc-band-text);
+}
+
+#main:has(> .record > .arc-record) > .page-header .btn-primary,
+.arc-band .btn-primary {
+    background: var(--arc-signature);
+    border-color: var(--arc-signature);
+    color: var(--arc-n-900);
+    font-weight: 600;
+    box-shadow: none;
+}
+
+#main:has(> .record > .arc-record) > .page-header .btn-primary:hover,
+.arc-band .btn-primary:hover {
+    background: #33c5f1;
+    border-color: #33c5f1;
+    color: var(--arc-n-900);
+}
+
+#main:has(> .record > .arc-record) > .page-header .btn:focus-visible,
+.arc-band .btn:focus-visible,
+.arc-band button:focus-visible {
+    outline-color: #ffffff;
+}
+
+.arc-record > .arc-band {
+    display: flex;
+    flex-direction: column;
+    gap: var(--18px);
+    padding-top: var(--8px);
+    padding-bottom: var(--22px);
+}
+
+.arc-band-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--16px) var(--24px);
+}
+
+.arc-band .detail-button-container {
+    margin: 0;
+    padding: 0;
+    background: transparent;
+}
+
+.arc-band .detail-button-container .sub-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--8px);
+}
+
+.arc-band .detail-button-container .sub-container::before,
+.arc-band .detail-button-container .sub-container::after {
+    display: none;
+}
+
+/* Barre de boutons collée en haut au défilement : elle reste marine */
+.arc-band .detail-button-container.stick-sub {
+    background: var(--arc-band-bg);
+    border-bottom: 1px solid var(--arc-band-line);
+    padding: var(--8px) var(--28px);
+}
+
+/* Identité */
+.arc-identity {
+    display: flex;
+    align-items: center;
+    gap: var(--16px);
+    min-width: 0;
+}
+
+.arc-avatar {
+    position: relative;
+    flex: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    border-radius: 16px;
+    background: #ffffff;
+    color: var(--arc-band-bg);
+    font-family: var(--arc-font-display);
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+.arc-avatar-plus {
+    position: absolute;
+    right: -6px;
+    bottom: -6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    border: 3px solid var(--arc-band-bg);
+    border-radius: 50%;
+    background: var(--arc-signature);
+    color: var(--arc-n-900);
+    font-size: 15px;
+    font-weight: 800;
+    line-height: 1;
+}
+
+.arc-identity-text {
+    min-width: 0;
+}
+
+.arc-identity-name {
+    margin: 0;
+    font-family: var(--arc-font-display);
+    font-size: var(--32px);
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    line-height: 1.1;
+    overflow-wrap: anywhere;
+}
+
+.arc-identity-meta {
+    margin: var(--4px) 0 0;
+    color: var(--arc-band-muted);
+}
+
+/* Parcours de pipeline */
+.arc-band-pipeline {
+    display: flex;
+    flex-direction: column;
+    gap: var(--10px);
+}
+
+.arc-pipeline-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--8px);
+    font-size: var(--13px);
+    color: var(--arc-band-muted);
+}
+
+.arc-pipeline-head strong {
+    color: var(--arc-band-text);
+    font-weight: 600;
+}
+
+.arc-pipeline-off {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--14px);
+}
+
+.arc-pipeline-off-link {
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: var(--arc-band-muted);
+    font: inherit;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.arc-pipeline-off-link:hover {
+    color: var(--arc-band-text);
+}
+
+.arc-pipeline-stage-chip {
+    padding: 1px var(--10px);
+    border-radius: var(--arc-radius-pill);
+    background: var(--arc-signature);
+    color: var(--arc-n-900);
+    font-weight: 600;
+}
+
+.arc-pipeline-off-current {
+    padding: 1px var(--10px);
+    border-radius: var(--arc-radius-pill);
+    background: var(--arc-danger-bg);
+    color: var(--arc-danger);
+    font-weight: 600;
+}
+
+.arc-pipeline-steps {
+    display: grid;
+    grid-template-columns: repeat(var(--arc-steps, 4), minmax(0, 1fr));
+    gap: 4px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.arc-step-inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--8px);
+    width: 100%;
+    height: 40px;
+    padding: 0 var(--18px);
+    border: 0;
+    background: rgba(255, 255, 255, 0.06);
+    color: var(--arc-band-muted);
+    font: inherit;
+    font-weight: 500;
+    white-space: nowrap;
+    clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 50%, calc(100% - 14px) 100%, 0 100%, 14px 50%);
+    transition: background-color var(--arc-fast) ease, color var(--arc-fast) ease;
+}
+
+.arc-step:first-child .arc-step-inner {
+    clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 50%, calc(100% - 14px) 100%, 0 100%);
+    border-radius: 10px 0 0 10px;
+}
+
+.arc-step:last-child .arc-step-inner {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 14px 50%);
+    border-radius: 0 10px 10px 0;
+}
+
+.arc-step-label {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.arc-step[data-state="done"] .arc-step-inner {
+    background: rgba(255, 255, 255, 0.14);
+    color: var(--arc-band-text);
+}
+
+.arc-step[data-state="current"] .arc-step-inner {
+    background: var(--arc-signature);
+    color: var(--arc-n-900);
+    font-weight: 700;
+}
+
+button.arc-step-inner {
+    cursor: pointer;
+}
+
+button.arc-step-inner:hover {
+    background: rgba(255, 255, 255, 0.22);
+    color: var(--arc-band-text);
+}
+
+button.arc-step-inner:focus-visible {
+    outline: 2px solid #ffffff;
+    outline-offset: -4px;
+}
+
+.arc-step-check {
+    font-size: 12px;
+}
+
+/* ===== Deux colonnes ===== */
+.arc-record .record-grid.arc-record-grid {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: var(--20px);
+    margin-top: var(--24px);
+    container-type: inline-size;
+}
+
+.arc-record .arc-record-grid > .arc-inspector {
+    flex: 0 1 360px;
+    max-width: 100%;
+    width: auto;
+    min-width: 0;
+    float: none;
+    padding: var(--16px) var(--20px) var(--8px);
+    background: var(--arc-surface);
+    border: 1px solid var(--arc-border);
+    border-radius: var(--arc-radius-lg);
+    box-shadow: var(--arc-shadow-xs);
+}
+
+.arc-record .arc-record-grid > .arc-main {
+    flex: 1 1 480px;
+    min-width: 0;
+    background: var(--arc-surface);
+    border: 1px solid var(--arc-border);
+    border-radius: var(--arc-radius-lg);
+    box-shadow: var(--arc-shadow-xs);
+}
+
+@container (max-width: 880px) {
+    .arc-record .arc-record-grid > .arc-inspector {
+        flex-basis: 100%;
+    }
+}
+
+/* ===== Inspecteur « À propos » ===== */
+.arc-inspector-title {
+    display: flex;
+    align-items: center;
+    gap: var(--8px);
+    margin: 0 0 var(--8px);
+    font-family: var(--arc-font-display);
+    font-size: var(--17px);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+}
+
+.arc-plus {
+    color: var(--arc-signature);
+    font-family: var(--arc-font-display);
+    font-size: 1.2em;
+    font-weight: 800;
+    line-height: 1;
+}
+
+.arc-inspector .middle > .panel,
+.arc-inspector .side > .panel {
+    margin: 0;
+    background: transparent;
+    border: 0;
+    border-top: 1px solid var(--arc-n-100);
+    border-radius: 0;
+    box-shadow: none;
+}
+
+.arc-inspector .panel > .panel-heading {
+    min-height: 0;
+    padding: var(--10px) 0 var(--6px);
+    border: 0;
+    background: transparent;
+}
+
+.arc-inspector .panel > .panel-heading .panel-title {
+    padding: 0;
+    font-family: var(--arc-font);
+    font-size: var(--13px);
+    font-weight: 600;
+    letter-spacing: 0;
+    color: var(--arc-brand);
+}
+
+.arc-inspector .panel > .panel-body {
+    padding: var(--4px) 0 var(--10px);
+}
+
+.arc-inspector .panel-body > .row {
+    display: block;
+    margin: 0;
+}
+
+.arc-inspector .panel-body > .row > [class*="col-"]:not(.cell) {
+    display: none;
+}
+
+.arc-inspector .panel-body > .row > .cell {
+    position: relative;
+    float: none;
+    display: grid;
+    grid-template-columns: 120px minmax(0, 1fr);
+    column-gap: var(--12px);
+    align-items: baseline;
+    width: 100%;
+    margin: 0;
+    padding: var(--4px) var(--20px) var(--4px) 0;
+    font-size: var(--13px);
+}
+
+.arc-inspector .panel-body > .row > .cell.hidden-cell,
+.arc-inspector .panel-body > .row > .cell.hidden {
+    display: none;
+}
+
+.arc-inspector .panel-body > .row > .cell > label.control-label {
+    grid-column: 1;
+    margin: 0;
+    font-size: var(--13px);
+    font-weight: 400;
+    color: var(--arc-text-muted);
+    overflow-wrap: anywhere;
+}
+
+.arc-inspector .panel-body > .row > .cell > .field {
+    grid-column: 2;
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
+
+.arc-inspector .panel-body > .row > .cell > .inline-edit-link {
+    position: absolute;
+    top: var(--4px);
+    right: 0;
+}
+
+/* En modification, le libellé repasse au-dessus du champ */
+.arc-record:has(.edit-buttons:not(.hidden)) .arc-inspector .panel-body > .row > .cell,
+.arc-inspector .panel-body > .row > .cell:has(.inline-save-link) {
+    display: block;
+    padding-right: 0;
+}
+
+.arc-record:has(.edit-buttons:not(.hidden)) .arc-inspector .panel-body > .row > .cell > label.control-label,
+.arc-inspector .panel-body > .row > .cell:has(.inline-save-link) > label.control-label {
+    display: block;
+    margin-bottom: var(--4px);
+}
+
+/* ===== Colonne principale : onglets ===== */
+.arc-record .bottom.arc-bottom {
+    display: flex;
+    flex-direction: column;
+    gap: var(--20px);
+    padding: 0 var(--18px) var(--18px);
+}
+
+.arc-tab-hidden {
+    display: none !important;
+}
+
+.arc-tabbar {
+    order: -2;
+    display: flex;
+    align-items: flex-end;
+    gap: 2px;
+    margin: 0 calc(var(--18px) * -1);
+    padding: 0 var(--14px);
+    border-bottom: 1px solid var(--arc-border);
+    overflow-x: auto;
+}
+
+.arc-tab {
+    flex: none;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--6px);
+    padding: var(--14px) var(--10px) var(--11px);
+    border: 0;
+    border-bottom: 2px solid transparent;
+    background: transparent;
+    color: var(--arc-text-secondary);
+    font: inherit;
+    font-weight: 500;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+.arc-tab:hover {
+    color: var(--arc-text);
+}
+
+.arc-tab[aria-selected="true"] {
+    border-bottom-color: var(--arc-brand);
+    color: var(--arc-text);
+    font-weight: 600;
+}
+
+.arc-tab-count:not(:empty) {
+    min-width: 18px;
+    padding: 0 var(--6px);
+    border-radius: var(--arc-radius-pill);
+    background: var(--arc-brand-subtle);
+    color: var(--arc-brand);
+    font-size: var(--12px);
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+    text-align: center;
+}
+
+.arc-tab-count.arc-tab-count-empty {
+    background: var(--arc-n-100);
+    color: var(--arc-text-muted);
+}
+
+.arc-tab-more .dropdown-menu .arc-tab-more-item {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--12px);
+}
+
+/* Panneaux de la colonne principale : des sections, plus des cartes */
+.arc-bottom > .panel {
+    margin: 0;
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+.arc-bottom > .panel > .panel-heading {
+    padding: 0 0 var(--10px);
+    border: 0;
+    background: transparent;
+}
+
+.arc-bottom > .panel > .panel-heading .panel-title {
+    font-family: var(--arc-font-display);
+    font-size: var(--17px);
+    font-weight: 700;
+}
+
+.arc-bottom > .panel > .panel-body {
+    padding: 0;
+}
+
+/* ===== Onglet Activité : saisie, activités, tâches, historique, flux ===== */
+.arc-bottom.arc-tab-activity > .panel[data-name="stream"],
+.arc-bottom.arc-tab-activity > .panel[data-name="stream"] > .panel-body {
+    display: contents;
+}
+
+/* Les clearfix de Bootstrap deviendraient des éléments flex vides (et autant d'écarts) */
+.arc-bottom.arc-tab-activity > .panel[data-name="stream"]::before,
+.arc-bottom.arc-tab-activity > .panel[data-name="stream"]::after,
+.arc-bottom.arc-tab-activity > .panel[data-name="stream"] > .panel-body::before,
+.arc-bottom.arc-tab-activity > .panel[data-name="stream"] > .panel-body::after {
+    display: none;
+}
+
+.arc-bottom.arc-tab-activity > .arc-composer { order: 0; }
+.arc-bottom.arc-tab-activity > .panel[data-name="stream"] > .panel-body > .post-container { order: 1; }
+.arc-bottom.arc-tab-activity > .panel[data-name="activities"] { order: 2; }
+.arc-bottom.arc-tab-activity > .panel[data-name="tasks"] { order: 3; }
+.arc-bottom.arc-tab-activity > .panel[data-name="history"] { order: 4; }
+.arc-bottom.arc-tab-activity > .panel[data-name="stream"] > .panel-heading { order: 5; padding: 0; }
+.arc-bottom.arc-tab-activity > .panel[data-name="stream"] > .panel-body > .list-container { order: 6; }
+
+.arc-composer {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--4px);
+    margin-bottom: calc(var(--20px) * -1);
+    padding: var(--14px) var(--16px) var(--12px);
+    background: var(--arc-surface);
+    border: 1px solid var(--arc-border);
+    border-bottom: 0;
+    border-radius: var(--arc-radius-lg) var(--arc-radius-lg) 0 0;
+}
+
+.arc-composer::before {
+    content: "";
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    width: 22px;
+    height: 22px;
+    border-top: 3px solid var(--arc-signature);
+    border-left: 3px solid var(--arc-signature);
+    border-top-left-radius: var(--arc-radius-lg);
+    pointer-events: none;
+}
+
+.arc-composer-button {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--7px);
+    padding: var(--7px) var(--12px);
+    border: 0;
+    border-radius: var(--arc-radius);
+    background: transparent;
+    color: var(--arc-text-secondary);
+    font: inherit;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.arc-composer-button:hover {
+    background: var(--arc-hover);
+    color: var(--arc-text);
+}
+
+.arc-composer-button[data-kind="note"] {
+    background: var(--arc-brand);
+    color: #ffffff;
+}
+
+.arc-composer-icon {
+    font-size: 0.9em;
+    opacity: 0.85;
+}
+
+.arc-bottom.arc-tab-activity > .panel[data-name="stream"] > .panel-body > .post-container {
+    margin: 0;
+    padding: 0 var(--16px) var(--16px);
+    background: var(--arc-surface);
+    border: 1px solid var(--arc-border);
+    border-top: 0;
+    border-radius: 0 0 var(--arc-radius-lg) var(--arc-radius-lg);
+}
+
+.arc-bottom.arc-tab-activity:not(:has(> .arc-composer)) > .panel[data-name="stream"] > .panel-body > .post-container {
+    padding-top: var(--16px);
+    border-top: 1px solid var(--arc-border);
+    border-radius: var(--arc-radius-lg);
+}
+
+.arc-bottom .post-container textarea.form-control {
+    background: var(--arc-surface-sunken);
+    border-radius: var(--arc-radius-md);
+}
+
+/* ===== Chronologie : flux et listes d'activités ===== */
+.arc-bottom.arc-tab-activity .list-container[data-role="stream"] .list-group,
+.arc-bottom .panel[data-name="activities"] .list-group,
+.arc-bottom .panel[data-name="history"] .list-group,
+.arc-bottom .panel[data-name="tasks"] .list-group {
+    margin: 0;
+}
+
+/* Flux : date à gauche, rail et point, contenu à droite */
+.arc-bottom.arc-tab-activity .list-container[data-role="stream"] li.list-group-item {
+    position: relative;
+    display: grid;
+    grid-template-columns: 72px 24px minmax(0, 1fr);
+    column-gap: var(--12px);
+    margin: 0;
+    padding: 0 var(--32px) var(--20px) 0;
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+}
+
+.arc-bottom.arc-tab-activity .list-container[data-role="stream"] li.list-group-item > * {
+    grid-column: 3;
+    min-width: 0;
+}
+
+.arc-bottom.arc-tab-activity .list-container[data-role="stream"] li.list-group-item > .stream-date-container {
+    grid-column: 1;
+    grid-row: 1 / span 4;
+    order: -1;
+    margin: 0;
+    padding-top: 1px;
+    text-align: right;
+}
+
+.arc-bottom.arc-tab-activity .list-container[data-role="stream"] li.list-group-item > .stream-date-container a {
+    color: var(--arc-text-secondary);
+    font-family: var(--arc-font-display);
+    font-size: var(--15px);
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.arc-bottom.arc-tab-activity .list-container[data-role="stream"] li.list-group-item::before {
+    content: "";
+    grid-column: 2;
+    grid-row: 1;
+    justify-self: center;
+    width: 12px;
+    height: 12px;
+    margin-top: 5px;
+    border-radius: 50%;
+    background: var(--arc-surface);
+    box-shadow: inset 0 0 0 2px var(--arc-n-300);
+}
+
+.arc-bottom.arc-tab-activity .list-container[data-role="stream"] li.list-group-item:first-child::before {
+    background: var(--arc-brand-subtle);
+    box-shadow: inset 0 0 0 2px var(--arc-brand);
+}
+
+.arc-bottom.arc-tab-activity .list-container[data-role="stream"] li.list-group-item::after {
+    content: "";
+    position: absolute;
+    top: 21px;
+    bottom: 0;
+    left: calc(72px + var(--12px) + 11px);
+    width: 2px;
+    background: var(--arc-border-strong);
+}
+
+.arc-bottom.arc-tab-activity .list-container[data-role="stream"] li.list-group-item:last-child::after {
+    display: none;
+}
+
+.arc-bottom.arc-tab-activity .list-container[data-role="stream"] li.list-group-item > .right-container,
+.arc-bottom.arc-tab-activity .list-container[data-role="stream"] li.list-group-item > .cell-buttons {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+/* Activités, tâches, historique : lignes légères, survol discret */
+.arc-bottom .panel[data-name="activities"] li.list-group-item,
+.arc-bottom .panel[data-name="history"] li.list-group-item,
+.arc-bottom .panel[data-name="tasks"] li.list-group-item {
+    margin: 0;
+    padding: var(--10px) var(--12px);
+    border: 0;
+    border-radius: var(--arc-radius-md);
+    background: transparent;
+    transition: background-color var(--arc-fast) ease;
+}
+
+.arc-bottom .panel[data-name="activities"] li.list-group-item:hover,
+.arc-bottom .panel[data-name="history"] li.list-group-item:hover,
+.arc-bottom .panel[data-name="tasks"] li.list-group-item:hover {
+    background: var(--arc-n-25);
+}
+
+.arc-bottom .panel[data-name="activities"] li.list-group-item {
+    border-left: 3px solid var(--arc-brand-subtle);
+    border-radius: 0 var(--arc-radius-md) var(--arc-radius-md) 0;
+}
+
+/* Les onglets natifs de la disposition sont repris dans la barre Arc */
+.arc-bottom > .tabs {
+    display: none;
+}

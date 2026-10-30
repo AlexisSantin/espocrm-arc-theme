@@ -1,5 +1,15 @@
 {
     "themes": {
         "Arc": "Arc"
+    },
+    "labels": {
+        "arcAbout": "About",
+        "arcActivity": "Activity",
+        "arcMore": "More",
+        "arcNote": "Note",
+        "arcEmail": "Email",
+        "arcNewActivity": "New activity",
+        "arcPipelineStep": "step {current} of {total}",
+        "arcMarkStage": "Mark as {stage}"
     }
 }
