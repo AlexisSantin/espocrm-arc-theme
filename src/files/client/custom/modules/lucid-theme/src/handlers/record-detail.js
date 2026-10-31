@@ -6,13 +6,13 @@ import PanelCollapse from 'lucid-theme:helpers/panel-collapse';
 import ColumnResizer from 'lucid-theme:helpers/column-resizer';
 import lucidDetailBottom from 'lucid-theme:mixins/detail-bottom';
 
-/** Entités dont la fiche a une mise en page propre, laissée à EspoCRM. */
+/** Entities whose record has a layout of its own, left to EspoCRM. */
 const EXCLUDED_ENTITY_TYPES = ['Email', 'User'];
 
 /**
- * Applique la fiche Lucid aux vues de détail, uniquement sous le thème Lucid.
- * La vue du bas configurée pour l'entité est dérivée, pas remplacée, pour garder ses
- * comportements propres ; la vue latérale (conversion des prospects…) reste celle d'EspoCRM.
+ * Applies the Lucid record view to detail views, under the Lucid theme only.
+ * The bottom view configured for the entity is derived, not replaced, to keep its own
+ * behaviour; the side view (lead conversion…) stays EspoCRM's.
  */
 export default class RecordDetailHandler {
 
@@ -35,19 +35,19 @@ export default class RecordDetailHandler {
         try {
             bottomView = await derive(view.bottomView, 'bottom', lucidDetailBottom);
         } catch (e) {
-            // Version d'EspoCRM inattendue : la fiche reste celle d'EspoCRM plutôt que de bloquer.
-            console.warn('Lucid : fiche EspoCRM conservée.', e);
+            // Unexpected EspoCRM version: the record keeps EspoCRM's layout rather than breaking.
+            console.warn('Lucid: keeping the EspoCRM record view.', e);
 
             return;
         }
 
-        // Champs (statiques) à gauche dans « À propos », activité (dynamique) à droite. Un article
-        // a besoin de largeur pour son corps : ses champs passent en tête de la colonne principale.
+        // Static fields on the left in "About", dynamic activity on the right. An article
+        // needs width for its body: its fields move to the top of the main column.
         view.template = this.hasArticleBody() ? 'lucid-theme:record/detail-content' : 'lucid-theme:record/detail';
         view.bottomView = bottomView;
 
-        // build() a déjà créé la vue du bas d'origine sans attendre ce gestionnaire ;
-        // le rendu, lui, l'attend : on la recrée avant qu'elle ne s'affiche.
+        // build() has already created the original bottom view without waiting for this handler;
+        // rendering does wait for it, so the view is recreated before it is displayed.
         view.createBottomView();
 
         new RecordBand(view).init();
@@ -58,8 +58,8 @@ export default class RecordDetailHandler {
     }
 
     /**
-     * Corps d'article en texte riche (base de connaissances, contenus) : un simple champ
-     * « description » en texte riche ne suffit pas.
+     * Rich-text article body (knowledge base, content): a plain rich-text
+     * "description" field is not enough.
      *
      * @private
      * @return {boolean}
@@ -90,7 +90,7 @@ export default class RecordDetailHandler {
 }
 
 /**
- * Définit (une fois) une vue dérivée de la vue de base et renvoie son nom.
+ * Defines (once) a view derived from the base view and returns its name.
  *
  * @param {string} baseName
  * @param {string} kind

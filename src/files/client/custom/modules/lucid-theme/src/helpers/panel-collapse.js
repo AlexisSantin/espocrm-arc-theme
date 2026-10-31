@@ -1,26 +1,26 @@
 import {el} from 'lucid-theme:lucid';
 
-/** Blocs repliables : panneaux de la disposition et panneaux latéraux (Activités, Historique…). */
+/** Collapsible blocks: layout panels and side panels (Activities, History…). */
 const PANEL_SELECTOR = [
     '.lucid-inspector-card .middle > .panel[data-name]',
     '.lucid-content-card .middle > .panel[data-name]',
     '.lucid-inspector > .side > .panel[data-name]:not([data-name="default"])',
 ].join(', ');
 
-/** Zones observées : les panneaux y sont redessinés après chaque modification. */
+/** Watched areas: panels are redrawn there after each change. */
 const WATCHED_SELECTOR = '.lucid-inspector, .lucid-content-card';
 
-/** Ce qui, dans un en-tête, garde son propre comportement au clic. */
+/** Heading elements that keep their own click behaviour. */
 const INTERACTIVE_SELECTOR = 'a, button, input, select, [data-action], .dropdown-menu';
 
-/** Nom réservé à la carte « À propos » (suivi de la fiche). */
+/** Reserved name for the "About" card. */
 const ABOUT = 'lucidAbout';
 
 const STORAGE_TYPE = 'lucidCollapsedPanels';
 
 /**
- * Replie les blocs de la fiche comme des accordéons. L'état est retenu par utilisateur et par
- * type d'enregistrement, dans le navigateur ; en modification, tous les blocs restent ouverts.
+ * Folds the record blocks like accordions. The state is remembered per user and per
+ * record type, in the browser; while editing, every block stays open.
  */
 export default class PanelCollapse {
 
@@ -87,7 +87,7 @@ export default class PanelCollapse {
             const heading = panel.querySelector(':scope > .panel-heading');
             const title = heading && heading.querySelector('.panel-title');
 
-            // Un panneau sans titre (premier groupe de champs, souvent) n'a rien à replier.
+            // A panel without a title (often the first group of fields) has nothing to collapse.
             if (title && title.textContent.trim()) {
                 this.decorate(panel, heading, title.textContent.trim(), panel.dataset.name);
             }
@@ -106,8 +106,8 @@ export default class PanelCollapse {
     }
 
     /**
-     * Suivi (assigné, équipes, dates) : EspoCRM ne lui donne pas de titre. Quand il forme une
-     * carte à part (les champs sont dans « À propos »), il reçoit un en-tête pour se replier.
+     * Record info (assignee, teams, dates): EspoCRM gives it no title. When it forms a separate
+     * card (the fields being in "About"), it gets a heading so that it can be collapsed.
      *
      * @private
      * @param {HTMLElement|null} inspector
@@ -136,7 +136,7 @@ export default class PanelCollapse {
 
     /**
      * @private
-     * @param {HTMLElement} target Élément qui porte l'état replié.
+     * @param {HTMLElement} target Element that carries the collapsed state.
      * @param {HTMLElement} heading
      * @param {string} label
      * @param {string} name

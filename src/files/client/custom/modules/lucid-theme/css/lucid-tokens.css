@@ -1,9 +1,9 @@
 /**
- * Lucid tokens — rendu SaaS : neutres légèrement teintés vers le Bleu UTT,
- * une seule couleur d'action (Bleu UTT), le cyan réservé à la signature.
+ * Lucid tokens: SaaS look, neutrals slightly tinted towards the brand indigo,
+ * a single action colour (indigo), cyan kept for the signature.
  */
 :root {
-    /* Neutres */
+    /* Neutrals */
     --lucid-n-0: #ffffff;
     --lucid-n-25: #fafbfc;
     --lucid-n-50: #f6f7f9;
@@ -18,7 +18,7 @@
     --lucid-n-800: #232733;
     --lucid-n-900: #14161f;
 
-    /* Marque : Bleu UTT pour l'action, cyan pour la signature */
+    /* Brand: indigo for actions, cyan for the signature */
     --lucid-brand: #292b6b;
     --lucid-brand-hover: #1f2158;
     --lucid-brand-active: #171946;
@@ -30,7 +30,7 @@
     --lucid-link: #0b6f96;
     --lucid-link-hover: #085677;
 
-    /* États (texte / fond / bordure / plein) */
+    /* States (text / background / border / solid) */
     --lucid-success: #067647;
     --lucid-success-bg: #ecfdf3;
     --lucid-success-border: #abefc6;
@@ -53,18 +53,18 @@
     --lucid-surface-sunken: var(--lucid-n-25);
     --lucid-border: var(--lucid-n-150);
     --lucid-border-strong: var(--lucid-n-200);
-    /* Contour des champs : 3:1 au moins sur blanc (RGAA 3.3) */
+    /* Field borders: at least 3:1 on white (RGAA 3.3) */
     --lucid-border-input: #868b98;
     --lucid-hover: var(--lucid-n-100);
 
-    /* Texte */
+    /* Text */
     --lucid-text: var(--lucid-n-900);
     --lucid-text-secondary: var(--lucid-n-600);
     --lucid-text-muted: var(--lucid-n-500);
-    /* Texte le plus pâle encore lisible : 4,5:1 au moins sur blanc et sur le fond de page (RGAA 3.2) */
+    /* Palest text still readable: at least 4.5:1 on white and on the page background (RGAA 3.2) */
     --lucid-text-faint: #6b7180;
 
-    /* Rayons */
+    /* Radii */
     --lucid-radius-sm: 6px;
     --lucid-radius: 8px;
     --lucid-radius-md: 10px;
@@ -72,23 +72,23 @@
     --lucid-radius-xl: 16px;
     --lucid-radius-pill: 999px;
 
-    /* Ombres */
+    /* Shadows */
     --lucid-shadow-xs: 0 1px 2px rgba(20, 22, 31, 0.05);
     --lucid-shadow-sm: 0 1px 3px rgba(20, 22, 31, 0.07), 0 1px 2px rgba(20, 22, 31, 0.04);
     --lucid-shadow-md: 0 4px 12px -2px rgba(20, 22, 31, 0.08), 0 2px 4px -2px rgba(20, 22, 31, 0.04);
     --lucid-shadow-lg: 0 16px 40px -8px rgba(20, 22, 31, 0.16), 0 4px 10px -4px rgba(20, 22, 31, 0.06);
     --lucid-shadow-primary: inset 0 1px 0 rgba(255, 255, 255, 0.12), 0 1px 2px rgba(20, 22, 31, 0.2);
 
-    /* Focus : anneau clavier et halo des champs */
+    /* Focus: keyboard ring and field glow */
     --lucid-focus-outline: 2px solid var(--lucid-brand-ring);
     --lucid-focus-halo: 0 0 0 3px rgba(90, 95, 208, 0.18);
 
-    /* Typographie */
+    /* Typography */
     --lucid-font: "Lexend", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    /* Une seule famille : les titres sont en Lexend, plus gras */
+    /* A single family: titles are in Lexend, bolder */
     --lucid-font-display: var(--lucid-font);
 
-    /* Bandeau des fiches : ambiance claire, bleu glacier à texte foncé, lueur cyan */
+    /* Record band: light palette, ice blue with dark text, cyan glow */
     --lucid-band-bg: #e6f0f7;
     --lucid-band-text: #14161f;
     --lucid-band-muted: #454b5c;
@@ -106,12 +106,12 @@
     --lucid-band-focus: var(--lucid-brand-ring);
     --lucid-band-avatar-bg: var(--lucid-brand);
     --lucid-band-avatar-text: #ffffff;
-    /* Action principale du bandeau : Bleu UTT comme ailleurs (cyan sur une ambiance foncée) */
+    /* Band primary action: indigo as everywhere else (cyan on a dark palette) */
     --lucid-band-primary-bg: var(--lucid-brand);
     --lucid-band-primary-hover: var(--lucid-brand-hover);
     --lucid-band-primary-text: #ffffff;
 
-    /* Menu latéral : blanc, lueur cyan discrète en bas */
+    /* Side menu: white, with a discreet cyan glow at the bottom */
     --lucid-sidebar-bg: #ffffff;
     --lucid-sidebar-glow: radial-gradient(28rem 20rem at 0% 100%, rgba(0, 182, 237, 0.08), transparent 65%);
     --lucid-sidebar-text: #353a49;
@@ -127,7 +127,7 @@
     --lucid-tracking-tight: -0.02em;
     --lucid-tracking-body: 0;
 
-    /* Mouvement */
+    /* Motion */
     --lucid-ease: cubic-bezier(0.22, 1, 0.36, 1);
     --lucid-fast: 120ms;
     --lucid-base: 200ms;

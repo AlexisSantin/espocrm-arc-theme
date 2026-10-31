@@ -1,8 +1,8 @@
 /**
- * Fiches — panneaux en cartes, titres en casse normale, libellés à la taille des valeurs, onglets soulignés.
+ * Records: panels as cards, sentence-case titles, labels as large as values, underlined tabs.
  */
 
-/* ===== Panneaux ===== */
+/* ===== Panels ===== */
 .panel {
     border: 1px solid var(--lucid-border);
     border-radius: var(--lucid-radius-lg);
@@ -29,12 +29,12 @@
     color: inherit;
 }
 
-/* Panneau coloré par l'administrateur : le titre prend la couleur, comme dans EspoCRM */
+/* Panel coloured by the administrator: the title takes the colour, as in EspoCRM */
 .panel:is(.panel-danger, .panel-warning, .panel-success, .panel-info, .panel-primary) > .panel-heading .panel-title {
     color: inherit;
 }
 
-/* Actions de panneau : boutons fantômes */
+/* Panel actions: ghost buttons */
 .panel-heading .panel-actions-container .btn,
 .panel-heading .btn-group > .btn {
     background-color: transparent;
@@ -50,7 +50,7 @@
     color: var(--lucid-text);
 }
 
-/* ===== Champs en lecture ===== */
+/* ===== Read-only fields ===== */
 .detail .cell > label.control-label,
 .record .side .cell > label.control-label {
     color: var(--lucid-text-secondary);
@@ -68,7 +68,7 @@
     color: var(--lucid-text-faint);
 }
 
-/* ===== Onglets ===== */
+/* ===== Tabs ===== */
 .nav-tabs {
     border-bottom: 1px solid var(--lucid-border);
 }
@@ -100,13 +100,13 @@
     color: var(--lucid-text);
 }
 
-/* ===== Flux ===== */
+/* ===== Stream ===== */
 .panel-stream .list > ul > li,
 .stream-list .list-group-item {
     border-color: var(--lucid-n-100);
 }
 
-/* ===== Tableau de bord : un bloc se soulève au survol ===== */
+/* ===== Dashboard: a dashlet lifts on hover ===== */
 .dashlets .dashlet.panel {
     transition: box-shadow var(--lucid-base) var(--lucid-ease), border-color var(--lucid-base) var(--lucid-ease);
 }

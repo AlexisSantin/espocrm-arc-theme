@@ -1,8 +1,8 @@
 /**
- * Données — listes en carte, en-têtes de colonnes sobres, badges d'état.
+ * Data: lists as cards, quiet column headers, status badges.
  */
 
-/* ===== Liste principale : une carte ===== */
+/* ===== Main list: a card ===== */
 #main > .list-container > .list,
 .modal-body .list-container > .list {
     background-color: var(--lucid-surface);
@@ -17,13 +17,13 @@
     margin-right: 0;
 }
 
-/* Coin cyan, signature des cartes Lucid (dans le cadre : la liste découpe ce qui dépasse) */
+/* Cyan corner, the Lucid card signature (inside the frame: the list clips what overflows) */
 #main > .list-container > .list::before {
     content: "";
     position: absolute;
     top: 0;
     left: 0;
-    /* Au-dessus des colonnes épinglées de Better Columns (collantes, niveau 3) */
+    /* Above the pinned columns of Better Columns (sticky, level 3) */
     z-index: 6;
     width: 21px;
     height: 21px;
@@ -38,7 +38,7 @@
     margin-bottom: 0;
 }
 
-/* ===== Tableaux ===== */
+/* ===== Tables ===== */
 .list > table {
     font-variant-numeric: tabular-nums;
 }
@@ -98,7 +98,7 @@
     text-decoration-color: var(--lucid-n-300);
 }
 
-/* « Afficher plus » sous la liste */
+/* "Show more" below the list */
 .list .show-more {
     padding: var(--8px) 0;
 }
@@ -107,7 +107,7 @@
     color: var(--lucid-text-muted);
 }
 
-/* Barre d'outils au-dessus de la liste */
+/* Toolbar above the list */
 .list-buttons-container {
     margin-bottom: var(--10px);
 }

@@ -88,13 +88,6 @@ Requires EspoCRM 10.0 or later and PHP 8.3+ (tested on 10.0.3 and 10.0.11).
 
 Updates install the same way, over the previous version.
 
-### Upgrading from Arc
-
-Lucid was called Arc up to version 0.11.2. Install Lucid Theme, then uninstall Arc Theme. The
-install script moves the default theme, user preferences and portals from Arc to Lucid, so
-nobody falls back to the EspoCRM theme. Both extensions can coexist without conflict in the
-meantime.
-
 ## Development
 
 ```bash
@@ -135,7 +128,6 @@ src/files/client/custom/modules/lucid-theme/
     src/helpers/empty-fields.js         hides empty fields
     src/mixins/detail-bottom.js         right column: tabs, quick actions, counts
     fonts/                              Lexend (OFL)
-src/scripts/AfterInstall.php            moves users from the Arc theme to Lucid
 ```
 
 ## License

@@ -1,9 +1,9 @@
 /**
- * Fiche Lucid : bandeau marine (en-tête, identité, pipeline), inspecteur « À propos »
- * et colonne principale à onglets. S'applique au gabarit lucid-theme:record/detail.
+ * Lucid record view: header band (page header, identity, pipeline), "About" inspector
+ * and tabbed main column. Applies to the lucid-theme:record/detail template.
  */
 
-/* ===== Bandeau : en-tête de page + identité + pipeline ===== */
+/* ===== Band: page header + identity + pipeline ===== */
 #main:has(> .record > .lucid-record) > .page-header,
 .lucid-record > .lucid-band {
     margin-left: calc(var(--container-padding) * -1);
@@ -15,9 +15,9 @@
 }
 
 /*
- * Le dégradé est peint sur le fond de la page, sur la hauteur du bandeau mesurée par le script
- * (--lucid-band-height) : il couvre toute la largeur, même quand le contenu est centré sur un
- * grand écran, sans rien faire déborder.
+ * The gradient is painted on the page background, over the band height measured by the script
+ * (--lucid-band-height): it spans the full width, even when the content is centred on a large
+ * screen, without making anything overflow.
  */
 body.lucid-band-page {
     background:
@@ -26,7 +26,7 @@ body.lucid-band-page {
         var(--body-bg);
 }
 
-/* Le bandeau remonte sous la barre du haut : il occupe tout le haut de l'écran. */
+/* The band slides under the top bar: it fills the whole top of the screen. */
 #main:has(> .record > .lucid-record) > .page-header {
     margin-top: calc(var(--top-bar-height) * -1);
     margin-bottom: 0;
@@ -34,7 +34,7 @@ body.lucid-band-page {
     padding-bottom: 0;
 }
 
-/* Barre du haut posée sur le bandeau */
+/* Top bar laid over the band */
 body:has(.lucid-record) #navbar .navbar-right {
     background: var(--lucid-band-topbar);
     border-bottom-color: var(--lucid-band-divider);
@@ -89,7 +89,7 @@ body:has(.lucid-record) #navbar .navbar-right .global-search-container a.global-
     border-color: var(--lucid-band-muted);
 }
 
-/* Boutons posés sur le bandeau */
+/* Buttons on the band */
 #main:has(> .record > .lucid-record) > .page-header .btn-default,
 .lucid-band .btn-default {
     background: var(--lucid-band-fill-2);
@@ -139,7 +139,7 @@ body:has(.lucid-record) #navbar .navbar-right .global-search-container a.global-
     outline-color: var(--lucid-band-focus);
 }
 
-/* Le bas du bandeau passe sous les cartes : la coupure se fait en douceur. */
+/* The bottom of the band runs under the cards, for a soft transition. */
 .lucid-record > .lucid-band {
     display: flex;
     flex-direction: column;
@@ -174,7 +174,7 @@ body:has(.lucid-record) #navbar .navbar-right .global-search-container a.global-
     display: none;
 }
 
-/* Barre de boutons collée en haut au défilement : elle reste marine */
+/* Button bar stuck to the top while scrolling: it keeps the band background */
 .lucid-band .detail-button-container.stick-sub {
     background: var(--lucid-band-glow), var(--lucid-band-gradient);
     background-attachment: fixed;
@@ -182,7 +182,7 @@ body:has(.lucid-record) #navbar .navbar-right .global-search-container a.global-
     padding: var(--8px) var(--28px);
 }
 
-/* Identité */
+/* Identity */
 .lucid-identity {
     display: flex;
     align-items: center;
@@ -205,7 +205,7 @@ body:has(.lucid-record) #navbar .navbar-right .global-search-container a.global-
     overflow-wrap: anywhere;
 }
 
-/* Personnes assignées et équipes */
+/* Assigned users and teams */
 .lucid-identity-people {
     display: flex;
     flex-wrap: wrap;
@@ -262,7 +262,7 @@ body:has(.lucid-record) #navbar .navbar-right .global-search-container a.global-
     font-weight: 700;
 }
 
-/* Parcours de pipeline */
+/* Pipeline path */
 .lucid-band-pipeline {
     display: flex;
     flex-direction: column;
@@ -395,8 +395,8 @@ button.lucid-step-inner:focus-visible {
 }
 
 /*
- * Écran étroit : les chevrons couperaient les noms d'étape lettre par lettre. L'étape actuelle
- * s'affiche avec une barre de progression ; au toucher, la liste des étapes s'ouvre en colonne.
+ * Narrow screen: chevrons would cut stage names letter by letter. The current stage shows with
+ * a progress bar; tapping it opens the list of stages as a column.
  */
 .lucid-band-pipeline {
     container: lucid-pipeline / inline-size;
@@ -486,7 +486,7 @@ button.lucid-step-inner:focus-visible {
     }
 }
 
-/* ===== Deux colonnes ===== */
+/* ===== Two columns ===== */
 .lucid-record .record-grid.lucid-record-grid {
     position: relative;
     display: flex;
@@ -497,14 +497,14 @@ button.lucid-step-inner:focus-visible {
     container-type: inline-size;
 }
 
-/* La poignée tient lieu d'espace entre les deux colonnes */
+/* The handle stands in for the gap between the two columns */
 .lucid-record .record-grid.lucid-record-grid:has(> .lucid-resizer) {
     column-gap: 0;
 }
 
 /*
- * Largeur réglable (--lucid-inspector-width, posée par le script) : 300 px au moins, et la
- * colonne de droite garde toujours 480 px.
+ * Adjustable width (--lucid-inspector-width, set by the script): at least 300 px, and the
+ * right column always keeps 480 px.
  */
 .lucid-record .lucid-record-grid > .lucid-inspector {
     flex: 0 0 clamp(300px, var(--lucid-inspector-width, 380px), calc(100% - 480px - var(--20px)));
@@ -526,8 +526,8 @@ button.lucid-step-inner:focus-visible {
 }
 
 /*
- * Panneaux latéraux en cartes. Le suivi (assigné, équipes, dates) est une carte à part ; il ne
- * prolonge « À propos » que dans la variante article, où la carte n'a pas de champs.
+ * Side panels as cards. Record info (assignee, teams, dates) is a card of its own; it only
+ * extends "About" in the content variant, where that card has no fields.
  */
 .lucid-inspector > .side {
     display: flex;
@@ -561,8 +561,8 @@ button.lucid-step-inner:focus-visible {
 }
 
 /*
- * Panneau collé au précédent (« Stick to the top » dans la disposition) : comme dans EspoCRM, il se
- * soude à la carte du dessus, séparé par un simple filet.
+ * Panel stuck to the previous one ("Stick to the top" in the layout): as in EspoCRM, it joins
+ * the card above, separated by a thin line.
  */
 .lucid-inspector > .side > .panel:has(+ .panel.sticked:not(.hidden)) {
     border-bottom: 0;
@@ -593,7 +593,7 @@ button.lucid-step-inner:focus-visible {
     padding-top: var(--14px);
 }
 
-/* En-tête ajouté au suivi : même allure que les autres cartes latérales */
+/* Heading added to Record info: same look as the other side cards */
 .lucid-inspector > .side > .panel > .panel-heading.lucid-added-heading {
     display: flex;
     align-items: center;
@@ -636,8 +636,8 @@ button.lucid-step-inner:focus-visible {
 }
 
 /*
- * Onglets de champs de la disposition (carte « À propos » ou carte de contenu) : des pastilles
- * compactes qui passent à la ligne proprement, un seul filet sous elles.
+ * Field tabs from the layout ("About" card or content card): compact pills that wrap
+ * cleanly, with a single line below them.
  */
 .lucid-record .middle-tabs {
     display: flex;
@@ -649,7 +649,7 @@ button.lucid-step-inner:focus-visible {
     border-bottom: 1px solid var(--lucid-n-100);
 }
 
-/* « .tabs.middle-tabs » : plus précis que « .record .tabs > button.btn » d'EspoCRM */
+/* ".tabs.middle-tabs": more specific than EspoCRM's ".record .tabs > button.btn" */
 .lucid-record .tabs.middle-tabs > .btn {
     height: auto;
     margin: 0;
@@ -664,7 +664,7 @@ button.lucid-step-inner:focus-visible {
     line-height: 1.5;
 }
 
-/* EspoCRM souligne déjà l'onglet actif : un seul repère suffit */
+/* EspoCRM already underlines the active tab: one marker is enough */
 .lucid-record .tabs.middle-tabs > .btn::after {
     display: none;
 }
@@ -680,7 +680,7 @@ button.lucid-step-inner:focus-visible {
     font-weight: 600;
 }
 
-/* Sous les onglets, pas de second filet : seuls les groupes suivants en ont un */
+/* Below the tabs, no second line: only the following groups get one */
 .lucid-inspector-card .middle-tabs ~ .middle > .panel {
     border-top: 0;
 }
@@ -710,7 +710,7 @@ button.lucid-step-inner:focus-visible {
     box-shadow: var(--lucid-shadow-xs);
 }
 
-/* Variante « contenu » (entités à texte riche) : les champs en tête de la colonne principale */
+/* "Content" variant (rich-text entities): fields at the top of the main column */
 .lucid-record .lucid-content-column {
     display: flex;
     flex-direction: column;
@@ -762,7 +762,7 @@ button.lucid-step-inner:focus-visible {
     }
 }
 
-/* ===== Poignée de largeur entre les colonnes ===== */
+/* ===== Width handle between the columns ===== */
 .lucid-record .lucid-record-grid > .lucid-resizer {
     position: relative;
     flex: 0 0 var(--20px);
@@ -771,7 +771,7 @@ button.lucid-step-inner:focus-visible {
     touch-action: none;
 }
 
-/* Filet sur toute la hauteur au survol, au glisser et au focus clavier */
+/* Full-height line on hover, while dragging and on keyboard focus */
 .lucid-resizer::before {
     content: "";
     position: absolute;
@@ -791,7 +791,7 @@ button.lucid-step-inner:focus-visible {
     background: var(--lucid-brand-ring);
 }
 
-/* Le filet coloré suffit à montrer le focus */
+/* The coloured line is enough to show focus */
 .lucid-resizer:focus-visible {
     outline: none;
 }
@@ -802,7 +802,7 @@ body.lucid-resizing * {
     user-select: none !important;
 }
 
-/* ===== Inspecteur « À propos » ===== */
+/* ===== "About" inspector ===== */
 .lucid-inspector-title {
     display: flex;
     align-items: center;
@@ -899,7 +899,7 @@ body.lucid-resizing * {
     right: 0;
 }
 
-/* En modification, le libellé repasse au-dessus du champ */
+/* While editing, the label goes back above the field */
 .lucid-record:has(.edit-buttons:not(.hidden)) .lucid-inspector .panel-body > .row > .cell,
 .lucid-inspector .panel-body > .row > .cell:has(.inline-save-link) {
     display: block;
@@ -912,7 +912,7 @@ body.lucid-resizing * {
     margin-bottom: var(--4px);
 }
 
-/* ===== Colonne principale : onglets ===== */
+/* ===== Main column: tabs ===== */
 .lucid-record .bottom.lucid-bottom {
     display: flex;
     flex-direction: column;
@@ -984,7 +984,7 @@ body.lucid-resizing * {
     gap: var(--12px);
 }
 
-/* Panneaux de la colonne principale : des sections, plus des cartes */
+/* Main column panels: sections, not cards */
 .lucid-bottom > .panel {
     margin: 0;
     background: transparent;
@@ -1009,13 +1009,13 @@ body.lucid-resizing * {
     padding: 0;
 }
 
-/* ===== Onglet Activité : saisie, activités, tâches, historique, flux ===== */
+/* ===== Activity tab: quick actions, activities, tasks, history, stream ===== */
 .lucid-bottom.lucid-tab-activity > .panel[data-name="stream"],
 .lucid-bottom.lucid-tab-activity > .panel[data-name="stream"] > .panel-body {
     display: contents;
 }
 
-/* Les clearfix de Bootstrap deviendraient des éléments flex vides (et autant d'écarts) */
+/* Bootstrap clearfixes would become empty flex items (and as many gaps) */
 .lucid-bottom.lucid-tab-activity > .panel[data-name="stream"]::before,
 .lucid-bottom.lucid-tab-activity > .panel[data-name="stream"]::after,
 .lucid-bottom.lucid-tab-activity > .panel[data-name="stream"] > .panel-body::before,
@@ -1026,8 +1026,8 @@ body.lucid-resizing * {
 .lucid-bottom.lucid-tab-activity > .lucid-composer { order: 0; }
 .lucid-bottom.lucid-tab-activity > .panel[data-name="stream"] > .panel-body > .post-container { order: 1; }
 /*
- * Le titre du flux est un élément de la colonne, qui espace déjà ses éléments : ses marges
- * négatives reprennent une partie du retrait du titre pour le rapprocher de la saisie et du flux.
+ * The stream heading is an item of the column, which already spaces its items: its negative
+ * margins take back part of the heading padding to bring it closer to the note field and the stream.
  */
 .lucid-bottom.lucid-tab-activity > .panel[data-name="stream"] > .panel-heading {
     order: var(--lucid-stream-order, 2);
@@ -1036,7 +1036,7 @@ body.lucid-resizing * {
     padding-bottom: 0;
 }
 
-/* Pas de notes épinglées : leur conteneur vide ne doit pas ajouter d'écart */
+/* No pinned notes: their empty container must not add a gap */
 .lucid-bottom.lucid-tab-activity > .panel[data-name="stream"] > .panel-body > .list-container[data-role="pinned"]:not(:has(*)) {
     display: none;
 }
@@ -1128,7 +1128,7 @@ body.lucid-resizing * {
     border-radius: var(--lucid-radius-md);
 }
 
-/* ===== Chronologie : flux et listes d'activités ===== */
+/* ===== Timeline: stream and activity lists ===== */
 .lucid-bottom.lucid-tab-activity .list-container[data-role="stream"] .list-group,
 .lucid-bottom .panel[data-name="activities"] .list-group,
 .lucid-bottom .panel[data-name="history"] .list-group,
@@ -1137,8 +1137,8 @@ body.lucid-resizing * {
 }
 
 /*
- * Flux : date à gauche, rail et point, contenu à droite. La colonne de date tient les formats
- * courts d'EspoCRM (« 16 Oct, 25 », « Hier 10:27 ») sur une ligne.
+ * Stream: date on the left, rail and dot, content on the right. The date column fits
+ * EspoCRM's short formats ("16 Oct, 25", "Yest 10:27") on one line.
  */
 .lucid-bottom.lucid-tab-activity .list-container[data-role="stream"] {
     --lucid-stream-date-width: 84px;
@@ -1217,7 +1217,7 @@ body.lucid-resizing * {
     right: 0;
 }
 
-/* Activités, tâches, historique : lignes légères, survol discret */
+/* Activities, tasks, history: light rows, subtle hover */
 .lucid-record .panel[data-name="activities"] li.list-group-item,
 .lucid-record .panel[data-name="history"] li.list-group-item,
 .lucid-record .panel[data-name="tasks"] li.list-group-item {
@@ -1247,8 +1247,8 @@ body.lucid-resizing * {
 }
 
 /*
- * Dans les cartes latérales et la colonne de droite, EspoCRM élargit la liste jusqu'aux bords du
- * panneau : sans ce décalage, les lignes s'alignent sur le titre et leur survol reste dans la carte.
+ * In side cards and in the right column, EspoCRM stretches the list to the panel edges; cancelling
+ * that offset lines the rows up with the heading and keeps their hover inside the card.
  */
 .lucid-inspector > .side > .panel .list-expanded,
 .lucid-bottom > .panel .list-expanded {
@@ -1256,12 +1256,12 @@ body.lucid-resizing * {
     margin-right: 0;
 }
 
-/* Les onglets natifs de la disposition sont repris dans la barre Lucid */
+/* The layout's native tabs are taken over by the Lucid tab bar */
 .lucid-bottom > .tabs {
     display: none;
 }
 
-/* ===== Champs vides masqués (hors modification) ===== */
+/* ===== Hidden empty fields (outside edit mode) ===== */
 .lucid-record-grid:not(.lucid-show-empty) .cell.lucid-empty {
     display: none !important;
 }
@@ -1293,7 +1293,7 @@ body.lucid-resizing * {
     margin-top: var(--8px);
 }
 
-/* ===== Blocs repliables (accordéons) ===== */
+/* ===== Collapsible blocks (accordions) ===== */
 .lucid-collapsible {
     cursor: pointer;
 }
@@ -1342,7 +1342,7 @@ body.lucid-resizing * {
     transform: rotate(-90deg);
 }
 
-/* Replié : seul l'en-tête reste. En modification, tout est ouvert et le chevron disparaît. */
+/* Collapsed: only the heading remains. While editing, everything is open and the chevron disappears. */
 .lucid-record:not(:has(.lucid-band .edit-buttons:not(.hidden))) .panel.lucid-collapsed > :not(.panel-heading),
 .lucid-record:not(:has(.lucid-band .edit-buttons:not(.hidden))) .lucid-inspector.lucid-collapsed > .lucid-inspector-card > :not(.lucid-inspector-title),
 .lucid-record:not(:has(.lucid-band .edit-buttons:not(.hidden))) .lucid-inspector.lucid-collapsed:not(:has(> .lucid-inspector-card > .middle)) > .side > .panel[data-name="default"] {
@@ -1379,10 +1379,10 @@ body.lucid-resizing * {
 }
 
 /*
- * Panneaux colorés par l'administrateur (Danger, Warning, Success, Info, Primary) : comme dans
- * EspoCRM, l'en-tête devient une bande teintée sur toute la largeur du bloc, titre centré et en
- * couleur. EspoCRM teint le fond du panneau sur une hauteur fixe qui ne correspond pas aux
- * en-têtes Lucid : la teinte passe sur l'en-tête lui-même.
+ * Panels coloured by the administrator (Danger, Warning, Success, Info, Primary): as in EspoCRM,
+ * the heading becomes a tinted band across the whole block, with the title centred and in colour.
+ * EspoCRM tints the panel background over a fixed height that doesn't match Lucid's headings,
+ * so the tint goes on the heading itself.
  */
 .lucid-record .panel.headered {
     background-image: none;
@@ -1400,8 +1400,8 @@ body.lucid-resizing * {
 }
 
 /*
- * Colonne de droite. Les listes d'EspoCRM remontent de la marge du panneau (--panel-padding) :
- * la même marge sous la bande les fait commencer juste sous elle, sans la recouvrir.
+ * Right column. EspoCRM lists are pulled up by the panel padding (--panel-padding): the same
+ * margin below the band makes them start right under it, without covering it.
  */
 .lucid-bottom > .panel:is(.panel-danger, .panel-warning, .panel-success, .panel-info, .panel-primary) > .panel-heading {
     min-height: 0;
@@ -1415,7 +1415,7 @@ body.lucid-resizing * {
     padding-bottom: var(--8px);
 }
 
-/* Sections de la carte « À propos » ou de contenu : la bande remplace le filet */
+/* Sections of the "About" or content card: the band replaces the separator line */
 .lucid-inspector-card .middle > .panel:is(.panel-danger, .panel-warning, .panel-success, .panel-info, .panel-primary) {
     border-top: 0;
 }
@@ -1431,14 +1431,14 @@ body.lucid-resizing * {
     border-radius: 0;
 }
 
-/* Cartes de gauche : la bande coiffe la carte */
+/* Left cards: the band caps the card */
 .lucid-inspector > .side > .panel:is(.panel-danger, .panel-warning, .panel-success, .panel-info, .panel-primary) > .panel-heading {
     margin: 0 calc(var(--20px) * -1) var(--panel-padding);
     padding: var(--10px) var(--20px);
     border-radius: calc(var(--lucid-radius-lg) - 1px) calc(var(--lucid-radius-lg) - 1px) 0 0;
 }
 
-/* Carte colorée collée à la précédente : la bande prend la place du filet, sans coins arrondis */
+/* Coloured card stuck to the previous one: the band replaces the line, without rounded corners */
 .lucid-inspector > .side > .panel.sticked:not(:first-child):is(.panel-danger, .panel-warning, .panel-success, .panel-info, .panel-primary) {
     border-top: 0;
 }

@@ -1,9 +1,9 @@
 /**
- * Contrôles — boutons, champs, groupes. Les couleurs viennent des variables Espo
- * (lucid-espo-vars.css) ; ici seulement la forme, la profondeur et le mouvement.
+ * Controls: buttons, fields, groups. Colours come from the EspoCRM variables
+ * (lucid-espo-vars.css); this file only sets shape, depth and motion.
  */
 
-/* ===== Boutons ===== */
+/* ===== Buttons ===== */
 .btn {
     font-weight: 500;
     transition: background-color var(--lucid-fast) ease,
@@ -51,7 +51,7 @@
     opacity: 0.9;
 }
 
-/* Groupes : boutons détachés, espacés de 6px */
+/* Groups: detached buttons, 6px apart */
 .btn-group > .btn,
 .btn-group > .btn:first-child:not(:last-child),
 .btn-group > .btn:not(:first-child):not(:last-child),
@@ -66,7 +66,7 @@
     margin-left: var(--6px);
 }
 
-/* ===== Champs ===== */
+/* ===== Fields ===== */
 .form-control {
     font-size: var(--15px);
     box-shadow: var(--lucid-shadow-xs);
@@ -98,13 +98,13 @@ select.form-control {
     color: var(--lucid-text);
 }
 
-/* Les champs groupés ne doublent pas l'ombre */
+/* Grouped fields don't double the shadow */
 .input-group .form-control:not(:focus),
 .input-group-btn > .btn {
     box-shadow: none;
 }
 
-/* ===== Libellés de formulaire ===== */
+/* ===== Form labels ===== */
 .edit .cell > label.control-label,
 .modal .edit .cell > label.control-label {
     font-size: var(--14px);

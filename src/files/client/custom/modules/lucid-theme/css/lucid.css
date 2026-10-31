@@ -1,6 +1,6 @@
 /**
- * Lucid theme for EspoCRM — point d'entrée.
- * Couches : thème light d'origine -> tokens Lucid -> variables Espo -> composants.
+ * Lucid theme for EspoCRM: entry point.
+ * Layers: stock light theme -> Lucid tokens -> EspoCRM variables -> components.
  */
 @import "../../../../css/espo/light.css";
 @import "lucid-fonts.css?v=0.13.0";

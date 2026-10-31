@@ -1,7 +1,7 @@
 /**
- * Variables EspoCRM redéfinies à partir des tokens Lucid.
- * Le plus possible passe par ici : les feuilles suivantes ne traitent que
- * ce que les variables ne savent pas exprimer.
+ * EspoCRM variables redefined from the Lucid tokens.
+ * As much as possible goes through here: the following stylesheets only handle
+ * what the variables cannot express.
  */
 :root {
     color-scheme: light;
@@ -38,7 +38,7 @@
     --code-border-color: var(--lucid-border);
     --warning-bg: var(--lucid-warning-bg);
 
-    /* Texte */
+    /* Text */
     --text-color: var(--lucid-text);
     --text-muted-color: var(--lucid-text-muted);
     --text-gray-color: var(--lucid-text-secondary);
@@ -50,14 +50,14 @@
     --text-link-hover-color: var(--lucid-link-hover);
     --site-footer-color: var(--lucid-text-faint);
 
-    /* Gris */
+    /* Greys */
     --gray: var(--lucid-n-600);
     --gray-dark: var(--lucid-n-800);
     --gray-soft: var(--lucid-n-500);
     --gray-light: var(--lucid-n-400);
     --gray-lighter: var(--lucid-n-150);
 
-    /* Marque et états */
+    /* Brand and states */
     --brand-primary: var(--lucid-brand);
     --brand-primary-text: #ffffff;
     --brand-primary-5: var(--lucid-brand-hover);
@@ -93,14 +93,14 @@
     --state-danger-text: var(--lucid-danger);
     --state-danger-border: var(--lucid-danger-border);
 
-    /* Rayons */
+    /* Radii */
     --border-radius: var(--lucid-radius);
     --border-radius-small: var(--lucid-radius-sm);
     --dropdown-border-radius: var(--lucid-radius-md);
     --panel-border-radius: var(--lucid-radius-lg);
     --panel-border-width: var(--1px);
 
-    /* Boutons */
+    /* Buttons */
     --btn-default-bg: var(--lucid-n-0);
     --btn-default-border: var(--lucid-border-strong);
     --btn-default-color: var(--lucid-n-800);
@@ -140,7 +140,7 @@
     --btn-warning-active-bg: var(--lucid-warning);
     --btn-warning-active-border: var(--lucid-warning);
 
-    /* Champs */
+    /* Fields */
     --input-color: var(--lucid-text);
     --input-bg: var(--lucid-n-0);
     --input-border: var(--lucid-border-input);
@@ -155,7 +155,7 @@
     --select-item-active-bg: var(--lucid-brand-subtle);
     --select-item-active-text-color: var(--lucid-brand);
 
-    /* Menu latéral (navbar inverse) et barre du haut (navbar) */
+    /* Side menu (inverse navbar) and top bar (navbar) */
     --navbar-border-width: var(--1px);
     --navbar-box-shadow: none;
     --navbar-bg: rgba(246, 247, 249, 0.86);
@@ -174,7 +174,7 @@
     --navbar-inverse-link-icon-color: var(--lucid-sidebar-muted);
     --navbar-inverse-link-icon-hover-color: #ffffff;
 
-    /* Menus déroulants */
+    /* Dropdown menus */
     --dropdown-bg: var(--lucid-surface);
     --dropdown-border: var(--lucid-border);
     --dropdown-border-width: var(--1px);
@@ -186,7 +186,7 @@
     --dropdown-divider-bg: var(--lucid-border);
     --popover-bg: var(--lucid-surface);
 
-    /* Modales */
+    /* Modals */
     --modal-backdrop-bg: rgba(20, 22, 31, 0.32);
     --modal-backdrop-filter: blur(3px);
     --modal-header-bg: var(--lucid-surface);
@@ -196,20 +196,20 @@
     --modal-border-color: var(--lucid-border);
     --modal-box-shadow: var(--lucid-shadow-lg);
 
-    /* Panneaux */
+    /* Panels */
     --panel-default-bg: var(--lucid-surface);
     --panel-default-text: var(--lucid-text);
     --panel-default-border: var(--lucid-border);
     --login-panel-heading-bg: var(--lucid-surface);
 
-    /* Panneaux colorés : teintes natives, icônes d'action à 4.5:1 au moins sur la teinte */
+    /* Coloured panels: native tints, action icons at 4.5:1 or more on the tint */
     --panel-primary-text: var(--lucid-brand);
     --panel-info-text: var(--lucid-info);
     --panel-success-text: var(--lucid-success);
     --panel-warning-text: var(--lucid-warning);
     --panel-danger-text: var(--lucid-danger);
 
-    /* Divers */
+    /* Miscellaneous */
     --tooltip-bg: var(--lucid-n-900);
     --tooltip-color: #ffffff;
     --label-default-bg: var(--lucid-n-100);

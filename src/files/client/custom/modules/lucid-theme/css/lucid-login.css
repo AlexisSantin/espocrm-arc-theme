@@ -1,6 +1,6 @@
 /**
- * Connexion — carte centrée sur un fond neutre, halo de marque très léger.
- * Visible seulement quand Lucid est le thème système.
+ * Login: a centred card on a neutral background, with a very light brand glow.
+ * Only visible when Lucid is the system theme.
  */
 body:has(#login) {
     background:
@@ -31,7 +31,7 @@ body:has(#login) {
     text-align: center;
 }
 
-/* Coin cyan, signature des cartes Lucid */
+/* Cyan corner, the Lucid card signature */
 #login.panel::before {
     content: "";
     position: absolute;

@@ -1,9 +1,9 @@
-/** Largeurs de la colonne « À propos », en pixels. */
+/** Widths of the "About" column, in pixels. */
 const DEFAULT_WIDTH = 380;
 const MIN_WIDTH = 300;
 const MAX_WIDTH = 720;
 
-/** La colonne de droite garde toujours au moins cette largeur. */
+/** The right column always keeps at least this width. */
 const MAIN_MIN_WIDTH = 480;
 
 const STEP = 16;
@@ -12,9 +12,9 @@ const LARGE_STEP = 64;
 const STORAGE_TYPE = 'lucidInspectorWidth';
 
 /**
- * Poignée entre « À propos » et la colonne de droite : la largeur se règle à la souris
- * (double-clic pour revenir à la largeur par défaut) ou au clavier (flèches, Début, Fin).
- * Elle est retenue par utilisateur, dans le navigateur.
+ * Handle between "About" and the right column: the width is set with the mouse
+ * (double-click resets it) or the keyboard (arrows, Home, End).
+ * It is remembered per user, in the browser.
  */
 export default class ColumnResizer {
 
@@ -116,7 +116,7 @@ export default class ColumnResizer {
 
     /**
      * @private
-     * @param {number|null} width Null : largeur par défaut.
+     * @param {number|null} width Null: default width.
      */
     setWidth(width) {
         this.width = width;

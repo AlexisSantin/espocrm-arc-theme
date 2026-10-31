@@ -1,9 +1,9 @@
 /**
- * Shell — menu latéral clair, barre du haut translucide, en-tête de page.
- * Signature : un filet dégradé Bleu UTT → cyan marque l'onglet actif.
+ * Shell: light side menu, translucent top bar, page header.
+ * Signature: an indigo-to-cyan gradient line marks the active tab.
  */
 
-/* ===== Menu latéral : mêmes variables que le bandeau des fiches (ambiance) ===== */
+/* ===== Side menu: same variables as the record band (palette) ===== */
 body[data-navbar="side"] #navbar > .navbar {
     background: var(--lucid-sidebar-glow), var(--lucid-sidebar-bg);
     border-right-color: var(--lucid-sidebar-line);
@@ -13,7 +13,7 @@ body[data-navbar="side"] #navbar > .navbar .navbar-header {
     padding-left: var(--8px);
 }
 
-/* Logo EspoCRM par défaut (bleu-gris) : filtré selon l'ambiance ; un logo d'entreprise reste tel quel */
+/* Default EspoCRM logo (blue-grey): filtered to suit the palette; a company logo stays as is */
 body[data-navbar="side"] #navbar .navbar-brand img[src*="img/logo-light.svg"] {
     filter: var(--lucid-sidebar-logo-filter);
     opacity: var(--lucid-sidebar-logo-opacity);
@@ -71,8 +71,8 @@ body[data-navbar="side"] #navbar ul.tabs > li.tab-divider > div > .label-text {
 }
 
 /*
- * Sous-menus du menu latéral (groupes d'onglets, « … ») : EspoCRM retire la marge intérieure du
- * haut et du bas ; la surbrillance du premier et du dernier élément touchait alors le cadre.
+ * Side menu submenus (tab groups, "…"): EspoCRM removes the top and bottom padding, so the
+ * highlight of the first and last items touched the frame.
  */
 body[data-navbar="side"] #navbar .navbar .nav.tabs > li.tab-group > .dropdown-menu,
 body[data-navbar="side"] #navbar .navbar .nav.tabs > li.more > .dropdown-menu,
@@ -88,7 +88,7 @@ body[data-navbar="side"] #navbar a.minimizer:hover {
     color: var(--lucid-sidebar-strong);
 }
 
-/* ===== Barre du haut ===== */
+/* ===== Top bar ===== */
 body[data-navbar="side"] #navbar .navbar-right {
     align-items: center;
     border-bottom: 1px solid var(--lucid-border);
@@ -119,7 +119,7 @@ body[data-navbar="side"] #navbar .navbar-right > li.open > a {
     color: var(--lucid-text);
 }
 
-/* Recherche globale */
+/* Global search */
 body[data-navbar="side"] #navbar .navbar-right input.global-search-input {
     min-height: var(--34px);
     max-height: var(--34px);
@@ -148,13 +148,13 @@ body[data-navbar="side"] #navbar .navbar-right .global-search-container a.global
     color: var(--lucid-text-faint);
 }
 
-/* ===== Barre du haut (mode navbar top) ===== */
+/* ===== Top bar (top navbar mode) ===== */
 body[data-navbar="top"] #navbar .navbar {
     border-bottom: 1px solid var(--lucid-border);
     box-shadow: none;
 }
 
-/* ===== En-tête de page ===== */
+/* ===== Page header ===== */
 .page-header {
     margin-top: var(--20px);
     margin-bottom: var(--16px);
@@ -187,7 +187,7 @@ body[data-navbar="top"] #navbar .navbar {
     top: -0.15em;
 }
 
-/* Seule la création est une action principale dans l'en-tête */
+/* Only Create is a primary action in the header */
 .page-header .header-buttons .btn[data-name="create"] {
     background-color: var(--lucid-brand);
     border-color: var(--lucid-brand);

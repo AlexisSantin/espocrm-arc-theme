@@ -1,14 +1,14 @@
 import {el} from 'lucid-theme:lucid';
 
-/** Cellules concernées : champs de la disposition et du panneau latéral par défaut. */
+/** Cells concerned: layout fields and fields of the default side panel. */
 const CELL_SELECTOR = '.middle .cell[data-name], .side > .panel[data-name="default"] .cell[data-name]';
 
-/** Zones observées : les champs y sont redessinés après chaque modification. */
+/** Watched areas: fields are redrawn there after each change. */
 const WATCHED_SELECTOR = '.lucid-inspector, .lucid-content-card';
 
 /**
- * Masque les champs vides de l'inspecteur et du contenu, avec un lien pour les afficher.
- * Le masquage ne joue qu'à l'affichage : en modification, tous les champs sont visibles.
+ * Hides the empty fields of the inspector and the content card, with a link to show them.
+ * Hiding only applies when viewing: while editing, every field is visible.
  */
 export default class EmptyFields {
 
@@ -144,8 +144,8 @@ export default class EmptyFields {
 }
 
 /**
- * Vide : rien d'autre que la mention « Aucun » d'EspoCRM. Une case à cocher, une image ou
- * un champ en cours de saisie comptent comme une valeur.
+ * Empty: nothing but EspoCRM's "None". A checkbox, an image or a field being edited
+ * count as a value.
  *
  * @param {HTMLElement} cell
  * @return {boolean}

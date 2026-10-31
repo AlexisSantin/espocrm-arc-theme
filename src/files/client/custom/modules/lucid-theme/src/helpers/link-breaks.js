@@ -1,4 +1,4 @@
-/** Liens dont le texte est une adresse : e-mails et sites web de l'inspecteur et du contenu. */
+/** Links whose text is an address: emails and websites in the inspector and the content card. */
 const LINK_SELECTOR = [
     '.lucid-inspector .field a[href^="mailto:"]',
     '.lucid-inspector .field a[data-action="mailTo"]',
@@ -8,13 +8,13 @@ const LINK_SELECTOR = [
     '.lucid-content-card .field a[href^="http"]',
 ].join(', ');
 
-/** Coupures permises : après « @ » et « / » (sauf au milieu de « // »), avant « . ». */
+/** Allowed breaks: after "@" and "/" (except inside "//"), before ".". */
 const BREAK_PATTERN = /(?<=@)|(?<=\/)(?!\/)|(?=\.)/;
 
 /**
- * Dans une colonne étroite, une adresse trop longue se coupait au milieu d'un mot
- * (« amara.diallo@exam-ple.com »). Des points de coupure (<wbr>) aux séparateurs la font passer
- * à la ligne aux endroits naturels ; le texte, la copie et la lecture d'écran ne changent pas.
+ * In a narrow column, a long address used to break mid-word ("amara.diallo@exam-ple.com").
+ * Break points (<wbr>) at the separators wrap it at natural places; the text, copying and
+ * screen readers are unchanged.
  */
 export default class LinkBreaks {
 
@@ -44,7 +44,7 @@ export default class LinkBreaks {
             return;
         }
 
-        // Les champs sont redessinés après chaque modification : on repasse sur les nouveaux liens.
+        // Fields are redrawn after each change: new links are processed again.
         this.observer = new MutationObserver(() => this.schedule());
         this.observer.observe(root, {childList: true, subtree: true});
 
@@ -80,7 +80,7 @@ export default class LinkBreaks {
 
             link.dataset.lucidBreaks = '1';
 
-            // Le texte est dans le lien (site web) ou dans un <span> du lien (e-mail).
+            // The text sits in the link (website) or in a <span> inside the link (email).
             const holder = !link.children.length ? link :
                 link.children.length === 1 && !link.firstElementChild.children.length ? link.firstElementChild :
                 null;

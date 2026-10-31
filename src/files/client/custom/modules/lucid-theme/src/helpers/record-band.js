@@ -1,11 +1,11 @@
 import {el} from 'lucid-theme:lucid';
 
-/** Étapes de clôture négative : proposées à part plutôt que sur le parcours. */
+/** Negative closing stages: offered separately rather than on the path. */
 const OFF_PATH_STYLES = ['danger'];
 
 /**
- * Bandeau de la fiche : identité (nom, personnes assignées, équipes)
- * et parcours de pipeline.
+ * Record band: identity (name, assigned users, teams)
+ * and pipeline path.
  */
 export default class RecordBand {
 
@@ -34,8 +34,8 @@ export default class RecordBand {
     }
 
     /**
-     * Le dégradé est peint sur le fond de la page, qui couvre toute la largeur sans
-     * débordement, sur la hauteur exacte du bandeau (en-tête de page compris).
+     * The gradient is painted on the page background, which spans the full width without
+     * overflowing, over the exact height of the band (page header included).
      *
      * @private
      */
@@ -76,7 +76,7 @@ export default class RecordBand {
             this.resizeObserver.disconnect();
         }
 
-        // La fiche suivante a pu poser son propre fond avant le retrait de celle-ci.
+        // The next record may have set its own background before this one was removed.
         if (document.body.dataset.lucidBandOwner !== this.view.cid) {
             return;
         }
@@ -115,7 +115,7 @@ export default class RecordBand {
         const wrapper = el('div', 'lucid-identity');
         const text = el('div', 'lucid-identity-text');
 
-        // Titre principal de la page (RGAA 9.1) : le fil d'Ariane d'EspoCRM n'est qu'un h3.
+        // Main page heading (RGAA 9.1): EspoCRM's breadcrumb is only an h3.
         text.append(el('h1', 'lucid-identity-name', name));
 
         const people = this.buildPeople();
@@ -149,7 +149,7 @@ export default class RecordBand {
     }
 
     /**
-     * Personnes assignées et équipes, selon les champs de l'entité et les droits de lecture.
+     * Assigned users and teams, according to the entity's fields and read access.
      *
      * @private
      * @return {HTMLElement|null}
@@ -188,7 +188,7 @@ export default class RecordBand {
     /**
      * @private
      * @param {string[]} forbidden
-     * @return {{id: string, name: string}[]|null} Null si l'entité n'a pas de champ d'assignation lisible.
+     * @return {{id: string, name: string}[]|null} Null if the entity has no readable assignment field.
      */
     getAssignedUsers(forbidden) {
         if (this.model.hasField('assignedUsers') && !forbidden.includes('assignedUsers')) {
@@ -328,7 +328,7 @@ export default class RecordBand {
             list.append(item);
         });
 
-        // Écran étroit : l'étape actuelle et une barre de progression ; la liste s'ouvre au toucher.
+        // Narrow screen: the current stage and a progress bar; the list opens on tap.
         const current = pipeline.stages.find(stage => stage.id === currentId);
         const toggle = el('button', 'lucid-pipeline-toggle');
 
@@ -361,7 +361,7 @@ export default class RecordBand {
     }
 
     /**
-     * Pipeline inactif : EspoCRM n'en transmet pas les étapes, on rappelle seulement l'étape actuelle.
+     * Inactive pipeline: EspoCRM doesn't send its stages, so only the current stage is shown.
      *
      * @private
      * @param {HTMLElement} container
@@ -389,8 +389,8 @@ export default class RecordBand {
     }
 
     /**
-     * Lu dans les métadonnées et les paramètres de l'application plutôt qu'avec l'aide
-     * d'EspoCRM : le thème ne dépend ainsi d'aucun module qui pourrait changer d'une version à l'autre.
+     * Read from the metadata and the application parameters rather than through an EspoCRM
+     * helper: the theme thus depends on no module that could change between versions.
      *
      * @private
      * @return {boolean}
@@ -462,7 +462,7 @@ export default class RecordBand {
         try {
             await this.model.save({pipelineStageId: stageId}, {patch: true});
         } catch (e) {
-            // EspoCRM affiche déjà l'erreur renvoyée par le serveur.
+            // EspoCRM already shows the error returned by the server.
             return;
         }
 

@@ -1,9 +1,9 @@
 import {isLucidTheme} from 'lucid-theme:lucid';
 
 /**
- * Accessibilité de la page sous le thème Lucid (RGAA 8.3 et 10.4) : EspoCRM ne déclare pas la
- * langue du document et bloque le zoom sur mobile. Appelé à l'ouverture des listes, fiches,
- * formulaires et de la page de connexion.
+ * Page accessibility under the Lucid theme (RGAA 8.3 and 10.4): EspoCRM doesn't declare the
+ * document language and blocks zooming on mobile. Called when lists, records, forms and the
+ * login page open.
  */
 export default class PageA11yHandler {
 

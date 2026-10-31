@@ -1,5 +1,5 @@
 /**
- * Base — typographie (Lexend), liens, focus clavier, sélection, barres de défilement.
+ * Base: typography (Lexend), links, keyboard focus, selection, scrollbars.
  */
 :root, body { --theme-name: Lucid !important; }
 
@@ -23,7 +23,7 @@ a {
     transition: color var(--lucid-fast) ease;
 }
 
-/* Focus : anneau visible au clavier uniquement */
+/* Focus: a visible ring for keyboard users only */
 a:focus-visible,
 button:focus-visible,
 .btn:focus-visible,
@@ -33,7 +33,7 @@ button:focus-visible,
     outline-offset: 2px;
 }
 
-/* Sur le menu latéral et la barre du haut des fiches (fonds foncés), l'anneau passe en cyan */
+/* Side menu and record top bar: the ring takes the sidebar focus colour */
 body[data-navbar="side"] #navbar > .navbar a:focus-visible,
 body[data-navbar="side"] #navbar > .navbar button:focus-visible,
 body:has(.lucid-record) #navbar .navbar-right a:focus-visible,
@@ -52,7 +52,7 @@ input[type="radio"] {
     accent-color: var(--lucid-brand);
 }
 
-/* Barres de défilement fines */
+/* Thin scrollbars */
 ::-webkit-scrollbar { width: 10px; height: 10px; }
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb {
@@ -67,7 +67,7 @@ input[type="radio"] {
     font-size: var(--12px);
 }
 
-/* Mouvements réduits à la demande du système (RGAA 13.8) */
+/* Reduced motion when the system asks for it (RGAA 13.8) */
 @media (prefers-reduced-motion: reduce) {
     *,
     *::before,

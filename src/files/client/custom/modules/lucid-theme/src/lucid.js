@@ -1,8 +1,8 @@
 /**
- * Réglages communs de la fiche Lucid.
+ * Shared settings of the Lucid record view.
  */
 
-/** Panneaux du bas de l'onglet Activité, sous la saisie. */
+/** Bottom panels of the Activity tab, below the quick actions. */
 export const ACTIVITY_PANELS = ['stream'];
 
 /**

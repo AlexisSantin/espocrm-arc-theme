@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 /**
- * Watcher live-reload pour le thème Arc.
- * Surveille tous les fichiers sous src/files et resynchronise vers site/ (debounce 300ms).
- * Usage : npm run watch
+ * Live-reload watcher for the Lucid theme.
+ * Watches every file under src/files and syncs it to site/ (300 ms debounce).
+ * Usage: npm run watch
  */
 import {watch, existsSync} from 'fs';
 import {resolve, join} from 'path';
@@ -28,7 +28,7 @@ function sync() {
 }
 
 if (!existsSync(SRC)) {
-    console.error('src/files introuvable');
+    console.error('src/files not found');
     process.exit(1);
 }
 
@@ -37,4 +37,4 @@ watch(SRC, {recursive: true}, () => {
     clearTimeout(timer);
     timer = setTimeout(sync, 300);
 });
-console.log('Arc live-reload actif : modifiez src/, la sync se fait automatiquement.');
+console.log('Lucid live-reload on: edit src/, files are synced automatically.');

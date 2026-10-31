@@ -4,11 +4,11 @@ const ACTIVITY_TAB = 'activity';
 const MORE_TAB = 'lucid-more';
 
 /**
- * Colonne principale de la fiche Lucid : un onglet Activité (saisie rapide puis flux) et un
- * onglet par panneau de relation. Les onglets définis par l'administrateur dans la
- * disposition du bas regroupent leurs panneaux sous leur libellé. Les panneaux affichés sont
- * ceux de la disposition du bas, comme dans EspoCRM ; les panneaux latéraux restent à gauche.
- * S'applique à la vue du bas configurée pour l'entité, standard ou personnalisée.
+ * Main column of the Lucid record view: an Activity tab (quick actions, then the stream) and
+ * one tab per relationship panel. Tabs defined by the administrator in the bottom layout
+ * group their panels under their label. The panels shown are those of the bottom layout,
+ * as in EspoCRM; side panels stay on the left.
+ * Applies to the bottom view configured for the entity, standard or custom.
  *
  * @param {typeof import('views/record/detail-bottom').default} Base
  */
@@ -24,7 +24,7 @@ export default function lucidDetailBottom(Base) {
         alterPanels(layoutData) {
             const data = {...(layoutData || this.layoutData || {})};
 
-            // Les onglets remplacent le « voir plus » des panneaux.
+            // Tabs replace the panels' "show more".
             delete data._delimiter_;
 
             this.layoutData = data;
@@ -172,7 +172,7 @@ export default function lucidDetailBottom(Base) {
 
             root.prepend(bar);
 
-            // Autant d'onglets que la largeur le permet, le reste dans « Plus ».
+            // As many tabs as the width allows, the rest under "More".
             for (let count = tabs.length - 1; count >= 1 && bar.scrollWidth > bar.clientWidth + 1; count--) {
                 const smaller = this.lucidBuildTabBar(tabs, count);
 
@@ -200,8 +200,8 @@ export default function lucidDetailBottom(Base) {
         lucidBuildTabBar(tabs, visibleCount) {
             const bar = el('div', 'lucid-tabbar');
 
-            // Boutons à état (aria-pressed) dans un groupe nommé : le modèle « onglets » d'ARIA
-            // supposerait un panneau par onglet et une navigation aux flèches.
+            // Toggle buttons (aria-pressed) in a named group: the ARIA "tabs" pattern
+            // would assume one panel per tab and arrow-key navigation.
             bar.setAttribute('role', 'group');
             bar.setAttribute('aria-label', this.translate(this.scope, 'scopeNames'));
 
@@ -241,7 +241,7 @@ export default function lucidDetailBottom(Base) {
                     link.append(el('span', '', tab.label), el('span', 'lucid-tab-count', ''));
                     link.addEventListener('click', () => this.lucidSelectTab(tab.id));
 
-                    // Un lien sans adresse ne réagit pas à Entrée : le clavier passe par ici.
+                    // A link without an href doesn't react to Enter: the keyboard goes through here.
                     link.addEventListener('keydown', event => {
                         if (event.key === 'Enter' || event.key === ' ') {
                             event.preventDefault();
@@ -309,7 +309,7 @@ export default function lucidDetailBottom(Base) {
                 panel.classList.toggle('lucid-tab-hidden', !isShown);
 
                 if (isShown) {
-                    // Onglet natif masqué : EspoCRM ne charge le panneau qu'à l'affichage.
+                    // Hidden native tab: EspoCRM only loads the panel when it is shown.
                     panel.classList.remove('tab-hidden');
                 }
 
@@ -329,9 +329,9 @@ export default function lucidDetailBottom(Base) {
         }
 
         /**
-         * L'onglet Activité suit l'ordre de la disposition ; la saisie reste en tête.
-         * Le flux est éclaté (en-tête, listes) : son ordre passe par des variables CSS posées
-         * sur l'élément du panneau, qui survit aux re-rendus de la vue du flux.
+         * The Activity tab follows the layout order; quick actions stay first.
+         * The stream is split up (heading, lists): its order goes through CSS variables set
+         * on the panel element, which survives re-renders of the stream view.
          *
          * @private
          * @param {string[]} names
@@ -354,8 +354,8 @@ export default function lucidDetailBottom(Base) {
         }
 
         /**
-         * Saisie rapide : chaque bouton déclenche l'action native du panneau correspondant,
-         * qui n'existe que si l'utilisateur a le droit de créer.
+         * Quick actions: each button triggers the native action of the matching panel,
+         * which only exists if the user is allowed to create.
          *
          * @private
          * @return {HTMLElement|null}
@@ -407,7 +407,7 @@ export default function lucidDetailBottom(Base) {
             const hasPost = !!this.element
                 .querySelector('.panel[data-name="stream"]:not(.hidden) .post-container:not(.hidden)');
 
-            // Sans zone de note dessous, la saisie se ferme sur elle-même.
+            // Without a note field below, the quick actions box closes at the bottom.
             composer.classList.toggle('lucid-composer-solo', !hasPost);
 
             composer.setAttribute('role', 'group');
@@ -438,7 +438,7 @@ export default function lucidDetailBottom(Base) {
         }
 
         /**
-         * Les actions viennent aussi des panneaux latéraux : on cherche dans toute la fiche.
+         * Actions also come from side panels: the whole record is searched.
          *
          * @private
          * @return {HTMLElement}
@@ -475,7 +475,7 @@ export default function lucidDetailBottom(Base) {
         }
 
         /**
-         * Retrouve la cible au moment du clic : les panneaux se redessinent indépendamment.
+         * Finds the target at click time: panels are redrawn independently.
          *
          * @private
          * @param {string} selector
