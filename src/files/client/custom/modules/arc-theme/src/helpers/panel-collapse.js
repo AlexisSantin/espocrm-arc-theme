@@ -96,12 +96,52 @@ export default class PanelCollapse {
         const inspector = root.querySelector('.arc-inspector');
         const aboutTitle = inspector && inspector.querySelector('.arc-inspector-title');
 
+        this.decorateTracking(inspector);
 
         const aboutContent = inspector && inspector.querySelector(':scope > .arc-inspector-card > .middle, :scope > .side > .panel[data-name="default"]');
 
         if (aboutTitle && aboutContent) {
             this.decorate(inspector, aboutTitle, aboutTitle.textContent.replace('+', '').trim(), ABOUT);
         }
+    }
+
+    /**
+     * Suivi (assigné, équipes, dates) : sans titre, comme dans EspoCRM. Quand il forme une carte
+     * à part, une barre porte le chevron ; repliée, elle liste les champs masqués, avec leurs
+     * libellés EspoCRM.
+     *
+     * @private
+     * @param {HTMLElement|null} inspector
+     */
+    decorateTracking(inspector) {
+        const panel = inspector && inspector.querySelector(':scope > .side > .panel[data-name="default"]');
+
+        if (!panel || !inspector.querySelector(':scope > .arc-inspector-card > .middle')) {
+            return;
+        }
+
+        const labels = [...panel.querySelectorAll('.cell[data-name]')]
+            .filter(cell => getComputedStyle(cell).display !== 'none')
+            .map(cell => (cell.querySelector(':scope > label.control-label') || {}).textContent)
+            .map(text => (text || '').trim())
+            .filter(Boolean);
+
+        let bar = panel.querySelector(':scope > .arc-tracking-bar');
+
+        if (!bar) {
+            bar = el('div', 'panel-heading arc-tracking-bar');
+            bar.append(el('span', 'arc-tracking-summary'));
+            panel.prepend(bar);
+        }
+
+        const summary = bar.querySelector('.arc-tracking-summary');
+        const text = labels.join(' · ');
+
+        if (summary.textContent !== text) {
+            summary.textContent = text;
+        }
+
+        this.decorate(panel, bar, labels.join(', '), 'default');
     }
 
     /**
