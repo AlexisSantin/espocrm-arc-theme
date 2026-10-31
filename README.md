@@ -8,6 +8,18 @@ accent) and targets WCAG 2.1 AA / RGAA.
 
 ![Lead record with the stage band, the About card and the activity stream](docs/screenshots/record-lead.png)
 
+## In motion
+
+![Creating a call from the quick actions, folding blocks and moving a lead along its pipeline](docs/screenshots/demo-overview.gif)
+
+Quick actions open EspoCRM's own side panel, every block folds like an accordion, and a click on a
+stage moves the record along its pipeline.
+
+| | |
+|---|---|
+| ![Resizing the About column and folding a section](docs/screenshots/demo-resize-collapse.gif) | ![Showing and hiding empty fields](docs/screenshots/demo-empty-fields.gif) |
+| Drag the handle between the columns to widen About; fold the sections you don't need | Empty fields stay out of the way until you ask for them |
+
 ## Screenshots
 
 | | |
