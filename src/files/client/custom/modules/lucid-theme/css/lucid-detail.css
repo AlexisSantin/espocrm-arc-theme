@@ -515,7 +515,7 @@ button.lucid-step-inner:focus-visible {
     flex: 1;
     min-width: 0;
     font-family: var(--lucid-font-display);
-    font-size: var(--16px);
+    font-size: var(--14px);
     font-weight: 700;
     color: var(--lucid-text);
 }
@@ -599,7 +599,7 @@ button.lucid-step-inner:focus-visible {
 
 .lucid-inspector > .side > .panel:not([data-name="default"]) > .panel-heading .panel-title {
     font-family: var(--lucid-font-display);
-    font-size: var(--16px);
+    font-size: var(--14px);
     font-weight: 700;
     color: var(--lucid-text);
 }
@@ -651,7 +651,7 @@ button.lucid-step-inner:focus-visible {
 
 .lucid-content-card .middle > .panel > .panel-heading .panel-title {
     font-family: var(--lucid-font-display);
-    font-size: var(--17px);
+    font-size: var(--15px);
     font-weight: 700;
 }
 
@@ -717,7 +717,7 @@ body.lucid-resizing * {
     gap: var(--8px);
     margin: 0 0 var(--8px);
     font-family: var(--lucid-font-display);
-    font-size: var(--17px);
+    font-size: var(--15px);
     font-weight: 700;
     letter-spacing: -0.01em;
 }
@@ -909,7 +909,7 @@ body.lucid-resizing * {
 
 .lucid-bottom > .panel > .panel-heading .panel-title {
     font-family: var(--lucid-font-display);
-    font-size: var(--17px);
+    font-size: var(--15px);
     font-weight: 700;
 }
 
@@ -933,9 +933,20 @@ body.lucid-resizing * {
 
 .lucid-bottom.lucid-tab-activity > .lucid-composer { order: 0; }
 .lucid-bottom.lucid-tab-activity > .panel[data-name="stream"] > .panel-body > .post-container { order: 1; }
+/*
+ * Le titre du flux est un élément de la colonne, qui espace déjà ses éléments : ses marges
+ * négatives reprennent une partie du retrait du titre pour le rapprocher de la saisie et du flux.
+ */
 .lucid-bottom.lucid-tab-activity > .panel[data-name="stream"] > .panel-heading {
     order: var(--lucid-stream-order, 2);
+    margin-top: calc(var(--10px) * -1);
+    margin-bottom: calc(var(--16px) * -1);
     padding-bottom: 0;
+}
+
+/* Pas de notes épinglées : leur conteneur vide ne doit pas ajouter d'écart */
+.lucid-bottom.lucid-tab-activity > .panel[data-name="stream"] > .panel-body > .list-container[data-role="pinned"]:not(:has(*)) {
+    display: none;
 }
 
 .lucid-bottom.lucid-tab-activity > .panel[data-name="stream"] > .panel-body > .list-container {
@@ -1326,6 +1337,16 @@ body.lucid-resizing * {
     margin: 0 calc(var(--20px) * -1) var(--panel-padding);
     padding: var(--10px) var(--20px);
     border-radius: calc(var(--lucid-radius-lg) - 1px) calc(var(--lucid-radius-lg) - 1px) 0 0;
+}
+
+/* Carte colorée collée à la précédente : la bande prend la place du filet, sans coins arrondis */
+.lucid-inspector > .side > .panel.sticked:not(:first-child):is(.panel-danger, .panel-warning, .panel-success, .panel-info, .panel-primary) {
+    border-top: 0;
+}
+
+.lucid-inspector > .side > .panel.sticked:not(:first-child):is(.panel-danger, .panel-warning, .panel-success, .panel-info, .panel-primary) > .panel-heading {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
 }
 
 .lucid-inspector > .side > .panel.lucid-collapsed:is(.panel-danger, .panel-warning, .panel-success, .panel-info, .panel-primary) > .panel-heading {
