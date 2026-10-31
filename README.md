@@ -3,8 +3,8 @@
 Lucid is a light, readable theme for [EspoCRM](https://www.espocrm.com/) with a modern SaaS feel.
 It reworks the record view into two columns — static fields on the left, activity on the right —
 adds a band with the record's owner and pipeline stages, and makes every block collapsible.
-It is built on the UTT palette (Bleu UTT `#292B6B` for actions, cyan `#00B6ED` as the signature
-accent) and targets WCAG 2.1 AA / RGAA.
+It uses a deep indigo (`#292B6B`) for actions and cyan (`#00B6ED`) as the signature accent, and
+targets WCAG 2.1 AA / RGAA.
 
 ![Lead record with the stage band, the About card and the activity stream](docs/screenshots/record-lead.png)
 
