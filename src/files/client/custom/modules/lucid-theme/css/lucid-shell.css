@@ -70,6 +70,16 @@ body[data-navbar="side"] #navbar ul.tabs > li.tab-divider > div > .label-text {
     letter-spacing: 0;
 }
 
+/*
+ * Sous-menus du menu latéral (groupes d'onglets, « … ») : EspoCRM retire la marge intérieure du
+ * haut et du bas ; la surbrillance du premier et du dernier élément touchait alors le cadre.
+ */
+body[data-navbar="side"] #navbar .navbar .nav.tabs > li.tab-group > .dropdown-menu,
+body[data-navbar="side"] #navbar .navbar .nav.tabs > li.more > .dropdown-menu,
+body[data-navbar="side"] #navbar .navbar .nav.tabs > li.more > .dropdown-menu > li.tab-group > ul.dropdown-menu {
+    padding: var(--4px);
+}
+
 body[data-navbar="side"] #navbar a.minimizer {
     color: var(--lucid-sidebar-muted);
 }

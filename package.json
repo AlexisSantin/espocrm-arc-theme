@@ -1,6 +1,6 @@
 {
   "name": "espocrm-ext-lucid-theme",
-  "version": "0.12.0",
+  "version": "0.12.1",
   "description": "Modern SaaS theme for EspoCRM (light, UTT palette)",
   "scripts": {
     "watch": "node scripts/watch.js",
