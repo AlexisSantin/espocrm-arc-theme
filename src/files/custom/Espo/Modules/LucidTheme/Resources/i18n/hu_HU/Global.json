@@ -1,0 +1,11 @@
+{
+    "themes": {
+        "Lucid": "Lucid"
+    },
+    "labels": {
+        "lucidShowEmptyOne": "Az üres mező megjelenítése",
+        "lucidShowEmptyMany": "{count} üres mező megjelenítése",
+        "lucidHideEmpty": "Üres mezők elrejtése",
+        "lucidRecordInfo": "Rekordadatok"
+    }
+}

@@ -1,0 +1,11 @@
+{
+    "themes": {
+        "Lucid": "Lucid"
+    },
+    "labels": {
+        "lucidShowEmptyOne": "Pokaż puste pole",
+        "lucidShowEmptyMany": "Pokaż puste pola ({count})",
+        "lucidHideEmpty": "Ukryj puste pola",
+        "lucidRecordInfo": "Informacje o rekordzie"
+    }
+}

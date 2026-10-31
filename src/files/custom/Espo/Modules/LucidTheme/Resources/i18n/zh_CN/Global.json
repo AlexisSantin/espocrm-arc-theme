@@ -1,0 +1,11 @@
+{
+    "themes": {
+        "Lucid": "Lucid"
+    },
+    "labels": {
+        "lucidShowEmptyOne": "显示空字段",
+        "lucidShowEmptyMany": "显示 {count} 个空字段",
+        "lucidHideEmpty": "隐藏空字段",
+        "lucidRecordInfo": "记录信息"
+    }
+}

@@ -1,0 +1,11 @@
+{
+    "themes": {
+        "Lucid": "Lucid"
+    },
+    "labels": {
+        "lucidShowEmptyOne": "Mostrar o campo vazio",
+        "lucidShowEmptyMany": "Mostrar {count} campos vazios",
+        "lucidHideEmpty": "Ocultar campos vazios",
+        "lucidRecordInfo": "Informações do registro"
+    }
+}

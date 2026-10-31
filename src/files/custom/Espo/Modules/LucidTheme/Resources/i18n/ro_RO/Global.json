@@ -1,0 +1,11 @@
+{
+    "themes": {
+        "Lucid": "Lucid"
+    },
+    "labels": {
+        "lucidShowEmptyOne": "Afișează câmpul gol",
+        "lucidShowEmptyMany": "Afișează câmpurile goale ({count})",
+        "lucidHideEmpty": "Ascunde câmpurile goale",
+        "lucidRecordInfo": "Informații înregistrare"
+    }
+}

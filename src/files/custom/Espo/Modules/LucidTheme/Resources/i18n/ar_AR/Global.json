@@ -1,0 +1,11 @@
+{
+    "themes": {
+        "Lucid": "Lucid"
+    },
+    "labels": {
+        "lucidShowEmptyOne": "إظهار الحقل الفارغ",
+        "lucidShowEmptyMany": "إظهار الحقول الفارغة ({count})",
+        "lucidHideEmpty": "إخفاء الحقول الفارغة",
+        "lucidRecordInfo": "معلومات السجل"
+    }
+}

@@ -1,0 +1,11 @@
+{
+    "themes": {
+        "Lucid": "Lucid"
+    },
+    "labels": {
+        "lucidShowEmptyOne": "Boş alanı göster",
+        "lucidShowEmptyMany": "{count} boş alanı göster",
+        "lucidHideEmpty": "Boş alanları gizle",
+        "lucidRecordInfo": "Kayıt bilgileri"
+    }
+}

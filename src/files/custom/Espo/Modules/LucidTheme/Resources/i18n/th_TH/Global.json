@@ -1,0 +1,11 @@
+{
+    "themes": {
+        "Lucid": "Lucid"
+    },
+    "labels": {
+        "lucidShowEmptyOne": "แสดงช่องที่ว่าง",
+        "lucidShowEmptyMany": "แสดงช่องที่ว่าง ({count})",
+        "lucidHideEmpty": "ซ่อนช่องที่ว่าง",
+        "lucidRecordInfo": "ข้อมูลระเบียน"
+    }
+}

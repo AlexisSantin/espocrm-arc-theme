@@ -1,0 +1,11 @@
+{
+    "themes": {
+        "Lucid": "Lucid"
+    },
+    "labels": {
+        "lucidShowEmptyOne": "Toon het lege veld",
+        "lucidShowEmptyMany": "Toon {count} lege velden",
+        "lucidHideEmpty": "Verberg lege velden",
+        "lucidRecordInfo": "Recordinfo"
+    }
+}

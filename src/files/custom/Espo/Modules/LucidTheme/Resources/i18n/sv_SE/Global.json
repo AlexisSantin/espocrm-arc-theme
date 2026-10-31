@@ -1,0 +1,11 @@
+{
+    "themes": {
+        "Lucid": "Lucid"
+    },
+    "labels": {
+        "lucidShowEmptyOne": "Visa det tomma fältet",
+        "lucidShowEmptyMany": "Visa {count} tomma fält",
+        "lucidHideEmpty": "Dölj tomma fält",
+        "lucidRecordInfo": "Postinformation"
+    }
+}

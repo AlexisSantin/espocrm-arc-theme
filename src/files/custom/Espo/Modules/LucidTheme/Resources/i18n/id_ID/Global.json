@@ -1,0 +1,11 @@
+{
+    "themes": {
+        "Lucid": "Lucid"
+    },
+    "labels": {
+        "lucidShowEmptyOne": "Tampilkan kolom kosong",
+        "lucidShowEmptyMany": "Tampilkan {count} kolom kosong",
+        "lucidHideEmpty": "Sembunyikan kolom kosong",
+        "lucidRecordInfo": "Info rekaman"
+    }
+}

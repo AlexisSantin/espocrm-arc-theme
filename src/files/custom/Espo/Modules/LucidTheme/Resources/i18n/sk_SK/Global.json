@@ -1,0 +1,11 @@
+{
+    "themes": {
+        "Lucid": "Lucid"
+    },
+    "labels": {
+        "lucidShowEmptyOne": "Zobraziť prázdne pole",
+        "lucidShowEmptyMany": "Zobraziť prázdne polia ({count})",
+        "lucidHideEmpty": "Skryť prázdne polia",
+        "lucidRecordInfo": "Informácie o zázname"
+    }
+}

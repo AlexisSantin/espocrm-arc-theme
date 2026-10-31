@@ -123,7 +123,7 @@ export default class PanelCollapse {
 
         if (!heading) {
             heading = el('div', 'panel-heading lucid-added-heading');
-            heading.append(el('h4', 'panel-title', this.view.translate('lucidAssignment', 'labels', 'Global')));
+            heading.append(el('h4', 'panel-title', this.view.translate('lucidRecordInfo', 'labels', 'Global')));
             panel.prepend(heading);
         }
 

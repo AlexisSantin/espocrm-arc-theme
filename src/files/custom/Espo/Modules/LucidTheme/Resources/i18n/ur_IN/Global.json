@@ -1,0 +1,11 @@
+{
+    "themes": {
+        "Lucid": "Lucid"
+    },
+    "labels": {
+        "lucidShowEmptyOne": "خالی فیلڈ دکھائیں",
+        "lucidShowEmptyMany": "خالی فیلڈز دکھائیں ({count})",
+        "lucidHideEmpty": "خالی فیلڈز چھپائیں",
+        "lucidRecordInfo": "ریکارڈ کی معلومات"
+    }
+}

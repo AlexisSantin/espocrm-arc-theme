@@ -1,0 +1,11 @@
+{
+    "themes": {
+        "Lucid": "Lucid"
+    },
+    "labels": {
+        "lucidShowEmptyOne": "Εμφάνιση του κενού πεδίου",
+        "lucidShowEmptyMany": "Εμφάνιση {count} κενών πεδίων",
+        "lucidHideEmpty": "Απόκρυψη κενών πεδίων",
+        "lucidRecordInfo": "Πληροφορίες εγγραφής"
+    }
+}

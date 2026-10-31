@@ -575,7 +575,7 @@ button.lucid-step-inner:focus-visible {
     border-top: 0;
 }
 
-.lucid-inspector-card .middle-tabs ~ .middle > .panel:not(.tab-hidden):not(.hidden) ~ .panel:not(.tab-hidden):not(.hidden) {
+.lucid-inspector-card .middle-tabs ~ .middle > .panel:not(.tab-hidden):not(.hidden) ~ .panel:not(.tab-hidden):not(.hidden):not(.panel-danger, .panel-warning, .panel-success, .panel-info, .panel-primary) {
     border-top: 1px solid var(--lucid-n-100);
 }
 
@@ -1288,9 +1288,12 @@ body.lucid-resizing * {
 }
 
 /* Sections de la carte « À propos » ou de contenu : la bande remplace le filet */
-.lucid-inspector-card .middle > .panel:is(.panel-danger, .panel-warning, .panel-success, .panel-info, .panel-primary),
-.lucid-content-card .middle > .panel:is(.panel-danger, .panel-warning, .panel-success, .panel-info, .panel-primary) {
-    border-top-color: transparent;
+.lucid-inspector-card .middle > .panel:is(.panel-danger, .panel-warning, .panel-success, .panel-info, .panel-primary) {
+    border-top: 0;
+}
+
+.lucid-content-card .middle > .panel:has(+ .panel:is(.panel-danger, .panel-warning, .panel-success, .panel-info, .panel-primary)) {
+    border-bottom: 0;
 }
 
 .lucid-inspector-card .middle > .panel:is(.panel-danger, .panel-warning, .panel-success, .panel-info, .panel-primary) > .panel-heading,

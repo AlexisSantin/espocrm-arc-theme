@@ -1,0 +1,11 @@
+{
+    "themes": {
+        "Lucid": "Lucid"
+    },
+    "labels": {
+        "lucidShowEmptyOne": "Показать пустое поле",
+        "lucidShowEmptyMany": "Показать пустые поля ({count})",
+        "lucidHideEmpty": "Скрыть пустые поля",
+        "lucidRecordInfo": "Сведения о записи"
+    }
+}

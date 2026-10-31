@@ -1,0 +1,11 @@
+{
+    "themes": {
+        "Lucid": "Lucid"
+    },
+    "labels": {
+        "lucidShowEmptyOne": "Hiện trường trống",
+        "lucidShowEmptyMany": "Hiện {count} trường trống",
+        "lucidHideEmpty": "Ẩn các trường trống",
+        "lucidRecordInfo": "Thông tin bản ghi"
+    }
+}

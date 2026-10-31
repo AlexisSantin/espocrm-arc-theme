@@ -1,0 +1,11 @@
+{
+    "themes": {
+        "Lucid": "Lucid"
+    },
+    "labels": {
+        "lucidShowEmptyOne": "Rādīt tukšo lauku",
+        "lucidShowEmptyMany": "Rādīt tukšos laukus ({count})",
+        "lucidHideEmpty": "Paslēpt tukšos laukus",
+        "lucidRecordInfo": "Ieraksta informācija"
+    }
+}

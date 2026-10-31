@@ -1,0 +1,11 @@
+{
+    "themes": {
+        "Lucid": "Lucid"
+    },
+    "labels": {
+        "lucidShowEmptyOne": "نمایش فیلد خالی",
+        "lucidShowEmptyMany": "نمایش {count} فیلد خالی",
+        "lucidHideEmpty": "پنهان کردن فیلدهای خالی",
+        "lucidRecordInfo": "اطلاعات رکورد"
+    }
+}

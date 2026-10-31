@@ -1,0 +1,11 @@
+{
+    "themes": {
+        "Lucid": "Lucid"
+    },
+    "labels": {
+        "lucidShowEmptyOne": "空のフィールドを表示",
+        "lucidShowEmptyMany": "空のフィールドを表示 ({count})",
+        "lucidHideEmpty": "空のフィールドを非表示",
+        "lucidRecordInfo": "レコード情報"
+    }
+}

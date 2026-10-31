@@ -6,6 +6,6 @@
         "lucidShowEmptyOne": "Afficher le champ vide",
         "lucidShowEmptyMany": "Afficher les {count} champs vides",
         "lucidHideEmpty": "Masquer les champs vides",
-        "lucidAssignment": "Affectation"
+        "lucidRecordInfo": "Infos de la fiche"
     }
 }

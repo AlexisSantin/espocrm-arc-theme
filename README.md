@@ -13,7 +13,7 @@ accent) and targets WCAG 2.1 AA / RGAA.
 | | |
 |---|---|
 | ![Contact record](docs/screenshots/record-contact.png) | ![Account record](docs/screenshots/record-account.png) |
-| Contact: About card, Assignment card, quick actions and stream | Account: layout panels on the left, relationship tabs on the right |
+| Contact: About card, Record info card, quick actions and stream | Account: layout panels on the left, relationship tabs on the right |
 | ![Opportunity list](docs/screenshots/list-opportunities.png) | ![Create call side panel](docs/screenshots/create-call.png) |
 | List as a card, coloured record links, stage badges | Native EspoCRM side panel, detached from the page |
 
@@ -22,7 +22,7 @@ All data in the screenshots is fictitious.
 ## Features
 
 - **Record view in two columns.** The **About** card on the left holds the layout panels as a
-  compact property list (tab breaks become small pill tabs), followed by an **Assignment** card
+  compact property list (tab breaks become small pill tabs), followed by a **Record info** card
   (assigned user, teams, dates, followers) and the side panels (Activities, History, Tasks…). The
   right column starts with the **Stream** tab — quick actions (Note, Email, Call, Meeting, Task)
   above the stream as a timeline — then one tab per bottom panel, with its count. Which panels show
@@ -31,7 +31,7 @@ All data in the screenshots is fictitious.
 - **Band** at the top of each record: name, assigned users and teams, record actions and, for
   entities with an active pipeline, the stage path (click a stage to move the record if you may
   edit it).
-- **Collapsible blocks.** About, Assignment, the side panels and each layout panel fold like an
+- **Collapsible blocks.** About, Record info, the side panels and each layout panel fold like an
   accordion. The state is remembered per user and record type; everything opens while editing.
 - **Adjustable column.** A handle between the columns sets the width of About, from 300 to 720 px
   (mouse, or arrow keys / Home / End; double-click to reset). The main column keeps at least 480 px.
@@ -41,7 +41,8 @@ All data in the screenshots is fictitious.
 - **Light palette.** White sidebar, ice-blue record band, cards with a cyan corner mark. Colours
   are CSS tokens (`--lucid-band-*`, `--lucid-sidebar-*`), easy to retune.
 - **Speaks every EspoCRM language.** Labels come from EspoCRM's own translations; only the
-  empty-fields link and the Assignment title are the theme's own (English and French).
+  empty-fields link and the Record info title are the theme's own, translated into every language
+  EspoCRM ships.
 
 Knowledge base articles (and any entity with a rich-text `body`) keep their fields in the main
 column, full width. Email and User records, and detail views opened in dialogs, keep the EspoCRM
