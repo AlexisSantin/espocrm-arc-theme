@@ -3,24 +3,8 @@
         "Arc": "Arc"
     },
     "labels": {
-        "arcAbout": "About",
-        "arcActivity": "Activity",
-        "arcMore": "More",
-        "arcNote": "Note",
-        "arcEmail": "Email",
-        "arcNewActivity": "New activity",
-        "arcPipelineStep": "step {current} of {total}",
-        "arcMarkStage": "Mark as {stage}",
-        "arcAssigned": "Assigned to",
-        "arcUnassigned": "Unassigned",
         "arcShowEmptyOne": "Show the empty field",
         "arcShowEmptyMany": "Show {count} empty fields",
-        "arcHideEmpty": "Hide empty fields",
-        "arcCollapse": "Collapse {panel}",
-        "arcExpand": "Expand {panel}",
-        "arcSections": "Record sections",
-        "arcResizeAbout": "Width of the About column",
-        "arcResizeHint": "Drag to adjust the width, double-click to reset",
-        "arcTracking": "Record info"
+        "arcHideEmpty": "Hide empty fields"
     }
 }

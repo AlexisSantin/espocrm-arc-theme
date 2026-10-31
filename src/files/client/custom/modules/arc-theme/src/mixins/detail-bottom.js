@@ -124,7 +124,7 @@ export default function arcDetailBottom(Base) {
             if (activityNames.length) {
                 tabs.push({
                     id: ACTIVITY_TAB,
-                    label: this.translate('arcActivity', 'labels', 'Global'),
+                    label: this.translate('Stream', 'labels', 'Global'),
                     names: activityNames,
                 });
             }
@@ -216,7 +216,7 @@ export default function arcDetailBottom(Base) {
             // Boutons à état (aria-pressed) dans un groupe nommé : le modèle « onglets » d'ARIA
             // supposerait un panneau par onglet et une navigation aux flèches.
             bar.setAttribute('role', 'group');
-            bar.setAttribute('aria-label', this.translate('arcSections', 'labels', 'Global'));
+            bar.setAttribute('aria-label', this.translate(this.scope, 'scopeNames'));
 
             const visible = tabs.slice(0, visibleCount);
             const overflow = tabs.slice(visibleCount);
@@ -234,7 +234,7 @@ export default function arcDetailBottom(Base) {
                 toggle.setAttribute('aria-haspopup', 'true');
                 toggle.setAttribute('aria-expanded', 'false');
                 toggle.setAttribute('aria-pressed', current ? 'true' : 'false');
-                toggle.append(current ? current.label : this.translate('arcMore', 'labels', 'Global'));
+                toggle.append(current ? current.label : this.translate('More', 'labels', 'Global'));
                 toggle.append(el('span', 'caret'));
 
                 const menu = el('ul', 'dropdown-menu pull-right');
@@ -381,13 +381,13 @@ export default function arcDetailBottom(Base) {
             const items = [
                 {
                     kind: 'note',
-                    label: this.translate('arcNote', 'labels', 'Global'),
+                    label: this.translate('Note', 'scopeNames'),
                     icon: 'fas fa-pen',
                     run: this.arcLazy('.panel[data-name="stream"] .post-container:not(.hidden) textarea', 'focus'),
                 },
                 {
                     kind: 'email',
-                    label: this.translate('arcEmail', 'labels', 'Global'),
+                    label: this.translate('Email', 'scopeNames'),
                     icon: 'fas fa-envelope',
                     run: this.arcFindAction('activities', 'composeEmail'),
                 },
@@ -416,7 +416,7 @@ export default function arcDetailBottom(Base) {
             }
 
             const composer = el('div', 'arc-composer');
-            const label = this.translate('arcNewActivity', 'labels', 'Global');
+            const label = this.translate('Create', 'labels', 'Global');
             const hasPost = !!this.element
                 .querySelector('.panel[data-name="stream"]:not(.hidden) .post-container:not(.hidden)');
 

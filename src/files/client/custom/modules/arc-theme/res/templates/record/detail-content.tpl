@@ -53,9 +53,9 @@
     </div>
 
     <div class="record-grid arc-record-grid{{#if isWide}} record-grid-wide{{/if}}{{#if isSmall}} record-grid-small{{/if}}">
-        <aside class="arc-inspector" aria-label="{{translate 'arcAbout' category='labels' scope='Global'}}">
+        <aside class="arc-inspector" aria-label="{{translate 'About' category='labels' scope='Global'}}">
             <section class="arc-inspector-card">
-                <h2 class="arc-inspector-title"><span class="arc-plus" aria-hidden="true">+</span>{{translate 'arcAbout' category='labels' scope='Global'}}</h2>
+                <h2 class="arc-inspector-title"><span class="arc-plus" aria-hidden="true">+</span>{{translate 'About' category='labels' scope='Global'}}</h2>
             </section>
             <div class="side">
             {{{side}}}
@@ -66,8 +66,7 @@
             role="separator"
             aria-orientation="vertical"
             tabindex="0"
-            aria-label="{{translate 'arcResizeAbout' category='labels' scope='Global'}}"
-            title="{{translate 'arcResizeHint' category='labels' scope='Global'}}"
+            aria-label="{{translate 'width' category='fields' scope='LayoutManager'}} ({{translate 'About' category='labels' scope='Global'}})"
         ></div>
         <div class="left arc-content-column">
             <section class="arc-content-card">

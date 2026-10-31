@@ -163,9 +163,11 @@ export default class RecordBand {
         if (users) {
             const chips = users.length ?
                 users.map(user => this.buildUserChip(user)) :
-                [el('span', 'arc-person arc-person-empty', this.view.translate('arcUnassigned', 'labels', 'Global'))];
+                [el('span', 'arc-person arc-person-empty', this.view.translate('None', 'labels', 'Global'))];
 
-            container.append(this.buildGroup(this.view.translate('arcAssigned', 'labels', 'Global'), chips));
+            const field = this.model.hasField('assignedUsers') ? 'assignedUsers' : 'assignedUser';
+
+            container.append(this.buildGroup(this.view.translate(field, 'fields', this.entityType), chips));
         }
 
         if (this.model.hasField('teams') && !forbidden.includes('teams')) {
@@ -261,9 +263,7 @@ export default class RecordBand {
         summary.append(el('strong', '', this.model.get('pipelineName') || ''));
 
         if (currentIndex >= 0) {
-            summary.append(' · ' + this.view.translate('arcPipelineStep', 'labels', 'Global')
-                .replace('{current}', String(currentIndex + 1))
-                .replace('{total}', String(path.length)));
+            summary.append(` · ${currentIndex + 1} / ${path.length}`);
         }
 
         head.append(summary);
@@ -272,7 +272,6 @@ export default class RecordBand {
             const links = el('span', 'arc-pipeline-off');
 
             offPath.forEach(stage => {
-                const label = this.view.translate('arcMarkStage', 'labels', 'Global').replace('{stage}', stage.name);
 
                 if (stage.id === currentId) {
                     links.append(el('span', 'arc-pipeline-off-current', stage.name));
@@ -284,9 +283,10 @@ export default class RecordBand {
                     return;
                 }
 
-                const button = el('button', 'arc-pipeline-off-link', label);
+                const button = el('button', 'arc-pipeline-off-link', stage.name);
 
                 button.type = 'button';
+                button.title = `${this.view.translate('pipelineStage', 'fields', this.entityType)} : ${stage.name}`;
                 button.addEventListener('click', () => this.setStage(stage.id));
                 links.append(button);
             });
