@@ -1119,12 +1119,20 @@ body.lucid-resizing * {
 }
 
 /*
- * Dans les cartes latérales, EspoCRM élargit la liste jusqu'aux bords du panneau : sans ce
- * décalage, les lignes s'alignent sur le titre et leur survol reste dans la carte.
+ * Dans les cartes latérales et la colonne de droite, EspoCRM élargit la liste jusqu'aux bords du
+ * panneau : sans ce décalage, les lignes s'alignent sur le titre et leur survol reste dans la carte.
  */
-.lucid-inspector > .side > .panel .list-expanded {
+.lucid-inspector > .side > .panel .list-expanded,
+.lucid-bottom > .panel .list-expanded {
     margin-left: 0;
     margin-right: 0;
+}
+
+/* Activités, historique ou tâches placés dans la disposition du bas : plus d'exemplaire à gauche */
+.lucid-record[data-lucid-bottom~="activities"] .lucid-inspector > .side > .panel[data-name="activities"],
+.lucid-record[data-lucid-bottom~="history"] .lucid-inspector > .side > .panel[data-name="history"],
+.lucid-record[data-lucid-bottom~="tasks"] .lucid-inspector > .side > .panel[data-name="tasks"] {
+    display: none;
 }
 
 /* Les onglets natifs de la disposition sont repris dans la barre Lucid */
@@ -1248,3 +1256,28 @@ body.lucid-resizing * {
         transition: none;
     }
 }
+
+/*
+ * Panneaux colorés par la disposition (danger, warning…) : EspoCRM teinte le fond de la carte sur
+ * la hauteur de son propre en-tête, qui ne correspond pas à celui de Lucid. La couleur devient une
+ * barre devant le titre.
+ */
+.lucid-record .panel.headered {
+    background-image: none;
+}
+
+.lucid-record .panel:is(.panel-danger, .panel-warning, .panel-success, .panel-info, .panel-primary) > .panel-heading .panel-title::before {
+    content: "";
+    display: inline-block;
+    width: 4px;
+    height: 0.95em;
+    margin-right: var(--8px);
+    border-radius: 2px;
+    background: var(--lucid-brand);
+    vertical-align: -0.1em;
+}
+
+.lucid-record .panel.panel-danger > .panel-heading .panel-title::before { background: var(--lucid-danger-solid); }
+.lucid-record .panel.panel-warning > .panel-heading .panel-title::before { background: var(--lucid-warning-solid); }
+.lucid-record .panel.panel-success > .panel-heading .panel-title::before { background: var(--lucid-success-solid); }
+.lucid-record .panel.panel-info > .panel-heading .panel-title::before { background: var(--lucid-info); }

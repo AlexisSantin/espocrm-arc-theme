@@ -3,14 +3,14 @@
  * Couches : thème light d'origine -> tokens Lucid -> variables Espo -> composants.
  */
 @import "../../../../css/espo/light.css";
-@import "lucid-fonts.css?v=0.12.1";
-@import "lucid-tokens.css?v=0.12.1";
-@import "lucid-espo-vars.css?v=0.12.1";
-@import "lucid-base.css?v=0.12.1";
-@import "lucid-shell.css?v=0.12.1";
-@import "lucid-controls.css?v=0.12.1";
-@import "lucid-data.css?v=0.12.1";
-@import "lucid-record.css?v=0.12.1";
-@import "lucid-detail.css?v=0.12.1";
-@import "lucid-overlays.css?v=0.12.1";
-@import "lucid-login.css?v=0.12.1";
+@import "lucid-fonts.css?v=0.12.2";
+@import "lucid-tokens.css?v=0.12.2";
+@import "lucid-espo-vars.css?v=0.12.2";
+@import "lucid-base.css?v=0.12.2";
+@import "lucid-shell.css?v=0.12.2";
+@import "lucid-controls.css?v=0.12.2";
+@import "lucid-data.css?v=0.12.2";
+@import "lucid-record.css?v=0.12.2";
+@import "lucid-detail.css?v=0.12.2";
+@import "lucid-overlays.css?v=0.12.2";
+@import "lucid-login.css?v=0.12.2";

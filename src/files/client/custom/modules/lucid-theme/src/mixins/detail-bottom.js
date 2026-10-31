@@ -7,7 +7,7 @@ const MORE_TAB = 'lucid-more';
  * Colonne principale de la fiche Lucid : un onglet Activité (saisie rapide puis flux) et un
  * onglet par panneau de relation. Les onglets définis par l'administrateur dans la
  * disposition du bas regroupent leurs panneaux sous leur libellé. Activités, tâches et
- * historique restent des panneaux latéraux (colonne de gauche).
+ * historique restent à gauche, sauf si l'administrateur les place dans la disposition du bas.
  * S'applique à la vue du bas configurée pour l'entité, standard ou personnalisée.
  *
  * @param {typeof import('views/record/detail-bottom').default} Base
@@ -32,24 +32,33 @@ export default function lucidDetailBottom(Base) {
             super.alterPanels(data);
         }
 
-        setupPanelsFinal() {
-            super.setupPanelsFinal();
-
-            // Pas de doublon avec les panneaux latéraux d'activité (ni avec un panneau
-            // de relation du même nom ajouté par la disposition, comme « tasks »).
-            const sideNames = (this.getMetadata().get(['clientDefs', this.scope, 'sidePanels', this.type]) || [])
-                .map(item => item.name);
-
-            this.panelList = this.panelList.filter(item => {
-                return !SIDE_ACTIVITY_PANELS.includes(item.name) || !sideNames.includes(item.name);
-            });
-        }
-
         afterRender() {
             super.afterRender();
 
+            this.lucidMarkMovedPanels();
             this.lucidRenderTabs();
             this.lucidWatchResize();
+        }
+
+        /**
+         * Activités, historique ou tâches placés par l'administrateur dans la disposition du bas
+         * s'y affichent ; la colonne de gauche masque alors son exemplaire (pas de doublon).
+         * Repère posé sur la fiche : il survit aux redessins de la colonne de gauche.
+         *
+         * @private
+         */
+        lucidMarkMovedPanels() {
+            const moved = this.panelList
+                .map(item => item.name)
+                .filter(name => SIDE_ACTIVITY_PANELS.includes(name));
+
+            const root = this.lucidRecordRoot();
+
+            if (moved.length) {
+                root.dataset.lucidBottom = moved.join(' ');
+            } else {
+                delete root.dataset.lucidBottom;
+            }
         }
 
         /** @private */

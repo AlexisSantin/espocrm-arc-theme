@@ -1,6 +1,6 @@
 {
   "name": "espocrm-ext-lucid-theme",
-  "version": "0.12.1",
+  "version": "0.12.2",
   "description": "Lucid: a light, readable and accessible theme for EspoCRM",
   "scripts": {
     "watch": "node scripts/watch.js",

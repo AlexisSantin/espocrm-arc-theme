@@ -23,7 +23,9 @@ All data in the screenshots is fictitious.
 
 - **Record view in two columns.** The **About** card on the left holds the layout panels as a
   compact property list (tab breaks become small pill tabs), followed by an **Assignment** card
-  (assigned user, teams, dates, followers) and the Activities, History and Tasks panels. The right
+  (assigned user, teams, dates, followers) and the Activities, History and Tasks panels. If the
+  bottom panel layout includes Activities, History or Tasks, they show in the right column
+  instead, and the left column hides its copy. The right
   column starts with the **Stream** tab — quick actions (Note, Email, Call, Meeting, Task) above the
   stream as a timeline — then one tab per relationship panel, with its count.
 - **Band** at the top of each record: name, assigned users and teams, record actions and, for

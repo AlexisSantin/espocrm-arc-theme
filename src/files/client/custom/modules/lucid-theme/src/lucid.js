@@ -4,7 +4,8 @@
 
 /**
  * Panneaux d'activité latéraux par nature : ils restent dans la colonne de gauche, sous
- * « À propos », et sont retirés du bas quand la disposition les y ajoute aussi.
+ * « À propos », sauf si la disposition du bas les contient ; ils s'affichent alors en bas et
+ * la colonne de gauche masque son exemplaire.
  */
 export const SIDE_ACTIVITY_PANELS = ['activities', 'history', 'tasks'];
 
