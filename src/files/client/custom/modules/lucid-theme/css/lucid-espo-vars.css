@@ -202,6 +202,13 @@
     --panel-default-border: var(--lucid-border);
     --login-panel-heading-bg: var(--lucid-surface);
 
+    /* Panneaux colorés : teintes natives, icônes d'action à 4.5:1 au moins sur la teinte */
+    --panel-primary-text: var(--lucid-brand);
+    --panel-info-text: var(--lucid-info);
+    --panel-success-text: var(--lucid-success);
+    --panel-warning-text: var(--lucid-warning);
+    --panel-danger-text: var(--lucid-danger);
+
     /* Divers */
     --tooltip-bg: var(--lucid-n-900);
     --tooltip-color: #ffffff;
