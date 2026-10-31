@@ -1,0 +1,1250 @@
+/**
+ * Fiche Lucid : bandeau marine (en-tête, identité, pipeline), inspecteur « À propos »
+ * et colonne principale à onglets. S'applique au gabarit lucid-theme:record/detail.
+ */
+
+/* ===== Bandeau : en-tête de page + identité + pipeline ===== */
+#main:has(> .record > .lucid-record) > .page-header,
+.lucid-record > .lucid-band {
+    margin-left: calc(var(--container-padding) * -1);
+    margin-right: calc(var(--container-padding) * -1);
+    padding-left: var(--28px);
+    padding-right: var(--28px);
+    background: transparent;
+    color: var(--lucid-band-text);
+}
+
+/*
+ * Le dégradé est peint sur le fond de la page, sur la hauteur du bandeau mesurée par le script
+ * (--lucid-band-height) : il couvre toute la largeur, même quand le contenu est centré sur un
+ * grand écran, sans rien faire déborder.
+ */
+body.lucid-band-page {
+    background:
+        var(--lucid-band-glow) top left / 100% var(--lucid-band-height, 0) no-repeat,
+        var(--lucid-band-gradient) top left / 100% var(--lucid-band-height, 0) no-repeat,
+        var(--body-bg);
+}
+
+/* Le bandeau remonte sous la barre du haut : il occupe tout le haut de l'écran. */
+#main:has(> .record > .lucid-record) > .page-header {
+    margin-top: calc(var(--top-bar-height) * -1);
+    margin-bottom: 0;
+    padding-top: calc(var(--top-bar-height) + var(--10px));
+    padding-bottom: 0;
+}
+
+/* Barre du haut posée sur le bandeau */
+body:has(.lucid-record) #navbar .navbar-right {
+    background: var(--lucid-band-topbar);
+    border-bottom-color: var(--lucid-band-divider);
+}
+
+body:has(.lucid-record) #navbar .navbar-right > li > a {
+    color: var(--lucid-band-muted);
+}
+
+body:has(.lucid-record) #navbar .navbar-right > li > a:hover,
+body:has(.lucid-record) #navbar .navbar-right > li.open > a {
+    background-color: var(--lucid-band-fill-2);
+    color: var(--lucid-band-text);
+}
+
+body:has(.lucid-record) #navbar .navbar-right input.global-search-input {
+    background: var(--lucid-band-fill-2);
+    border-color: var(--lucid-band-line);
+    color: var(--lucid-band-text);
+    box-shadow: none;
+}
+
+body:has(.lucid-record) #navbar .navbar-right input.global-search-input::placeholder {
+    color: var(--lucid-band-muted);
+}
+
+body:has(.lucid-record) #navbar .navbar-right .global-search-container a.global-search-button {
+    color: var(--lucid-band-muted);
+}
+
+#main:has(> .record > .lucid-record) > .page-header .header-title {
+    font-size: var(--14px);
+    font-weight: 500;
+    letter-spacing: 0;
+    color: var(--lucid-band-muted);
+}
+
+#main:has(> .record > .lucid-record) > .page-header .header-title .color-icon {
+    display: none;
+}
+
+#main:has(> .record > .lucid-record) > .page-header .header-breadcrumbs .breadcrumb-item a,
+#main:has(> .record > .lucid-record) > .page-header .header-breadcrumbs .breadcrumb-item {
+    color: var(--lucid-band-muted);
+}
+
+#main:has(> .record > .lucid-record) > .page-header .header-breadcrumbs .breadcrumb-item:last-child {
+    color: var(--lucid-band-text);
+}
+
+#main:has(> .record > .lucid-record) > .page-header .header-breadcrumbs .breadcrumb-separator > span {
+    border-color: var(--lucid-band-muted);
+}
+
+/* Boutons posés sur le bandeau */
+#main:has(> .record > .lucid-record) > .page-header .btn-default,
+.lucid-band .btn-default {
+    background: var(--lucid-band-fill-2);
+    border-color: var(--lucid-band-line);
+    color: var(--lucid-band-text);
+    box-shadow: none;
+}
+
+#main:has(> .record > .lucid-record) > .page-header .btn-default:hover,
+.lucid-band .btn-default:hover,
+.lucid-band .open > .btn-default.dropdown-toggle {
+    background: var(--lucid-band-fill-3);
+    border-color: var(--lucid-band-line-strong);
+    color: var(--lucid-band-text);
+}
+
+#main:has(> .record > .lucid-record) > .page-header .btn-text,
+.lucid-band .btn-text {
+    color: var(--lucid-band-muted);
+}
+
+#main:has(> .record > .lucid-record) > .page-header .btn-text:hover,
+.lucid-band .btn-text:hover {
+    background: var(--lucid-band-fill-2);
+    color: var(--lucid-band-text);
+}
+
+#main:has(> .record > .lucid-record) > .page-header .btn-primary,
+.lucid-band .btn-primary {
+    background: var(--lucid-band-primary-bg);
+    border-color: var(--lucid-band-primary-bg);
+    color: var(--lucid-band-primary-text);
+    font-weight: 600;
+    box-shadow: none;
+}
+
+#main:has(> .record > .lucid-record) > .page-header .btn-primary:hover,
+.lucid-band .btn-primary:hover {
+    background: var(--lucid-band-primary-hover);
+    border-color: var(--lucid-band-primary-hover);
+    color: var(--lucid-band-primary-text);
+}
+
+#main:has(> .record > .lucid-record) > .page-header .btn:focus-visible,
+.lucid-band .btn:focus-visible,
+.lucid-band button:focus-visible {
+    outline-color: var(--lucid-band-focus);
+}
+
+/* Le bas du bandeau passe sous les cartes : la coupure se fait en douceur. */
+.lucid-record > .lucid-band {
+    display: flex;
+    flex-direction: column;
+    gap: var(--12px);
+    padding-top: var(--4px);
+    padding-bottom: calc(var(--14px) + var(--lucid-band-overlap));
+}
+
+.lucid-band-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--16px) var(--24px);
+}
+
+.lucid-band .detail-button-container {
+    margin: 0;
+    padding: 0;
+    background: transparent;
+}
+
+.lucid-band .detail-button-container .sub-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--8px);
+}
+
+.lucid-band .detail-button-container .sub-container::before,
+.lucid-band .detail-button-container .sub-container::after {
+    display: none;
+}
+
+/* Barre de boutons collée en haut au défilement : elle reste marine */
+.lucid-band .detail-button-container.stick-sub {
+    background: var(--lucid-band-glow), var(--lucid-band-gradient);
+    background-attachment: fixed;
+    border-bottom: 1px solid var(--lucid-band-line);
+    padding: var(--8px) var(--28px);
+}
+
+/* Identité */
+.lucid-identity {
+    display: flex;
+    align-items: center;
+    gap: var(--16px);
+    min-width: 0;
+}
+
+.lucid-identity-text {
+    min-width: 0;
+}
+
+.lucid-identity-name {
+    margin: 0;
+    color: inherit;
+    font-family: var(--lucid-font-display);
+    font-size: var(--28px);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    overflow-wrap: anywhere;
+}
+
+/* Personnes assignées et équipes */
+.lucid-identity-people {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--6px) var(--18px);
+    margin-top: var(--6px);
+    font-size: var(--13px);
+}
+
+.lucid-people-group {
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--6px);
+}
+
+.lucid-people-label {
+    color: var(--lucid-band-muted);
+}
+
+.lucid-person {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--6px);
+    padding: 2px var(--10px) 2px 2px;
+    border-radius: var(--lucid-radius-pill);
+    background: var(--lucid-band-fill-2);
+    color: var(--lucid-band-text);
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.lucid-person.lucid-team,
+.lucid-person.lucid-person-empty {
+    padding-left: var(--10px);
+}
+
+.lucid-person.lucid-person-empty {
+    background: transparent;
+    box-shadow: inset 0 0 0 1px var(--lucid-band-line);
+    color: var(--lucid-band-muted);
+}
+
+.lucid-person-avatar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--lucid-band-avatar-bg);
+    color: var(--lucid-band-avatar-text);
+    font-size: 10px;
+    font-weight: 700;
+}
+
+/* Parcours de pipeline */
+.lucid-band-pipeline {
+    display: flex;
+    flex-direction: column;
+    gap: var(--6px);
+}
+
+.lucid-pipeline-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--8px);
+    font-size: var(--13px);
+    color: var(--lucid-band-muted);
+}
+
+.lucid-pipeline-head strong {
+    color: var(--lucid-band-text);
+    font-weight: 600;
+}
+
+.lucid-pipeline-off {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--14px);
+}
+
+.lucid-pipeline-off-link {
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: var(--lucid-band-muted);
+    font: inherit;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.lucid-pipeline-off-link:hover {
+    color: var(--lucid-band-text);
+}
+
+.lucid-pipeline-stage-chip {
+    padding: 1px var(--10px);
+    border-radius: var(--lucid-radius-pill);
+    background: var(--lucid-signature);
+    color: var(--lucid-n-900);
+    font-weight: 600;
+}
+
+.lucid-pipeline-off-current {
+    padding: 1px var(--10px);
+    border-radius: var(--lucid-radius-pill);
+    background: var(--lucid-danger-bg);
+    color: var(--lucid-danger);
+    font-weight: 600;
+}
+
+.lucid-pipeline-steps {
+    display: grid;
+    grid-template-columns: repeat(var(--lucid-steps, 4), minmax(0, 1fr));
+    gap: 4px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.lucid-step-inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 0 var(--8px);
+    width: 100%;
+    min-height: 32px;
+    padding: var(--4px) var(--16px);
+    border: 0;
+    background: var(--lucid-band-fill-1);
+    color: var(--lucid-band-muted);
+    font: inherit;
+    font-weight: 500;
+    line-height: 1.2;
+    text-align: center;
+    clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 50%, calc(100% - 12px) 100%, 0 100%, 12px 50%);
+    transition: background-color var(--lucid-fast) ease, color var(--lucid-fast) ease;
+}
+
+.lucid-step:first-child .lucid-step-inner {
+    clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 50%, calc(100% - 12px) 100%, 0 100%);
+    border-radius: 8px 0 0 8px;
+}
+
+.lucid-step:last-child .lucid-step-inner {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 12px 50%);
+    border-radius: 0 8px 8px 0;
+}
+
+.lucid-step-label {
+    min-width: 0;
+    overflow-wrap: break-word;
+    hyphens: auto;
+}
+
+.lucid-step[data-state="done"] .lucid-step-inner {
+    background: var(--lucid-band-fill-3);
+    color: var(--lucid-band-text);
+}
+
+.lucid-step[data-state="current"] .lucid-step-inner {
+    background: var(--lucid-signature);
+    color: var(--lucid-n-900);
+    font-weight: 700;
+}
+
+button.lucid-step-inner {
+    cursor: pointer;
+}
+
+button.lucid-step-inner:hover {
+    background: var(--lucid-band-fill-4);
+    color: var(--lucid-band-text);
+}
+
+button.lucid-step-inner:focus-visible {
+    outline: 2px solid var(--lucid-band-focus);
+    outline-offset: -4px;
+}
+
+.lucid-step-check {
+    font-size: 12px;
+}
+
+/* ===== Deux colonnes ===== */
+.lucid-record .record-grid.lucid-record-grid {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: var(--20px);
+    margin-top: calc(var(--lucid-band-overlap) * -1);
+    container-type: inline-size;
+}
+
+/* La poignée tient lieu d'espace entre les deux colonnes */
+.lucid-record .record-grid.lucid-record-grid:has(> .lucid-resizer) {
+    column-gap: 0;
+}
+
+/*
+ * Largeur réglable (--lucid-inspector-width, posée par le script) : 300 px au moins, et la
+ * colonne de droite garde toujours 480 px.
+ */
+.lucid-record .lucid-record-grid > .lucid-inspector {
+    flex: 0 0 clamp(300px, var(--lucid-inspector-width, 380px), calc(100% - 480px - var(--20px)));
+    max-width: 100%;
+    width: auto;
+    min-width: 0;
+    float: none;
+    display: flex;
+    flex-direction: column;
+}
+
+.lucid-inspector-card {
+    position: relative;
+    padding: var(--16px) var(--20px) var(--8px);
+    background: var(--lucid-surface);
+    border: 1px solid var(--lucid-border);
+    border-radius: var(--lucid-radius-lg);
+    box-shadow: var(--lucid-shadow-xs);
+}
+
+/*
+ * Panneaux latéraux en cartes. Le suivi (assigné, équipes, dates) est une carte à part ; il ne
+ * prolonge « À propos » que dans la variante article, où la carte n'a pas de champs.
+ */
+.lucid-inspector > .side {
+    display: flex;
+    flex-direction: column;
+    gap: var(--16px);
+    width: auto;
+    float: none;
+    padding: 0;
+}
+
+.lucid-inspector:has(> .lucid-inspector-card > .middle) > .side,
+.lucid-inspector:not(:has(> .side > .panel[data-name="default"]:not(.hidden))) > .side {
+    margin-top: var(--16px);
+}
+
+.lucid-inspector:not(:has(> .lucid-inspector-card > .middle)):has(> .side > .panel[data-name="default"]:not(.hidden)) > .lucid-inspector-card {
+    padding-bottom: 0;
+    border-bottom: 0;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    box-shadow: none;
+}
+
+.lucid-inspector > .side > .panel {
+    margin: 0;
+    padding: 0 var(--20px) var(--8px);
+    background: var(--lucid-surface);
+    border: 1px solid var(--lucid-border);
+    border-radius: var(--lucid-radius-lg);
+    box-shadow: var(--lucid-shadow-xs);
+}
+
+.lucid-inspector:not(:has(> .lucid-inspector-card > .middle)) > .side > .panel[data-name="default"] {
+    border-top: 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.lucid-inspector:not(:has(> .lucid-inspector-card > .middle)) > .side > .panel[data-name="default"] > .panel-body {
+    padding-top: var(--10px);
+    border-top: 1px solid var(--lucid-n-100);
+}
+
+.lucid-inspector:has(> .lucid-inspector-card > .middle) > .side > .panel[data-name="default"] > .panel-body {
+    padding-top: var(--14px);
+}
+
+/* En-tête ajouté au suivi : même allure que les autres cartes latérales */
+.lucid-inspector > .side > .panel > .panel-heading.lucid-added-heading {
+    display: flex;
+    align-items: center;
+    gap: var(--8px);
+    padding: var(--14px) 0 var(--8px);
+    background: transparent;
+    border: 0;
+}
+
+.lucid-inspector > .side > .panel > .panel-heading.lucid-added-heading .panel-title {
+    flex: 1;
+    min-width: 0;
+    font-family: var(--lucid-font-display);
+    font-size: var(--16px);
+    font-weight: 700;
+    color: var(--lucid-text);
+}
+
+.lucid-inspector > .side > .panel[data-name="default"]:has(> .lucid-added-heading) > .panel-body {
+    padding-top: var(--4px);
+}
+
+
+.lucid-inspector > .side > .panel:not([data-name="default"]) > .panel-heading {
+    display: flex;
+    align-items: center;
+    gap: var(--8px);
+    padding: var(--14px) 0 var(--8px);
+}
+
+.lucid-inspector > .side > .panel > .panel-heading .panel-title {
+    order: -1;
+    flex: 1;
+    min-width: 0;
+}
+
+.lucid-inspector > .side > .panel > .panel-heading .panel-actions-container {
+    float: none;
+    margin: 0;
+}
+
+/*
+ * Onglets de champs de la disposition (carte « À propos » ou carte de contenu) : des pastilles
+ * compactes qui passent à la ligne proprement, un seul filet sous elles.
+ */
+.lucid-record .middle-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--4px);
+    margin: 0 0 var(--4px);
+    padding-bottom: var(--10px);
+    border-bottom: 1px solid var(--lucid-n-100);
+}
+
+/* « .tabs.middle-tabs » : plus précis que « .record .tabs > button.btn » d'EspoCRM */
+.lucid-record .tabs.middle-tabs > .btn {
+    height: auto;
+    margin: 0;
+    padding: var(--4px) var(--10px);
+    border: 0;
+    border-radius: var(--lucid-radius) !important;
+    background: transparent;
+    box-shadow: none;
+    color: var(--lucid-text-secondary);
+    font-size: var(--13px);
+    font-weight: 500;
+    line-height: 1.5;
+}
+
+/* EspoCRM souligne déjà l'onglet actif : un seul repère suffit */
+.lucid-record .tabs.middle-tabs > .btn::after {
+    display: none;
+}
+
+.lucid-record .tabs.middle-tabs > .btn:hover {
+    background: var(--lucid-hover);
+    color: var(--lucid-text);
+}
+
+.lucid-record .tabs.middle-tabs > .btn.active {
+    background: var(--lucid-brand-subtle);
+    color: var(--lucid-brand);
+    font-weight: 600;
+}
+
+/* Sous les onglets, pas de second filet : seuls les groupes suivants en ont un */
+.lucid-inspector-card .middle-tabs ~ .middle > .panel {
+    border-top: 0;
+}
+
+.lucid-inspector-card .middle-tabs ~ .middle > .panel:not(.tab-hidden):not(.hidden) ~ .panel:not(.tab-hidden):not(.hidden) {
+    border-top: 1px solid var(--lucid-n-100);
+}
+
+.lucid-inspector > .side > .panel:not([data-name="default"]) > .panel-heading .panel-title {
+    font-family: var(--lucid-font-display);
+    font-size: var(--16px);
+    font-weight: 700;
+    color: var(--lucid-text);
+}
+
+.lucid-record .lucid-record-grid > .lucid-main,
+.lucid-record .lucid-record-grid > .lucid-content-column {
+    flex: 1 1 480px;
+    min-width: 0;
+}
+
+.lucid-record .lucid-main,
+.lucid-record .lucid-content-card {
+    background: var(--lucid-surface);
+    border: 1px solid var(--lucid-border);
+    border-radius: var(--lucid-radius-lg);
+    box-shadow: var(--lucid-shadow-xs);
+}
+
+/* Variante « contenu » (entités à texte riche) : les champs en tête de la colonne principale */
+.lucid-record .lucid-content-column {
+    display: flex;
+    flex-direction: column;
+    gap: var(--20px);
+}
+
+.lucid-content-card {
+    padding: var(--4px) var(--20px) var(--12px);
+}
+
+.lucid-content-card .middle > .panel {
+    margin: 0;
+    background: transparent;
+    border: 0;
+    border-bottom: 1px solid var(--lucid-n-100);
+    border-radius: 0;
+    box-shadow: none;
+}
+
+.lucid-content-card .middle > .panel:last-child {
+    border-bottom: 0;
+}
+
+.lucid-content-card .middle > .panel > .panel-heading {
+    padding-left: 0;
+    padding-right: 0;
+    background: transparent;
+    border: 0;
+}
+
+.lucid-content-card .middle > .panel > .panel-heading .panel-title {
+    font-family: var(--lucid-font-display);
+    font-size: var(--17px);
+    font-weight: 700;
+}
+
+.lucid-content-card .middle > .panel > .panel-body {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+@container (max-width: 880px) {
+    .lucid-record .lucid-record-grid > .lucid-inspector {
+        flex-basis: 100%;
+    }
+
+    .lucid-record .lucid-record-grid > .lucid-resizer {
+        display: none;
+    }
+}
+
+/* ===== Poignée de largeur entre les colonnes ===== */
+.lucid-record .lucid-record-grid > .lucid-resizer {
+    position: relative;
+    flex: 0 0 var(--20px);
+    align-self: stretch;
+    cursor: col-resize;
+    touch-action: none;
+}
+
+/* Filet sur toute la hauteur au survol, au glisser et au focus clavier */
+.lucid-resizer::before {
+    content: "";
+    position: absolute;
+    top: calc(var(--lucid-band-overlap) + var(--8px));
+    bottom: 0;
+    left: 50%;
+    width: 2px;
+    margin-left: -1px;
+    border-radius: 2px;
+    background: transparent;
+    transition: background-color var(--lucid-fast) ease;
+}
+
+.lucid-resizer:hover::before,
+.lucid-resizer.is-dragging::before,
+.lucid-resizer:focus-visible::before {
+    background: var(--lucid-brand-ring);
+}
+
+/* Le filet coloré suffit à montrer le focus */
+.lucid-resizer:focus-visible {
+    outline: none;
+}
+
+body.lucid-resizing,
+body.lucid-resizing * {
+    cursor: col-resize !important;
+    user-select: none !important;
+}
+
+/* ===== Inspecteur « À propos » ===== */
+.lucid-inspector-title {
+    display: flex;
+    align-items: center;
+    gap: var(--8px);
+    margin: 0 0 var(--8px);
+    font-family: var(--lucid-font-display);
+    font-size: var(--17px);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+}
+
+.lucid-plus {
+    color: var(--lucid-signature);
+    font-family: var(--lucid-font-display);
+    font-size: 1.2em;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.lucid-inspector .middle > .panel {
+    margin: 0;
+    background: transparent;
+    border: 0;
+    border-top: 1px solid var(--lucid-n-100);
+    border-radius: 0;
+    box-shadow: none;
+}
+
+.lucid-inspector .panel > .panel-heading {
+    min-height: 0;
+    padding: var(--10px) 0 var(--6px);
+    border: 0;
+    background: transparent;
+}
+
+.lucid-inspector .panel > .panel-heading .panel-title {
+    padding: 0;
+    font-family: var(--lucid-font);
+    font-size: var(--13px);
+    font-weight: 600;
+    letter-spacing: 0;
+    color: var(--lucid-brand);
+}
+
+.lucid-inspector .panel > .panel-body {
+    padding: var(--4px) 0 var(--10px);
+}
+
+.lucid-inspector .panel-body > .row {
+    display: block;
+    margin: 0;
+}
+
+.lucid-inspector .panel-body > .row > [class*="col-"]:not(.cell) {
+    display: none;
+}
+
+.lucid-inspector .panel-body > .row > .cell {
+    position: relative;
+    float: none;
+    display: grid;
+    grid-template-columns: 130px minmax(0, 1fr);
+    column-gap: var(--12px);
+    align-items: baseline;
+    width: 100%;
+    margin: 0;
+    padding: var(--4px) var(--20px) var(--4px) 0;
+    font-size: var(--14px);
+}
+
+.lucid-inspector .panel-body > .row > .cell.hidden-cell,
+.lucid-inspector .panel-body > .row > .cell.hidden {
+    display: none;
+}
+
+.lucid-inspector .panel-body > .row > .cell > label.control-label {
+    grid-column: 1;
+    margin: 0;
+    font-size: var(--14px);
+    font-weight: 400;
+    color: var(--lucid-text-secondary);
+    overflow-wrap: anywhere;
+}
+
+.lucid-inspector .panel-body > .row > .cell > .field {
+    grid-column: 2;
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
+
+.lucid-inspector .panel-body > .row > .cell > .inline-edit-link {
+    position: absolute;
+    top: var(--4px);
+    right: 0;
+}
+
+/* En modification, le libellé repasse au-dessus du champ */
+.lucid-record:has(.edit-buttons:not(.hidden)) .lucid-inspector .panel-body > .row > .cell,
+.lucid-inspector .panel-body > .row > .cell:has(.inline-save-link) {
+    display: block;
+    padding-right: 0;
+}
+
+.lucid-record:has(.edit-buttons:not(.hidden)) .lucid-inspector .panel-body > .row > .cell > label.control-label,
+.lucid-inspector .panel-body > .row > .cell:has(.inline-save-link) > label.control-label {
+    display: block;
+    margin-bottom: var(--4px);
+}
+
+/* ===== Colonne principale : onglets ===== */
+.lucid-record .bottom.lucid-bottom {
+    display: flex;
+    flex-direction: column;
+    gap: var(--20px);
+    padding: 0 var(--18px) var(--18px);
+}
+
+.lucid-tab-hidden {
+    display: none !important;
+}
+
+.lucid-tabbar {
+    order: -2;
+    display: flex;
+    align-items: flex-end;
+    gap: 2px;
+    margin: 0 calc(var(--18px) * -1);
+    padding: 0 var(--14px);
+    border-bottom: 1px solid var(--lucid-border);
+    overflow-x: auto;
+}
+
+.lucid-tab {
+    flex: none;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--6px);
+    padding: var(--14px) var(--10px) var(--11px);
+    border: 0;
+    border-bottom: 2px solid transparent;
+    background: transparent;
+    color: var(--lucid-text-secondary);
+    font: inherit;
+    font-weight: 500;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+.lucid-tab:hover {
+    color: var(--lucid-text);
+}
+
+.lucid-tab[aria-pressed="true"] {
+    border-bottom-color: var(--lucid-brand);
+    color: var(--lucid-text);
+    font-weight: 600;
+}
+
+.lucid-tab-count:not(:empty) {
+    min-width: 18px;
+    padding: 0 var(--6px);
+    border-radius: var(--lucid-radius-pill);
+    background: var(--lucid-brand-subtle);
+    color: var(--lucid-brand);
+    font-size: var(--12px);
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+    text-align: center;
+}
+
+.lucid-tab-count.lucid-tab-count-empty {
+    background: var(--lucid-n-100);
+    color: var(--lucid-text-muted);
+}
+
+.lucid-tab-more .dropdown-menu .lucid-tab-more-item {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--12px);
+}
+
+/* Panneaux de la colonne principale : des sections, plus des cartes */
+.lucid-bottom > .panel {
+    margin: 0;
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+.lucid-bottom > .panel > .panel-heading {
+    padding: 0 0 var(--10px);
+    border: 0;
+    background: transparent;
+}
+
+.lucid-bottom > .panel > .panel-heading .panel-title {
+    font-family: var(--lucid-font-display);
+    font-size: var(--17px);
+    font-weight: 700;
+}
+
+.lucid-bottom > .panel > .panel-body {
+    padding: 0;
+}
+
+/* ===== Onglet Activité : saisie, activités, tâches, historique, flux ===== */
+.lucid-bottom.lucid-tab-activity > .panel[data-name="stream"],
+.lucid-bottom.lucid-tab-activity > .panel[data-name="stream"] > .panel-body {
+    display: contents;
+}
+
+/* Les clearfix de Bootstrap deviendraient des éléments flex vides (et autant d'écarts) */
+.lucid-bottom.lucid-tab-activity > .panel[data-name="stream"]::before,
+.lucid-bottom.lucid-tab-activity > .panel[data-name="stream"]::after,
+.lucid-bottom.lucid-tab-activity > .panel[data-name="stream"] > .panel-body::before,
+.lucid-bottom.lucid-tab-activity > .panel[data-name="stream"] > .panel-body::after {
+    display: none;
+}
+
+.lucid-bottom.lucid-tab-activity > .lucid-composer { order: 0; }
+.lucid-bottom.lucid-tab-activity > .panel[data-name="stream"] > .panel-body > .post-container { order: 1; }
+.lucid-bottom.lucid-tab-activity > .panel[data-name="stream"] > .panel-heading {
+    order: var(--lucid-stream-order, 2);
+    padding: 0;
+}
+
+.lucid-bottom.lucid-tab-activity > .panel[data-name="stream"] > .panel-body > .list-container {
+    order: var(--lucid-stream-list-order, 3);
+}
+
+.lucid-composer {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--4px);
+    margin-bottom: calc(var(--20px) * -1);
+    padding: var(--14px) var(--16px) var(--12px);
+    background: var(--lucid-surface);
+    border: 1px solid var(--lucid-border);
+    border-bottom: 0;
+    border-radius: var(--lucid-radius-lg) var(--lucid-radius-lg) 0 0;
+}
+
+.lucid-composer::before,
+.lucid-record .lucid-inspector-card::before {
+    content: "";
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    width: 22px;
+    height: 22px;
+    border-top: 3px solid var(--lucid-signature);
+    border-left: 3px solid var(--lucid-signature);
+    border-top-left-radius: var(--lucid-radius-lg);
+    pointer-events: none;
+}
+
+.lucid-composer.lucid-composer-solo {
+    margin-bottom: 0;
+    padding-bottom: var(--14px);
+    border-bottom: 1px solid var(--lucid-border);
+    border-radius: var(--lucid-radius-lg);
+}
+
+.lucid-composer-button {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--7px);
+    padding: var(--7px) var(--12px);
+    border: 0;
+    border-radius: var(--lucid-radius);
+    background: transparent;
+    color: var(--lucid-text-secondary);
+    font: inherit;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.lucid-composer-button:hover {
+    background: var(--lucid-hover);
+    color: var(--lucid-text);
+}
+
+.lucid-composer-button[data-kind="note"] {
+    background: var(--lucid-brand);
+    color: #ffffff;
+}
+
+.lucid-composer-icon {
+    font-size: 0.9em;
+    opacity: 0.85;
+}
+
+.lucid-bottom.lucid-tab-activity > .panel[data-name="stream"] > .panel-body > .post-container {
+    margin: 0;
+    padding: 0 var(--16px) var(--16px);
+    background: var(--lucid-surface);
+    border: 1px solid var(--lucid-border);
+    border-top: 0;
+    border-radius: 0 0 var(--lucid-radius-lg) var(--lucid-radius-lg);
+}
+
+.lucid-bottom.lucid-tab-activity:not(:has(> .lucid-composer)) > .panel[data-name="stream"] > .panel-body > .post-container {
+    padding-top: var(--16px);
+    border-top: 1px solid var(--lucid-border);
+    border-radius: var(--lucid-radius-lg);
+}
+
+.lucid-bottom .post-container textarea.form-control {
+    background: var(--lucid-surface-sunken);
+    border-radius: var(--lucid-radius-md);
+}
+
+/* ===== Chronologie : flux et listes d'activités ===== */
+.lucid-bottom.lucid-tab-activity .list-container[data-role="stream"] .list-group,
+.lucid-bottom .panel[data-name="activities"] .list-group,
+.lucid-bottom .panel[data-name="history"] .list-group,
+.lucid-bottom .panel[data-name="tasks"] .list-group {
+    margin: 0;
+}
+
+/* Flux : date à gauche, rail et point, contenu à droite */
+.lucid-bottom.lucid-tab-activity .list-container[data-role="stream"] li.list-group-item {
+    position: relative;
+    display: grid;
+    grid-template-columns: 72px 24px minmax(0, 1fr);
+    column-gap: var(--12px);
+    margin: 0;
+    padding: 0 var(--32px) var(--20px) 0;
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+}
+
+.lucid-bottom.lucid-tab-activity .list-container[data-role="stream"] li.list-group-item > * {
+    grid-column: 3;
+    min-width: 0;
+}
+
+.lucid-bottom.lucid-tab-activity .list-container[data-role="stream"] li.list-group-item > .stream-date-container {
+    grid-column: 1;
+    grid-row: 1 / span 4;
+    order: -1;
+    margin: 0;
+    padding-top: 1px;
+    text-align: right;
+}
+
+.lucid-bottom.lucid-tab-activity .list-container[data-role="stream"] li.list-group-item > .stream-date-container a {
+    color: var(--lucid-text-secondary);
+    font-family: var(--lucid-font-display);
+    font-size: var(--15px);
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.lucid-bottom.lucid-tab-activity .list-container[data-role="stream"] li.list-group-item::before {
+    content: "";
+    grid-column: 2;
+    grid-row: 1;
+    justify-self: center;
+    width: 12px;
+    height: 12px;
+    margin-top: 5px;
+    border-radius: 50%;
+    background: var(--lucid-surface);
+    box-shadow: inset 0 0 0 2px var(--lucid-n-300);
+}
+
+.lucid-bottom.lucid-tab-activity .list-container[data-role="stream"] li.list-group-item:first-child::before {
+    background: var(--lucid-brand-subtle);
+    box-shadow: inset 0 0 0 2px var(--lucid-brand);
+}
+
+.lucid-bottom.lucid-tab-activity .list-container[data-role="stream"] li.list-group-item::after {
+    content: "";
+    position: absolute;
+    top: 21px;
+    bottom: 0;
+    left: calc(72px + var(--12px) + 11px);
+    width: 2px;
+    background: var(--lucid-border-strong);
+}
+
+.lucid-bottom.lucid-tab-activity .list-container[data-role="stream"] li.list-group-item:last-child::after {
+    display: none;
+}
+
+.lucid-bottom.lucid-tab-activity .list-container[data-role="stream"] li.list-group-item > .right-container,
+.lucid-bottom.lucid-tab-activity .list-container[data-role="stream"] li.list-group-item > .cell-buttons {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+/* Activités, tâches, historique : lignes légères, survol discret */
+.lucid-record .panel[data-name="activities"] li.list-group-item,
+.lucid-record .panel[data-name="history"] li.list-group-item,
+.lucid-record .panel[data-name="tasks"] li.list-group-item {
+    margin: 0 calc(var(--10px) * -1);
+    padding: var(--8px) var(--10px);
+    border: 0;
+    border-radius: var(--lucid-radius-md);
+    background: transparent;
+    transition: background-color var(--lucid-fast) ease;
+}
+
+.lucid-record .panel[data-name="activities"] li.list-group-item:hover,
+.lucid-record .panel[data-name="history"] li.list-group-item:hover,
+.lucid-record .panel[data-name="tasks"] li.list-group-item:hover {
+    background: var(--lucid-n-25);
+}
+
+.lucid-record .panel[data-name="activities"] li.list-group-item {
+    border-left: 3px solid var(--lucid-brand-subtle);
+    border-radius: 0 var(--lucid-radius-md) var(--lucid-radius-md) 0;
+}
+
+.lucid-record .panel[data-name="activities"] .list-group,
+.lucid-record .panel[data-name="history"] .list-group,
+.lucid-record .panel[data-name="tasks"] .list-group {
+    margin: 0;
+}
+
+/*
+ * Dans les cartes latérales, EspoCRM élargit la liste jusqu'aux bords du panneau : sans ce
+ * décalage, les lignes s'alignent sur le titre et leur survol reste dans la carte.
+ */
+.lucid-inspector > .side > .panel .list-expanded {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+/* Les onglets natifs de la disposition sont repris dans la barre Lucid */
+.lucid-bottom > .tabs {
+    display: none;
+}
+
+/* ===== Champs vides masqués (hors modification) ===== */
+.lucid-record-grid:not(.lucid-show-empty) .cell.lucid-empty {
+    display: none !important;
+}
+
+.lucid-record-grid:not(.lucid-show-empty) .middle > .panel:has(.cell.lucid-empty):not(:has(.cell[data-name]:not(.lucid-empty):not(.hidden-cell))) {
+    display: none;
+}
+
+.lucid-empty-toggle {
+    display: block;
+    margin: var(--4px) 0 var(--8px);
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: var(--lucid-text-secondary);
+    font: inherit;
+    font-size: var(--13px);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    cursor: pointer;
+}
+
+.lucid-empty-toggle:hover {
+    color: var(--lucid-text);
+}
+
+.lucid-content-card > .lucid-empty-toggle,
+.lucid-inspector-card > .lucid-empty-toggle {
+    margin-top: var(--8px);
+}
+
+/* ===== Blocs repliables (accordéons) ===== */
+.lucid-collapsible {
+    cursor: pointer;
+}
+
+.lucid-inspector-card .middle > .panel > .panel-heading.lucid-collapsible,
+.lucid-content-card .middle > .panel > .panel-heading.lucid-collapsible {
+    display: flex;
+    align-items: center;
+    gap: var(--8px);
+}
+
+.lucid-inspector-card .middle > .panel > .panel-heading.lucid-collapsible > .panel-title,
+.lucid-content-card .middle > .panel > .panel-heading.lucid-collapsible > .panel-title {
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+.lucid-record .lucid-collapse {
+    flex: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 26px;
+    height: 26px;
+    margin-left: auto;
+    padding: 0;
+    border: 0;
+    border-radius: var(--lucid-radius-sm);
+    background: transparent;
+    box-shadow: none;
+    color: var(--lucid-text-faint);
+}
+
+.lucid-record .lucid-collapse:hover {
+    background: var(--lucid-hover);
+    color: var(--lucid-text);
+}
+
+.lucid-record .lucid-collapse .fas {
+    font-size: 11px;
+    transition: transform var(--lucid-fast) var(--lucid-ease);
+}
+
+.lucid-collapsed > .panel-heading > .lucid-collapse .fas,
+.lucid-inspector.lucid-collapsed > .lucid-inspector-card .lucid-inspector-title .lucid-collapse .fas {
+    transform: rotate(-90deg);
+}
+
+/* Replié : seul l'en-tête reste. En modification, tout est ouvert et le chevron disparaît. */
+.lucid-record:not(:has(.lucid-band .edit-buttons:not(.hidden))) .panel.lucid-collapsed > :not(.panel-heading),
+.lucid-record:not(:has(.lucid-band .edit-buttons:not(.hidden))) .lucid-inspector.lucid-collapsed > .lucid-inspector-card > :not(.lucid-inspector-title),
+.lucid-record:not(:has(.lucid-band .edit-buttons:not(.hidden))) .lucid-inspector.lucid-collapsed:not(:has(> .lucid-inspector-card > .middle)) > .side > .panel[data-name="default"] {
+    display: none;
+}
+
+.lucid-record:not(:has(.lucid-band .edit-buttons:not(.hidden))) .lucid-inspector.lucid-collapsed:not(:has(> .lucid-inspector-card > .middle)):has(> .side > .panel[data-name="default"]) > .lucid-inspector-card {
+    padding-bottom: var(--8px);
+    border-bottom: 1px solid var(--lucid-border);
+    border-radius: var(--lucid-radius-lg);
+    box-shadow: var(--lucid-shadow-xs);
+}
+
+.lucid-record:not(:has(.lucid-band .edit-buttons:not(.hidden))) .lucid-inspector.lucid-collapsed > .lucid-inspector-card .lucid-inspector-title {
+    margin-bottom: 0;
+}
+
+.lucid-record:not(:has(.lucid-band .edit-buttons:not(.hidden))) .lucid-inspector.lucid-collapsed > .side {
+    margin-top: var(--16px);
+}
+
+.lucid-record:has(.lucid-band .edit-buttons:not(.hidden)) .lucid-collapse {
+    display: none;
+}
+
+.lucid-record:has(.lucid-band .edit-buttons:not(.hidden)) .lucid-collapsible {
+    cursor: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .lucid-record .lucid-collapse .fas {
+        transition: none;
+    }
+}

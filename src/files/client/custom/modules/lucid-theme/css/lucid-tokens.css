@@ -1,0 +1,134 @@
+/**
+ * Lucid tokens — rendu SaaS : neutres légèrement teintés vers le Bleu UTT,
+ * une seule couleur d'action (Bleu UTT), le cyan réservé à la signature.
+ */
+:root {
+    /* Neutres */
+    --lucid-n-0: #ffffff;
+    --lucid-n-25: #fafbfc;
+    --lucid-n-50: #f6f7f9;
+    --lucid-n-100: #f0f1f4;
+    --lucid-n-150: #e8eaee;
+    --lucid-n-200: #dfe1e7;
+    --lucid-n-300: #c9ccd5;
+    --lucid-n-400: #8a8f9c;
+    --lucid-n-500: #656b7c;
+    --lucid-n-600: #4a5061;
+    --lucid-n-700: #353a49;
+    --lucid-n-800: #232733;
+    --lucid-n-900: #14161f;
+
+    /* Marque : Bleu UTT pour l'action, cyan pour la signature */
+    --lucid-brand: #292b6b;
+    --lucid-brand-hover: #1f2158;
+    --lucid-brand-active: #171946;
+    --lucid-brand-subtle: #eceefa;
+    --lucid-brand-subtle-hover: #e2e5f7;
+    --lucid-brand-ring: #5a5fd0;
+    --lucid-signature: #00b6ed;
+    --lucid-signature-gradient: linear-gradient(180deg, #292b6b, #00b6ed);
+    --lucid-link: #0b6f96;
+    --lucid-link-hover: #085677;
+
+    /* États (texte / fond / bordure / plein) */
+    --lucid-success: #067647;
+    --lucid-success-bg: #ecfdf3;
+    --lucid-success-border: #abefc6;
+    --lucid-success-solid: #079455;
+    --lucid-warning: #b54708;
+    --lucid-warning-bg: #fffaeb;
+    --lucid-warning-border: #fedf89;
+    --lucid-warning-solid: #dc6803;
+    --lucid-danger: #b42318;
+    --lucid-danger-bg: #fef3f2;
+    --lucid-danger-border: #fecdca;
+    --lucid-danger-solid: #d92d20;
+    --lucid-info: #3e4196;
+    --lucid-info-bg: #eef0fb;
+    --lucid-info-border: #cfd3f3;
+
+    /* Surfaces */
+    --lucid-canvas: var(--lucid-n-50);
+    --lucid-surface: var(--lucid-n-0);
+    --lucid-surface-sunken: var(--lucid-n-25);
+    --lucid-border: var(--lucid-n-150);
+    --lucid-border-strong: var(--lucid-n-200);
+    /* Contour des champs : 3:1 au moins sur blanc (RGAA 3.3) */
+    --lucid-border-input: #868b98;
+    --lucid-hover: var(--lucid-n-100);
+
+    /* Texte */
+    --lucid-text: var(--lucid-n-900);
+    --lucid-text-secondary: var(--lucid-n-600);
+    --lucid-text-muted: var(--lucid-n-500);
+    /* Texte le plus pâle encore lisible : 4,5:1 au moins sur blanc et sur le fond de page (RGAA 3.2) */
+    --lucid-text-faint: #6b7180;
+
+    /* Rayons */
+    --lucid-radius-sm: 6px;
+    --lucid-radius: 8px;
+    --lucid-radius-md: 10px;
+    --lucid-radius-lg: 12px;
+    --lucid-radius-xl: 16px;
+    --lucid-radius-pill: 999px;
+
+    /* Ombres */
+    --lucid-shadow-xs: 0 1px 2px rgba(20, 22, 31, 0.05);
+    --lucid-shadow-sm: 0 1px 3px rgba(20, 22, 31, 0.07), 0 1px 2px rgba(20, 22, 31, 0.04);
+    --lucid-shadow-md: 0 4px 12px -2px rgba(20, 22, 31, 0.08), 0 2px 4px -2px rgba(20, 22, 31, 0.04);
+    --lucid-shadow-lg: 0 16px 40px -8px rgba(20, 22, 31, 0.16), 0 4px 10px -4px rgba(20, 22, 31, 0.06);
+    --lucid-shadow-primary: inset 0 1px 0 rgba(255, 255, 255, 0.12), 0 1px 2px rgba(20, 22, 31, 0.2);
+
+    /* Focus : anneau clavier et halo des champs */
+    --lucid-focus-outline: 2px solid var(--lucid-brand-ring);
+    --lucid-focus-halo: 0 0 0 3px rgba(90, 95, 208, 0.18);
+
+    /* Typographie */
+    --lucid-font: "Lexend", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    /* Une seule famille : les titres sont en Lexend, plus gras */
+    --lucid-font-display: var(--lucid-font);
+
+    /* Bandeau des fiches : ambiance claire, bleu glacier à texte foncé, lueur cyan */
+    --lucid-band-bg: #e6f0f7;
+    --lucid-band-text: #14161f;
+    --lucid-band-muted: #454b5c;
+    --lucid-band-line: rgba(10, 25, 43, 0.16);
+    --lucid-band-gradient: linear-gradient(90deg, #eef5f9 0%, #e6f0f7 55%, #dce9f3 100%);
+    --lucid-band-glow: radial-gradient(60rem 22rem at 100% 0%, rgba(0, 182, 237, 0.18), transparent 60%);
+    --lucid-band-topbar: rgba(238, 245, 249, 0.85);
+    --lucid-band-overlap: var(--24px);
+    --lucid-band-divider: rgba(10, 25, 43, 0.08);
+    --lucid-band-fill-1: rgba(10, 25, 43, 0.05);
+    --lucid-band-fill-2: rgba(10, 25, 43, 0.08);
+    --lucid-band-fill-3: rgba(10, 25, 43, 0.12);
+    --lucid-band-fill-4: rgba(10, 25, 43, 0.18);
+    --lucid-band-line-strong: rgba(10, 25, 43, 0.35);
+    --lucid-band-focus: var(--lucid-brand-ring);
+    --lucid-band-avatar-bg: var(--lucid-brand);
+    --lucid-band-avatar-text: #ffffff;
+    /* Action principale du bandeau : Bleu UTT comme ailleurs (cyan sur une ambiance foncée) */
+    --lucid-band-primary-bg: var(--lucid-brand);
+    --lucid-band-primary-hover: var(--lucid-brand-hover);
+    --lucid-band-primary-text: #ffffff;
+
+    /* Menu latéral : blanc, lueur cyan discrète en bas */
+    --lucid-sidebar-bg: #ffffff;
+    --lucid-sidebar-glow: radial-gradient(28rem 20rem at 0% 100%, rgba(0, 182, 237, 0.08), transparent 65%);
+    --lucid-sidebar-text: #353a49;
+    --lucid-sidebar-muted: #5b6172;
+    --lucid-sidebar-line: var(--lucid-border);
+    --lucid-sidebar-hover: var(--lucid-hover);
+    --lucid-sidebar-active: var(--lucid-brand-subtle);
+    --lucid-sidebar-strong: var(--lucid-brand);
+    --lucid-sidebar-scroll: rgba(10, 25, 43, 0.2);
+    --lucid-sidebar-focus: var(--lucid-brand-ring);
+    --lucid-sidebar-logo-filter: none;
+    --lucid-sidebar-logo-opacity: 1;
+    --lucid-tracking-tight: -0.02em;
+    --lucid-tracking-body: 0;
+
+    /* Mouvement */
+    --lucid-ease: cubic-bezier(0.22, 1, 0.36, 1);
+    --lucid-fast: 120ms;
+    --lucid-base: 200ms;
+}

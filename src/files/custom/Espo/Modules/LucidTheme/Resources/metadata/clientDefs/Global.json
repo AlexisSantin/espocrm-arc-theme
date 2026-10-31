@@ -1,0 +1,9 @@
+{
+    "viewSetupHandlers": {
+        "record/detail": ["__APPEND__", "lucid-theme:handlers/record-detail"],
+        "list": ["__APPEND__", "lucid-theme:handlers/page-a11y"],
+        "detail": ["__APPEND__", "lucid-theme:handlers/page-a11y"],
+        "edit": ["__APPEND__", "lucid-theme:handlers/page-a11y"],
+        "login": ["__APPEND__", "lucid-theme:handlers/page-a11y"]
+    }
+}

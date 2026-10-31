@@ -1,0 +1,80 @@
+/**
+ * Base — typographie (Lexend), liens, focus clavier, sélection, barres de défilement.
+ */
+:root, body { --theme-name: Lucid !important; }
+
+body {
+    letter-spacing: var(--lucid-tracking-body);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4, h5 {
+    letter-spacing: var(--lucid-tracking-tight);
+    text-wrap: balance;
+}
+
+::selection {
+    background: rgba(41, 43, 107, 0.14);
+}
+
+a {
+    transition: color var(--lucid-fast) ease;
+}
+
+/* Focus : anneau visible au clavier uniquement */
+a:focus-visible,
+button:focus-visible,
+.btn:focus-visible,
+[tabindex]:focus-visible,
+.nav-link:focus-visible {
+    outline: var(--lucid-focus-outline);
+    outline-offset: 2px;
+}
+
+/* Sur le menu latéral et la barre du haut des fiches (fonds foncés), l'anneau passe en cyan */
+body[data-navbar="side"] #navbar > .navbar a:focus-visible,
+body[data-navbar="side"] #navbar > .navbar button:focus-visible,
+body:has(.lucid-record) #navbar .navbar-right a:focus-visible,
+body:has(.lucid-record) #navbar .navbar-right input:focus-visible {
+    outline-color: var(--lucid-sidebar-focus);
+}
+
+a:focus:not(:focus-visible),
+button:focus:not(:focus-visible),
+.btn:focus:not(:focus-visible) {
+    outline: none;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+    accent-color: var(--lucid-brand);
+}
+
+/* Barres de défilement fines */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+    background: var(--lucid-n-300);
+    border-radius: var(--lucid-radius-pill);
+    border: 3px solid transparent;
+    background-clip: content-box;
+}
+::-webkit-scrollbar-thumb:hover { background-color: var(--lucid-n-400); }
+
+#footer {
+    font-size: var(--12px);
+}
+
+/* Mouvements réduits à la demande du système (RGAA 13.8) */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}

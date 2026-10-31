@@ -1,0 +1,11 @@
+{
+    "themes": {
+        "Lucid": "Lucid"
+    },
+    "labels": {
+        "lucidShowEmptyOne": "Show the empty field",
+        "lucidShowEmptyMany": "Show {count} empty fields",
+        "lucidHideEmpty": "Hide empty fields",
+        "lucidAssignment": "Assignment"
+    }
+}

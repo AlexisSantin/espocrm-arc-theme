@@ -1,7 +1,0 @@
-/**
- * Arc theme — feuille de l'iframe (éditeur de texte riche).
- */
-@import "../../../../css/espo/light-iframe.css";
-@import "arc-fonts.css?v=0.11.2";
-@import "arc-tokens.css?v=0.11.2";
-@import "arc-espo-vars.css?v=0.11.2";

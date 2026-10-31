@@ -1,0 +1,7 @@
+/**
+ * Lucid theme — feuille de l'iframe (éditeur de texte riche).
+ */
+@import "../../../../css/espo/light-iframe.css";
+@import "lucid-fonts.css?v=0.12.0";
+@import "lucid-tokens.css?v=0.12.0";
+@import "lucid-espo-vars.css?v=0.12.0";

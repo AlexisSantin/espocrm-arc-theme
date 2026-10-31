@@ -1,9 +1,0 @@
-{
-    "viewSetupHandlers": {
-        "record/detail": ["__APPEND__", "arc-theme:handlers/record-detail"],
-        "list": ["__APPEND__", "arc-theme:handlers/page-a11y"],
-        "detail": ["__APPEND__", "arc-theme:handlers/page-a11y"],
-        "edit": ["__APPEND__", "arc-theme:handlers/page-a11y"],
-        "login": ["__APPEND__", "arc-theme:handlers/page-a11y"]
-    }
-}

@@ -1,0 +1,195 @@
+/**
+ * Shell — menu latéral clair, barre du haut translucide, en-tête de page.
+ * Signature : un filet dégradé Bleu UTT → cyan marque l'onglet actif.
+ */
+
+/* ===== Menu latéral : mêmes variables que le bandeau des fiches (ambiance) ===== */
+body[data-navbar="side"] #navbar > .navbar {
+    background: var(--lucid-sidebar-glow), var(--lucid-sidebar-bg);
+    border-right-color: var(--lucid-sidebar-line);
+}
+
+body[data-navbar="side"] #navbar > .navbar .navbar-header {
+    padding-left: var(--8px);
+}
+
+/* Logo EspoCRM par défaut (bleu-gris) : filtré selon l'ambiance ; un logo d'entreprise reste tel quel */
+body[data-navbar="side"] #navbar .navbar-brand img[src*="img/logo-light.svg"] {
+    filter: var(--lucid-sidebar-logo-filter);
+    opacity: var(--lucid-sidebar-logo-opacity);
+}
+
+body[data-navbar="side"] #navbar ul.tabs {
+    scrollbar-color: var(--lucid-sidebar-scroll) transparent;
+}
+
+body[data-navbar="side"] #navbar ul.tabs > li.tab > a,
+body[data-navbar="side"] #navbar ul.tabs > li.more > a {
+    position: relative;
+    margin: var(--1px) var(--8px);
+    border-radius: var(--lucid-radius);
+    color: var(--lucid-sidebar-text);
+    font-weight: 500;
+    transition: background-color var(--lucid-fast) ease, color var(--lucid-fast) ease;
+}
+
+body[data-navbar="side"] #navbar ul.tabs > li.tab > a:hover,
+body[data-navbar="side"] #navbar ul.tabs > li.more > a:hover {
+    background-color: var(--lucid-sidebar-hover);
+    color: var(--lucid-sidebar-strong);
+}
+
+body[data-navbar="side"] #navbar ul.tabs > li.tab.active > a,
+body[data-navbar="side"] #navbar ul.tabs > li.tab.active > a:hover {
+    font-weight: 600;
+    background-color: var(--lucid-sidebar-active);
+    color: var(--lucid-sidebar-strong);
+}
+
+body[data-navbar="side"] #navbar ul.tabs > li.tab.active > a::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: var(--8px);
+    bottom: var(--8px);
+    width: 3px;
+    border-radius: 0 3px 3px 0;
+    background: var(--lucid-signature);
+}
+
+body[data-navbar="side"] #navbar ul.tabs > li.tab-divider > div {
+    padding-left: calc(var(--navbar-tab-left-padding) + var(--8px));
+    padding-top: var(--16px);
+    padding-bottom: var(--4px);
+}
+
+body[data-navbar="side"] #navbar ul.tabs > li.tab-divider > div > .label-text {
+    color: var(--lucid-sidebar-muted);
+    font-size: var(--12px);
+    font-weight: 500;
+    letter-spacing: 0;
+}
+
+body[data-navbar="side"] #navbar a.minimizer {
+    color: var(--lucid-sidebar-muted);
+}
+
+body[data-navbar="side"] #navbar a.minimizer:hover {
+    color: var(--lucid-sidebar-strong);
+}
+
+/* ===== Barre du haut ===== */
+body[data-navbar="side"] #navbar .navbar-right {
+    align-items: center;
+    border-bottom: 1px solid var(--lucid-border);
+    -webkit-backdrop-filter: saturate(1.4) blur(10px);
+    backdrop-filter: saturate(1.4) blur(10px);
+}
+
+body[data-navbar="side"] #navbar .navbar-right > li {
+    align-items: center;
+}
+
+body[data-navbar="side"] #navbar .navbar-right > li > a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: var(--32px);
+    width: var(--32px);
+    padding: 0;
+    margin: 0 var(--1px);
+    border-radius: var(--lucid-radius);
+    color: var(--lucid-n-500);
+    transition: background-color var(--lucid-fast) ease, color var(--lucid-fast) ease;
+}
+
+body[data-navbar="side"] #navbar .navbar-right > li > a:hover,
+body[data-navbar="side"] #navbar .navbar-right > li.open > a {
+    background-color: var(--lucid-hover);
+    color: var(--lucid-text);
+}
+
+/* Recherche globale */
+body[data-navbar="side"] #navbar .navbar-right input.global-search-input {
+    min-height: var(--34px);
+    max-height: var(--34px);
+    width: var(--300px);
+    padding-left: var(--12px);
+    background-color: var(--lucid-n-0);
+    border: 1px solid var(--lucid-border-strong);
+    border-radius: var(--lucid-radius) !important;
+    box-shadow: var(--lucid-shadow-xs);
+    font-size: var(--13px);
+}
+
+body[data-navbar="side"] #navbar .navbar-right input.global-search-input:hover {
+    border-color: var(--lucid-n-300);
+}
+
+body[data-navbar="side"] #navbar .navbar-right input.global-search-input:focus {
+    border-color: var(--lucid-brand-ring);
+    box-shadow: var(--lucid-focus-halo);
+}
+
+body[data-navbar="side"] #navbar .navbar-right .global-search-container a.global-search-button {
+    display: flex;
+    align-items: center;
+    height: var(--34px);
+    color: var(--lucid-text-faint);
+}
+
+/* ===== Barre du haut (mode navbar top) ===== */
+body[data-navbar="top"] #navbar .navbar {
+    border-bottom: 1px solid var(--lucid-border);
+    box-shadow: none;
+}
+
+/* ===== En-tête de page ===== */
+.page-header {
+    margin-top: var(--20px);
+    margin-bottom: var(--16px);
+}
+
+.page-header .header-title {
+    font-size: var(--22px);
+    font-weight: 600;
+    letter-spacing: var(--lucid-tracking-tight);
+    color: var(--lucid-text);
+}
+
+.page-header .header-breadcrumbs .breadcrumb-item a {
+    color: var(--lucid-text-muted);
+    text-decoration: none;
+}
+
+.page-header .header-breadcrumbs .breadcrumb-item a:hover {
+    color: var(--lucid-text);
+}
+
+.page-header .header-breadcrumbs .breadcrumb-separator > span {
+    border-color: var(--lucid-n-300);
+}
+
+.page-header .header-title .color-icon {
+    font-size: 0.45em;
+    vertical-align: middle;
+    position: relative;
+    top: -0.15em;
+}
+
+/* Seule la création est une action principale dans l'en-tête */
+.page-header .header-buttons .btn[data-name="create"] {
+    background-color: var(--lucid-brand);
+    border-color: var(--lucid-brand);
+    color: var(--brand-primary-text);
+    box-shadow: var(--lucid-shadow-primary);
+}
+
+.page-header .header-buttons .btn[data-name="create"]:hover {
+    background-color: var(--lucid-brand-hover);
+    border-color: var(--lucid-brand-hover);
+}
+
+.page-header .header-buttons .btn[data-name="create"] .fas {
+    color: inherit;
+}

@@ -1,0 +1,118 @@
+/**
+ * Fiches — panneaux en cartes, titres en casse normale, libellés à la taille des valeurs, onglets soulignés.
+ */
+
+/* ===== Panneaux ===== */
+.panel {
+    border: 1px solid var(--lucid-border);
+    border-radius: var(--lucid-radius-lg);
+    box-shadow: var(--lucid-shadow-xs);
+}
+
+.panel > .panel-heading {
+    padding-left: var(--panel-padding);
+    padding-right: var(--10px);
+    background-color: transparent;
+    border-bottom: 1px solid var(--lucid-n-100);
+    border-radius: var(--lucid-radius-lg) var(--lucid-radius-lg) 0 0;
+}
+
+.panel > .panel-heading .panel-title {
+    color: var(--lucid-text);
+    font-size: var(--14px);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    text-transform: none;
+}
+
+.panel > .panel-heading .panel-title .action {
+    color: inherit;
+}
+
+/* Actions de panneau : boutons fantômes */
+.panel-heading .panel-actions-container .btn,
+.panel-heading .btn-group > .btn {
+    background-color: transparent;
+    border-color: transparent;
+    box-shadow: none;
+    color: var(--lucid-text-muted);
+}
+
+.panel-heading .panel-actions-container .btn:hover,
+.panel-heading .btn-group > .btn:hover,
+.panel-heading .btn-group.open > .btn {
+    background-color: var(--lucid-hover);
+    color: var(--lucid-text);
+}
+
+/* ===== Champs en lecture ===== */
+.detail .cell > label.control-label,
+.record .side .cell > label.control-label {
+    color: var(--lucid-text-secondary);
+    font-size: var(--14px);
+    font-weight: 400;
+    letter-spacing: 0;
+    margin-bottom: var(--4px);
+}
+
+.detail .cell > .field {
+    color: var(--lucid-text);
+}
+
+.detail .cell .none-value {
+    color: var(--lucid-text-faint);
+}
+
+/* ===== Onglets ===== */
+.nav-tabs {
+    border-bottom: 1px solid var(--lucid-border);
+}
+
+.nav-tabs > li > a {
+    margin-bottom: -1px;
+    padding: var(--8px) var(--12px);
+    border: none;
+    border-bottom: 2px solid transparent;
+    border-radius: 0;
+    background: transparent;
+    color: var(--lucid-text-muted);
+    font-weight: 500;
+}
+
+.nav-tabs > li > a:hover,
+.nav-tabs > li > a:focus {
+    border-bottom-color: var(--lucid-n-300);
+    background: transparent;
+    color: var(--lucid-text);
+}
+
+.nav-tabs > li.active > a,
+.nav-tabs > li.active > a:hover,
+.nav-tabs > li.active > a:focus {
+    border: none;
+    border-bottom: 2px solid var(--lucid-brand);
+    background: transparent;
+    color: var(--lucid-text);
+}
+
+/* ===== Flux ===== */
+.panel-stream .list > ul > li,
+.stream-list .list-group-item {
+    border-color: var(--lucid-n-100);
+}
+
+/* ===== Tableau de bord : un bloc se soulève au survol ===== */
+.dashlets .dashlet.panel {
+    transition: box-shadow var(--lucid-base) var(--lucid-ease), border-color var(--lucid-base) var(--lucid-ease);
+}
+
+.dashlets .dashlet.panel:hover {
+    border-color: var(--lucid-border-strong);
+    box-shadow: var(--lucid-shadow-md);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .dashlets .dashlet.panel {
+        transition: none;
+    }
+}

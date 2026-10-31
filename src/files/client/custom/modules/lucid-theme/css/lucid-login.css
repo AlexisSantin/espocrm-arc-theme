@@ -1,0 +1,47 @@
+/**
+ * Connexion — carte centrée sur un fond neutre, halo de marque très léger.
+ * Visible seulement quand Lucid est le thème système.
+ */
+body:has(#login) {
+    background:
+        radial-gradient(60rem 28rem at 50% -8rem, rgba(0, 182, 237, 0.10), transparent 70%),
+        radial-gradient(40rem 24rem at 15% -6rem, rgba(41, 43, 107, 0.10), transparent 70%),
+        var(--lucid-canvas);
+}
+
+#login.panel {
+    position: relative;
+    border: 1px solid var(--lucid-border);
+    border-radius: var(--lucid-radius-xl);
+    box-shadow: var(--lucid-shadow-lg);
+    overflow: hidden;
+}
+
+#login.panel > .panel-heading {
+    background: var(--lucid-surface);
+    border-bottom: none;
+    padding: var(--24px) var(--24px) var(--8px);
+}
+
+#login.panel > .panel-body {
+    padding: var(--8px) var(--24px) var(--24px);
+}
+
+#login.panel .logo-container {
+    text-align: center;
+}
+
+/* Coin cyan, signature des cartes Lucid */
+#login.panel::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 25px;
+    height: 25px;
+    border-top: 3px solid var(--lucid-signature);
+    border-left: 3px solid var(--lucid-signature);
+    border-top-left-radius: calc(var(--lucid-radius-xl) - 1px);
+    pointer-events: none;
+}

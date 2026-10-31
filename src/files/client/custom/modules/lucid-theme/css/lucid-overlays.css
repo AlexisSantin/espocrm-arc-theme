@@ -1,0 +1,126 @@
+/**
+ * Surcouches — menus déroulants, modales, infobulles, popovers, alertes.
+ */
+
+/* ===== Menus déroulants ===== */
+.dropdown-menu {
+    padding: var(--4px);
+}
+
+.dropdown-menu > li > a {
+    border-radius: var(--lucid-radius-sm);
+    padding-top: var(--6px);
+    padding-bottom: var(--6px);
+    transition: background-color var(--lucid-fast) ease;
+}
+
+.dropdown-menu > li > a .item-icon,
+.dropdown-menu > li > a > .fas,
+.dropdown-menu > li > a > .far {
+    color: var(--lucid-text-faint);
+}
+
+.dropdown-menu > li > a:hover .item-icon {
+    color: var(--lucid-text-secondary);
+}
+
+.dropdown-menu > li.divider,
+.dropdown-menu .divider {
+    margin: var(--4px) calc(var(--4px) * -1);
+}
+
+.open > .dropdown-menu {
+    animation: lucid-menu-in var(--lucid-base) var(--lucid-ease);
+    transform-origin: top;
+}
+
+@keyframes lucid-menu-in {
+    from { opacity: 0; transform: translateY(-4px); }
+    to { opacity: 1; transform: none; }
+}
+
+/* ===== Modales ===== */
+.modal-content {
+    border: 1px solid var(--lucid-border);
+    border-radius: var(--lucid-radius-xl);
+    box-shadow: var(--lucid-shadow-lg);
+    overflow: hidden;
+}
+
+.modal-header {
+    border-bottom: 1px solid var(--lucid-border);
+}
+
+.modal-header .modal-title {
+    font-size: var(--16px);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+}
+
+.modal-footer {
+    background-color: var(--lucid-surface-sunken);
+    border-top: 1px solid var(--lucid-border);
+}
+
+.modal-footer .btn-group > .btn + .btn {
+    margin-left: var(--6px);
+}
+
+.modal-dialog .modal-content {
+    overscroll-behavior: contain;
+}
+
+/* Panneau latéral d'EspoCRM 10 (pleine hauteur, collé à droite) : arrondi côté page seulement */
+@media (min-width: 768px) {
+    .modal:not(.dialog-confirm):not(.dialog-centered) > .modal-dialog > .modal-content {
+        border-top: 0;
+        border-right: 0;
+        border-bottom: 0;
+        border-radius: var(--lucid-radius-xl) 0 0 var(--lucid-radius-xl);
+    }
+}
+
+/*
+ * EspoCRM étire la fiche jusqu'aux bords du panneau ; Lucid dessine ses blocs en cartes bordées,
+ * qui seraient alors coupées par le bord : elles gardent la marge du panneau.
+ */
+.modal-body > .record.no-side-margin,
+.modal-body > .record-container.no-side-margin {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.modal-backdrop.in {
+    backdrop-filter: blur(3px);
+}
+
+/* ===== Infobulles et popovers ===== */
+.tooltip-inner {
+    padding: var(--6px) var(--8px);
+    border-radius: var(--lucid-radius-sm);
+    font-size: var(--12px);
+    font-weight: 500;
+}
+
+.popover {
+    border: 1px solid var(--lucid-border);
+    border-radius: var(--lucid-radius-lg);
+    box-shadow: var(--lucid-shadow-lg);
+}
+
+/* ===== Alertes ===== */
+.alert {
+    border-radius: var(--lucid-radius-md);
+    border-width: 1px;
+}
+
+.alert-danger { border-color: var(--lucid-danger-border); }
+.alert-warning { border-color: var(--lucid-warning-border); }
+.alert-success { border-color: var(--lucid-success-border); }
+.alert-info { border-color: var(--lucid-info-border); }
+
+@media (prefers-reduced-motion: reduce) {
+    .open > .dropdown-menu {
+        animation: none;
+    }
+}
