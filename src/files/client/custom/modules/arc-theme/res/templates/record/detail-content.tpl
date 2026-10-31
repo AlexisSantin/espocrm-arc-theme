@@ -66,7 +66,7 @@
             role="separator"
             aria-orientation="vertical"
             tabindex="0"
-            aria-label="{{translate 'width' category='fields' scope='LayoutManager'}} ({{translate 'About' category='labels' scope='Global'}})"
+            aria-label="{{translate 'width' category='wysiwygLabels' scope='Global'}} ({{translate 'About' category='labels' scope='Global'}})"
         ></div>
         <div class="left arc-content-column">
             <section class="arc-content-card">

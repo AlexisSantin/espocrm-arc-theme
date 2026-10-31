@@ -28,7 +28,7 @@ Under the Arc theme, detail views of CRM entities use a two-column layout:
   shows the current stage.
 - **About** (left, 380px): the detail layout panels as a compact property inspector — tab
   breaks become compact pill tabs, empty fields are hidden behind a "Show N empty fields" link
-  (all shown while editing) — and then the default side panel (assigned user, teams, dates) as its own untitled card, as in EspoCRM (collapsible: a thin bar holds the chevron and, when collapsed, lists the hidden fields), and
+  (all shown while editing) — and then the default side panel (assigned user, teams, dates) as its own collapsible card titled "Assignment", and
   the other side panels — activities, history, tasks — as separate cards. When the bottom
   layout also lists them, they are not repeated. Static fields on the left, activity on the right.
 - **Main column** (right): an **Activity** tab — quick actions (Note, Email, Call, Meeting,
@@ -37,7 +37,7 @@ Under the Arc theme, detail views of CRM entities use a two-column layout:
   defined in the bottom panel layout group their panels under their label. Tabs that do not
   fit go to **More**.
 
-Texts come from EspoCRM's own translations (About, Stream, More, Collapse, Expand, Width, field and entity names), so the theme follows every EspoCRM language; only the empty-fields link is the theme's own (fr_FR, en_US).
+Texts come from EspoCRM's own translations (About, Stream, More, Collapse, Expand, Width, field and entity names), so the theme follows every EspoCRM language; only the empty-fields link and the "Assignment" card title are the theme's own (fr_FR, en_US). Admin-only translation scopes (Admin, LayoutManager…) are not sent to regular users, so they are never used.
 
 A handle between the two columns sets the width of About (drag, or arrow keys / Home / End when focused; double-click resets): 300 to 720 px, the main column keeps at least 480 px. The width is kept per user in the browser.
 

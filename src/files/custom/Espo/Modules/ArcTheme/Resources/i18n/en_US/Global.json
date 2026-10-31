@@ -5,6 +5,7 @@
     "labels": {
         "arcShowEmptyOne": "Show the empty field",
         "arcShowEmptyMany": "Show {count} empty fields",
-        "arcHideEmpty": "Hide empty fields"
+        "arcHideEmpty": "Hide empty fields",
+        "arcAssignment": "Assignment"
     }
 }

@@ -106,9 +106,8 @@ export default class PanelCollapse {
     }
 
     /**
-     * Suivi (assigné, équipes, dates) : sans titre, comme dans EspoCRM. Quand il forme une carte
-     * à part, une barre porte le chevron ; repliée, elle liste les champs masqués, avec leurs
-     * libellés EspoCRM.
+     * Suivi (assigné, équipes, dates) : EspoCRM ne lui donne pas de titre. Quand il forme une
+     * carte à part (les champs sont dans « À propos »), il reçoit un en-tête pour se replier.
      *
      * @private
      * @param {HTMLElement|null} inspector
@@ -120,28 +119,19 @@ export default class PanelCollapse {
             return;
         }
 
-        const labels = [...panel.querySelectorAll('.cell[data-name]')]
-            .filter(cell => getComputedStyle(cell).display !== 'none')
-            .map(cell => (cell.querySelector(':scope > label.control-label') || {}).textContent)
-            .map(text => (text || '').trim())
-            .filter(Boolean);
+        let heading = panel.querySelector(':scope > .panel-heading');
 
-        let bar = panel.querySelector(':scope > .arc-tracking-bar');
-
-        if (!bar) {
-            bar = el('div', 'panel-heading arc-tracking-bar');
-            bar.append(el('span', 'arc-tracking-summary'));
-            panel.prepend(bar);
+        if (!heading) {
+            heading = el('div', 'panel-heading arc-added-heading');
+            heading.append(el('h4', 'panel-title', this.view.translate('arcAssignment', 'labels', 'Global')));
+            panel.prepend(heading);
         }
 
-        const summary = bar.querySelector('.arc-tracking-summary');
-        const text = labels.join(' · ');
+        const title = heading.querySelector('.panel-title');
 
-        if (summary.textContent !== text) {
-            summary.textContent = text;
+        if (title && title.textContent.trim()) {
+            this.decorate(panel, heading, title.textContent.trim(), 'default');
         }
-
-        this.decorate(panel, bar, labels.join(', '), 'default');
     }
 
     /**

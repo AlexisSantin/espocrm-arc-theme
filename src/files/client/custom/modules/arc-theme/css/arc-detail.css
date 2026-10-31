@@ -483,38 +483,27 @@ button.arc-step-inner:focus-visible {
     padding-top: var(--14px);
 }
 
-/* Suivi sans titre : une barre ne porte que le chevron ; repliée, elle liste les champs masqués */
-.arc-inspector > .side > .panel[data-name="default"] > .arc-tracking-bar {
+/* En-tête ajouté au suivi : même allure que les autres cartes latérales */
+.arc-inspector > .side > .panel > .panel-heading.arc-added-heading {
     display: flex;
     align-items: center;
     gap: var(--8px);
-    min-height: 0;
-    padding: var(--8px) 0 0;
+    padding: var(--14px) 0 var(--8px);
     background: transparent;
     border: 0;
 }
 
-.arc-inspector > .side > .panel[data-name="default"]:has(> .arc-tracking-bar) > .panel-body {
-    padding-top: 0;
-}
-
-.arc-tracking-summary {
+.arc-inspector > .side > .panel > .panel-heading.arc-added-heading .panel-title {
     flex: 1;
     min-width: 0;
-    overflow: hidden;
-    color: var(--arc-text-muted);
-    font-size: var(--13px);
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    visibility: hidden;
+    font-family: var(--arc-font-display);
+    font-size: var(--16px);
+    font-weight: 700;
+    color: var(--arc-text);
 }
 
-.arc-record:not(:has(.arc-band .edit-buttons:not(.hidden))) .panel.arc-collapsed > .arc-tracking-bar {
-    padding-bottom: var(--8px);
-}
-
-.arc-record:not(:has(.arc-band .edit-buttons:not(.hidden))) .panel.arc-collapsed > .arc-tracking-bar .arc-tracking-summary {
-    visibility: visible;
+.arc-inspector > .side > .panel[data-name="default"]:has(> .arc-added-heading) > .panel-body {
+    padding-top: var(--4px);
 }
 
 
