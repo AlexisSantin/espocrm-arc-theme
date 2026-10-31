@@ -1128,13 +1128,6 @@ body.lucid-resizing * {
     margin-right: 0;
 }
 
-/* Activités, historique ou tâches placés dans la disposition du bas : plus d'exemplaire à gauche */
-.lucid-record[data-lucid-bottom~="activities"] .lucid-inspector > .side > .panel[data-name="activities"],
-.lucid-record[data-lucid-bottom~="history"] .lucid-inspector > .side > .panel[data-name="history"],
-.lucid-record[data-lucid-bottom~="tasks"] .lucid-inspector > .side > .panel[data-name="tasks"] {
-    display: none;
-}
-
 /* Les onglets natifs de la disposition sont repris dans la barre Lucid */
 .lucid-bottom > .tabs {
     display: none;
@@ -1259,25 +1252,49 @@ body.lucid-resizing * {
 
 /*
  * Panneaux colorés par la disposition (danger, warning…) : EspoCRM teinte le fond de la carte sur
- * la hauteur de son propre en-tête, qui ne correspond pas à celui de Lucid. La couleur devient une
- * barre devant le titre.
+ * une hauteur fixe qui ne correspond pas aux en-têtes Lucid. La teinte native passe sur l'en-tête
+ * lui-même, en bandeau arrondi ; le titre garde l'alignement du contenu.
  */
 .lucid-record .panel.headered {
     background-image: none;
 }
 
-.lucid-record .panel:is(.panel-danger, .panel-warning, .panel-success, .panel-info, .panel-primary) > .panel-heading .panel-title::before {
-    content: "";
-    display: inline-block;
-    width: 4px;
-    height: 0.95em;
-    margin-right: var(--8px);
-    border-radius: 2px;
-    background: var(--lucid-brand);
-    vertical-align: -0.1em;
+.lucid-record .panel.panel-danger { --lucid-panel-tint: var(--panel-danger-bg); }
+.lucid-record .panel.panel-warning { --lucid-panel-tint: var(--panel-warning-bg); }
+.lucid-record .panel.panel-success { --lucid-panel-tint: var(--panel-success-bg); }
+.lucid-record .panel.panel-info { --lucid-panel-tint: var(--panel-info-bg); }
+.lucid-record .panel.panel-primary { --lucid-panel-tint: var(--panel-primary-bg); }
+
+.lucid-record .panel:is(.panel-danger, .panel-warning, .panel-success, .panel-info, .panel-primary) > .panel-heading {
+    background-color: var(--lucid-panel-tint);
+    border-radius: var(--lucid-radius-md);
 }
 
-.lucid-record .panel.panel-danger > .panel-heading .panel-title::before { background: var(--lucid-danger-solid); }
-.lucid-record .panel.panel-warning > .panel-heading .panel-title::before { background: var(--lucid-warning-solid); }
-.lucid-record .panel.panel-success > .panel-heading .panel-title::before { background: var(--lucid-success-solid); }
-.lucid-record .panel.panel-info > .panel-heading .panel-title::before { background: var(--lucid-info); }
+/* Colonne de droite */
+.lucid-bottom > .panel:is(.panel-danger, .panel-warning, .panel-success, .panel-info, .panel-primary) > .panel-heading {
+    min-height: 0;
+    margin: 0 calc(var(--8px) * -1) var(--10px);
+    padding: 0 var(--4px) 0 var(--8px);
+}
+
+.lucid-bottom > .panel:is(.panel-danger, .panel-warning, .panel-success, .panel-info, .panel-primary) > .panel-heading .panel-title {
+    padding-top: var(--8px);
+    padding-bottom: var(--8px);
+}
+
+/* Cartes de gauche */
+.lucid-inspector > .side > .panel:is(.panel-danger, .panel-warning, .panel-success, .panel-info, .panel-primary) > .panel-heading {
+    margin: var(--10px) calc(var(--12px) * -1) var(--8px);
+    padding: var(--6px) var(--4px) var(--6px) var(--12px);
+}
+
+.lucid-inspector > .side > .panel.lucid-collapsed:is(.panel-danger, .panel-warning, .panel-success, .panel-info, .panel-primary) > .panel-heading {
+    margin-bottom: var(--2px);
+}
+
+/* Sections de la carte « À propos » ou de contenu */
+.lucid-inspector-card .middle > .panel:is(.panel-danger, .panel-warning, .panel-success, .panel-info, .panel-primary) > .panel-heading,
+.lucid-content-card .middle > .panel:is(.panel-danger, .panel-warning, .panel-success, .panel-info, .panel-primary) > .panel-heading {
+    margin: var(--6px) calc(var(--10px) * -1) var(--4px);
+    padding: var(--6px) var(--4px) var(--6px) var(--10px);
+}

@@ -1,4 +1,4 @@
-import {ACTIVITY_PANELS, SIDE_ACTIVITY_PANELS, el} from 'lucid-theme:lucid';
+import {ACTIVITY_PANELS, el} from 'lucid-theme:lucid';
 
 const ACTIVITY_TAB = 'activity';
 const MORE_TAB = 'lucid-more';
@@ -6,8 +6,8 @@ const MORE_TAB = 'lucid-more';
 /**
  * Colonne principale de la fiche Lucid : un onglet Activité (saisie rapide puis flux) et un
  * onglet par panneau de relation. Les onglets définis par l'administrateur dans la
- * disposition du bas regroupent leurs panneaux sous leur libellé. Activités, tâches et
- * historique restent à gauche, sauf si l'administrateur les place dans la disposition du bas.
+ * disposition du bas regroupent leurs panneaux sous leur libellé. Les panneaux affichés sont
+ * ceux de la disposition du bas, comme dans EspoCRM ; les panneaux latéraux restent à gauche.
  * S'applique à la vue du bas configurée pour l'entité, standard ou personnalisée.
  *
  * @param {typeof import('views/record/detail-bottom').default} Base
@@ -35,30 +35,8 @@ export default function lucidDetailBottom(Base) {
         afterRender() {
             super.afterRender();
 
-            this.lucidMarkMovedPanels();
             this.lucidRenderTabs();
             this.lucidWatchResize();
-        }
-
-        /**
-         * Activités, historique ou tâches placés par l'administrateur dans la disposition du bas
-         * s'y affichent ; la colonne de gauche masque alors son exemplaire (pas de doublon).
-         * Repère posé sur la fiche : il survit aux redessins de la colonne de gauche.
-         *
-         * @private
-         */
-        lucidMarkMovedPanels() {
-            const moved = this.panelList
-                .map(item => item.name)
-                .filter(name => SIDE_ACTIVITY_PANELS.includes(name));
-
-            const root = this.lucidRecordRoot();
-
-            if (moved.length) {
-                root.dataset.lucidBottom = moved.join(' ');
-            } else {
-                delete root.dataset.lucidBottom;
-            }
         }
 
         /** @private */

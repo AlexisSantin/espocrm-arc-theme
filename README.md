@@ -23,11 +23,11 @@ All data in the screenshots is fictitious.
 
 - **Record view in two columns.** The **About** card on the left holds the layout panels as a
   compact property list (tab breaks become small pill tabs), followed by an **Assignment** card
-  (assigned user, teams, dates, followers) and the Activities, History and Tasks panels. If the
-  bottom panel layout includes Activities, History or Tasks, they show in the right column
-  instead, and the left column hides its copy. The right
-  column starts with the **Stream** tab — quick actions (Note, Email, Call, Meeting, Task) above the
-  stream as a timeline — then one tab per relationship panel, with its count.
+  (assigned user, teams, dates, followers) and the side panels (Activities, History, Tasks…). The
+  right column starts with the **Stream** tab — quick actions (Note, Email, Call, Meeting, Task)
+  above the stream as a timeline — then one tab per bottom panel, with its count. Which panels show
+  where is left to the layouts set in the Entity Manager: side panels on the left, bottom panels on
+  the right, exactly as configured.
 - **Band** at the top of each record: name, assigned users and teams, record actions and, for
   entities with an active pipeline, the stage path (click a stage to move the record if you may
   edit it).
@@ -45,7 +45,8 @@ All data in the screenshots is fictitious.
 
 Knowledge base articles (and any entity with a rich-text `body`) keep their fields in the main
 column, full width. Email and User records, and detail views opened in dialogs, keep the EspoCRM
-layout. Panel actions, inline editing and access rights are EspoCRM's own.
+layout. Panel actions, inline editing and access rights are EspoCRM's own; a panel style set in a
+layout (Danger, Warning, Success, Info, Primary) tints that panel's heading, as in EspoCRM.
 
 ## Accessibility
 
