@@ -29,6 +29,11 @@
     color: inherit;
 }
 
+/* Panneau coloré par l'administrateur : le titre prend la couleur, comme dans EspoCRM */
+.panel:is(.panel-danger, .panel-warning, .panel-success, .panel-info, .panel-primary) > .panel-heading .panel-title {
+    color: inherit;
+}
+
 /* Actions de panneau : boutons fantômes */
 .panel-heading .panel-actions-container .btn,
 .panel-heading .btn-group > .btn {

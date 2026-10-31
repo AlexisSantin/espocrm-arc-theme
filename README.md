@@ -45,12 +45,15 @@ All data in the screenshots is fictitious.
 
 Knowledge base articles (and any entity with a rich-text `body`) keep their fields in the main
 column, full width. Email and User records, and detail views opened in dialogs, keep the EspoCRM
-layout. Panel actions, inline editing and access rights are EspoCRM's own.
+layout. Panel actions, inline editing and access rights are EspoCRM's own. Panel colours chosen in
+the layouts (Danger, Warning, Success, Info, Primary) show as in EspoCRM: a tinted band across the
+block with the title in colour, in the About card, the side cards and the main column alike.
 
 ## Accessibility
 
 - Text contrast of at least 4.5:1 and form field borders of at least 3:1, checked for every colour;
-  action icons on coloured panel headings (Danger, Warning…) are darkened to stay above 4.5:1.
+  titles and action icons on coloured panel headings (Danger, Warning…) are darkened to stay above
+  4.5:1 on their tint.
 - Visible keyboard focus, including on dark areas; reduced motion when the system asks for it.
 - The record name is the page heading; pipeline steps wrap instead of being cut when zoomed.
 - The page declares its language and allows zooming on mobile (EspoCRM does neither by default).

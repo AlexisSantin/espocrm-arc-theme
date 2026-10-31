@@ -1249,3 +1249,65 @@ body.lucid-resizing * {
         transition: none;
     }
 }
+
+/*
+ * Panneaux colorés par l'administrateur (Danger, Warning, Success, Info, Primary) : comme dans
+ * EspoCRM, l'en-tête devient une bande teintée sur toute la largeur du bloc, titre centré et en
+ * couleur. EspoCRM teint le fond du panneau sur une hauteur fixe qui ne correspond pas aux
+ * en-têtes Lucid : la teinte passe sur l'en-tête lui-même.
+ */
+.lucid-record .panel.headered {
+    background-image: none;
+}
+
+.lucid-record .panel.panel-danger > .panel-heading { background-color: var(--panel-danger-bg); }
+.lucid-record .panel.panel-warning > .panel-heading { background-color: var(--panel-warning-bg); }
+.lucid-record .panel.panel-success > .panel-heading { background-color: var(--panel-success-bg); }
+.lucid-record .panel.panel-info > .panel-heading { background-color: var(--panel-info-bg); }
+.lucid-record .panel.panel-primary > .panel-heading { background-color: var(--panel-primary-bg); }
+
+.lucid-record .panel:is(.panel-danger, .panel-warning, .panel-success, .panel-info, .panel-primary) > .panel-heading .panel-title,
+.lucid-inspector > .side > .panel:is(.panel-danger, .panel-warning, .panel-success, .panel-info, .panel-primary) > .panel-heading .panel-title {
+    color: inherit;
+}
+
+/*
+ * Colonne de droite. Les listes d'EspoCRM remontent de la marge du panneau (--panel-padding) :
+ * la même marge sous la bande les fait commencer juste sous elle, sans la recouvrir.
+ */
+.lucid-bottom > .panel:is(.panel-danger, .panel-warning, .panel-success, .panel-info, .panel-primary) > .panel-heading {
+    min-height: 0;
+    margin: 0 calc(var(--18px) * -1) var(--panel-padding);
+    padding: 0 var(--18px);
+    border-radius: 0;
+}
+
+.lucid-bottom > .panel:is(.panel-danger, .panel-warning, .panel-success, .panel-info, .panel-primary) > .panel-heading .panel-title {
+    padding-top: var(--8px);
+    padding-bottom: var(--8px);
+}
+
+/* Sections de la carte « À propos » ou de contenu : la bande remplace le filet */
+.lucid-inspector-card .middle > .panel:is(.panel-danger, .panel-warning, .panel-success, .panel-info, .panel-primary),
+.lucid-content-card .middle > .panel:is(.panel-danger, .panel-warning, .panel-success, .panel-info, .panel-primary) {
+    border-top-color: transparent;
+}
+
+.lucid-inspector-card .middle > .panel:is(.panel-danger, .panel-warning, .panel-success, .panel-info, .panel-primary) > .panel-heading,
+.lucid-content-card .middle > .panel:is(.panel-danger, .panel-warning, .panel-success, .panel-info, .panel-primary) > .panel-heading {
+    margin: 0 calc(var(--20px) * -1);
+    padding: var(--8px) var(--20px);
+    border-radius: 0;
+}
+
+/* Cartes de gauche : la bande coiffe la carte */
+.lucid-inspector > .side > .panel:is(.panel-danger, .panel-warning, .panel-success, .panel-info, .panel-primary) > .panel-heading {
+    margin: 0 calc(var(--20px) * -1) var(--panel-padding);
+    padding: var(--10px) var(--20px);
+    border-radius: calc(var(--lucid-radius-lg) - 1px) calc(var(--lucid-radius-lg) - 1px) 0 0;
+}
+
+.lucid-inspector > .side > .panel.lucid-collapsed:is(.panel-danger, .panel-warning, .panel-success, .panel-info, .panel-primary) > .panel-heading {
+    margin-bottom: calc(var(--8px) * -1);
+    border-radius: calc(var(--lucid-radius-lg) - 1px);
+}
