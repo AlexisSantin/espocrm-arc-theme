@@ -1,6 +1,7 @@
 import {isLucidTheme} from 'lucid-theme:lucid';
 import RecordBand from 'lucid-theme:helpers/record-band';
 import EmptyFields from 'lucid-theme:helpers/empty-fields';
+import LinkBreaks from 'lucid-theme:helpers/link-breaks';
 import PanelCollapse from 'lucid-theme:helpers/panel-collapse';
 import ColumnResizer from 'lucid-theme:helpers/column-resizer';
 import lucidDetailBottom from 'lucid-theme:mixins/detail-bottom';
@@ -51,6 +52,7 @@ export default class RecordDetailHandler {
 
         new RecordBand(view).init();
         new EmptyFields(view).init();
+        new LinkBreaks(view).init();
         new PanelCollapse(view).init();
         new ColumnResizer(view).init();
     }

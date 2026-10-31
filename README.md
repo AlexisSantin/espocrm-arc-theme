@@ -30,7 +30,8 @@ All data in the screenshots is fictitious.
   the right, exactly as configured.
 - **Band** at the top of each record: name, assigned users and teams, record actions and, for
   entities with an active pipeline, the stage path (click a stage to move the record if you may
-  edit it).
+  edit it). On narrow screens the path folds into the current stage and a progress bar; tap it to
+  see every stage.
 - **Collapsible blocks.** About, Record info, the side panels and each layout panel fold like an
   accordion. The state is remembered per user and record type; everything opens while editing.
 - **Adjustable column.** A handle between the columns sets the width of About, from 300 to 720 px

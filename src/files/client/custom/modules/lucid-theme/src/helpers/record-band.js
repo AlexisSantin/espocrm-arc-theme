@@ -294,14 +294,17 @@ export default class RecordBand {
             head.append(links);
         }
 
+        const stageLabel = this.view.translate('pipelineStage', 'fields', this.entityType);
+        const stateOf = index => index < currentIndex ? 'done' : index === currentIndex ? 'current' : 'todo';
         const list = el('ol', 'lucid-pipeline-steps');
 
-        list.setAttribute('aria-label', this.view.translate('pipelineStage', 'fields', this.entityType));
+        list.id = `lucid-pipeline-${this.view.cid}`;
+        list.setAttribute('aria-label', stageLabel);
         list.style.setProperty('--lucid-steps', String(path.length));
 
         path.forEach((stage, index) => {
             const item = el('li', 'lucid-step');
-            const state = index < currentIndex ? 'done' : index === currentIndex ? 'current' : 'todo';
+            const state = stateOf(index);
 
             item.dataset.state = state;
 
@@ -325,7 +328,36 @@ export default class RecordBand {
             list.append(item);
         });
 
-        container.replaceChildren(head, list);
+        // Écran étroit : l'étape actuelle et une barre de progression ; la liste s'ouvre au toucher.
+        const current = pipeline.stages.find(stage => stage.id === currentId);
+        const toggle = el('button', 'lucid-pipeline-toggle');
+
+        toggle.type = 'button';
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.setAttribute('aria-controls', list.id);
+        toggle.setAttribute('aria-label', `${stageLabel} : ${current ? current.name : ''}`);
+        toggle.append(
+            el('span', 'lucid-pipeline-toggle-label', current ? current.name : stageLabel),
+            el('span', 'fas fa-chevron-down lucid-pipeline-toggle-icon')
+        );
+
+        toggle.addEventListener('click', () => {
+            toggle.setAttribute('aria-expanded', String(container.classList.toggle('lucid-pipeline-open')));
+        });
+
+        const bar = el('div', 'lucid-pipeline-bar');
+
+        bar.setAttribute('aria-hidden', 'true');
+
+        path.forEach((stage, index) => {
+            const segment = el('span', 'lucid-pipeline-segment');
+
+            segment.dataset.state = stateOf(index);
+            bar.append(segment);
+        });
+
+        container.classList.remove('lucid-pipeline-open');
+        container.replaceChildren(head, toggle, bar, list);
     }
 
     /**
