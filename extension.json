@@ -1,7 +1,7 @@
 {
     "module": "LucidTheme",
     "name": "Lucid Theme",
-    "description": "Thème EspoCRM au rendu SaaS moderne, palette UTT : menu clair, fiches en deux colonnes avec bandeau, pipeline et onglets d'activité.",
+    "description": "Lucid: a light, readable theme for EspoCRM. Two-column record view with an owner and pipeline band, collapsible blocks, adjustable columns and an activity stream. Accessible (WCAG 2.1 AA / RGAA). https://github.com/AlexisSantin/espocrm-lucid-theme",
     "author": "Alexis SANTIN",
     "bundled": true,
     "acceptableVersions": [

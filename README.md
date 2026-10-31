@@ -1,133 +1,124 @@
-# Lucid Theme for EspoCRM
+# Lucid — a theme for EspoCRM
 
-A light EspoCRM theme with a modern SaaS look, built on the UTT palette
-(Bleu UTT `#292B6B` for actions, Cyan `#00B6ED` as a signature accent).
+Lucid is a light, readable theme for [EspoCRM](https://www.espocrm.com/) with a modern SaaS feel.
+It reworks the record view into two columns — static fields on the left, activity on the right —
+adds a band with the record's owner and pipeline stages, and makes every block collapsible.
+It is built on the UTT palette (Bleu UTT `#292B6B` for actions, cyan `#00B6ED` as the signature
+accent) and targets WCAG 2.1 AA / RGAA.
+
+![Lead record with the stage band, the About card and the activity stream](docs/screenshots/record-lead.png)
+
+## Screenshots
+
+| | |
+|---|---|
+| ![Contact record](docs/screenshots/record-contact.png) | ![Account record](docs/screenshots/record-account.png) |
+| Contact: About card, Assignment card, quick actions and stream | Account: layout panels on the left, relationship tabs on the right |
+| ![Opportunity list](docs/screenshots/list-opportunities.png) | ![Create call side panel](docs/screenshots/create-call.png) |
+| List as a card, coloured record links, stage badges | Native EspoCRM side panel, detached from the page |
+
+All data in the screenshots is fictitious.
 
 ## Features
 
-- Overlay architecture: imports the stock EspoCRM `light` stylesheet, then redefines its CSS custom properties from a small set of Lucid tokens.
-- Light palette ("Clair"): white sidebar and an ice-blue record band with dark text, cyan glow and cyan marker on the active tab. Band and sidebar colours are tokens; the ink palette of 0.8.0 is in the git history.
-- Lists and panels as bordered cards, sentence-case column headers, tabular numbers.
-- Status badges with a leading dot and soft tinted backgrounds (WCAG AA contrast).
-- One primary action per page header (Create); other actions stay secondary.
-- Keyboard focus ring on interactive elements, focus halo on fields, reduced-motion support.
-- One typeface, Lexend (designed for reading, bundled, OFL), for text and titles alike. Labels use the same size as values; record links are coloured so what is clickable stands out.
-- Dialogs keep EspoCRM's side panel; records opened in it keep a margin so their cards are not cut by the panel edge. Dashboard blocks lift on hover.
-- Accessibility (RGAA / WCAG 2.1 AA): text contrast ≥ 4.5:1 and form field borders ≥ 3:1, visible keyboard focus on dark areas, reduced motion, record name as the page heading, pipeline steps wrap instead of being cut, document language and zoom restored (`src/handlers/page-a11y.js`). Band and sidebar colours are tokens (`--lucid-band-*`, `--lucid-sidebar-*`).
+- **Record view in two columns.** The **About** card on the left holds the layout panels as a
+  compact property list (tab breaks become small pill tabs), followed by an **Assignment** card
+  (assigned user, teams, dates, followers) and the Activities, History and Tasks panels. The right
+  column starts with the **Stream** tab — quick actions (Note, Email, Call, Meeting, Task) above the
+  stream as a timeline — then one tab per relationship panel, with its count.
+- **Band** at the top of each record: name, assigned users and teams, record actions and, for
+  entities with an active pipeline, the stage path (click a stage to move the record if you may
+  edit it).
+- **Collapsible blocks.** About, Assignment, the side panels and each layout panel fold like an
+  accordion. The state is remembered per user and record type; everything opens while editing.
+- **Adjustable column.** A handle between the columns sets the width of About, from 300 to 720 px
+  (mouse, or arrow keys / Home / End; double-click to reset). The main column keeps at least 480 px.
+- **Empty fields hidden** behind a "Show N empty fields" link, all shown while editing.
+- **Readability.** One typeface, Lexend, for text and titles; labels as large as values; record
+  links coloured so that what is clickable stands out; comfortable form fields.
+- **Light palette.** White sidebar, ice-blue record band, cards with a cyan corner mark. Colours
+  are CSS tokens (`--lucid-band-*`, `--lucid-sidebar-*`), easy to retune.
+- **Speaks every EspoCRM language.** Labels come from EspoCRM's own translations; only the
+  empty-fields link and the Assignment title are the theme's own (English and French).
 
-## Record view
+Knowledge base articles (and any entity with a rich-text `body`) keep their fields in the main
+column, full width. Email and User records, and detail views opened in dialogs, keep the EspoCRM
+layout. Panel actions, inline editing and access rights are EspoCRM's own.
 
-Under the Lucid theme, detail views of CRM entities use a two-column layout:
+## Accessibility
 
-- **Band**: full-width ink-blue gradient with a cyan glow, painted on the page background over the measured band
-  height (it runs under the top bar, reaches both screen edges even when the content is
-  centered on wide screens, and the cards overlap its lower edge), with breadcrumbs,
-  name, assigned user(s) and teams (plain chips, not links),
-  record actions and, when the entity uses an active pipeline, the stage path (click a
-  stage to move the record, if the user may edit the stage). An inactive pipeline only
-  shows the current stage.
-- **About** (left, 380px): the detail layout panels as a compact property inspector — tab
-  breaks become compact pill tabs, empty fields are hidden behind a "Show N empty fields" link
-  (all shown while editing) — and then the default side panel (assigned user, teams, dates) as its own collapsible card titled "Assignment", and
-  the other side panels — activities, history, tasks — as separate cards. When the bottom
-  layout also lists them, they are not repeated. Static fields on the left, activity on the right.
-- **Main column** (right): an **Activity** tab — quick actions (Note, Email, Call, Meeting,
-  Task, each shown only if the native panel offers it), then the stream as a timeline — then
-  one tab per relationship panel with its count. Tab breaks
-  defined in the bottom panel layout group their panels under their label. Tabs that do not
-  fit go to **More**.
+- Text contrast of at least 4.5:1 and form field borders of at least 3:1, checked for every colour.
+- Visible keyboard focus, including on dark areas; reduced motion when the system asks for it.
+- The record name is the page heading; pipeline steps wrap instead of being cut when zoomed.
+- The page declares its language and allows zooming on mobile (EspoCRM does neither by default).
+- Custom controls (tabs, accordions, column handle) expose their state to screen readers.
 
-Texts come from EspoCRM's own translations (About, Stream, More, Collapse, Expand, Width, field and entity names), so the theme follows every EspoCRM language; only the empty-fields link and the "Assignment" card title are the theme's own (fr_FR, en_US). Admin-only translation scopes (Admin, LayoutManager…) are not sent to regular users, so they are never used.
-
-A handle between the two columns sets the width of About (drag, or arrow keys / Home / End when focused; double-click resets): 300 to 720 px, the main column keeps at least 480 px. The width is kept per user in the browser.
-
-Every block (About, side panels, layout panels) collapses like an accordion: chevron or title click.
-The state is kept per user and record type in the browser; all blocks are open while editing.
-
-The cyan corner bracket is the Lucid signature: it marks the About card, the quick
-actions, list cards and the login card.
-
-It is applied by a `record/detail` view setup handler (`src/handlers/record-detail.js`) that
-derives the bottom view configured for the entity instead of replacing it; the side view is
-EspoCRM's own, so entity-specific behaviour (lead conversion, etc.) is kept. Email and User keep the EspoCRM
-layout, as do detail views shown in modals. Panel actions, inline editing and ACL are the
-native ones. Entities with a rich text `body` (knowledge base articles) use a content variant:
-their fields sit at the top of the main column, full width. If the handler cannot apply (an unexpected EspoCRM version, for example), the
-record keeps the EspoCRM layout instead of failing; the module imports no EspoCRM client module.
+Some remaining issues come from EspoCRM's own markup (icon-only buttons, unlabeled list
+checkboxes) and are outside the scope of a theme.
 
 ## Install
 
-Lucid was called Arc up to 0.11.2. To switch from Arc: uninstall the Arc Theme extension, then
-install Lucid Theme; the install script moves the default theme, user preferences and portals
-from Arc to Lucid. (Both can coexist without conflict, since each one only acts under its own
-theme, but there is no reason to keep Arc.)
-
-
 Requires EspoCRM 10.0 or later and PHP 8.3+ (tested on 10.0.3 and 10.0.11).
 
-1. Download `lucid-theme-<version>.zip` from the GitHub release.
+1. Download `lucid-theme-<version>.zip` from the
+   [latest release](https://github.com/AlexisSantin/espocrm-lucid-theme/releases/latest).
 2. In EspoCRM: **Administration > Extensions > Upload**, choose the ZIP, then **Install**.
-3. Select **Lucid** in **Administration > User Interface > Theme** (system default, also used on
-   the login page) or per user in **Preferences**.
+3. Select **Lucid** in **Administration > User Interface > Theme** (default for everyone, also used
+   on the login page) or per user in **Preferences**.
 
 Updates install the same way, over the previous version.
 
-## Install (dev)
+### Upgrading from Arc
+
+Lucid was called Arc up to version 0.11.2. Install Lucid Theme, then uninstall Arc Theme. The
+install script moves the default theme, user preferences and portals from Arc to Lucid, so
+nobody falls back to the EspoCRM theme. Both extensions can coexist without conflict in the
+meantime.
+
+## Development
 
 ```bash
 cd lucid-theme
 npm install
-npm run sync          # copy src/files -> ../site
-npm run clear-cache   # docker compose exec web php clear_cache.php
+npm run sync          # copy src/files into ../site
+npm run clear-cache   # after metadata or translation changes
+npm run extension     # build build/lucid-theme-<version>.zip
 ```
 
-Then select **Lucid** in user Preferences (or Administration > User Interface).
-The login page uses the system theme, so it only shows the Lucid style when Lucid is the system default.
-
-## Package
-
-```bash
-npm run extension     # build/*.zip
-```
-
-The CSS files imported by `lucid.css` and `lucid-iframe.css` carry `?v=<version>` so browsers
-do not keep stale copies: bump it together with `package.json` on every release.
-
-The module is bundled: in production EspoCRM loads `lib/module-lucid-theme.js` through
-`lib/init.js`, which `app/client.json` lists in `scriptList` (developer mode loads the
-transpiled sources instead, so test a release on an instance with developer mode off).
-
-## Structure
+- The CSS files imported by `lucid.css` and `lucid-iframe.css` carry `?v=<version>`: bump it
+  together with `package.json` on every release so browsers drop stale copies.
+- The module is bundled: in production EspoCRM loads `lib/module-lucid-theme.js` through
+  `lib/init.js`, listed in `app/client.json` `scriptList`. Developer mode loads the transpiled
+  sources instead, so test a release on an instance with developer mode off.
+- The record view is applied by a `record/detail` view setup handler that derives the bottom view
+  configured for the entity instead of replacing it. If it cannot apply (an unexpected EspoCRM
+  version, for instance), the record keeps the EspoCRM layout. The module imports no EspoCRM client
+  module, and never uses admin-only translation scopes (they are not sent to regular users).
 
 ```
 src/files/custom/Espo/Modules/LucidTheme/Resources/
-    module.json
-    metadata/themes/Lucid.json          theme params, chart and calendar colors
-    metadata/app/client.json          lib/init.js (bundle loader, production)
-    metadata/clientDefs/Global.json   record/detail view setup handler
-    i18n/en_US/Global.json, fr_FR/Global.json
+    metadata/themes/Lucid.json          theme parameters, chart and calendar colours
+    metadata/app/client.json            lib/init.js (bundle loader in production)
+    metadata/clientDefs/Global.json     view setup handlers
+    i18n/en_US, i18n/fr_FR              the theme's own labels
 src/files/client/custom/modules/lucid-theme/
-    css/lucid.css                       entry point
-    css/lucid-tokens.css                Lucid tokens (neutrals, brand, states, radii, shadows)
-    css/lucid-espo-vars.css             EspoCRM variables mapped to tokens
-    css/lucid-base.css                  typography, links, focus, scrollbars
-    css/lucid-shell.css                 sidebar, top bar, page header
-    css/lucid-controls.css              buttons, fields, button groups
-    css/lucid-data.css                  list cards, tables, badges
-    css/lucid-record.css                panels, detail fields, tabs
-    css/lucid-detail.css                record view: band, inspector, main column tabs, timeline
-    css/lucid-overlays.css              dropdowns, modals, tooltips, alerts
-    css/lucid-login.css                 login page
-    css/lucid-iframe.css                rich text editor iframe
-    res/templates/record/detail.tpl   record view template (band, About with fields, main column)
-    res/templates/record/detail-content.tpl  variant for articles (fields in the main column)
-    src/lucid.js                        shared constants and helpers
-    src/handlers/record-detail.js     applies the record view under the Lucid theme
-    src/helpers/record-band.js        band: identity, people, pipeline stage path, page background
-    src/helpers/empty-fields.js       hides empty fields in the inspector, with a toggle
-    src/handlers/page-a11y.js         document language and zoom (list, detail, edit, login)
-    src/helpers/column-resizer.js     handle that sets the width of About
-    src/helpers/panel-collapse.js     collapsible blocks (accordions), state kept per user and entity
-    src/mixins/detail-bottom.js       bottom view: tabs, quick actions, counts
-    fonts/Lexend-*.woff2 (+ OFL)
+    css/lucid.css                       entry point (imports the stock light theme, then the layers)
+    css/lucid-tokens.css                colours, radii, shadows, band and sidebar tokens
+    css/lucid-espo-vars.css             EspoCRM variables mapped to the tokens
+    css/lucid-*.css                     base, shell, controls, data, record, detail, overlays, login
+    res/templates/record/detail*.tpl    record view templates
+    src/handlers/record-detail.js       applies the record view
+    src/handlers/page-a11y.js           document language and zoom
+    src/helpers/record-band.js          band: identity, people, pipeline stage path
+    src/helpers/panel-collapse.js       collapsible blocks
+    src/helpers/column-resizer.js       width handle for About
+    src/helpers/empty-fields.js         hides empty fields
+    src/mixins/detail-bottom.js         right column: tabs, quick actions, counts
+    fonts/                              Lexend (OFL)
+src/scripts/AfterInstall.php            moves users from the Arc theme to Lucid
 ```
+
+## License
+
+GPL-3.0-or-later. The bundled Lexend typeface is licensed under the SIL Open Font License 1.1
+(`fonts/Lexend-OFL.txt`).
