@@ -468,6 +468,24 @@ button.lucid-step-inner:focus-visible {
     box-shadow: var(--lucid-shadow-xs);
 }
 
+/*
+ * Panneau collé au précédent (« Stick to the top » dans la disposition) : comme dans EspoCRM, il se
+ * soude à la carte du dessus, séparé par un simple filet.
+ */
+.lucid-inspector > .side > .panel:has(+ .panel.sticked:not(.hidden)) {
+    border-bottom: 0;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    box-shadow: none;
+}
+
+.lucid-inspector > .side > .panel.sticked:not(:first-child) {
+    margin-top: calc(var(--16px) * -1);
+    border-top: 1px solid var(--lucid-n-100);
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
 .lucid-inspector:not(:has(> .lucid-inspector-card > .middle)) > .side > .panel[data-name="default"] {
     border-top: 0;
     border-top-left-radius: 0;
@@ -917,7 +935,7 @@ body.lucid-resizing * {
 .lucid-bottom.lucid-tab-activity > .panel[data-name="stream"] > .panel-body > .post-container { order: 1; }
 .lucid-bottom.lucid-tab-activity > .panel[data-name="stream"] > .panel-heading {
     order: var(--lucid-stream-order, 2);
-    padding: 0;
+    padding-bottom: 0;
 }
 
 .lucid-bottom.lucid-tab-activity > .panel[data-name="stream"] > .panel-body > .list-container {
